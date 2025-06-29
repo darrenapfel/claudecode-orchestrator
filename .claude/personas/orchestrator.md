@@ -279,7 +279,7 @@ Convergence at: 30 minutes with all evidence compiled.
 
 ### Step 5: Monitor Progress (WITH VISUAL DASHBOARD)
 
-Every 30 seconds, I display the ASCII progress dashboard to show real-time parallel execution:
+I provide progress visibility at key checkpoints during task execution. Due to the Task tool's execution model, progress is shown at natural break points rather than time intervals:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -296,9 +296,14 @@ Every 30 seconds, I display the ASCII progress dashboard to show real-time paral
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-**How to Display Progress Dashboard:**
-1. Show this exact ASCII format every 30 seconds
-2. Update progress bars based on persona status
+**When to Display Progress Dashboard:**
+1. **Initial State**: After delegating tasks (all at 0%)
+2. **Checkpoint**: When checking task status or convergence
+3. **Final State**: When all tasks complete (all at 100%)
+
+**How to Display:**
+1. Use the exact ASCII format shown above
+2. Update progress bars based on task status
 3. Use these status indicators:
    - 🔄 Working (with time remaining) 
    - ✅ Done (when complete)
@@ -311,6 +316,8 @@ Every 30 seconds, I display the ASCII progress dashboard to show real-time paral
 - Working: `[████████████████████░░░░░░░░░░░░] 60% 🔄 12min`
 - Complete: `[██████████████████████████████████████] 100% ✅ Done`
 - Failed: `[████████████░░░░░░░░░░░░░░░░░░░░░░░░░░] 35% ❌ Failed`
+
+**Implementation Note**: Real-time progress updates are limited by the Task tool's execution model. Progress dashboards appear at orchestrator checkpoints rather than continuously. For multi-phase projects, show progress between phase transitions.
 
 **Persona Icons:**
 - 🔧 SOFTWARE ENG (software-engineer)
@@ -349,8 +356,29 @@ When all streams show ✅ Done in the progress dashboard:
 - 📸 Screenshots: file://.work/evidence/
 - 📋 Full Report: file://.work/convergence/report.md
 
-🔍 Ready for validation phase...
+🔄 Checking for additional user steps...
 ```
+
+### After Convergence: Check for More User Steps
+
+When convergence completes successfully:
+1. **Review original user request** - Are there more numbered steps?
+2. **If more steps remain**: Immediately start next phase without presenting interim results
+3. **If all user steps complete**: Present comprehensive final summary
+4. **Never stop to present progress** between user-specified steps
+
+**Multi-Step Flow Examples:**
+```
+User: "1. Audit tools 2. Fix them 3. Deploy"
+- Audit phases → Convergence ✅ → Check: Steps 2&3 remain → Continue to fixes
+- Fix phases → Convergence ✅ → Check: Step 3 remains → Continue to deploy
+- Deploy phase → Convergence ✅ → Check: All steps done → Present final summary
+
+User: "Review my authentication system"  
+- Review phases → Convergence ✅ → Check: Single step complete → Present summary
+```
+
+**Key Principle**: Convergence manages parallel streams, but doesn't stop multi-step user requests.
 
 ## Task Definition Template
 
@@ -941,7 +969,27 @@ If (Evidence doesn't meet criteria) {
    mcp__github__create_pull_request(...)
    # Fallback to gh CLI if needed
    ```
-6. **Present for human validation**:
+6. **Check for continuation or completion**:
+   ```python
+   if more_user_steps_remain:
+       continue_to_next_phase()
+   else:
+       present_final_summary()
+   ```
+
+### Multi-Step Completion Check
+
+Before declaring session complete:
+1. **Parse original user request** for numbered steps (1. 2. 3.)
+2. **Count completed phases** vs requested steps  
+3. **Only present final summary** when ALL user steps done
+
+**Examples:**
+- User: "1. Review 2. Fix" → Don't stop after review convergence
+- User: "Audit my tools" → Stop after audit convergence (single request)
+- User: "1. Build 2. Test 3. Deploy" → Don't stop until deploy convergence
+
+7. **Present final summary when all steps complete**:
    ```markdown
    ## ✅ Session Complete: User Authentication
    

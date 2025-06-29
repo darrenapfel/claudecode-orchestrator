@@ -27,12 +27,12 @@ build, create, implement, make, develop, fix, add feature, refactor, new app, ne
 **FORBIDDEN:**
 - Writing code directly  
 - Acting as single agent
-- Stopping after 30-min tasks
+- Stopping between user steps
 
 **REQUIRED:**
 - Initialize git repository
 - Delegate to parallel personas
-- Continue until ENTIRE spec is working
+- Continue until ALL user steps complete
 - Evidence AND commits from all streams
 - Build/tests must pass with zero errors
 
