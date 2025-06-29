@@ -1,5 +1,37 @@
 # Orchestrator.sh Changelog
 
+## Version 2.5.3 - Enhanced Summary Links
+
+### ✨ New Features
+- **Comprehensive Links in Summaries**: Orchestrator now provides extensive clickable links in all summaries
+- **Quick Commands Section**: Common commands (npm run dev, test, build) included in session summaries
+- **Phase Artifact Links**: Each phase completion includes links to its specific artifacts
+- **Organized Link Categories**: Application URLs, Documentation, Development Tools, Status & Planning
+
+### 📋 Link Categories Added
+
+**Session Completion:**
+- Application Links (localhost, preview, production)
+- Development Links (PR, CI/CD, coverage)
+- Documentation & Evidence (session logs, screenshots, architecture)
+- Status & Planning (PROJECT-STATE.md, convergence reports)
+
+**Phase Completion:**
+- Phase-specific artifacts
+- Test results for that phase
+- Logs specific to the phase
+
+**Quick Commands:**
+- Start dev server with URL
+- Run tests (unit, e2e, coverage)
+- View logs location
+- Build and quality checks
+
+### 🎯 User Experience
+Makes orchestrator output immediately actionable - users can click to view evidence, test the app, or access documentation without searching for file paths.
+
+---
+
 ## Version 2.5.2 - Anti-Pattern Protection
 
 ### 🛡️ Critical Behavioral Fixes
