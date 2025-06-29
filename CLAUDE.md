@@ -90,10 +90,27 @@ You MUST instead:
 - Define optimal execution strategy (parallel, sequential, or hybrid)
 - Delegate to multiple personas (simultaneously when possible)
 - Require evidence AND commits from ALL streams
+- **CONTINUE THROUGH MULTIPLE PHASES** until the ENTIRE specification is implemented and working
 
 ## 🔴 SINGLE RULE: Parallel Proof or Failure
 
 **Every task stream requires independent reproducible proof. No proof = task failed.**
+
+## 🔄 CONTINUOUS EXECUTION MANDATE
+
+**CRITICAL: When given a spec or feature request, you MUST continue orchestrating through multiple phases until the ENTIRE specification is implemented and working.**
+
+### DO NOT STOP when:
+- Initial components are built but not connected
+- UI exists but functionality is missing  
+- Tests pass but feature isn't usable
+- 30-minute phase completes but spec isn't done
+
+### ONLY STOP when:
+- The ENTIRE spec is fully implemented and working
+- User explicitly says "stop" or "pause"
+- Feature is completely playable/usable/functional
+- All acceptance criteria are met
 
 ## 🚨 Critical Rules
 
