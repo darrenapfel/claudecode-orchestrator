@@ -271,270 +271,72 @@ Convergence at: 30 minutes with all evidence compiled.
 
 ### Step 5: Monitor Progress (WITH VISUAL DASHBOARD)
 
-I monitor task progress through structured output AND ASCII progress visualization:
+Every 30 seconds, I display the ASCII progress dashboard to show real-time parallel execution:
 
-```typescript
-// Monitor task progress with visual dashboard
-async function monitorTaskProgress(taskIds: string[]): Promise<void> {
-  // Collect progress from all tasks
-  const taskProgress = []
-  let sessionProgress = 0
-  let totalStreams = taskIds.length
-  let completedStreams = 0
-  
-  for (const taskId of taskIds) {
-    try {
-      // Check for real-time progress updates
-      const progressPath = `.work/tasks/${taskId}/PROGRESS.json`
-      const statusPath = `.work/tasks/${taskId}/STATUS.md`
-      
-      let taskData = {
-        id: taskId,
-        persona: 'unknown',
-        progress: 0,
-        status: 'working',
-        activity: 'Starting...',
-        timeRemaining: 30,
-        icon: '🔄'
-      }
-      
-      // Load progress data if available
-      if (fileExists(progressPath)) {
-        const progressData = JSON.parse(await readFile(progressPath))
-        taskData = {
-          ...taskData,
-          persona: progressData.persona,
-          progress: progressData.progress,
-          status: progressData.status,
-          activity: progressData.current_activity,
-          timeRemaining: progressData.time_remaining_estimate
-        }
-      }
-      
-      // Check for completion via OUTPUT.json
-      const outputPath = `.work/tasks/${taskId}/OUTPUT.json`
-      if (fileExists(outputPath)) {
-        const output = JSON.parse(await readFile(outputPath))
-        
-        switch(output.status) {
-          case 'complete':
-            taskData.progress = 100
-            taskData.status = 'complete'
-            taskData.icon = '✅'
-            taskData.activity = 'Done'
-            taskData.timeRemaining = 0
-            completedStreams++
-            break
-            
-          case 'blocked':
-            taskData.status = 'blocked'
-            taskData.icon = '⏸️'
-            taskData.activity = `Blocked: ${output.issues.blockers.join(', ')}`
-            break
-            
-          case 'failed':
-            taskData.status = 'failed'
-            taskData.icon = '❌'
-            taskData.activity = `Error: ${output.error}`
-            break
-        }
-      }
-      
-      taskProgress.push(taskData)
-      sessionProgress += taskData.progress
-      
-    } catch (error) {
-      taskProgress.push({
-        id: taskId,
-        persona: 'unknown',
-        progress: 0,
-        status: 'working',
-        activity: 'Loading...',
-        timeRemaining: 30,
-        icon: '🔄'
-      })
-    }
-  }
-  
-  // Calculate overall session progress
-  sessionProgress = Math.round(sessionProgress / totalStreams)
-  
-  // Generate visual dashboard
-  displayProgressDashboard({
-    sessionProgress,
-    taskProgress,
-    completedStreams,
-    totalStreams,
-    sessionTime: getCurrentSessionTime()
-  })
-}
-
-// Visual Dashboard Display
-function displayProgressDashboard(data) {
-  const sessionBar = generateProgressBar(data.sessionProgress, 50)
-  const timeDisplay = `${data.sessionTime.elapsed}/${data.sessionTime.total}min`
-  
-  console.log(`
+```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                    🎭 ORCHESTRATION SESSION v2.1                        │
-│                         Feature: ${getCurrentFeatureName()}             │
+│                    🎭 ORCHESTRATION SESSION v2.5                        │
+│                         Feature: User Authentication                     │
 ├─────────────────────────────────────────────────────────────────────────┤
-│ Session Progress: ${sessionBar} │ ${timeDisplay} │
+│ Session Progress: [████████████████████████████░░░░░░░░░░░░] 70% │ 21/30min │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                         │`)
-  
-  // Display individual stream progress
-  data.taskProgress.forEach(task => {
-    const personaName = getPersonaDisplayName(task.persona)
-    const progressBar = generateProgressBar(task.progress, 30, task.status === 'working' ? 'animated' : 'basic')
-    const timeInfo = task.timeRemaining > 0 ? `${task.timeRemaining}min` : 'Done'
-    const statusDisplay = task.status === 'complete' ? '✅ Done' : 
-                         task.status === 'failed' ? '❌ Failed' :
-                         task.status === 'blocked' ? '⏸️ Blocked' : 
-                         `🔄 ${timeInfo}`
-    
-    console.log(`│ ${task.icon} ${personaName.padEnd(15)} ${progressBar} ${statusDisplay.padStart(10)} │`)
-    
-    // Show current activity for working streams
-    if (task.status === 'working' && task.activity !== 'Starting...') {
-      const activityText = task.activity.length > 55 ? task.activity.substring(0,52) + '...' : task.activity
-      console.log(`│    └─ ${activityText.padEnd(60)} │`)
-    }
-  })
-  
-  console.log(`│                                                                         │
-├─────────────────────────────────────────────────────────────────────────┤`)
-  
-  // Convergence status
-  if (data.completedStreams === data.totalStreams) {
-    console.log(`│ 🎉 ALL STREAMS COMPLETE! Ready for validation...                       │`)
-  } else if (data.completedStreams > 0) {
-    const eta = Math.max(...data.taskProgress.filter(t => t.timeRemaining > 0).map(t => t.timeRemaining))
-    console.log(`│ 🎯 CONVERGENCE: ${data.completedStreams}/${data.totalStreams} ready │ ETA: ${eta} minutes │ ${Math.round((data.completedStreams/data.totalStreams)*100)}% converged │`)
-  } else {
-    console.log(`│ 🔥 ACTIVE: All streams working │ No blockers │ Monitoring progress...  │`)
-  }
-  
-  console.log(`└─────────────────────────────────────────────────────────────────────────┘`)
-}
-
-// Progress bar generation utility
-function generateProgressBar(percentage, width = 40, style = 'basic') {
-  const filled = Math.floor((percentage / 100) * width)
-  const empty = width - filled
-  
-  switch (style) {
-    case 'basic':
-      return `[${`█`.repeat(filled)}${`░`.repeat(empty)}] ${percentage}%`
-    
-    case 'animated':
-      const working = Math.min(3, empty)
-      const actualEmpty = empty - working
-      return `[${`▓`.repeat(filled)}${`▓`.repeat(working)}${`░`.repeat(actualEmpty)}] ${percentage}%`
-    
-    default:
-      return `[${`█`.repeat(filled)}${`░`.repeat(empty)}] ${percentage}%`
-  }
-}
-
-// Helper functions
-function getPersonaDisplayName(persona) {
-  const names = {
-    'software-engineer': '🔧 SOFTWARE ENG',
-    'sdet': '🧪 SDET',
-    'security-engineer': '🔒 SECURITY ENG', 
-    'ux-designer': '🎨 UX DESIGNER',
-    'performance-engineer': '⚡ PERFORMANCE',
-    'documentation-writer': '📚 DOCUMENTATION',
-    'architect': '🏛️ ARCHITECT',
-    'devops': '🚀 DEVOPS',
-    'validator': '🔍 VALIDATOR'
-  }
-  return names[persona] || `🤖 ${persona.toUpperCase()}`
-}
-
-function getCurrentSessionTime() {
-  // Implementation would track actual session time
-  return { elapsed: 15, total: 30 }
-}
-
-function getCurrentFeatureName() {
-  // Implementation would get current feature name
-  return process.env.CURRENT_FEATURE || 'Development Session'
-}
+│ 🔧 SOFTWARE ENG   [██████████████████████████████████████] 100% ✅ Done  │
+│ 🧪 SDET           [████████████████████████████████░░░░░░] 80%  🔄 9min  │
+│ 🔒 SECURITY ENG   [██████████████████████████░░░░░░░░░░░░] 65%  🔄 12min │
+│ 🎨 UX DESIGNER    [████████████████████████████████░░░░░░] 75%  🔄 8min  │
+│ ⚡ PERFORMANCE     [████████████████████░░░░░░░░░░░░░░░░░░] 50%  🔄 15min │
+└─────────────────────────────────────────────────────────────────────────┘
 ```
 
-#### Progress Tracking Actions:
-- **Visual Dashboard**: Display real-time ASCII progress every 30 seconds
-- **Read Progress Files**: Monitor .work/tasks/*/PROGRESS.json for live updates
-- **Parse Completion**: Process OUTPUT.json when tasks complete
-- **Track Dependencies**: Adjust scheduling based on stream completion
-- **Early Detection**: Identify blockers through visual status indicators
-- **Convergence Prep**: Display countdown and readiness via progress dashboard
+**How to Display Progress Dashboard:**
+1. Show this exact ASCII format every 30 seconds
+2. Update progress bars based on persona status
+3. Use these status indicators:
+   - 🔄 Working (with time remaining) 
+   - ✅ Done (when complete)
+   - ❌ Failed (when errors)
+   - ⏸️ Blocked (when dependencies missing)
+4. Calculate session progress from average of all streams
+5. Show convergence countdown as tasks complete
 
-### Step 6: Manage Convergence (WITH STRUCTURED DATA)
+**Progress Bar Examples:**
+- Working: `[████████████████████░░░░░░░░░░░░] 60% 🔄 12min`
+- Complete: `[██████████████████████████████████████] 100% ✅ Done`
+- Failed: `[████████████░░░░░░░░░░░░░░░░░░░░░░░░░░] 35% ❌ Failed`
 
-When all streams complete, I process their structured outputs:
+**Persona Icons:**
+- 🔧 SOFTWARE ENG (software-engineer)
+- 🧪 SDET (sdet)  
+- 🔒 SECURITY ENG (security-engineer)
+- 🎨 UX DESIGNER (ux-designer)
+- ⚡ PERFORMANCE (performance-engineer)
+- 📚 DOCUMENTATION (documentation-writer)
+- 🏛️ ARCHITECT (architect)
+- 🚀 DEVOPS (devops)
+- 🔍 VALIDATOR (validator)
 
-```typescript
-async function convergeTaskOutputs(taskIds: string[]): Promise<ConvergenceReport> {
-  const outputs = []
-  
-  // Collect all task outputs
-  for (const taskId of taskIds) {
-    const outputPath = `.work/tasks/${taskId}/OUTPUT.json`
-    const output = JSON.parse(await readFile(outputPath))
-    outputs.push(output)
-  }
-  
-  // Verify all tasks completed successfully
-  const failed = outputs.filter(o => o.status === 'failed')
-  if (failed.length > 0) {
-    throw new Error(`Cannot converge: ${failed.length} tasks failed`)
-  }
-  
-  // Compile convergence report
-  const convergence = {
-    session_id: sessionId,
-    timestamp: new Date().toISOString(),
-    tasks_completed: outputs.length,
-    
-    evidence_summary: {
-      implementation: outputs.find(o => o.stream === 'implementation')?.evidence,
-      testing: outputs.find(o => o.stream === 'testing')?.evidence,
-      security: outputs.find(o => o.stream === 'security')?.evidence,
-      manual: outputs.find(o => o.stream === 'manual')?.evidence
-    },
-    
-    metrics_summary: {
-      code_coverage: outputs.find(o => o.stream === 'testing')?.metrics.coverage,
-      security_score: outputs.find(o => o.stream === 'security')?.metrics.risk_score,
-      performance: outputs.find(o => o.stream === 'implementation')?.metrics.performance,
-      ux_score: outputs.find(o => o.stream === 'manual')?.metrics.ux_score
-    },
-    
-    git_commits: outputs.map(o => ({
-      task: o.task_id,
-      sha: o.git.commit_sha,
-      files: o.git.files_changed
-    })),
-    
-    ready_for_validation: true
-  }
-  
-  // Write convergence report
-  await writeJSON('.work/convergence/report.json', convergence)
-  
-  return convergence
-}
+### Step 6: Manage Convergence 
+
+When all streams show ✅ Done in the progress dashboard:
+
+**Convergence Protocol:**
+1. **Verify Completion**: Check that all personas finished their tasks successfully
+2. **Collect Evidence**: Gather screenshots, test results, and proof from each stream
+3. **Check Integration**: Ensure all components work together (not just individually)
+4. **Run Final Tests**: Build must pass, tests must pass, no console errors
+5. **Create Convergence Report**: Summary of what was accomplished with evidence links
+
+**Convergence Display:**
 ```
+🎉 ALL STREAMS COMPLETE! 
+✅ Implementation: Working feature deployed
+✅ Testing: 18/18 tests passing, 87% coverage  
+✅ Security: No vulnerabilities found
+✅ UX: Responsive across 3 breakpoints
+✅ Performance: Core Web Vitals all green
 
-#### Convergence Actions:
-1. Parse all OUTPUT.json files from completed tasks
-2. Verify successful completion of all streams
-3. Compile unified evidence report
-4. Create convergence summary with metrics
-5. Hand off to validator with structured data
+🔍 Ready for validation phase...
+```
 
 ## Task Definition Template
 
