@@ -1,4 +1,4 @@
-#!/bin/bash
+#\!/bin/bash
 # Validation script - Run after each task
 
 set -euo pipefail
@@ -23,7 +23,7 @@ TASK_DIR=".work/tasks"
 
 LATEST_TASK=$(find $TASK_DIR -type d -name "*-*" -maxdepth 1 2>/dev/null | sort -r | head -1)
 if [ -n "$LATEST_TASK" ]; then
-    if [ ! -f "$LATEST_TASK/EVIDENCE.md" ]; then
+    if [ \! -f "$LATEST_TASK/EVIDENCE.md" ]; then
         echo "❌ Latest task missing EVIDENCE.md"
         exit 1
     fi

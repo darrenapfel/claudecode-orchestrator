@@ -70,7 +70,7 @@ git commit -m "feat(auth): implement user model and authentication service
 Subtask: Implementation Stream A
 Evidence: .work/tasks/20250628-1000/streams/implementation/EVIDENCE.md
 
-🤖 Generated with Claude Code
+🤖 Generated with [Claude Code](https://claude.ai/code)
 Co-authored-by: Software Engineer <noreply@anthropic.com>"
 
 git push
@@ -94,7 +94,7 @@ Subtask: Testing Stream B
 Coverage: 92%
 Evidence: .work/tasks/20250628-1000/streams/testing/EVIDENCE.md
 
-🤖 Generated with Claude Code
+🤖 Generated with [Claude Code](https://claude.ai/code)
 Co-authored-by: SDET <noreply@anthropic.com>"
 
 git push
@@ -117,7 +117,7 @@ git commit -m "security(auth): add security configurations and audit
 Subtask: Security Stream C  
 Evidence: .work/tasks/20250628-1000/streams/security/EVIDENCE.md
 
-🤖 Generated with Claude Code
+🤖 Generated with [Claude Code](https://claude.ai/code)
 Co-authored-by: Security Engineer <noreply@anthropic.com>"
 
 git push
@@ -140,7 +140,7 @@ All parallel streams completed successfully:
 Validation: PASSED
 Evidence: .work/tasks/20250628-1000/CONVERGENCE.md
 
-🤖 Generated with Claude Code"
+🤖 Generated with [Claude Code](https://claude.ai/code)"
 
 git push
 ```

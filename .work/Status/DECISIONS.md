@@ -1,55 +1,30 @@
 # Technical Decisions Log
 
-**Purpose**: Document important technical decisions and their rationale
+## Architecture Decisions
 
-## Decision Template
-```markdown
-### DECISION-001: [Decision Title]
-**Date**: [ISO Date]
-**Status**: Proposed/Accepted/Deprecated
-**Deciders**: [Who was involved]
+### ADR-001: Parallel Orchestration Pattern
+- **Date**: $(date +%Y-%m-%d)
+- **Status**: Implemented
+- **Decision**: Use parallel execution with dependency analysis
+- **Rationale**: Maximizes efficiency while maintaining safety
+- **Consequences**: Requires careful dependency management
 
-**Context**:
-[What is the issue we're addressing?]
+### ADR-002: Git-First Workflow
+- **Date**: $(date +%Y-%m-%d)
+- **Status**: Implemented
+- **Decision**: Mandatory git commits for all task completions
+- **Rationale**: Ensures traceability and rollback capability
+- **Consequences**: Requires GitHub integration
 
-**Decision**:
-[What we decided to do]
+## Tool Decisions
+- **Testing**: Jest/Vitest for unit tests, Playwright for E2E
+- **Validation**: Cross-stream validation protocol
+- **Documentation**: Markdown with evidence templates
 
-**Rationale**:
-[Why we made this choice]
+## Rejected Alternatives
+- Sequential-only execution (too slow)
+- Self-validation (unreliable)
+- No evidence requirement (unsafe)
 
-**Alternatives Considered**:
-1. [Alternative 1] - Rejected because...
-2. [Alternative 2] - Rejected because...
-
-**Consequences**:
-- Positive: [Benefits]
-- Negative: [Drawbacks]
-- Neutral: [Trade-offs]
-
-**Related**:
-- Links to relevant docs/PRs/issues
-```
-
-## Example Decisions
-
-### DECISION-000: Use Orchestrator Pattern
-**Date**: 2025-06-28T20:01:03Z
-**Status**: Accepted
-**Deciders**: Team
-
-**Context**:
-Long coding sessions with Claude result in lost focus and fabricated results.
-
-**Decision**:
-Implement orchestrator pattern with atomic 30-minute tasks and adversarial validation.
-
-**Rationale**:
-- Maintains focus through small tasks
-- Prevents fabrication through independent validation
-- Creates clear audit trail
-
-**Consequences**:
-- Positive: Better quality, less drift
-- Negative: More overhead
-- Neutral: Requires discipline
+---
+*Maintained by orchestrator persona*

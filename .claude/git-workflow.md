@@ -76,7 +76,7 @@ When Software Engineer completes:
      Subtask: Stream A - Implementation
      Evidence: .work/tasks/20250628-1000/streams/implementation/EVIDENCE.md
      
-     🤖 Generated with Claude Code"
+     🤖 Generated with [Claude Code](https://claude.ai/code)"
 
 When SDET completes:
   → git add [test files]
@@ -86,7 +86,7 @@ When SDET completes:
      Coverage: 87%
      Evidence: .work/tasks/20250628-1000/streams/testing/EVIDENCE.md
      
-     🤖 Generated with Claude Code"
+     🤖 Generated with [Claude Code](https://claude.ai/code)"
 ```
 
 ### 4. Commit Message Format
@@ -99,7 +99,7 @@ Subtask: <stream identifier>
 <metrics if applicable>
 Evidence: <path to evidence file>
 
-🤖 Generated with Claude Code
+🤖 Generated with [Claude Code](https://claude.ai/code)
 Co-authored-by: <persona> <noreply@anthropic.com>
 ```
 

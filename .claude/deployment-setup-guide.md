@@ -109,7 +109,7 @@ npm i -g @railway/cli
 railway login
 railway link
 
-# Database included!
+# Database included\!
 railway add postgresql
 railway variables  # Manage env vars
 
@@ -143,7 +143,7 @@ databases:
 ### 1. After Initial Setup
 
 ```markdown
-"✅ Deployment pipeline configured!
+"✅ Deployment pipeline configured\!
 
 Your app will automatically deploy:
 - **Preview**: Every push to feature branches
@@ -154,18 +154,18 @@ I've created:
 - GitHub Actions workflow  
 - Environment variable templates
 
-Next: Let's implement your first feature!"
+Next: Let's implement your first feature\!"
 ```
 
 ### 2. After Each Session
 
 ```markdown
-"Session complete! Deploying preview...
+"Session complete\! Deploying preview...
 
 ⏳ Building application...
 ✅ Build successful (45s)
 ⏳ Deploying to Vercel...
-✅ Deployed!
+✅ Deployed\!
 
 🔗 **Preview URL**: https://session-auth-myapp-7xn2.vercel.app
 
@@ -244,4 +244,4 @@ Track deployment success:
 }
 ```
 
-This creates a complete DevOps workflow that's approachable for indie developers while maintaining professional deployment practices!
+This creates a complete DevOps workflow that's approachable for indie developers while maintaining professional deployment practices\!

@@ -1,6 +1,6 @@
 Claude Orchestrator v2.1
 Type: Full Installation (Extended)
-Installed: 2025-06-29T10:30:00Z
+Installed: $(date -u +%Y-%m-%dT%H:%M:%SZ)
 
 Features:
 - Intelligent dependency analysis

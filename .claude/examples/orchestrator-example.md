@@ -129,7 +129,7 @@ Task(
        Deliverable: DEL-001
        Evidence: .work/tasks/20250628-1000-init/EVIDENCE.md
        
-       🤖 Generated with Claude Code
+       🤖 Generated with [Claude Code](https://claude.ai/code)
        Co-authored-by: Claude <noreply@anthropic.com>
     3. Return: {"commit_sha": "a1b2c3d"}
     """

@@ -80,7 +80,7 @@ Based on the choice, orchestrator creates:
 When orchestrator completes tasks:
 
 ```
-"✅ Session Complete! All tasks finished successfully.
+"✅ Session Complete\! All tasks finished successfully.
 
 ## Ready for Human Validation
 
@@ -315,4 +315,4 @@ https://session-auth-myapp.vercel.app
 What would you like to do?
 ```
 
-This gives users a complete path from code to production without needing DevOps expertise!
+This gives users a complete path from code to production without needing DevOps expertise\!

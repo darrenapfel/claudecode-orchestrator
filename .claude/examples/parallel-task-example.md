@@ -100,10 +100,10 @@ class User {
   async validatePassword(password) {
     // Prevent timing attacks
     const valid = await bcrypt.compare(password, this.passwordHash);
-    if (!valid) {
+    if (\!valid) {
       await this.incrementLoginAttempts();
     }
-    return valid && !this.isLocked();
+    return valid && \!this.isLocked();
   }
 }
 
@@ -112,7 +112,7 @@ app.post('/api/auth/login', rateLimiter, async (req, res) => {
   const { email, password } = req.body;
   
   // Input validation
-  if (!isValidEmail(email) || !password) {
+  if (\!isValidEmail(email) || \!password) {
     return res.status(400).json({ error: 'Invalid input' });
   }
   
@@ -120,7 +120,7 @@ app.post('/api/auth/login', rateLimiter, async (req, res) => {
   const isValid = user ? await user.validatePassword(password) : false;
   
   // Generic error to prevent user enumeration
-  if (!isValid) {
+  if (\!isValid) {
     return res.status(401).json({ error: 'Invalid credentials' });
   }
   

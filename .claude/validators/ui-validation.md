@@ -13,7 +13,7 @@
 ```javascript
 // Run in browser console
 console.log('Errors:', window.__errors || []);
-console.log('React errors:', !!document.querySelector('#react-error-overlay'));
+console.log('React errors:', \!\!document.querySelector('#react-error-overlay'));
 ```
 
 ### 3. Common UI Failures

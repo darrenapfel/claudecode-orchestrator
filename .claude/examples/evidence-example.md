@@ -59,7 +59,7 @@ Coverage:    87.5%
 ```bash
 $ curl -X POST http://localhost:3000/api/register \
   -H "Content-Type: application/json" \
-  -d '{"email": "test@example.com", "password": "SecurePass123!"}' \
+  -d '{"email": "test@example.com", "password": "SecurePass123\!"}' \
   -v
 
 < HTTP/1.1 201 Created

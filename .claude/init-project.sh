@@ -1,4 +1,4 @@
-#!/bin/bash
+#\!/bin/bash
 # Initialize Claude orchestration in a project
 
 set -euo pipefail
@@ -33,7 +33,7 @@ Every task requires evidence. No proof = task failed.
 - `.work/tasks/` - Task evidence
 
 ## Project-Specific Rules
-<!-- Add custom rules below -->
+<\!-- Add custom rules below -->
 CLAUDE
 else
     echo "⚠️  No global installation found. Use local .claude/ directory"
@@ -58,10 +58,10 @@ cat > .work/Status/TODO.md << EOF
 
 ## Active Tasks
 ### 🔴 P0 - Critical
-<!-- Add critical tasks here -->
+<\!-- Add critical tasks here -->
 
 ### 🟡 P1 - High Priority
-<!-- Add high priority tasks here -->
+<\!-- Add high priority tasks here -->
 EOF
 
-echo "✅ Project initialized!"
+echo "✅ Project initialized\!"

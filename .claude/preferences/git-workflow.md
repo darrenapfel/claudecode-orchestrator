@@ -20,7 +20,7 @@ git commit -m "feat(scope): what was done
 Task: TASK-XXX
 Evidence: .work/tasks/YYYYMMDD-HHMM/EVIDENCE.md
 
-🤖 Generated with Claude Code
+🤖 Generated with [Claude Code](https://claude.ai/code)
 Co-authored-by: Claude <noreply@anthropic.com>"
 ```
 

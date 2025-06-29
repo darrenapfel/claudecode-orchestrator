@@ -19,13 +19,34 @@ YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-# Determine installation directory
-if [ "$1" = "global" ]; then
+# Interactive installation prompt
+if [ "$1" = "global" ] || [ "$1" = "local" ]; then
+    INSTALL_MODE="$1"
+else
+    echo -e "${BLUE}Claude Code Orchestration System Installer${NC}"
+    echo "=========================================="
+    echo ""
+    echo "Choose installation type:"
+    echo "1) Global installation (~/.claude) - Use across all projects"
+    echo "2) Local installation (./.claude) - This project only"
+    echo ""
+    echo -n "Enter choice [1-2]: "
+    read -r choice
+    
+    case $choice in
+        1) INSTALL_MODE="global" ;;
+        2) INSTALL_MODE="local" ;;
+        *) echo -e "${RED}Invalid choice. Exiting.${NC}"; exit 1 ;;
+    esac
+fi
+
+# Set installation directory based on mode
+if [ "$INSTALL_MODE" = "global" ]; then
     INSTALL_DIR="$HOME/.claude"
-    echo -e "${BLUE}Installing globally to ~/.claude${NC}"
+    echo -e "\n${BLUE}Installing globally to ~/.claude${NC}"
 else
     INSTALL_DIR="./.claude"
-    echo -e "${BLUE}Installing locally to current project${NC}"
+    echo -e "\n${BLUE}Installing locally to current project${NC}"
 fi
 
 # Create directory structure
@@ -33,18 +54,10 @@ echo -e "${GREEN}Creating directory structure...${NC}"
 mkdir -p "$INSTALL_DIR"/{personas,validators,examples,preferences/tech-stacks,deployment}
 mkdir -p .work/{tasks/sample-task,sessions,Status}
 
-# Function to write a file with content
-write_file() {
-    local filepath="$1"
-    local content="$2"
-    echo -e "  Writing: ${YELLOW}$filepath${NC}"
-    cat > "$filepath" << 'EOF'
-$content
-EOF
-}
+# Removed broken write_file function - it was never used
 
 # ===== MAIN CLAUDE.md FILE =====
-if [ "$1" != "global" ]; then
+if [ "$INSTALL_MODE" != "global" ]; then
     echo -e "${GREEN}Creating CLAUDE.md...${NC}"
     cat > "./CLAUDE.md" << 'CLAUDE_MD_EOF'
 # Claude Code Orchestration Protocol - Parallel Workflow
@@ -7364,7 +7377,7 @@ Each phase produces evidence that feeds into the next
 *Intelligent orchestration: Maximum parallelism with dependency awareness*
 WORKFLOW_DIAGRAM_EOF
 
-GIT_WORKFLOW_EOF < /dev/null
+# Fixed - removed another stray EOF
 # Create examples directory and files
 mkdir -p "$INSTALL_DIR/examples"
 
@@ -8511,7 +8524,7 @@ Update every 15 minutes:
 - ETA
 TASK_TEMPLATE_EOF
 
-EXAMPLES_EOF < /dev/null
+# Fixed - removed another stray EOF
 # Create validators directory and files
 mkdir -p "$INSTALL_DIR/validators"
 
@@ -8994,7 +9007,7 @@ console.log('React errors:', \!\!document.querySelector('#react-error-overlay'))
 ```
 UI_VALIDATION_EOF
 
-VALIDATORS_EOF < /dev/null
+# Fixed - removed stray VALIDATORS_EOF
 # Create preferences directory and files
 mkdir -p "$INSTALL_DIR/preferences"
 mkdir -p "$INSTALL_DIR/preferences/tech-stacks"
@@ -9326,7 +9339,7 @@ cat > "$INSTALL_DIR/preferences/tech-stacks/web-saas.md" << 'WEB_SAAS_EOF'
 - **Analytics**: PostHog
 WEB_SAAS_EOF
 
-PREFERENCES_EOF < /dev/null
+# Fixed - removed stray PREFERENCES_EOF
 # Create hooks directory and files
 mkdir -p "$INSTALL_DIR/hooks"
 
@@ -9552,62 +9565,6 @@ Components:
 - Complete documentation
 VERSION_EOF
 
-# Create CONSISTENCY-CHECK.md
-cat > "$INSTALL_DIR/CONSISTENCY-CHECK.md" << 'CONSISTENCY_EOF'
-# Orchestration System Consistency Check
-
-## Verification Date: $(date +%Y-%m-%d)
-
-### Core Concepts Alignment
-
-| Concept | CLAUDE.md | orchestrator.md | Status |
-|---------|-----------|-----------------|---------|
-| Dependency Analysis | ✓ Lines 67-71 | ✓ Lines 29-40 | ✅ Aligned |
-| Four Execution Strategies | ✓ Lines 72-75 | ✓ Lines 35-39 | ✅ Aligned |
-| Parallel by Default | ✓ Throughout | ✓ Throughout | ✅ Aligned |
-| Evidence Requirements | ✓ Lines 119-127 | ✓ Lines 42-51 | ✅ Aligned |
-| Decision Trees Reference | ✓ Line 71 | ✓ Lines 224-278 | ✅ Aligned |
-
-### Execution Strategies (Consistent Across Both Files)
-
-1. **Full Parallel** - No dependencies, all streams simultaneous
-2. **Progressive Parallel** - Some dependencies, phased execution  
-3. **Hybrid** - Mixed sequential/parallel based on dependency graph
-4. **Sequential** - Critical dependencies, ordered execution
-
-### Key Principles (Both Files Agree)
-
-1. **Analyze First** - Dependencies must be identified before execution
-2. **Maximize Parallelism** - Run everything possible in parallel
-3. **Respect Dependencies** - Never violate technical requirements
-4. **Evidence Always** - Every stream must provide proof
-
-### Workflow References
-
-- CLAUDE.md references → `.claude/workflow-diagram-intelligent.md`
-- CLAUDE.md references → `.claude/personas/orchestrator.md` for decision trees
-- orchestrator.md implements → Detailed dependency analysis protocol
-
-### Task Definition Template (orchestrator.md)
-
-Includes all required fields:
-- Dependency Analysis section
-- Prerequisites per stream
-- Required inputs per stream  
-- Can start conditions
-- Output dependencies
-
-## Conclusion
-
-✅ **Files are now fully consistent** with the intelligent dependency-aware strategy. The system will:
-
-1. Analyze dependencies before any execution
-2. Choose optimal strategy (parallel when possible)
-3. Respect all technical dependencies
-4. Provide evidence at every step
-
-No parallelism-caused failures will occur because dependencies are explicitly analyzed and respected.
-CONSISTENCY_EOF
 
 # ===== .WORK DIRECTORY STRUCTURE =====
 echo -e "${GREEN}Creating .work directory structure...${NC}"
@@ -10358,8 +10315,6 @@ echo "# Implementation Evidence\n*To be populated by @software-engineer*\n\nAll 
 echo "# Testing Evidence\n*To be populated by @sdet*\n\nAll test results, coverage reports, and performance benchmarks will be documented here." > .work/tasks/sample-task/streams/testing/evidence/README.md
 
 echo "# Security Evidence\n*To be populated by @security-engineer*\n\nAll security audit results, vulnerability scans, and compliance reports will be documented here." > .work/tasks/sample-task/streams/security/evidence/README.md
-
-FINAL_FILES_EOF < /dev/null
 # Installation completion
 echo ""
 echo "==============================================================================="
@@ -10410,4 +10365,4 @@ echo ""
 echo "🎯 Remember: Every task requires evidence. No proof = task failed."
 echo "==============================================================================="
 
-COMPLETION_EOF < /dev/null
+# Fixed - removed stray EOF

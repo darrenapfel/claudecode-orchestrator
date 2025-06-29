@@ -1,4 +1,4 @@
-#!/bin/bash
+#\!/bin/bash
 # Pre-commit hook to enforce evidence requirements
 
 set -e
@@ -7,7 +7,7 @@ echo "🔍 Pre-commit validation running..."
 
 # Check if we're in a task branch
 BRANCH=$(git branch --show-current)
-if [[ ! "$BRANCH" =~ ^session/ ]]; then
+if [[ \! "$BRANCH" =~ ^session/ ]]; then
   echo "⚠️  Not on a session branch, skipping task validation"
   exit 0
 fi
@@ -25,12 +25,12 @@ FAILED=0
 for TASK_DIR in $TASK_DIRS; do
   echo "Checking $TASK_DIR..."
   
-  if [ ! -f "$TASK_DIR/TASK.md" ]; then
+  if [ \! -f "$TASK_DIR/TASK.md" ]; then
     echo "❌ Missing TASK.md in $TASK_DIR"
     FAILED=1
   fi
   
-  if [ ! -f "$TASK_DIR/EVIDENCE.md" ]; then
+  if [ \! -f "$TASK_DIR/EVIDENCE.md" ]; then
     echo "❌ Missing EVIDENCE.md in $TASK_DIR"
     FAILED=1
   fi
