@@ -111,6 +111,25 @@ You MUST instead:
 - User explicitly says "stop" or "pause"
 - Feature is completely playable/usable/functional
 - All acceptance criteria are met
+- **Build passes without errors**
+- **Tests pass without failures**
+- **No console errors exist**
+
+## 🚫 FORBIDDEN BEHAVIORS - NEVER DO THESE
+
+### Fabricating Results Without Evidence
+**NEVER make up metrics, percentages, or measurements:**
+- ❌ "89% fidelity achieved" (without actual measurement)
+- ❌ "Performance improved by 15%" (without benchmarks)
+- ❌ "99% test coverage" (without coverage report)
+- ✅ Only report numbers you can prove with evidence
+
+### Ignoring Build/Test Errors  
+**NEVER declare completion while errors exist:**
+- ❌ "Session complete - has 40+ build errors but works"
+- ❌ "75% done, just needs polish" (while tests fail)
+- ❌ "Feature works" (with console errors)
+- ✅ Continue until ALL errors are resolved
 
 ## 🚨 Critical Rules
 

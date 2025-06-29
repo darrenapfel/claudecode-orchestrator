@@ -1,5 +1,38 @@
 # Orchestrator.sh Changelog
 
+## Version 2.5.2 - Anti-Pattern Protection
+
+### 🛡️ Critical Behavioral Fixes
+- **FORBIDDEN: Fabricating results without evidence** - Added explicit anti-patterns with examples
+- **FORBIDDEN: Ignoring build/test errors** - Mandatory error resolution phase before completion
+- **Added mandatory Error Resolution phase** - Phase 4 dedicated to fixing ALL errors
+- **True completion criteria** - Build must pass, tests must pass, console must be error-free
+
+### 📝 Detailed Protections Added
+
+**Fabrication Prevention:**
+- ❌ "89% fidelity achieved" (without measurement)
+- ✅ "4/7 tools working, visual fidelity not yet measured"
+- Evidence requirements for all metrics and percentages
+
+**Error Resolution Mandate:**
+- ❌ "Session complete - 40+ build errors but playable"  
+- ✅ "Phase 3 complete, starting Phase 4: Fix 40+ build errors"
+- Dedicated error resolution phase in multi-phase execution
+
+### 🎯 Problem Solved
+Previously, orchestrator could:
+- Make up percentages and metrics without evidence
+- Declare completion while build errors existed
+- Skip error resolution for "working but buggy" features
+
+Now, orchestrator will:
+- Only report measured, verifiable results
+- Continue through mandatory error resolution phase
+- Achieve truly deployment-ready, error-free completion
+
+---
+
 ## Version 2.5.1 - Continuous Execution Fix
 
 ### 🐛 Critical Fix
