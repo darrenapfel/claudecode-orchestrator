@@ -1,5 +1,33 @@
 # Orchestrator.sh Changelog
 
+## Version 2.5.1 - Continuous Execution Fix
+
+### 🐛 Critical Fix
+- **Fixed orchestrator stopping after initial tasks**: The orchestrator now continues through multiple phases until the entire specification is implemented and working
+- **Added continuous execution mandate**: Clear instructions that orchestration must continue until features are fully playable/usable
+- **Introduced Integration Specialist role**: Dedicated persona for connecting components in Phase 2+
+
+### 📝 Documentation Updates
+- Added "Autonomous Continuous Execution Protocol" to orchestrator.md
+- Added "CONTINUOUS EXECUTION MANDATE" section to CLAUDE.md
+- Defined clear CONTINUE vs STOP criteria
+- Multi-phase execution examples (Foundation → Integration → Polish → Deploy)
+
+### 🎯 Problem Solved
+Previously, the orchestrator would:
+- Build components in parallel (game engine, AI, UI, tests)
+- Stop after 30 minutes with components built but not connected
+- Leave features technically complete but not usable
+
+Now, the orchestrator will:
+- Continue through multiple 30-minute phases
+- Phase 1: Build foundation components
+- Phase 2: Integration specialist connects everything
+- Phase 3: Polish and complete the experience
+- Only stop when the feature is FULLY working
+
+---
+
 ## Version 2.5.0 - Complete Orchestration Platform
 
 ### 🎨 Major Enhancements
