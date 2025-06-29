@@ -166,7 +166,7 @@ You MUST instead:
 3. `.claude/personas/software-engineer.md` - Implementation with Context7 latest docs
 4. `.claude/personas/ux-designer.md` - UI/UX design with Playwright visual validation
 5. `.claude/personas/documentation-writer.md` - Technical docs with visual screenshots
-6. `.claude/personas/performance-engineer.md` - Performance testing with Playwright + Locust MCP
+6. `.claude/personas/performance-engineer.md` - Performance testing with Playwright + native tools
 7. `.claude/personas/sdet.md` - Test automation
 8. `.claude/personas/test-engineer.md` - Manual testing
 9. `.claude/personas/devops.md` - Infrastructure & deployment

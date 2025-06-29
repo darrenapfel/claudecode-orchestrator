@@ -15,7 +15,7 @@ Unlike sequential approaches, v2.5 features **intelligent parallel execution wit
 - **SDET**: Comprehensive test suites with coverage reporting
 - **Security Engineer**: Real-time security audits and threat modeling
 - **UX Designer**: Visual validation with Playwright screenshots [NEW]
-- **Performance Engineer**: Load testing with Playwright + Locust [NEW] 
+- **Performance Engineer**: Load testing with Playwright + Artillery/Autocannon [NEW] 
 - **Documentation Writer**: Context7-powered docs with visual validation [NEW]
 - **Validator**: Adversarial validation across all streams
 - **DevOps**: Automated deployment with interactive workflows
@@ -70,7 +70,7 @@ Result: 5x faster delivery with visual validation & living architecture
 While v2.1 introduced intelligent parallelism, v2.5 adds critical capabilities:
 - **No visual feedback** → Real-time ASCII progress dashboards
 - **Manual architecture tracking** → Living architecture documentation
-- **Basic testing** → Performance testing with Playwright + Locust
+- **Basic testing** → Performance testing with Playwright + Artillery/Autocannon
 - **Limited documentation** → Context7-powered latest documentation
 - **Session context loss** → Efficient state preservation between sessions
 
@@ -98,7 +98,7 @@ Claude Orchestrator v2.5 delivers:
 - **Performance monitoring** - Automatic load testing and optimization
 - **Visual UX validation** - Screenshot-based design verification
 - **Session state management** - Efficient context preservation (200-line handoffs)
-- **MCP tool integration** - Leverage Playwright, Context7, and Locust MCPs
+- **MCP tool integration** - Leverage Playwright and Context7 MCPs
 - **Real-time transparency** - Visual progress tracking for stakeholders
 
 ## 📦 Installation
@@ -266,7 +266,7 @@ Build a complete SaaS application with:
 Optimized for Model Context Protocol tools:
 - **Playwright MCP** - Screenshots, visual testing, Core Web Vitals
 - **Context7 MCP** - Latest documentation for accurate code generation
-- **Locust MCP** - Load testing and performance benchmarking
+- **Artillery/Autocannon** - Load testing and performance benchmarking
 - **GitHub MCP** - Repository management and PR automation
 - **Supabase MCP** - Backend operations and database management
 
@@ -277,7 +277,7 @@ Optimized for Model Context Protocol tools:
 |---------|--------------|---------------|-------------|
 | Progress Tracking | Basic status | Real-time ASCII dashboard | Visual feedback |
 | Architecture Docs | Manual | Living documentation | Auto-updating |
-| Performance Testing | Basic tests | Playwright + Locust | Full stack testing |
+| Performance Testing | Basic tests | Playwright + Artillery | Full stack testing |
 | Documentation | Static | Context7 latest docs | Always current |
 | Session Continuity | Manual prompts | 200-line state files | Efficient handoff |
 | UX Validation | Manual | Playwright screenshots | Visual proof |
