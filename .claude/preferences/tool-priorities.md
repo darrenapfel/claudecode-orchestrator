@@ -36,7 +36,21 @@ which gh || echo "⚠️ GitHub CLI not installed"
 test -f .env.local || echo "⚠️ No .env.local found"
 ```
 
-## MCP Tool Priority
+## Tool Priority Order
+
+### File System Operations
+1. **ALWAYS USE FIRST**: Claude Code built-in tools
+   - `Read` - Reading files (most efficient)
+   - `Write` - Creating/overwriting files  
+   - `Edit` - String replacements in files
+   - `MultiEdit` - Multiple edits to same file
+   - `Glob` - Pattern matching files
+   - `Grep` - Content searching
+   - `LS` - Directory listing
+2. **ONLY USE IF NEEDED**: MCP filesystem tools
+   - When built-in tools fail or lack functionality
+   - For operations like move, directory tree, file info
+   - Example: `mcp__filesystem__move_file` (no built-in equivalent)
 
 ### HTTP Operations
 1. **ALWAYS USE**: `mcp__curl__*` tools
@@ -44,9 +58,9 @@ test -f .env.local || echo "⚠️ No .env.local found"
 
 ### Available MCP Tools
 - **curl**: HTTP without prompts
-- **Supabase**: Backend management
-- **GitHub**: Repo/PR/issue management
+- **GitHub**: Repo/PR/issue management (prefer over gh CLI)
 - **Context7**: Live documentation
+- **Supabase**: Backend management (when available)
 
 ## CLI Preferences
 1. pnpm > npm > yarn

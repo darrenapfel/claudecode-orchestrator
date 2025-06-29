@@ -54,6 +54,21 @@ else:
 - Validate API usage against latest versions
 - Check for breaking changes and new features
 
+### 6. File Tool Priority (CRITICAL)
+**ALWAYS use Claude Code built-in tools FIRST:**
+- `Read` - For reading any file
+- `Write` - For creating new files
+- `Edit` - For modifying existing files  
+- `MultiEdit` - For multiple changes to same file
+- `Glob` - For finding files by pattern
+- `Grep` - For searching file contents
+- `LS` - For listing directories
+
+**ONLY use MCP filesystem tools when built-in tools can't do the job:**
+- `mcp__filesystem__move_file` - Moving/renaming files
+- `mcp__filesystem__directory_tree` - Tree view
+- `mcp__filesystem__get_file_info` - File metadata
+
 ## Implementation Framework
 
 ### Phase 1: Rapid Analysis (0-2 minutes)
@@ -696,6 +711,21 @@ else:
 - Validate API usage against latest versions
 - Check for breaking changes and new features
 
+### 6. File Tool Priority (CRITICAL)
+**ALWAYS use Claude Code built-in tools FIRST:**
+- `Read` - For reading any file
+- `Write` - For creating new files
+- `Edit` - For modifying existing files  
+- `MultiEdit` - For multiple changes to same file
+- `Glob` - For finding files by pattern
+- `Grep` - For searching file contents
+- `LS` - For listing directories
+
+**ONLY use MCP filesystem tools when built-in tools can't do the job:**
+- `mcp__filesystem__move_file` - Moving/renaming files
+- `mcp__filesystem__directory_tree` - Tree view
+- `mcp__filesystem__get_file_info` - File metadata
+
 ## Implementation Framework
 
 ### Phase 1: Rapid Analysis (0-2 minutes)
@@ -1339,6 +1369,21 @@ else:
 - Validate API usage against latest versions
 - Check for breaking changes and new features
 
+### 6. File Tool Priority (CRITICAL)
+**ALWAYS use Claude Code built-in tools FIRST:**
+- `Read` - For reading any file
+- `Write` - For creating new files
+- `Edit` - For modifying existing files  
+- `MultiEdit` - For multiple changes to same file
+- `Glob` - For finding files by pattern
+- `Grep` - For searching file contents
+- `LS` - For listing directories
+
+**ONLY use MCP filesystem tools when built-in tools can't do the job:**
+- `mcp__filesystem__move_file` - Moving/renaming files
+- `mcp__filesystem__directory_tree` - Tree view
+- `mcp__filesystem__get_file_info` - File metadata
+
 ## Implementation Framework
 
 ### Phase 1: Rapid Analysis (0-2 minutes)
@@ -1981,6 +2026,21 @@ else:
 - Never rely on outdated training data
 - Validate API usage against latest versions
 - Check for breaking changes and new features
+
+### 6. File Tool Priority (CRITICAL)
+**ALWAYS use Claude Code built-in tools FIRST:**
+- `Read` - For reading any file
+- `Write` - For creating new files
+- `Edit` - For modifying existing files  
+- `MultiEdit` - For multiple changes to same file
+- `Glob` - For finding files by pattern
+- `Grep` - For searching file contents
+- `LS` - For listing directories
+
+**ONLY use MCP filesystem tools when built-in tools can't do the job:**
+- `mcp__filesystem__move_file` - Moving/renaming files
+- `mcp__filesystem__directory_tree` - Tree view
+- `mcp__filesystem__get_file_info` - File metadata
 
 ## Implementation Framework
 
