@@ -1,0 +1,44 @@
+{
+  "name": "orchestration-test",
+  "version": "1.0.0",
+  "description": "**Transform Claude into an intelligent, parallel software development organization** - with real-time visual progress, living architecture documentation, performance testing, and visual UX validation.",
+  "main": "build-orchestrator.js",
+  "scripts": {
+    "start": "node dist/server.js",
+    "dev": "nodemon src/server.ts",
+    "build": "tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:integration": "jest --testPathPattern=integration",
+    "test:unit": "jest --testPathPattern=__tests__ --testPathIgnorePatterns=integration"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darrenapfel/claudecode-orchestrator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/darrenapfel/claudecode-orchestrator/issues"
+  },
+  "homepage": "https://github.com/darrenapfel/claudecode-orchestrator#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.0.7",
+    "@types/supertest": "^6.0.3",
+    "@types/uuid": "^10.0.0",
+    "jest": "^30.0.3",
+    "nodemon": "^3.1.10",
+    "supertest": "^7.1.1",
+    "ts-jest": "^29.4.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
