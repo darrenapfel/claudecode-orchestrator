@@ -1,5 +1,24 @@
 # Orchestrator.sh Changelog
 
+## Version 2.5.4 - File Tool Priority Fix
+
+### 🛠️ Performance Optimization
+- **Prioritize Built-in File Tools**: Claude Code's native file tools now explicitly preferred over MCP filesystem tools
+- **Clear Tool Hierarchy**: Built-in tools (Read, Write, Edit) marked as primary choice
+- **MCP Only When Needed**: Filesystem MCP tools only for operations like move/rename
+
+### 📝 Updates
+- **tool-priorities.md**: Added File System Operations section with explicit preference order
+- **software-engineer.md**: Added File Tool Priority section to reinforce using built-in tools
+
+### 🎯 Benefits
+- More efficient file operations (native vs protocol layer)
+- Consistent tool usage across all personas
+- Better performance for common operations
+- Reduced overhead from unnecessary protocol calls
+
+---
+
 ## Version 2.5.3 - Enhanced Summary Links
 
 ### ✨ New Features
