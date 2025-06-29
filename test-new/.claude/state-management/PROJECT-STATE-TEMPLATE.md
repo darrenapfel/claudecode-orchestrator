@@ -1,0 +1,87 @@
+# PROJECT-STATE.md
+*Auto-updated: [TIMESTAMP]*
+*Session: [SESSION-ID]*
+
+## 🎯 Quick Context
+**Project**: [PROJECT-NAME]
+**Stage**: [Planning | Development | Testing | Staging | Production]
+**Last Session**: [DATE] - [BRIEF-ACCOMPLISHMENT]
+**Next Priority**: [IMMEDIATE-NEXT-TASK]
+**Branch**: [CURRENT-BRANCH]
+
+## 🏗️ Architecture Snapshot
+**Components**: [COMPONENT-LIST]
+**Key Patterns**: [PATTERN-LIST]
+**Core Stack**: [TECH-LIST]
+> Full details: `.work/architecture/SYSTEM-MAP.md`
+
+## ✅ Recent Accomplishments
+<!-- Last 3 sessions max -->
+### Session [DATE-1]
+- ✓ [TASK-1] ([COMMIT-SHA])
+- ✓ [TASK-2] ([COMMIT-SHA])
+
+### Session [DATE-2]
+- ✓ [TASK-3] ([COMMIT-SHA])
+
+## 🔄 Current Status
+### In Progress
+- 🟡 [TASK-ID]: [DESCRIPTION]
+  - Status: [PERCENT]% complete
+  - Blocker: [IF-ANY]
+  - Next: [IMMEDIATE-ACTION]
+
+### Blocked
+- 🔴 [TASK-ID]: [DESCRIPTION]
+  - Reason: [BLOCKER-DETAILS]
+  - Needs: [WHAT-TO-UNBLOCK]
+
+## 📋 Task Queue
+1. **[HIGH-PRIORITY]**: [DESCRIPTION]
+   - Why: [BUSINESS-REASON]
+   - Estimate: [TIME]
+   
+2. **[MEDIUM-PRIORITY]**: [DESCRIPTION]
+   - Dependencies: [ANY-DEPS]
+   
+3. **[LOW-PRIORITY]**: [DESCRIPTION]
+
+## 🎯 Key Decisions
+<!-- Recent architectural/technical decisions -->
+- **[DATE]**: [DECISION] - [RATIONALE]
+- **[DATE]**: [DECISION] - [RATIONALE]
+> All decisions: `.work/architecture/DECISIONS/`
+
+## ⚠️ Known Issues
+<!-- Active problems and workarounds -->
+- 🐛 **[ISSUE-ID]**: [DESCRIPTION]
+  - Impact: [WHO/WHAT-AFFECTED]
+  - Workaround: [TEMPORARY-FIX]
+  - Fix planned: [WHEN]
+
+## 🔍 Session Context
+<!-- Special notes for next session -->
+### Environment
+- Last deployment: [URL/STATUS]
+- Feature flags: [ACTIVE-FLAGS]
+- Test coverage: [PERCENT]%
+
+### Notes for Next Session
+[SPECIFIC-CONTEXT-NEEDED]
+
+## 🚀 Quick Start Commands
+```bash
+# Resume work
+git checkout [BRANCH]
+git pull origin [BRANCH]
+
+# Check status
+npm test
+npm run lint
+
+# Continue specific task
+[TASK-SPECIFIC-COMMAND]
+```
+
+---
+*State Management: Efficient context for seamless handoffs*
