@@ -1,5 +1,64 @@
 # Orchestrator.sh Changelog
 
+## Version 2.5.0 - Complete Orchestration Platform
+
+### 🎨 Major Enhancements
+- **Visual Progress Monitoring**: Real-time ASCII dashboards showing parallel task execution
+- **Living Architecture System**: Elite Architect persona with automated documentation
+- **Performance Engineering**: Comprehensive testing with Playwright + native load testing tools (Artillery/Autocannon)
+- **Enhanced UX Design**: Visual validation and responsive testing capabilities
+- **Session State Management**: Unlimited continuity across sessions with PROJECT-STATE.md
+- **Automated Script Generation**: build-orchestrator.js for maintaining the deployment script
+
+### ✨ New Features
+- **11 Specialized Personas** (up from 4):
+  - Orchestrator (enhanced with progress tracking)
+  - Elite Architect (system governance)
+  - Software Engineer (Context7 integration)
+  - UX Designer (visual validation)
+  - Documentation Writer (screenshot automation)
+  - Performance Engineer (full-stack testing)
+  - SDET, Test Engineer, DevOps, Security Engineer, Validator
+  
+- **Architecture Templates** (9 new):
+  - ADR template, boundaries, data flow, dependencies
+  - System health, patterns, system map, tech stack
+  
+- **Enhanced Validation**:
+  - Cross-stream validation prevents self-validation
+  - Visual proof requirements with screenshots
+  - Performance budget enforcement
+  - Security audit integration
+
+### 🔧 Technical Improvements
+- **Parallel Execution**: Intelligent dependency analysis for optimal task scheduling
+- **MCP Integration**: Playwright for visual testing, Context7 for latest docs
+- **Load Testing**: Replaced Locust MCP with native tools (Artillery, Autocannon)
+- **Automated Deployment**: Single 790KB orchestrator.sh with 52 embedded files
+
+### 📊 Statistics
+- Total files: 52 (up from 33 in v2.1)
+- Script size: 790KB (comprehensive system)
+- New personas: 7 additions
+- Architecture templates: 9 new files
+- Enhanced validators: 4 specialized types
+
+### 🚀 Installation
+```bash
+# Global installation
+curl -sSL https://raw.githubusercontent.com/darrenapfel/claudecode-orchestrator/main/orchestrator.sh | bash
+
+# Or download and run
+./orchestrator.sh
+```
+
+### 🔄 Migration from v2.1
+- All v2.1 features preserved and enhanced
+- Backwards compatible with existing projects
+- New features activate automatically with trigger words
+
+---
+
 ## Version 2.1.0 - Automatic Orchestration Mode
 
 ### 🚨 Breaking Changes
