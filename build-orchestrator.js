@@ -6,8 +6,9 @@ const path = require('path');
 // Configuration
 const SCRIPT_VERSION = '2.5.0';
 const OUTPUT_FILE = 'orchestrator.sh';
-const EXCLUDE_DIRS = ['.ignore-working-docs', '.git', 'node_modules', '.work'];
-const EXCLUDE_FILES = ['orchestrator-old.sh', 'orchestrator-v2.5-auto.sh', 'build-orchestrator.js', OUTPUT_FILE];
+const SOURCE_DIR = './orchestrator-files';
+const EXCLUDE_DIRS = ['.git', 'node_modules'];
+const EXCLUDE_FILES = [];
 
 // Colors for output
 const colors = {
@@ -252,9 +253,15 @@ echo ""
 function buildScript() {
   log('🔧 Building orchestrator shell script automatically...', 'blue');
   
-  // Get all files
-  log('📁 Scanning directory structure...', 'green');
-  const allFiles = getAllFiles('.');
+  // Check if source directory exists
+  if (!fs.existsSync(SOURCE_DIR)) {
+    log(`❌ Source directory '${SOURCE_DIR}' not found!`, 'red');
+    return false;
+  }
+  
+  // Get all files from orchestrator-files directory
+  log('📁 Scanning orchestrator-files directory...', 'green');
+  const allFiles = getAllFiles(SOURCE_DIR);
   
   // Separate special files (CLAUDE.md, gitignore) from regular files
   const specialFiles = allFiles.filter(f => 

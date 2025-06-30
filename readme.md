@@ -137,8 +137,21 @@ claude-init
 ~/.claude/init-project.sh
 ```
 
-## 🏗️ Project Structure
+## 🏗️ Repository Structure
 
+### This Repository (Development)
+```
+orchestration-test/
+├── orchestrator-files/    # All files to be installed
+│   ├── .claude/          # Orchestration configuration
+│   ├── .work/            # Working directory templates
+│   └── CLAUDE.md         # Root instructions
+├── build-orchestrator.js  # Builds installer from orchestrator-files/
+├── orchestrator.sh        # Generated installer script
+└── test-*.js             # Test files for development
+```
+
+### After Installation (Your Project)
 ```
 project/
 ├── CLAUDE.md              # Orchestration entry point
@@ -292,6 +305,27 @@ Projects using Claude Orchestrator v2.5 report:
 - **Visual UX validation** reducing design iteration cycles
 - **Seamless context preservation** enabling unlimited session continuity
 - **5-7x faster** delivery with enhanced parallel capabilities
+
+## 🔧 Development
+
+### Modifying the Orchestrator
+
+1. **Edit files in `orchestrator-files/`** - This contains all installable content
+2. **Rebuild the installer**:
+   ```bash
+   node build-orchestrator.js
+   ```
+3. **Test locally**:
+   ```bash
+   ./orchestrator.sh local
+   ```
+
+### File Organization
+
+- `orchestrator-files/` - All files that get installed
+- `build-orchestrator.js` - Script that builds orchestrator.sh
+- `.ignore-working-docs/` - Development notes and working files
+- Test files remain at root for easy access
 
 ## 🤝 Contributing
 
