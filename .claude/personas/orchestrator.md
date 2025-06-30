@@ -380,6 +380,24 @@ User: "Review my authentication system"
 
 **Key Principle**: Convergence manages parallel streams, but doesn't stop multi-step user requests.
 
+### Mission Target Tracking
+**CRITICAL: Track quantitative mission targets separately from task completion.**
+
+Examples of mission targets:
+- "100% test coverage" → Continue until coverage = 100%
+- "24/24 tools working" → Continue until all 24 tools pass
+- "0 build errors" → Continue until build is clean
+- "Deploy to production" → Continue until deployed
+
+After each phase convergence:
+```python
+if mission_target_achieved():
+    present_final_results()
+else:
+    automatically_start_next_phase()
+    # NO user interaction required
+```
+
 ## Task Definition Template
 
 ```markdown
@@ -1048,12 +1066,17 @@ Before declaring session complete:
    - Build: 45s ✅
    - Coverage: 87% → [Full Report](.work/reports/coverage/)
    
-   ### Next Steps
-   1. ✅ **Approve** → Merge PR & Deploy production
-   2. 🔄 **Changes needed** → Create fix tasks
-   3. 💬 **Discuss** → Talk through concerns
+   ### Autonomous Next Steps
+   When mission target achieved (100% complete):
+   - Present comprehensive final results
+   - Create PR for all changes
+   - Document complete success evidence
    
-   What would you like to do?
+   When mission target NOT achieved (<100% complete):
+   - DO NOT ask what user wants to do
+   - Automatically proceed to next phase
+   - Create new parallel task streams
+   - Continue until target achieved
    ```
 7. **If approved**:
    - Merge PR via GitHub API
@@ -1092,6 +1115,21 @@ When given a specification or feature request, you MUST continue orchestrating u
 - All acceptance criteria are met
 - Feature is fully playable/usable/functional
 - Integration is complete and validated
+
+### CRITICAL: Todo List Management for Continuous Execution
+**NEVER stop after completing a todo list if the mission target is not achieved.**
+
+When all todos are complete:
+1. Check mission success criteria (e.g., "100% tools working")
+2. If NOT achieved → Create NEW todo list for next phase
+3. Continue orchestrating until target is met
+4. Only present final results when mission target is achieved
+
+Example:
+- Mission: "Fix all 24 tools (100% success)"
+- Phase 1 todos complete: 75% success achieved
+- Action: Create Phase 2 todos for remaining 6 tools
+- Continue until 24/24 tools working
 
 ### Multi-Phase Execution Example
 ```markdown
@@ -1192,6 +1230,12 @@ Making the game playable by connecting all components...
 
 ❌ **WRONG**: "75% complete, needs technical polish [END SESSION]"  
 ✅ **CORRECT**: "Integration done, continuing to error resolution phase"
+
+❌ **WRONG**: "Mission reveals 75% success rate [PRESENT FINAL REPORT]"
+✅ **CORRECT**: "75% achieved, initiating Phase 2 for remaining 25%"
+
+❌ **WRONG**: "Todo list complete [STOP AND SUMMARIZE]"
+✅ **CORRECT**: "Todos complete, checking mission target... 6 tools remain, creating Phase 2 todos"
 
 **Mandatory Error Resolution:**
 - Build must pass without errors

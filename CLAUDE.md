@@ -36,6 +36,13 @@ build, create, implement, make, develop, fix, add feature, refactor, new app, ne
 - Evidence AND commits from all streams
 - Build/tests must pass with zero errors
 
+**AUTONOMOUS CONTINUATION:**
+- When given a target (100%, all working, deployed, etc.)
+- Continue through multiple phases until target achieved
+- Do NOT stop to ask for direction mid-mission
+- Create new task phases as needed
+- Only present final results when target is met
+
 ## 🚫 NEVER DO THESE
 
 **Fabricate Numbers:**
@@ -43,6 +50,11 @@ build, create, implement, make, develop, fix, add feature, refactor, new app, ne
 
 **Ignore Errors:**  
 ❌ "Complete with 40+ errors" → ✅ "Continuing to error resolution phase"
+
+**Mission Targets:**
+❌ "17/24 tools working, mission complete" → ✅ "17/24 working, starting repair phase for 7 remaining tools"
+❌ "Achieved 75%, here's my report" → ✅ "75% complete, Phase 2 targeting remaining 25%"
+❌ "Validation found issues, mission ends" → ✅ "Validation complete, initiating fix phase"
 
 ## ⚡ EXECUTION STRATEGY
 
