@@ -170,21 +170,58 @@ function generateFileSection(file, isSpecialFile = false) {
     
   const installPath = isSpecialFile ? file.relativePath : `"$INSTALL_DIR/${cleanPath}"`;
   
+  // Files that should not be overwritten if they exist
+  const preserveFiles = [
+    'PROJECT-STATE.md',
+    'STATUS.md',
+    'DECISIONS.md',
+    'ISSUES.md',
+    'TODO.md',
+    'EVIDENCE.md',
+    'TASK.md'
+  ];
+  
+  const shouldPreserve = preserveFiles.some(pf => file.name === pf || file.name.endsWith(pf));
+  
   let section = `\n# ${file.relativePath}\n`;
   
   if (isSpecialFile) {
     section += `if [ "$INSTALL_MODE" != "global" ]; then\n`;
-    section += `    echo -e "\${GREEN}📄 Creating ${file.name}...\${NC}"\n`;
-    section += `    cat > "${file.name}" << '${eofMarker}'\n`;  // Fixed: use file.name directly for root files
+    if (shouldPreserve) {
+      section += `    if [ ! -f "${file.name}" ]; then\n`;
+      section += `        echo -e "\${GREEN}📄 Creating ${file.name}...\${NC}"\n`;
+      section += `        cat > "${file.name}" << '${eofMarker}'\n`;
+    } else {
+      section += `    echo -e "\${GREEN}📄 Creating ${file.name}...\${NC}"\n`;
+      section += `    cat > "${file.name}" << '${eofMarker}'\n`;
+    }
   } else {
-    section += `echo -e "\${GREEN}📄 Creating ${file.relativePath}...\${NC}"\n`;
-    section += `cat > ${installPath} << '${eofMarker}'\n`;
+    if (shouldPreserve) {
+      section += `if [ ! -f ${installPath} ]; then\n`;
+      section += `    echo -e "\${GREEN}📄 Creating ${file.relativePath}...\${NC}"\n`;
+      section += `    cat > ${installPath} << '${eofMarker}'\n`;
+    } else {
+      section += `echo -e "\${GREEN}📄 Creating ${file.relativePath}...\${NC}"\n`;
+      section += `cat > ${installPath} << '${eofMarker}'\n`;
+    }
   }
   
   section += escapeContent(content);
   section += `\n${eofMarker}\n`;
   
-  if (isSpecialFile) {
+  if (shouldPreserve && !isSpecialFile) {
+    section += `else\n`;
+    section += `    echo -e "\${YELLOW}⏭️  Preserving existing ${file.relativePath}\${NC}"\n`;
+    section += `fi\n`;
+  } else if (shouldPreserve && isSpecialFile) {
+    section += `    else\n`;
+    section += `        echo -e "\${YELLOW}⏭️  Preserving existing ${file.name}\${NC}"\n`;
+    section += `    fi\n`;
+  }
+  
+  if (isSpecialFile && !shouldPreserve) {
+    section += `fi\n`;
+  } else if (isSpecialFile && shouldPreserve) {
     section += `fi\n`;
   }
   
@@ -343,9 +380,33 @@ function buildScript() {
       const eofMarker = generateEOFMarker(file.relativePath);
       const content = fs.readFileSync(file.path, 'utf8');
       
-      script += `    cat > ${installPath} << '${eofMarker}'\n`;
-      script += escapeContent(content);
-      script += `\n${eofMarker}\n\n`;
+      // Files that should not be overwritten if they exist
+      const preserveFiles = [
+        'PROJECT-STATE.md',
+        'STATUS.md',
+        'DECISIONS.md',
+        'ISSUES.md',
+        'TODO.md',
+        'EVIDENCE.md',
+        'TASK.md'
+      ];
+      
+      const shouldPreserve = preserveFiles.some(pf => file.name === pf || file.name.endsWith(pf));
+      
+      if (shouldPreserve) {
+        script += `    if [ ! -f "${installPath}" ]; then\n`;
+        script += `        echo -e "\${GREEN}📄 Creating ${installPath}...\${NC}"\n`;
+        script += `        cat > ${installPath} << '${eofMarker}'\n`;
+        script += escapeContent(content);
+        script += `\n${eofMarker}\n`;
+        script += `    else\n`;
+        script += `        echo -e "\${YELLOW}⏭️  Preserving existing ${installPath}\${NC}"\n`;
+        script += `    fi\n\n`;
+      } else {
+        script += `    cat > ${installPath} << '${eofMarker}'\n`;
+        script += escapeContent(content);
+        script += `\n${eofMarker}\n\n`;
+      }
     }
     
     script += 'fi\n';
