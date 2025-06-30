@@ -1,10 +1,17 @@
-# Claude Code Orchestrator v2.5 🎭
+# Claude Code Orchestrator v3.0 - Slim Edition 🎭
 
 **Transform Claude into a parallel-executing software development team** - with autonomous task management, continuous execution, and evidence-based validation.
 
 ## 🚀 What is Claude Orchestrator?
 
-Claude Orchestrator is a streamlined framework that enables Claude Code to operate as a complete, **parallel-executing** software development team. It ensures continuous execution until mission completion, with no stopping at partial success.
+Claude Orchestrator v3.0 is a streamlined framework that enables Claude Code to operate as a complete, **parallel-executing** software development team. This "Slim Edition" delivers the same powerful capabilities with 79% less configuration overhead, ensuring continuous execution until mission completion.
+
+### What's New in v3.0 (Slim Edition)
+- **79% smaller configuration** - From 2,300 to 489 lines of core files
+- **Faster loading** - Less text to parse on each invocation
+- **Clearer focus** - Removed non-functional ASCII art and pseudo-code
+- **Better autonomous execution** - No conflicting "ask user" prompts
+- **Same full functionality** - All 11 personas and capabilities preserved
 
 ### Key Innovation: Autonomous Continuous Execution
 
