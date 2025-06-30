@@ -147,7 +147,7 @@ fi
 # Create directory structure
 echo -e "\${GREEN}📁 Creating directory structure...\${NC}"
 mkdir -p "$INSTALL_DIR"/{personas,validators,examples,preferences/tech-stacks,deployment,hooks}
-mkdir -p "$INSTALL_DIR"/{architecture-templates,state-management,utilities}
+mkdir -p "$INSTALL_DIR"/{architecture-templates,state-management,utilities,patterns}
 
 # Only create .work directories for local installation
 if [ "$INSTALL_MODE" = "local" ]; then
@@ -352,6 +352,7 @@ function buildScript() {
     { dir: '.claude/utilities', title: 'UTILITIES' },
     { dir: '.claude/examples', title: 'EXAMPLES' },
     { dir: '.claude/validators', title: 'VALIDATORS' },
+    { dir: '.claude/patterns', title: 'PATTERNS' },
     { dir: '.claude/preferences', title: 'PREFERENCES' },
     { dir: '.claude/preferences/tech-stacks', title: 'TECH STACKS' },
     { dir: '.claude/hooks', title: 'HOOKS' }
