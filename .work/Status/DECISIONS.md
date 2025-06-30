@@ -1,30 +1,29 @@
-# Technical Decisions Log
+# Technical Decisions Log Template
 
 ## Architecture Decisions
 
-### ADR-001: Parallel Orchestration Pattern
-- **Date**: $(date +%Y-%m-%d)
-- **Status**: Implemented
-- **Decision**: Use parallel execution with dependency analysis
-- **Rationale**: Maximizes efficiency while maintaining safety
-- **Consequences**: Requires careful dependency management
+### ADR-001: [Decision Title]
+- **Date**: [YYYY-MM-DD]
+- **Status**: [Proposed/Accepted/Deprecated]
+- **Decision**: [What was decided]
+- **Rationale**: [Why this decision was made]
+- **Consequences**: [What this means for the project]
 
-### ADR-002: Git-First Workflow
-- **Date**: $(date +%Y-%m-%d)
-- **Status**: Implemented
-- **Decision**: Mandatory git commits for all task completions
-- **Rationale**: Ensures traceability and rollback capability
-- **Consequences**: Requires GitHub integration
+### ADR-002: [Decision Title]
+- **Date**: [YYYY-MM-DD]
+- **Status**: [Proposed/Accepted/Deprecated]
+- **Decision**: [What was decided]
+- **Rationale**: [Why this decision was made]
+- **Consequences**: [What this means for the project]
 
 ## Tool Decisions
-- **Testing**: Jest/Vitest for unit tests, Playwright for E2E
-- **Validation**: Cross-stream validation protocol
-- **Documentation**: Markdown with evidence templates
+- **Category**: Tool choice and reasoning
+- **Testing**: Framework selection
+- **CI/CD**: Platform choice
 
 ## Rejected Alternatives
-- Sequential-only execution (too slow)
-- Self-validation (unreliable)
-- No evidence requirement (unsafe)
+- Option considered but rejected (reason)
+- Another rejected option (reason)
 
 ---
-*Maintained by orchestrator persona*
+*Template for architectural decision records*

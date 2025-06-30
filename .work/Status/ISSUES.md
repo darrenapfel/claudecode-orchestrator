@@ -1,20 +1,20 @@
-# Known Issues & Blockers
+# Known Issues & Blockers Template
 
 ## Critical Issues
-- None currently
+- [ ] System-breaking issue example
 
 ## Medium Issues
-- None currently
+- [ ] Functionality limitation example
 
 ## Minor Issues
-- None currently
+- [ ] UI/UX improvement needed
 
 ## Resolved Issues
-- None yet
+- [x] Previously resolved issue example
 
 ## Notes
-- Issue tracking initialized
-- All systems operational
+- Additional context about issues
+- Workarounds if available
 
 ---
-*Updated by validation streams*
+*Template for issue tracking*

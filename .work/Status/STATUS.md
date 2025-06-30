@@ -1,7 +1,7 @@
 # Project Status
 
 ## Current Session
-- **Date**: $(date +%Y-%m-%d)
+- **Date**: [Session Date]
 - **Active Tasks**: 0
 - **Completed Tasks**: 0
 - **Failed Tasks**: 0
@@ -22,4 +22,4 @@
 - All systems ready
 
 ---
-*Updated automatically by orchestrator*
+*Template for orchestrator status tracking*

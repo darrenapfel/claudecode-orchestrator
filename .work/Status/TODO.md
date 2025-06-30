@@ -1,23 +1,23 @@
-# Task Queue
+# Task Queue Template
 
 ## High Priority
-- [ ] Initialize first development session
-- [ ] Validate orchestration system
+- [ ] Critical task example
+- [ ] Urgent feature requirement
 
 ## Medium Priority
-- [ ] Set up continuous integration
-- [ ] Establish monitoring
+- [ ] Standard feature implementation
+- [ ] Technical debt item
 
 ## Low Priority
-- [ ] Documentation review
-- [ ] Performance optimization
+- [ ] Nice-to-have enhancement
+- [ ] Documentation update
 
 ## Blocked
-- None currently
+- [ ] Task waiting on dependency
 
 ## Completed
-- [x] Install orchestration system
-- [x] Create directory structure
+- [x] System initialization
+- [x] Template creation
 
 ---
-*Managed by orchestrator - do not edit manually*
+*Template for orchestrator task queue*
