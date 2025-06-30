@@ -38,3 +38,4 @@ Thumbs.db
 .ignore-working-docs/
 
 # Note: .work/ is TRACKED for evidence
+.backup-orchestrator-full/

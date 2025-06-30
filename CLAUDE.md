@@ -1,8 +1,8 @@
 # Claude Code Orchestration Protocol
 
-# 🚨 MANDATORY INSTRUCTIONS
+## 🚨 MANDATORY INSTRUCTIONS
 
-## TRIGGER DETECTION
+### TRIGGER DETECTION
 **Before responding to ANY request, check for these trigger words:**
 
 **Orchestration Triggers** (load orchestrator.md):
