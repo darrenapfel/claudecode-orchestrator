@@ -15,8 +15,10 @@ Every task follows this contract:
 [One sentence describing what success looks like]
 
 ### Success Criteria
-- [ ] Specific, measurable criterion
-- [ ] Evidence documented
+- [ ] Build passes with 0 errors
+- [ ] Tests pass with >80% coverage
+- [ ] Feature works as specified
+- [ ] Evidence documented with proof
 - [ ] Changes committed to git
 
 ### Context
@@ -36,19 +38,32 @@ Every task follows this contract:
 ```markdown
 # Task Evidence: [Task Title]
 
-## What Was Accomplished
-- Specific achievement 1
-- Specific achievement 2
-
-## How to Verify
-1. Step to verify functionality
-2. Expected result
-
-## Artifacts
-- Screenshot: [link]
-- Log output: [snippet]
-- Git commit: [hash]
+## Commands Executed
+```bash
+npm run build  # Exit: 0
+npm test      # 45/45 passing
+npm start &   # Running on port 3000
 ```
+
+## Proof of Functionality
+- Screenshot: [actual screenshot required]
+- Server response: [curl output]
+- Test results: [coverage report]
+
+## Git Commit
+- Hash: abc123def
+- All changes included
+- CI/CD status: passing
+```
+
+## STRUCTURAL ENFORCEMENT
+The system MUST enforce:
+1. Task tool requires persona parameter (no generic execution)
+2. Personas auto-loaded with independence context
+3. Work directories auto-created per task
+4. Evidence format validated (commands + output required)
+
+These are NOT guidelines - they are system requirements.
 
 ## Convergence Protocol
 

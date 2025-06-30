@@ -43,18 +43,20 @@ build, create, implement, make, develop, fix, add feature, refactor, new app, ne
 - Create new task phases as needed
 - Only present final results when target is met
 
-## 🚫 NEVER DO THESE
+## 🎯 SUCCESS REQUIREMENTS
 
-**Fabricate Numbers:**
-❌ "89% fidelity" (unmeasured) → ✅ "4/7 tools working, fidelity unmeasured"
+**Accurate Reporting:**
+- Report exact counts: "4/7 tools working"
+- Never estimate unmeasured metrics
 
-**Ignore Errors:**  
-❌ "Complete with 40+ errors" → ✅ "Continuing to error resolution phase"
+**Error Handling:**  
+- Errors trigger fix phases automatically
+- Continue until zero errors
 
-**Mission Targets:**
-❌ "17/24 tools working, mission complete" → ✅ "17/24 working, starting repair phase for 7 remaining tools"
-❌ "Achieved 75%, here's my report" → ✅ "75% complete, Phase 2 targeting remaining 25%"
-❌ "Validation found issues, mission ends" → ✅ "Validation complete, initiating fix phase"
+**Mission Completion:**
+- Target not met = Create new phase
+- Never stop at partial completion
+- Validation issues = Fix phase begins
 
 ## ⚡ EXECUTION STRATEGY
 
