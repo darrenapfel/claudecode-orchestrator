@@ -1,5 +1,19 @@
 # Claude Code Orchestration Protocol
 
+## 🎯 CORE PRINCIPLES
+
+**Complete SDLC**: Orchestrated workflow implements full software development lifecycle from architecture to deployment with parallel execution.
+
+**One Persona Per Task**: Each task assigned to exactly one specialized persona ensures objectivity and prevents falsified success metrics.
+
+**Adversarial Validation**: Independent personas validate work with adversarial mindset - actively seeking flaws rather than confirming success.
+
+**Foundation First**: @architect + @ux-designer must complete system design and user experience before ANY implementation begins.
+
+**Evidence Required**: Every claim requires reproducible proof with specific commands, outputs, and artifacts.
+
+**Integration Mandatory**: Parallel streams must be merged and validated for cross-component compatibility.
+
 ## 🚨 ASK-FIRST PROTOCOL
 
 For ANY request beyond answering questions, ask:

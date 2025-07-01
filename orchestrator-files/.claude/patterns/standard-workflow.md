@@ -1,5 +1,64 @@
 # Standard Orchestration Workflow Pattern
 
+## Workflow Diagram
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         ORCHESTRATION WORKFLOW                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+PHASE 0: FOUNDATION (MANDATORY)
+┌──────────────────┐     ┌──────────────────┐
+│   @architect     │ ║   │  @ux-designer    │
+│ System Design    │ ║   │ User Flows & UX  │
+│ Data Architecture│ ║   │ Wireframes       │
+└──────────────────┘ ║   └──────────────────┘
+         │            ║            │
+         └─────── GATE 1 ──────────┘
+                  ║
+                 PASS
+                  ║
+                  ▼
+PHASE 1: IMPLEMENTATION 
+┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
+│ @software-eng #1 │ ║   │     @sdet #1     │ ║   │ @software-eng #2 │ ║ ...
+│ Feature A Code   │ ║   │ Feature A Tests  │ ║   │ Feature B Code   │ ║
+│                  │ ║   │                  │ ║   │                  │ ║
+└──────────────────┘ ║   └──────────────────┘ ║   └──────────────────┘ ║
+         │            ║            │           ║            │           ║
+         └──────────── GATE 2 ──────────────────────────────┘          ║
+                      ║                                                 ║
+                     PASS                                                ║
+                      ║                                                 ║
+                      ▼                                                 ║
+PHASE 2: VALIDATION & DOCUMENTATION                                      ║
+┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
+│ @test-engineer  │ │   @validator    │ │@performance-eng │ │@security-eng    │ │@documentation   │
+│ E2E Testing     │ │ Adversarial     │ │ Load Testing    │ │ Security Audit  │ │ API Docs        │
+│ Integration     │ │ Evidence Review │ │ Optimization    │ │ Penetration     │ │ User Guides     │
+└─────────────────┘ └─────────────────┘ └─────────────────┘ └─────────────────┘ └─────────────────┘
+         │                   │                   │                   │                   │
+         └─────────────────── GATE 3 ───────────────────────────────────────────────────┘
+                              ║
+                             PASS  
+                              ║
+                              ▼
+PHASE 3: INTEGRATION & ARCHITECTURE UPDATES
+┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
+│@integration-eng  │ ║   │   @architect     │ ║   │     @devops      │
+│ Stream Merge     │ ║   │ Architecture     │ ║   │ Deployment Prep  │
+│ Compatibility    │ ║   │ Updates          │ ║   │ CI/CD Pipeline   │
+└──────────────────┘ ║   └──────────────────┘ ║   └──────────────────┘
+         │            ║            │           ║            │
+         └─────────── GATE 4 ──────────────────────────────┘
+                      ║
+                   COMPLETE
+                      ║
+                      ▼
+               ✅ MISSION SUCCESS
+
+Legend: ║ = Parallel Execution    │ = Sequential Flow    GATE = Mandatory Checkpoint
+```
+
 ## Overview
 This is the mandatory workflow pattern for ALL orchestration sessions. No exceptions.
 
@@ -39,31 +98,41 @@ PARALLEL EXECUTION (per feature):
 
 **Gate Check**: ALL implementation + testing COMPLETE → Proceed to Phase 2
 
-## Phase 2: Independent Validation 
-**Goal**: Adversarial validation by different personas
+## Phase 2: Independent Validation & Documentation
+**Goal**: Comprehensive validation and documentation by different personas
 
 ```
 PARALLEL EXECUTION:
 ├── Task G: @test-engineer
-│   └── Run full test suite, E2E validation, performance check
-└── Task H: @validator
-    └── Adversarial review of ALL evidence from Phase 1
+│   └── Run full test suite, E2E validation, integration testing
+├── Task H: @validator
+│   └── Adversarial review of ALL evidence from Phase 1
+├── Task I: @performance-engineer
+│   └── Load testing, performance profiling, optimization analysis
+├── Task J: @security-engineer
+│   └── Security audit, vulnerability assessment, penetration testing
+└── Task K: @documentation-writer
+    └── API docs, user guides, deployment instructions
 ```
 
-**Critical**: @validator and @test-engineer are DIFFERENT from Phase 1 implementers
+**Critical**: ALL validation personas are DIFFERENT from Phase 1 implementers
 
 **Gate Check**: ALL validations PASS → Proceed to Phase 3
 
-## Phase 3: Integration Convergence
-**Goal**: Ensure all parallel streams work together
+## Phase 3: Integration Convergence & Architecture Updates
+**Goal**: Ensure all parallel streams work together and update architecture
 
 ```
-SINGLE TASK:
-└── Task I: @integration-engineer
-    └── Collect all INTERFACE.md files, test cross-component compatibility
+PARALLEL EXECUTION:
+├── Task L: @integration-engineer
+│   └── Collect all INTERFACE.md files, test cross-component compatibility  
+├── Task M: @architect
+│   └── Update architecture based on implementation learnings and validation findings
+└── Task N: @devops
+    └── Deployment planning, infrastructure setup, CI/CD pipeline
 ```
 
-**Gate Check**: Integration PASS → Phase Complete
+**Gate Check**: Integration PASS + Architecture updated → Phase Complete
 
 ## Red Flags (Create Fix Phase)
 - Any persona validating own work
@@ -72,56 +141,6 @@ SINGLE TASK:
 - Implementation before architecture
 - Missing evidence files
 - Failed validations ignored
-
-## Example: Building Todo API
-
-### Phase 0: Foundation
-```
-Task A: @architect
-- Design database schema, API endpoints, authentication flow
-- Output: ARCHITECTURE.md with system diagram
-
-Task B: @ux-designer  
-- Design user flows for create/read/update/delete todos
-- Output: USER-FLOWS.md with wireframes
-```
-
-### Phase 1: Implementation  
-```
-Task C: @software-engineer
-- Implement todo CRUD endpoints with validation
-- Output: Working API with error handling
-
-Task D: @sdet
-- Write API tests for all endpoints
-- Output: Test suite with 95%+ coverage
-
-Task E: @software-engineer
-- Implement user authentication system  
-- Output: Login/logout endpoints with JWT
-
-Task F: @sdet
-- Write authentication tests and security validation
-- Output: Security test suite
-```
-
-### Phase 2: Validation
-```
-Task G: @test-engineer
-- Run full API test suite, load testing, E2E validation
-- Output: Performance metrics, test report
-
-Task H: @validator  
-- Review all evidence, attempt to break the system
-- Output: Validation report with PASS/FAIL
-```
-
-### Phase 3: Integration
-```
-Task I: @integration-engineer
-- Test auth + todo endpoints together, verify no conflicts
-- Output: Integration test results, deployment readiness
-```
 
 ## Enforcement Checklist
 
