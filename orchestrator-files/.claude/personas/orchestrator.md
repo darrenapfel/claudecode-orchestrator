@@ -100,6 +100,14 @@ After ALL parallel tasks:
 3. Assign to @integration-engineer
 4. MUST PASS before proceeding
 
+**🚨 OUTLIER DETECTION PROTOCOL**: 
+When reviewing all results, if ONE persona reports critical failure while others report success:
+1. STOP - This is likely an environmental issue, not system failure
+2. Request the outlier persona provide EXACT commands that failed
+3. Have 1-2 other personas run those exact commands
+4. If commands work for others → Environmental issue (help persona fix setup)
+5. If commands fail for all → Real system issue (create fix phase)
+
 ### Step 5: Continue or Complete
 - Target met + integration passed → Complete
 - More work needed → Create new phase
