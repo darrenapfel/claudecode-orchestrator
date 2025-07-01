@@ -2,7 +2,7 @@
 
 **Transform Claude from a Single Coder into an Elite 11-Person Dev Team**
 
-[![Version](https://img.shields.io/badge/version-3.1.0-blue.svg)](https://github.com/darrenapfel/orchestration-test)
+[![Version](https://img.shields.io/badge/version-3.2.0-blue.svg)](https://github.com/darrenapfel/orchestration-test)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude-Code%20Ready-purple.svg)](https://claude.ai/code)
 
@@ -73,7 +73,7 @@ Binary validation: IT WORKS ✓
 10:31 - Running in production
 ```
 
-### 2. Evidence-Based Reality
+### 2. Evidence-Based Reality (v3.2: Trust But Verify)
 
 **Before:** "I've implemented user authentication with proper security"
 
@@ -81,10 +81,13 @@ Binary validation: IT WORKS ✓
 ```bash
 ✓ Git commit: feat: JWT auth with refresh tokens (23 files)
 ✓ Test results: 34/34 passing (coverage: 96%)
+✓ Validator checkpoint: PASS (baseline maintained)
 ✓ Security scan: 0 vulnerabilities
 ✓ Screenshot: login-flow-working.png
 ✓ Running service: curl http://localhost:3000/api/auth/login → 200 OK
 ```
+
+**NEW in v3.2:** Checkpoint validation after EVERY task catches false claims immediately
 
 ### 3. Unstoppable Mission Completion
 
@@ -197,14 +200,16 @@ Claude automatically detects and loads the orchestration system.
 
 ## 📊 The Numbers Don't Lie
 
-| Metric | Without Orchestrator | With Orchestrator |
-|--------|---------------------|-------------------|
+| Metric | Without Orchestrator | With Orchestrator v3.2 |
+|--------|---------------------|------------------------|
 | Development Speed | 1x | 3-8x |
 | Test Coverage | "Some tests" | 90%+ verified |
 | Context Retention | 20 minutes | Unlimited |
 | Completion Rate | 75% | 100% |
 | Production Bugs | Many | Near zero |
 | Evidence Required | None | Everything |
+| False Success Claims | Common | Caught immediately |
+| Validation Frequency | End only | After every task |
 
 ## 🏆 Why Developers Never Go Back
 
@@ -223,6 +228,28 @@ Claude automatically detects and loads the orchestration system.
 - Evidence prevents wasted time
 - Automatic phases push through everything
 
+## 🔥 NEW in v3.2: Zero Tolerance for False Claims
+
+After discovering orchestrated sessions claiming "102/102 tests passing" when only 88 actually passed, v3.2 implements:
+
+**✅ Checkpoint Validation Protocol**
+- Validator runs after EVERY task (not just at end)
+- Metrics baselined at start and tracked throughout
+- Test count changes trigger immediate investigation
+- Binary PASS/FAIL only - no fuzzy percentages
+
+**✅ Trust But Verify**
+- Agent claims "tests passing" → Show the test output
+- Agent reports "100% complete" → Validator confirms
+- Metrics don't match baseline → Red flag raised
+- Vague success claims → Evidence demanded
+
+**✅ Forbidden Summaries**
+- Orchestrator can't make success claims
+- No "mission accomplished" declarations
+- Just facts: "Task complete. Evidence in: [path]"
+- Validation decides success, not agents
+
 ## 🤝 The Choice Is Yours
 
 **Keep struggling with:**
@@ -230,12 +257,14 @@ Claude automatically detects and loads the orchestration system.
 - "It should work" without proof
 - Losing context every session
 - Stopping at the hard parts
+- False success claims
 
 **Or join thousands who ship:**
 - 3-8x faster with parallel execution
 - 100% working code with evidence
 - Unlimited context across sessions
 - Complete features every time
+- Accurate reporting you can trust
 
 ## 🚀 Your AI Dev Team Awaits
 

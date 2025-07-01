@@ -11,19 +11,33 @@ Every task follows this contract:
 **Assigned**: @[persona]
 **Dependencies**: [none | task IDs]
 
+### Baseline Metrics (MANDATORY)
+**Document BEFORE any changes:**
+- Test count: [exact number from test output]
+- Passing tests: [exact number]
+- Build status: [passing/failing]
+- Other metrics: [as relevant]
+
 ### Objective
 [One sentence describing what success looks like]
 
 ### Success Criteria
 - [ ] Build passes with 0 errors
-- [ ] Tests pass with >80% coverage
+- [ ] Tests remain at baseline or improve
 - [ ] Feature works as specified
 - [ ] Evidence documented with proof
 - [ ] Changes committed to git
+- [ ] Validator checkpoint PASSED
 
 ### Context
 [Brief context if needed]
 ```
+
+## CRITICAL: Single Source of Truth
+- Baseline metrics MUST be captured at start
+- All agents use SAME baseline throughout session
+- Test count changes require justification
+- Orchestrator verifies metrics consistency
 
 ## Execution Rules
 
@@ -69,8 +83,18 @@ These are NOT guidelines - they are system requirements.
 
 When all parallel tasks complete:
 1. Collect all evidence files
-2. Verify success criteria met
-3. Check for integration issues
-4. Proceed to next phase or complete
+2. Run @validator for phase validation
+3. Verify ALL baselines maintained/improved
+4. Check for integration issues
+5. Only proceed if validation PASSES
 
-Remember: Tasks are contracts. Evidence is proof. Commits are mandatory.
+## Checkpoint Protocol (NEW)
+
+After EACH task completes:
+1. Orchestrator reviews evidence
+2. Checks metrics vs baseline
+3. Invokes @validator for checkpoint
+4. Task only "complete" if validation PASSES
+5. FAIL = Create fix task immediately
+
+Remember: Tasks are contracts. Evidence is proof. Validation is mandatory.

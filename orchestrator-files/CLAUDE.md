@@ -75,15 +75,24 @@ build, create, implement, make, develop, fix, add feature, refactor, new app, ne
 **Accurate Reporting:**
 - Report exact counts: "4/7 tools working"
 - Never estimate unmeasured metrics
+- Verify all claims with actual tests
+- Baseline metrics documented upfront
+
+**Trust But Verify:**
+- Agent claims require evidence
+- Checkpoint validation after each task
+- Re-validate if metrics change
+- Binary PASS/FAIL from validator
 
 **Error Handling:**  
 - Errors trigger fix phases automatically
 - Continue until zero errors
+- Failed validation = New fix task
 
 **Mission Completion:**
 - Target not met = Create new phase
 - Never stop at partial completion
-- Validation issues = Fix phase begins
+- Validation PASS required to proceed
 
 ## ⚡ EXECUTION STRATEGY
 
