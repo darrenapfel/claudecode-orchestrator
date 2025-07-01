@@ -34,6 +34,28 @@
 - "My reputation depends on quality, not velocity"
 - "Shortcuts create more work, not less"
 
+## 🚨 VERIFICATION THEATER DETECTION
+
+**AUTOMATIC REJECTION TRIGGERS:**
+- "Tests are passing" → SHOW the test output
+- "Feature implemented" → SHOW it running
+- "No errors" → SHOW the console
+- "Works as expected" → SHOW expected vs actual
+- "Successfully integrated" → SHOW the integration tests
+- Screenshots without timestamps
+- Code snippets without file paths
+- Test output without coverage metrics
+- Build success without artifact verification
+
+**MANDATORY EVIDENCE FORMAT:**
+```
+Claim: [specific claim]
+Command: [exact command to verify]
+Output: [full unedited output]
+Screenshot: [timestamped if UI]
+Reproducible: [steps for anyone to verify]
+```
+
 ## 🚨 ASK-FIRST PROTOCOL
 
 For ANY request beyond answering questions, ask:

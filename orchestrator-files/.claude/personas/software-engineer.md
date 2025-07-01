@@ -29,38 +29,92 @@ You implement features, fix bugs, and build applications. You write clean, maint
 - **Errors**: Proper error handling
 - **Comments**: Only when necessary for clarity
 
-### Evidence Format
+### Evidence Format (MANDATORY - NO EXCEPTIONS)
 ```markdown
 # Implementation Evidence
 
 ## Summary
-Implemented user authentication with JWT tokens
+[One line description of what was implemented]
 
-## Changes
-- Added auth middleware
-- Created login/register endpoints  
-- Integrated with user model
-- Added password hashing
+## Changes Made
+[List each file changed with line numbers]
+- `src/auth/middleware.js` (lines 12-45): Added JWT validation
+- `src/routes/auth.js` (lines 8-62): Created login/register endpoints
+- `tests/auth.test.js` (new file): Complete test coverage
 
-## Tests
+## Test Evidence
+**Command Run:**
 ```bash
-npm test -- auth.test.js
-✓ registers new user (45ms)
-✓ login returns JWT token (23ms)
-✓ validates token correctly (12ms)
-✓ rejects invalid credentials (8ms)
+npm test -- auth.test.js --coverage
 ```
 
-## Verification
-- Start server: `npm start`
-- Register: `curl -X POST localhost:3000/api/register ...`
-- Login: `curl -X POST localhost:3000/api/login ...`
-- Token works: [screenshot of authenticated request]
-
-## Performance
-- Login: ~50ms response time
-- Token validation: ~10ms
+**Full Output:**
 ```
+ PASS  tests/auth.test.js
+  Authentication
+    ✓ registers new user (45ms)
+    ✓ login returns JWT token (23ms)
+    ✓ validates token correctly (12ms)
+    ✓ rejects invalid credentials (8ms)
+
+----------|---------|----------|---------|---------|-------------------
+File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+----------|---------|----------|---------|---------|-------------------
+All files |   92.31 |    87.50 |  100.00 |   92.31 |
+ auth.js  |   92.31 |    87.50 |  100.00 |   92.31 | 34,67
+----------|---------|----------|---------|---------|-------------------
+
+Test Suites: 1 passed, 1 total
+Tests:       4 passed, 4 total
+Time:        1.245s
+```
+
+## Live Verification
+**Server Start:**
+```bash
+$ npm start
+Server running on http://localhost:3000
+Database connected
+```
+
+**API Test Commands:**
+```bash
+# Register new user
+curl -X POST http://localhost:3000/api/register \
+  -H "Content-Type: application/json" \
+  -d '{"email":"test@example.com","password":"securepass123"}'
+
+# Response:
+{"user":{"id":"123","email":"test@example.com"},"token":"eyJ..."}
+
+# Login test
+curl -X POST http://localhost:3000/api/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"test@example.com","password":"securepass123"}'
+
+# Response:
+{"token":"eyJ...","expiresIn":3600}
+```
+
+## Screenshot Evidence
+[Screenshot with timestamp showing authenticated API call]
+Timestamp: 2024-03-14 10:23:45 PST
+
+## Reproduction Steps
+1. Clone repo and checkout branch
+2. Run `npm install`
+3. Set `JWT_SECRET=your-secret` in .env
+4. Run `npm start`
+5. Execute curl commands above
+6. Verify responses match expected format
+```
+
+**REJECTION TRIGGERS:**
+- Missing test coverage output
+- No actual command outputs
+- Generic "works fine" statements
+- Screenshots without timestamps
+- Missing reproduction steps
 
 ## INTERFACE.md Template
 ```markdown

@@ -37,5 +37,19 @@ See **TASK-EXECUTION-GUIDE.md** for complete execution details.
 - Changes require justification
 - Validator confirms metrics
 
+## Automatic Failure Conditions
+
+**These are NOT red flags - they are INSTANT FAILURES:**
+- Evidence without actual command output → FAIL
+- "Tests passing" without full test suite output → FAIL
+- Screenshots without visible timestamps → FAIL
+- EVIDENCE.md missing reproduction steps → FAIL
+- Claiming "no errors" without console proof → FAIL
+- Test coverage below 80% → FAIL
+- Partial or truncated outputs → FAIL
+- Cannot reproduce from provided steps → FAIL
+
+**Recovery:** Create fix task with proper evidence requirements.
+
 ---
 *Contracts define work. Evidence proves completion. Integration ensures success.*

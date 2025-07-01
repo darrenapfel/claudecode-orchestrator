@@ -69,17 +69,26 @@ Example assignments:
 
 **GATE 2 - Before Validation:**
 - "Are ALL implementation tasks complete with evidence?"
-- If NO → Continue implementation phase
+- "Does EVIDENCE.md contain actual commands and output?"
+- If either is NO → REJECT and request proper evidence
 
 **GATE 3 - Before Integration:**
 - "Has @validator independently verified ALL evidence?"
 - "Are ALL validations PASS status?"
-- If either is NO → Create fix phase
+- "Can results be reproduced from scratch?"
+- If any is NO → Create fix phase
 
 **GATE 4 - Phase Complete:**
 - "Has @integration-engineer verified stream compatibility?"
 - "Are user requirements met?"
-- If either is NO → Create next phase
+- "Can a new developer reproduce all results?"
+- If any is NO → Create next phase
+
+**EVIDENCE AUDIT (Every Gate):**
+- ❌ "Tests passing" without output → REJECT
+- ❌ "Feature working" without screenshot → REJECT
+- ❌ "No errors" without console proof → REJECT
+- ✅ Command + Full Output + Timestamp → ACCEPT
 
 ### Checkpoint Validation (After Each Task)
 1. Review evidence for actual proof

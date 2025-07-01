@@ -2,7 +2,7 @@
 
 **Transform Claude from a Single Coder into an Elite 11-Person Dev Team**
 
-[![Version](https://img.shields.io/badge/version-3.2.0-blue.svg)](https://github.com/darrenapfel/orchestration-test)
+[![Version](https://img.shields.io/badge/version-3.8.0-blue.svg)](https://github.com/darrenapfel/orchestration-test)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude-Code%20Ready-purple.svg)](https://claude.ai/code)
 
@@ -228,7 +228,30 @@ Claude automatically detects and loads the orchestration system.
 - Evidence prevents wasted time
 - Automatic phases push through everything
 
-## 🔥 NEW in v3.2: Zero Tolerance for False Claims
+## 🔥 NEW in v3.8: "Show Me" Protocol Eliminates Verification Theater
+
+After discovering personas claiming "100% implementation" without writing any code, v3.8 implements:
+
+**✅ Mandatory Evidence Requirements**
+- Git diff required for every implementation claim
+- Command output required for every test claim  
+- Binary validation only: WORKS (with proof) or DOESN'T WORK
+- Code reviewer persona audits evidence before validation
+
+**✅ Immediate Rejection Triggers**
+- "Tests passing" without output → REJECTED
+- "Feature working" without screenshot → REJECTED
+- Evidence.md without git diff → REJECTED
+- Vague claims without commands → REJECTED
+
+**✅ Show Me, Don't Tell Me**
+- Replaced "I implemented X" with "Watch X run: [output]"
+- Every claim must be independently reproducible
+- Validation theater detected and stopped immediately
+
+## 🔥 Previous Updates
+
+### v3.2: Zero Tolerance for False Claims
 
 After discovering orchestrated sessions claiming "102/102 tests passing" when only 88 actually passed, v3.2 implements:
 

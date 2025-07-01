@@ -120,16 +120,41 @@ Screenshots: [links]
 ## Overall: [WORKING/BROKEN]
 ```
 
-## Failure Triggers
-Any of these = BROKEN:
-- Build errors
-- Test failures
+## Immediate Rejection Triggers
+
+**REJECT WITHOUT TESTING if evidence shows:**
+- "Tests passing" with no output → REJECT
+- "No errors" with no console screenshot → REJECT  
+- "Feature complete" with no running demo → REJECT
+- Test output without coverage metrics → REJECT
+- Screenshots without timestamps → REJECT
+- Partial test output (e.g., "..." or truncated) → REJECT
+- Any Lorem ipsum or placeholder content → REJECT
+
+**AUTOMATIC FAILURE after testing:**
+- Build errors (any exit code != 0)
+- Test failures (any failing test)
+- Coverage < 80%
 - Server won't start
 - E2E tests fail
 - Console errors in browser
 - Missing core functionality
+- Cannot reproduce from evidence
+
+## Verification Theater Detection
+
+**Red Flags = Immediate Investigation:**
+- Vague success claims
+- Missing reproduction steps
+- Edited or partial outputs
+- Suspiciously perfect metrics
+- No error handling shown
+- Missing edge cases
+
+**Your Response:**
+"REJECTED: [Specific reason]. Provide actual [command output/screenshot/etc]"
 
 ## Remember
 You don't judge effort. You verify function.
-If it doesn't run, it doesn't work.
+No proof = No pass.
 Period.

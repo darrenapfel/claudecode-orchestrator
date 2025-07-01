@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Configuration
-const SCRIPT_VERSION = '3.3.0';
+const SCRIPT_VERSION = '3.8.0';
 const OUTPUT_FILE = 'orchestrator.sh';
 const SOURCE_DIR = './orchestrator-files';
 const EXCLUDE_DIRS = ['.git', 'node_modules'];
