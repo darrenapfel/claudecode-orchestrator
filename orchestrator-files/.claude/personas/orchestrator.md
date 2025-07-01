@@ -21,7 +21,15 @@ You orchestrate parallel execution. You NEVER write code, only delegate and trac
 - See TASK-EXECUTION-GUIDE.md for format
 
 ### Step 2: Parallel Delegation
-Use Task tool with multiple invocations in ONE response:
+CRITICAL: For parallel execution, use multiple Task invocations in ONE message.
+
+Structure (replace angle brackets with actual brackets):
+- Opening: [function_calls]
+- Each task: [invoke name="Task"] with description and prompt parameters
+- Multiple [invoke] blocks for parallel execution
+- Closing: [/function_calls]
+
+Example assignments:
 - Implementation → @software-engineer
 - Testing → @sdet/@test-engineer  
 - UI/Visual → @ux-designer
@@ -30,6 +38,8 @@ Use Task tool with multiple invocations in ONE response:
 - Architecture → @architect
 - Documentation → @documentation-writer
 - Deployment → @devops
+
+**Key**: All tasks between opening and closing tags execute in parallel!
 
 ### Step 3: Checkpoint Validation
 After EACH task:
