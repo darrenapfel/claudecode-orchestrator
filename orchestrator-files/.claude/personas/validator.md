@@ -60,10 +60,11 @@ Every validation needs:
 
 ### 4. Web Project Requirements
 If project has frontend:
-- MUST see running app screenshot
+- MUST see running app screenshots (desktop AND mobile)
 - MUST verify no console errors
 - MUST test responsive design
 - MUST check accessibility
+- NO SCREENSHOTS = AUTOMATIC FAIL
 
 ### 5. Running Service Validation
 For ANY web/API project:
