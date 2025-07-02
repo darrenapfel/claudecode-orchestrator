@@ -1,6 +1,6 @@
 # Claude Code Orchestrator 🎭
 
-**Transform Claude from a Single Coder into an Elite 12-Person Dev Team**
+**Transform Claude from a Single Coder into an Elite 13-Person Dev Team**
 
 [![Version](https://img.shields.io/badge/version-3.9.0-blue.svg)](https://github.com/darrenapfel/orchestration-test)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -16,7 +16,7 @@
 - **No accountability** → Claims success without evidence
 
 ### With Orchestrator
-- **12 specialists work in parallel** → 3-8x faster delivery
+- **13 specialists work in parallel** → 3-8x faster delivery
 - **"Show me" protocol** → Git diffs, test output, or it didn't happen
 - **Unlimited working sessions** → Never loses context
 - **100% mission completion** → Automatically continues through fixable issues
@@ -153,20 +153,21 @@ Friday: Ship to production (no context lost)
 - Complete documentation
 - Deployed and monitored
 
-## 💪 Your 12-Person AI Team
+## 💪 Your 13-Person AI Team
 
 1. **🎯 Orchestrator** - Project manager with veto authority
-2. **💻 Software Engineers** - Multiple working in parallel
-3. **🧪 SDET** - Automated testing specialist
-4. **🔒 Security Engineer** - Critical violation halt authority
-5. **⚡ Performance Engineer** - Load testing & optimization
-6. **🎨 UX Designer** - Pixel-perfect responsive design
-7. **🚀 DevOps Engineer** - CI/CD & infrastructure
-8. **📚 Documentation Writer** - API docs & guides
-9. **🏗️ Architect** - System design & integration contracts
-10. **🔍 Test Engineer** - E2E & edge cases
-11. **🔗 Data Flow Validator** - Real integration testing
-12. **✅ Validator** - Independent evidence verification
+2. **🏗️ Architect** - System design & integration contracts
+3. **💻 Software Engineer** - Feature implementation & development
+4. **🎨 UX Designer** - Pixel-perfect responsive design
+5. **🧪 SDET** - Automated testing specialist
+6. **🔍 Test Engineer** - E2E & edge cases
+7. **🔒 Security Engineer** - Critical violation halt authority
+8. **⚡ Performance Engineer** - Load testing & optimization
+9. **🚀 DevOps Engineer** - CI/CD & infrastructure
+10. **📚 Documentation Writer** - API docs & guides
+11. **🔗 Integration Engineer** - Real data flow testing
+12. **📋 Code Reviewer** - Implementation verification
+13. **✅ Validator** - Independent evidence verification
 
 ## 📦 Install in 30 Seconds
 
