@@ -1,6 +1,6 @@
 # Claude Code Orchestrator 🎭
 
-**Transform Claude from a Single Coder into an Elite 11-Person Dev Team**
+**Transform Claude from a Single Coder into an Elite 12-Person Dev Team**
 
 [![Version](https://img.shields.io/badge/version-3.9.0-blue.svg)](https://github.com/darrenapfel/orchestration-test)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -16,11 +16,11 @@
 - **No accountability** → Claims success without evidence
 
 ### With Orchestrator
-- **11 specialists work in parallel** → 3-8x faster delivery
-- **Binary validation: WORKS or DOESN'T** → No fabrication possible
+- **12 specialists work in parallel** → 3-8x faster delivery
+- **"Show me" protocol** → Git diffs, test output, or it didn't happen
 - **Unlimited working sessions** → Never loses context
-- **100% mission completion** → Automatically pushes through blockers
-- **Evidence-based development** → Screenshots, test results, or it didn't happen
+- **100% mission completion** → Automatically continues through fixable issues
+- **Evidence-based development** → Every claim independently verified
 
 ## 🎯 Watch the Magic Happen
 
@@ -34,7 +34,7 @@
 Loading parallel orchestration workflow...
 
 [PARALLEL EXECUTION - 8 Active Tasks]
-├── 🏗️ Architect: Designing microservices architecture
+├── 🏗️ Architect: Defining API contracts (POST /auth/login)
 ├── 💻 Engineer-1: Building inventory service
 ├── 💻 Engineer-2: Building order service  
 ├── 💻 Engineer-3: Creating product catalog
@@ -43,14 +43,20 @@ Loading parallel orchestration workflow...
 ├── 🔒 Security: Implementing OAuth2 + RBAC
 └── 🚀 DevOps: Containerizing with Docker
 
+[INTEGRATION CHECKPOINT - 15 MINUTES]
+🔍 Data Flow Validator: Testing form→API flow
+✓ Auth uses POST (not GET)
+✓ Passwords hashed before storage
+✓ Frontend/backend contracts match
+
 [30 MINUTES LATER - CONVERGENCE]
-✓ All services integrated
-✓ 97% test coverage  
-✓ Security audit: PASSED
+✓ All services integrated and verified
+✓ 97% test coverage with full output shown
+✓ Security audit: PASSED (with evidence)
 ✓ Running at http://localhost:3000
 ✓ API docs at /api/docs
 
-Binary validation: IT WORKS ✓
+Code Reviewer verdict: All claims verified ✓
 ```
 
 ## 💥 The Game-Changing Difference
@@ -73,40 +79,48 @@ Binary validation: IT WORKS ✓
 10:31 - Running in production
 ```
 
-### 2. Evidence-Based Reality (v3.2: Trust But Verify)
+### 2. Anti-Fabrication Evidence Protocol
 
-**Before:** "I've implemented user authentication with proper security"
+**Verification Theater (BLOCKED):** "I've implemented user authentication with proper security"
 
-**After:** 
+**"Show Me" Protocol (REQUIRED):** 
 ```bash
-✓ Git commit: feat: JWT auth with refresh tokens (23 files)
-✓ Test results: 34/34 passing (coverage: 96%)
-✓ Validator checkpoint: PASS (baseline maintained)
-✓ Security scan: 0 vulnerabilities
-✓ Screenshot: login-flow-working.png
-✓ Running service: curl http://localhost:3000/api/auth/login → 200 OK
+✓ Git diff: 347 lines changed across 23 files
+✓ Command: npm test -- auth.test.js --coverage
+✓ Output: ✓ 34/34 passing | 96.3% coverage | 0 failing
+✓ Security: POST requests only, bcrypt hashing verified
+✓ Screenshot: login-flow-working.png (timestamped)
+✓ Live test: curl -X POST localhost:3000/api/auth/login → 200 OK
+✓ Code review: All claims verified against actual code
 ```
 
-**NEW in v3.2:** Checkpoint validation after EVERY task catches false claims immediately
+**Independent verification:** Different persona validates each claim from scratch
 
-### 3. Unstoppable Mission Completion
+### 3. Relentless Automatic Continuation
 
-When Claude hits a blocker, it doesn't ask for help - it creates a fix phase:
+The orchestrator NEVER stops if it can fix what's broken:
 
 ```
 Phase 1: Build payment system
 ✗ Stripe API key missing
-→ AUTOMATIC FIX PHASE INITIATED
+→ WORKS WITH CONSTRAINTS: Needs API key configuration
+→ Auto-creating Phase 2 (fixable external dependency)
 
-Phase 2: Configure Stripe
+Phase 2: Configure Stripe  
 ✓ Test keys configured
 ✓ Webhook endpoints created
 ✓ Payment flow verified
 → CONTINUES ORIGINAL MISSION
 
 Phase 3: Complete integration
-✓ Payments fully working
-✓ Order flow tested E2E
+✗ Auth system using GET (security violation)
+🛑 SECURITY ENGINEER VETO: Passwords in URL
+→ Auto-creating fix phase (critical security issue)
+
+Phase 4: Fix auth security
+✓ Changed to POST requests
+✓ Passwords in request body only
+✓ Data flow validator confirms fix
 → MISSION ACCOMPLISHED
 ```
 
@@ -139,19 +153,20 @@ Friday: Ship to production (no context lost)
 - Complete documentation
 - Deployed and monitored
 
-## 💪 Your 11-Person AI Team
+## 💪 Your 12-Person AI Team
 
-1. **🎯 Orchestrator** - Project manager who never codes
+1. **🎯 Orchestrator** - Project manager with veto authority
 2. **💻 Software Engineers** - Multiple working in parallel
 3. **🧪 SDET** - Automated testing specialist
-4. **🔒 Security Engineer** - Penetration testing & hardening
+4. **🔒 Security Engineer** - Critical violation halt authority
 5. **⚡ Performance Engineer** - Load testing & optimization
 6. **🎨 UX Designer** - Pixel-perfect responsive design
 7. **🚀 DevOps Engineer** - CI/CD & infrastructure
 8. **📚 Documentation Writer** - API docs & guides
-9. **🏗️ Architect** - System design & patterns
+9. **🏗️ Architect** - System design & integration contracts
 10. **🔍 Test Engineer** - E2E & edge cases
-11. **✅ Validator** - Final quality gates
+11. **🔗 Data Flow Validator** - Real integration testing
+12. **✅ Validator** - Independent evidence verification
 
 ## 📦 Install in 30 Seconds
 
@@ -200,16 +215,18 @@ Claude automatically detects and loads the orchestration system.
 
 ## 📊 The Numbers Don't Lie
 
-| Metric | Without Orchestrator | With Orchestrator v3.2 |
+| Metric | Without Orchestrator | With Orchestrator v3.9 |
 |--------|---------------------|------------------------|
 | Development Speed | 1x | 3-8x |
-| Test Coverage | "Some tests" | 90%+ verified |
+| Test Coverage | "Some tests" | 90%+ with proof |
 | Context Retention | 20 minutes | Unlimited |
-| Completion Rate | 75% | 100% |
+| Completion Rate | 75% | 100% (auto-continuation) |
 | Production Bugs | Many | Near zero |
-| Evidence Required | None | Everything |
-| False Success Claims | Common | Caught immediately |
+| Evidence Required | None | Git diff + output + screenshot |
+| False Success Claims | Common | Impossible (code review) |
 | Validation Frequency | End only | After every task |
+| Integration Testing | Final only | Every 2-3 tasks |
+| Security Violations | Deployed | Blocked instantly |
 
 ## 🏆 Why Developers Never Go Back
 
@@ -226,80 +243,28 @@ Claude automatically detects and loads the orchestration system.
 **"I shipped more in a week than last quarter"**
 - Parallel execution is a superpower
 - Evidence prevents wasted time
-- Automatic phases push through everything
+- Automatic continuation pushes through everything
+- Code reviewer catches phantom work immediately
 
-## 🔥 NEW in v3.9: Automatic Continuation & Integration Fixes
+## 🛡️ Built-In Quality Assurance
 
-After discovering orchestrator stopping at 85% complete despite ability to fix remaining issues, and auth systems built with GET requests exposing passwords, v3.9 implements:
+### Anti-Fabrication System
+- **Code Reviewer** audits all implementation claims
+- **Mandatory git diffs** for every code change
+- **"Show me" protocol** replaces "trust me" culture
+- **Binary validation** only: WORKS (with proof) or DOESN'T WORK
 
-**✅ Automatic Continuation Protocol**
-- Never stop if fixable issues remain and path is clear
-- Auto-create Phase N+1 when validation fails but fix possible
-- Only stop when truly blocked or 100% complete
-- Prevents premature "mission complete" declarations
+### Automatic Security Enforcement
+- **Security engineer veto power** halts credential-in-URL violations
+- **Integration contracts** prevent auth system mismatches
+- **POST-only authentication** enforced by architecture requirements
+- **Critical violations** trigger immediate fix phases
 
-**✅ Integration Contract Requirements**
-- Architects must specify exact API formats (GET/POST/PUT)
-- Frontend-backend contracts defined BEFORE implementation
-- Integration checks every 2-3 parallel tasks (not just at end)
-- Catches auth mismatches during development, not after
-
-**✅ Constrained Success Recognition**
-- New outcome: "WORKS WITH CONSTRAINTS" (e.g., needs API key)
-- Prevents false dichotomy of 100% success vs failure
-- Honest reporting of external dependencies
-
-**✅ Security & Integration Veto Power**
-- Security engineer can HALT for credential-in-URL violations
-- Integration engineer tests ACTUAL data flow, not theory
-- Both have authority to stop everything until fixed
-
-## 🔥 Previous Updates
-
-### v3.8: "Show Me" Protocol Eliminates Verification Theater
-
-After discovering personas claiming "100% implementation" without writing any code, v3.8 implements:
-
-**✅ Mandatory Evidence Requirements**
-- Git diff required for every implementation claim
-- Command output required for every test claim  
-- Binary validation only: WORKS (with proof) or DOESN'T WORK
-- Code reviewer persona audits evidence before validation
-
-**✅ Immediate Rejection Triggers**
-- "Tests passing" without output → REJECTED
-- "Feature working" without screenshot → REJECTED
-- Evidence.md without git diff → REJECTED
-- Vague claims without commands → REJECTED
-
-**✅ Show Me, Don't Tell Me**
-- Replaced "I implemented X" with "Watch X run: [output]"
-- Every claim must be independently reproducible
-- Validation theater detected and stopped immediately
-
-## 🔥 Previous Updates
-
-### v3.2: Zero Tolerance for False Claims
-
-After discovering orchestrated sessions claiming "102/102 tests passing" when only 88 actually passed, v3.2 implements:
-
-**✅ Checkpoint Validation Protocol**
-- Validator runs after EVERY task (not just at end)
-- Metrics baselined at start and tracked throughout
-- Test count changes trigger immediate investigation
-- Binary PASS/FAIL only - no fuzzy percentages
-
-**✅ Trust But Verify**
-- Agent claims "tests passing" → Show the test output
-- Agent reports "100% complete" → Validator confirms
-- Metrics don't match baseline → Red flag raised
-- Vague success claims → Evidence demanded
-
-**✅ Forbidden Summaries**
-- Orchestrator can't make success claims
-- No "mission accomplished" declarations
-- Just facts: "Task complete. Evidence in: [path]"
-- Validation decides success, not agents
+### Relentless Mission Completion
+- **Auto-continuation** when issues are fixable and path is clear
+- **"WORKS WITH CONSTRAINTS"** outcome for honest external dependency reporting
+- **Data flow validation** every 2-3 parallel tasks prevents integration failures
+- **Orchestrator authority** to demand architecture revisions when needed
 
 ## 🤝 The Choice Is Yours
 
@@ -308,14 +273,16 @@ After discovering orchestrated sessions claiming "102/102 tests passing" when on
 - "It should work" without proof
 - Losing context every session
 - Stopping at the hard parts
-- False success claims
+- Auth systems that expose passwords in URLs
+- Phantom implementations with no actual code
 
 **Or join thousands who ship:**
 - 3-8x faster with parallel execution
-- 100% working code with evidence
+- 100% working code with git diffs as proof
 - Unlimited context across sessions
-- Complete features every time
-- Accurate reporting you can trust
+- Complete features every time with auto-continuation
+- Security violations blocked before deployment
+- Every claim independently verified by code reviewer
 
 ## 🚀 Your AI Dev Team Awaits
 
