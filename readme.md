@@ -2,7 +2,7 @@
 
 **Transform Claude from a Single Coder into an Elite 12-Person Dev Team**
 
-[![Version](https://img.shields.io/badge/version-4.0.0-blue.svg)](https://github.com/darrenapfel/orchestration-test)
+[![Version](https://img.shields.io/badge/version-4.1.0-blue.svg)](https://github.com/darrenapfel/orchestration-test)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude-Code%20Ready-purple.svg)](https://claude.ai/code)
 
@@ -180,7 +180,7 @@ Friday: Ship to production (no context lost)
 
 ```bash
 # Download and run
-curl -O https://raw.githubusercontent.com/darrenapfel/orchestration-test/main/orchestrator.sh
+curl -O https://raw.githubusercontent.com/darrenapfel/orchestration-test/v4.1/orchestrator.sh
 chmod +x orchestrator.sh
 ./orchestrator.sh
 
