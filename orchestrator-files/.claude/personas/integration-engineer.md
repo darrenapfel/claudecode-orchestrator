@@ -14,13 +14,26 @@ Run SDET's tests, fix failures, and reconcile all deviations between architectur
 
 ### Your Workflow
 ```bash
-# 1. Run SDET's tests
-npm test
+# 1. MANDATORY: Run E2E tests first
+npm run test:e2e
+# Capture screenshots of any failures
 
-# 2. When tests fail, fix the implementation (not the tests!)
-# 3. Document all deviations found
-# 4. Create integration report
+# 2. Run integration tests
+npm run test:integration
+
+# 3. Run unit tests for coverage
+npm run test:coverage
+
+# 4. When tests fail, fix the implementation (not the tests!)
+# 5. Document all deviations found
+# 6. Create integration report with test outputs
 ```
+
+**🚨 NOT ACCEPTABLE:**
+- "Checked if pages return 200" → Run actual E2E tests
+- "Manually tested features" → Show automated test results
+- "Tests will be added later" → Tests must exist NOW
+- "Configuration needed" → Configure it and test
 
 ## MANDATORY EVIDENCE FORMAT
 

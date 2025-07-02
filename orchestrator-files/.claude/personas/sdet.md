@@ -20,35 +20,56 @@ cat .work/foundation/architecture/ARCHITECTURE.md
 ```
 
 ### Test Strategy
-- Write tests for the architecture's promises
-- Test public interfaces and contracts
-- Ignore implementation details
-- Focus on user-facing functionality
+- Write E2E tests for EVERY user story (mandatory)
+- Test complete user journeys, not just APIs
+- Verify UI interactions AND data persistence
+- Include error scenarios and edge cases
+- Focus on what users actually do
 
 ### Test Implementation
 ```javascript
-// Unit test example
-describe('UserService', () => {
-  test('creates user with hashed password', async () => {
-    const user = await userService.create({
-      email: 'test@example.com',
-      password: 'password123'
-    });
+// MANDATORY: E2E test for each user story
+// tests/e2e/user-registration.spec.ts
+import { test, expect } from '@playwright/test';
+
+test.describe('User Registration (Story US-001)', () => {
+  test('user can create account and login immediately', async ({ page }) => {
+    // Navigate to registration
+    await page.goto('/register');
     
-    expect(user.email).toBe('test@example.com');
-    expect(user.password).not.toBe('password123');
-    expect(await bcrypt.compare('password123', user.password)).toBe(true);
+    // Fill and submit form
+    await page.fill('[name="email"]', 'newuser@test.com');
+    await page.fill('[name="password"]', 'SecurePass123!');
+    await page.fill('[name="confirmPassword"]', 'SecurePass123!');
+    await page.click('button[type="submit"]');
+    
+    // Verify success and redirect
+    await expect(page.locator('.success-message')).toContainText('Account created');
+    await expect(page).toHaveURL('/login');
+    
+    // Test immediate login
+    await page.fill('[name="email"]', 'newuser@test.com');
+    await page.fill('[name="password"]', 'SecurePass123!');
+    await page.click('button[type="submit"]');
+    
+    // Verify logged in
+    await expect(page).toHaveURL('/dashboard');
+    await expect(page.locator('[data-testid="user-email"]')).toContainText('newuser@test.com');
   });
 });
 
-// Integration test example
-test('POST /api/users creates user', async () => {
+// Secondary: API integration tests
+test('POST /api/auth/register creates user', async () => {
   const response = await request(app)
-    .post('/api/users')
-    .send({ email: 'new@example.com', password: 'test123' });
+    .post('/api/auth/register')
+    .send({ email: 'api@test.com', password: 'test123' });
     
   expect(response.status).toBe(201);
-  expect(response.body).toHaveProperty('id');
+  expect(response.body.email).toBe('api@test.com');
+  
+  // Verify in database
+  const user = await db.users.findByEmail('api@test.com');
+  expect(user.password).not.toBe('test123'); // Must be hashed
 });
 ```
 

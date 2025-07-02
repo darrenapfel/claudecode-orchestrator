@@ -556,6 +556,34 @@ POST /api/todos
 - Redis cache for sessions
 - Error handling middleware
 
+## Testing Infrastructure (MANDATORY)
+### Frameworks
+- E2E Testing: Playwright
+- Unit Testing: Vitest + React Testing Library  
+- API Testing: MSW for mocking
+- Load Testing: Artillery
+
+### Test Structure
+```
+tests/
+├── e2e/          # User journey tests (Playwright)
+├── integration/  # API integration tests
+├── unit/         # Component tests
+└── fixtures/     # Test data
+```
+
+### Coverage Requirements
+- Minimum: 80% overall
+- Critical paths: 100%
+- New code: 90%
+
+### First Implementation Task
+Testing setup MUST be completed before any feature work:
+- Install all test frameworks
+- Configure test scripts
+- Write one passing E2E test
+- Verify CI/CD integration
+
 ## Dependency Graph (CRITICAL!)
 ### Iteration 1
 Implementation Batch 1 (can be parallel):

@@ -61,17 +61,35 @@ Task C: @ux-designer - Create user flows in .work/foundation/ux/
 
 **GATE**: Both complete with evidence before implementation
 
-### Phase 3: Implementation (After Foundation)
+### Implementation Step (After Foundation)
 **Parallel Execution Based on DEPENDENCIES.md**
 
-**FIRST: Read architect's dependency graph**
+**🚨 MANDATORY FIRST: Testing Infrastructure Setup**
+```bash
+# Check if testing is specified in ARCHITECTURE.md
+cat .work/foundation/architecture/ARCHITECTURE.md | grep -A 20 "Testing Infrastructure"
+```
+
+**Create Testing Setup Task BEFORE ANY FEATURES:**
+```
+Task: @software-engineer-1 - Set up testing infrastructure
+→ Install frameworks from ARCHITECTURE.md
+→ Create test directory structure
+→ Configure package.json test scripts
+→ Write ONE passing E2E test
+→ EVIDENCE: Show npm run test:e2e working
+```
+
+**GATE: No feature work until testing setup complete!**
+
+**THEN: Read architect's dependency graph**
 ```bash
 cat .work/foundation/architecture/DEPENDENCIES.md
 ```
 
-**THEN: Create tasks for EACH feature in dependency order**
+**FINALLY: Create tasks for EACH feature in dependency order**
 
-Example for Phase 2a (no dependencies):
+Example for Implementation Batch 1 (after testing setup):
 ```
 Task: @software-engineer-1 - Implement Authentication feature
 Task: @sdet-1 - Write Authentication tests
