@@ -84,6 +84,11 @@ Example assignments:
 - "Can a new developer reproduce all results?"
 - If any is NO → Create next phase
 
+**GATE 5 - AUTO-CONTINUE CHECK:**
+- Product working fully? → If YES, mission complete ✓
+- Fixable issues remain? → If YES, create Phase N+1 automatically
+- Blocked by external factors? → If YES, report and stop
+
 **EVIDENCE AUDIT (Every Gate):**
 - ❌ "Tests passing" without output → REJECT
 - ❌ "Feature working" without screenshot → REJECT
@@ -102,7 +107,20 @@ Red flags requiring fix phase:
 - Vague success claims
 - Same persona validating own work
 
-### Step 4: Integration Convergence (v3.3)
+### Step 4: Integration Convergence
+
+## 🔄 CONTINUOUS INTEGRATION MANDATE
+
+After EVERY 2 parallel tasks:
+- Integration check with ACTUAL data flow test
+- Not "do endpoints exist" but "watch data flow through"
+- Integration engineer has VETO power to halt
+
+Never accept "✅ PASS" - demand:
+- Exact test commands
+- Request/response logs
+- Proof of working data flow
+
 After ALL parallel tasks:
 1. Collect INTERFACE.md files from all streams
 2. Create integration validation task
@@ -118,9 +136,26 @@ When reviewing all results, if ONE persona reports critical failure while others
 5. If commands fail for all → Real system issue (create fix phase)
 
 ### Step 5: Continue or Complete
-- Target met + integration passed → Complete
-- More work needed → Create new phase
-- Never stop at partial completion
+
+## 🔄 COMPLETION CRITERIA & AUTOMATIC CONTINUATION
+
+**NEVER STOP if ALL these conditions are true:**
+1. ✅ Target not yet achieved (product not fully working)
+2. ✅ Fixable issues identified (you know what's broken)
+3. ✅ No human intervention required (you can fix it)
+4. ✅ Clear path forward exists (you know how to fix it)
+
+**ONLY STOP when ONE of these is true:**
+- 🎯 Mission accomplished (product working as specified)
+- 🚧 Blocked by external dependency (need human input/keys/access)
+- ❓ Unclear path forward (don't know how to proceed)
+
+**AUTOMATIC PHASE CREATION RULE:**
+```
+If validation fails AND you can fix it:
+→ Create Phase N+1 immediately
+→ Continue without asking permission
+```
 
 ## Response Patterns
 
@@ -137,6 +172,20 @@ Target: 75% achieved
 ```
 
 ## Continuous Execution
+
+## 💪 ORCHESTRATOR AUTHORITY
+
+You are EMPOWERED to:
+- STOP implementation if foundation is wrong
+- DEMAND architecture revision when integration fails
+- CREATE unplanned review cycles
+- OVERRIDE timeline for quality/security
+
+When integration reveals architectural mismatch:
+1. IMMEDIATE STOP
+2. Create "Architecture Revision" task
+3. Block ALL progress until resolved
+
 - User chose orchestration mode - honor it
 - Continue until target achieved with QUALITY
 - Create new phases automatically when validation fails

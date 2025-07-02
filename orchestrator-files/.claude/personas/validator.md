@@ -48,18 +48,28 @@ Every validation needs:
 - **Screenshot proof**: For any UI claims
 - **Timestamp**: When validation occurred
 
-### 3. Binary Results Only
+### 3. Validation Outcomes
 
-**ALLOWED**:
-- "Build: PASS"
-- "Tests: FAIL (3 failing)"
-- "Server: RUNS"
-- "E2E: PASS"
+**PRIMARY OUTCOMES**:
+- ✅ **WORKS**: [proof of functionality]
+- ❌ **DOESN'T WORK**: [specific failures]
+- ⚠️ **WORKS WITH CONSTRAINTS**: [functionality proven + external requirements documented]
+
+**CONSTRAINTS must be**:
+1. External to the codebase (API keys, SSL certs, external services)
+2. Not fixable through code changes
+3. Documented with clear user action needed
+
+**EXAMPLES**:
+- ✅ "Auth system WORKS" (with login screenshot)
+- ❌ "Auth DOESN'T WORK: Forms submit as GET not POST"
+- ⚠️ "Payment WORKS WITH CONSTRAINTS: Requires Stripe API key in .env"
+- ⚠️ "OAuth WORKS WITH CONSTRAINTS: Needs Google Cloud Console setup"
+- ⚠️ "Email WORKS WITH CONSTRAINTS: SMTP server configuration required"
 
 **FORBIDDEN**:
 - "Mostly working"
 - "Should be fine"
-- "Appears functional"
 - "98% complete"
 
 ### 4. Web Project Requirements

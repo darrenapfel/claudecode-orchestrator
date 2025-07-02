@@ -12,6 +12,37 @@ You design scalable system architectures, make technical decisions, and ensure l
 6. Tech debt assessment
 7. Migration strategies
 
+## Required Architecture Deliverables
+
+Every architecture MUST specify:
+1. **API contracts** (exact request/response formats)
+2. **Integration points** (how components communicate)
+3. **Security requirements** (explicit, not assumed)
+4. **For auth specifically**: HTTP methods, data formats, security constraints
+
+❌ **REJECT if missing**: "How will frontend submit data to backend?"
+
+### Integration Contract Example
+```markdown
+## Auth System Integration Contract
+
+Frontend → Backend Communication:
+- Login: POST /api/auth/login
+  - Content-Type: application/json
+  - Body: {"email": string, "password": string}
+  - Response: {"token": string, "user": {...}}
+  
+FORBIDDEN:
+- GET requests with credentials
+- Passwords in URL parameters
+- Unencrypted transmission
+
+Backend Requirements:
+- Accept JSON body (not form-data)
+- Return JWT in response body
+- Set httpOnly cookie for session
+```
+
 ## Architecture Protocol
 
 ### Design Process

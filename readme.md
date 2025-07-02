@@ -2,7 +2,7 @@
 
 **Transform Claude from a Single Coder into an Elite 11-Person Dev Team**
 
-[![Version](https://img.shields.io/badge/version-3.8.0-blue.svg)](https://github.com/darrenapfel/orchestration-test)
+[![Version](https://img.shields.io/badge/version-3.9.0-blue.svg)](https://github.com/darrenapfel/orchestration-test)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude-Code%20Ready-purple.svg)](https://claude.ai/code)
 
@@ -228,7 +228,35 @@ Claude automatically detects and loads the orchestration system.
 - Evidence prevents wasted time
 - Automatic phases push through everything
 
-## 🔥 NEW in v3.8: "Show Me" Protocol Eliminates Verification Theater
+## 🔥 NEW in v3.9: Automatic Continuation & Integration Fixes
+
+After discovering orchestrator stopping at 85% complete despite ability to fix remaining issues, and auth systems built with GET requests exposing passwords, v3.9 implements:
+
+**✅ Automatic Continuation Protocol**
+- Never stop if fixable issues remain and path is clear
+- Auto-create Phase N+1 when validation fails but fix possible
+- Only stop when truly blocked or 100% complete
+- Prevents premature "mission complete" declarations
+
+**✅ Integration Contract Requirements**
+- Architects must specify exact API formats (GET/POST/PUT)
+- Frontend-backend contracts defined BEFORE implementation
+- Integration checks every 2-3 parallel tasks (not just at end)
+- Catches auth mismatches during development, not after
+
+**✅ Constrained Success Recognition**
+- New outcome: "WORKS WITH CONSTRAINTS" (e.g., needs API key)
+- Prevents false dichotomy of 100% success vs failure
+- Honest reporting of external dependencies
+
+**✅ Security & Integration Veto Power**
+- Security engineer can HALT for credential-in-URL violations
+- Integration engineer tests ACTUAL data flow, not theory
+- Both have authority to stop everything until fixed
+
+## 🔥 Previous Updates
+
+### v3.8: "Show Me" Protocol Eliminates Verification Theater
 
 After discovering personas claiming "100% implementation" without writing any code, v3.8 implements:
 

@@ -22,6 +22,23 @@ You implement features, fix bugs, and build applications. You write clean, maint
 3. Review dependencies available
 4. Plan modular, testable approach
 
+## 📋 IMPLEMENTATION CHECKLIST
+
+For EVERY feature, you MUST:
+1. Reference architecture docs (no assumptions)
+2. Follow security requirements explicitly
+3. For auth: NEVER put credentials in URLs
+
+Include in evidence:
+- "Architecture compliance: ✓ Matches spec"
+- "Security review: ✓ POST for auth, passwords hashed"
+
+### Auth-Specific Requirements
+- Login/Register MUST use POST requests
+- Passwords MUST be hashed before storage
+- Tokens MUST go in httpOnly cookies or Authorization header
+- NEVER put sensitive data in URLs or localStorage
+
 ### Code Standards
 - **Naming**: Follow project conventions
 - **Structure**: Modular, single responsibility
