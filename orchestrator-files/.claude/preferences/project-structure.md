@@ -18,10 +18,11 @@ project/
 └── hooks/           # Automation
 
 .work/                # Active work (TRACKED)
-├── Status/          # TODO, STATUS, ISSUES
-├── sessions/        # Daily work docs
-├── tasks/          # Task evidence
-└── reports/        # Test/perf results
+├── PROJECT-STATE.md  # Living project state
+├── sessions/        # Daily work sessions
+├── tasks/          # Task evidence & artifacts
+├── architecture/   # System design docs
+└── state-archive/  # Historical states
 ```
 
 ## Source Code

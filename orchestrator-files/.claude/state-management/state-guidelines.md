@@ -12,7 +12,7 @@ PROJECT-STATE.md provides instant context for fresh Claude sessions, ensuring se
 - One-line summaries
 
 ### 2. **Currency**
-- Update at session end
+- Update throughout session at key events
 - Remove outdated information
 - Keep only last 3 sessions
 - Archive old states
@@ -25,16 +25,25 @@ PROJECT-STATE.md provides instant context for fresh Claude sessions, ensuring se
 
 ## Update Triggers
 
-### Mandatory Updates
-1. **Session End** - Orchestrator updates before PR
-2. **Major Milestone** - Architect notes achievement
-3. **Blocking Issue** - Immediate documentation
-4. **Architecture Change** - Architect updates snapshot
+### Mandatory Updates (Orchestrator)
+1. **Session Start** - Current status, planned work
+2. **After Task Creation** - List all tasks with IDs and assignments  
+3. **After Each Task Completion** - Mark complete, note results
+4. **After Validation** - Record PASS/FAIL, any issues found
+5. **After Integration Check** - Record compatibility results
+6. **When Blockers Discovered** - Document blockers clearly
+7. **When Creating New Phase** - Explain why, list new tasks
+8. **Session End** - Summarize progress, next steps
+
+### Other Mandatory Updates
+1. **Major Milestone** - Architect notes achievement
+2. **Architecture Change** - Architect updates snapshot
+3. **Critical Failure** - Immediate documentation by discovering persona
 
 ### Optional Updates
-- Mid-session progress (if switching context)
 - Before long break
 - After complex debugging
+- When switching context mid-session
 
 ## Who Updates What
 
@@ -77,22 +86,27 @@ PROJECT-STATE.md provides instant context for fresh Claude sessions, ensuring se
 
 ## Update Process
 
-### 1. End of Session Update
+### 1. Real-time Updates Throughout Session
 ```bash
-# Orchestrator runs
+# Orchestrator updates at each trigger point
 update-project-state() {
-  # Copy template
-  cp .claude/state-management/PROJECT-STATE-TEMPLATE.md .work/PROJECT-STATE.md
+  # Read existing state
+  current_state=.work/PROJECT-STATE.md
   
-  # Fill in sections
-  - Update timestamp
-  - Add session accomplishments
-  - Update task queue
-  - Note blockers
+  # Append timestamped update
+  echo -e "\n## [$(date +%Y-%m-%d %H:%M)] - $EVENT_TYPE" >> $current_state
+  echo "- Status: $STATUS" >> $current_state
+  echo "- Details: $DETAILS" >> $current_state
+  echo "- Impact: $IMPACT" >> $current_state
+  echo "- Next: $NEXT_ACTION" >> $current_state
   
-  # Commit
-  git add .work/PROJECT-STATE.md
-  git commit -m "chore: update project state for session end"
+  # Keep under 200 lines
+  if [ $(wc -l < $current_state) -gt 200 ]; then
+    # Archive old sections
+    archive-old-state-sections
+  fi
+  
+  # No commit - will be included in next task/phase commit
 }
 ```
 
@@ -222,18 +236,42 @@ Before committing state updates, ensure:
 ### Session Start
 ```markdown
 *Claude reads PROJECT-STATE.md*
-"I see we're working on the auth system. Last session completed the login API (80%). 
-I'll continue with the integration tests as noted in the state file."
+"I see we're working on the auth system. Last update shows login API complete, integration tests pending. 
+I'll start by creating tasks for the remaining work."
+
+*Updates PROJECT-STATE.md*
+## [2025-07-02 09:15] - Session Start
+- Status: Resuming auth implementation
+- Details: 3 tasks created for integration tests, rate limiting, password reset
+- Impact: Will complete auth module today
+- Next: Delegating tasks to personas
+```
+
+### During Session
+```markdown
+*After task completion*
+## [2025-07-02 10:30] - Task Complete
+- Status: AUTH-001 integration tests PASS
+- Details: 15 tests added, 100% coverage on auth endpoints
+- Impact: Ready for rate limiting implementation
+- Next: Validating with @test-engineer
+
+*After validation failure*
+## [2025-07-02 11:00] - Validation Failed
+- Status: AUTH-002 rate limiting has edge case bug
+- Details: Fails under concurrent requests > 1000/sec
+- Impact: Creating fix task AUTH-002-FIX
+- Next: @software-engineer to address concurrency issue
 ```
 
 ### Session End
 ```markdown
-*Orchestrator updates PROJECT-STATE.md*
-"Session complete. State updated with:
-- ✓ Completed integration tests
-- ✓ Added rate limiting
-- 🔄 Started on password reset (40%)
-- 🔴 Blocked on email service config"
+*Final update before PR*
+## [2025-07-02 15:45] - Session End
+- Status: Auth module 95% complete
+- Details: Integration tests ✓, Rate limiting ✓, Password reset blocked
+- Impact: Email service config needed from DevOps
+- Next: Resume with password reset after email config
 ```
 
 ## Emergency State Recovery

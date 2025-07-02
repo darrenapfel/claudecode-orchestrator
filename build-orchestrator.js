@@ -151,9 +151,9 @@ mkdir -p "$INSTALL_DIR"/{architecture-templates,state-management,utilities,patte
 
 # Only create .work directories for local installation
 if [ "$INSTALL_MODE" = "local" ]; then
-    mkdir -p .work/{tasks/sample-task/streams/{implementation,testing,security,architecture},sessions,Status,convergence}
-    mkdir -p .work/tasks/sample-task/streams/{implementation,testing,security}/evidence
-    mkdir -p .work/reports
+    mkdir -p .work/{tasks,sessions,architecture,state-archive}
+    # Create a sample task structure (simplified, no streams)
+    mkdir -p .work/tasks/sample-task/artifacts
 fi
 `;
 }

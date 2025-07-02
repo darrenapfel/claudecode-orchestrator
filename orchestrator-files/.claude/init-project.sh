@@ -6,7 +6,7 @@ set -euo pipefail
 echo "🚀 Initializing Claude orchestration for $(basename "$PWD")..."
 
 # Create project structure with new .work directory
-mkdir -p .work/Status .work/tasks .work/sessions .work/reports .claude
+mkdir -p .work/tasks .work/sessions .work/architecture .work/state-archive .claude
 
 # Check for global install
 if [ -d "$HOME/.claude/personas" ]; then
@@ -28,7 +28,7 @@ Every task requires evidence. No proof = task failed.
 
 ## Project Structure
 - `.work/` - All working files (tracked)
-- `.work/Status/` - TODO, STATUS, ISSUES
+- `.work/` - PROJECT-STATE.md, tasks, sessions
 - `.work/sessions/` - Daily work
 - `.work/tasks/` - Task evidence
 
@@ -40,7 +40,7 @@ else
 fi
 
 # Create initial status files
-cat > .work/Status/STATUS.md << EOF
+cat > .work/PROJECT-STATE.md << EOF
 # Project Status
 
 **Last Updated**: $(date -u +%Y-%m-%dT%H:%M:%SZ)
@@ -51,17 +51,6 @@ cat > .work/Status/STATUS.md << EOF
 Project orchestration system initialized.
 EOF
 
-cat > .work/Status/TODO.md << EOF
-# Project TODO List
-
-**Created**: $(date -u +%Y-%m-%dT%H:%M:%SZ)
-
-## Active Tasks
-### 🔴 P0 - Critical
-<\!-- Add critical tasks here -->
-
-### 🟡 P1 - High Priority
-<\!-- Add high priority tasks here -->
-EOF
-
-echo "✅ Project initialized\!"
+echo "✅ Project initialized!"
+echo "📁 PROJECT-STATE.md created in .work/"
+echo "🚀 Ready for orchestrated development"

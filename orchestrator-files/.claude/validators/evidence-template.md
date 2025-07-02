@@ -3,364 +3,262 @@
 ## Overview
 This template ensures all evidence follows a consistent, verifiable format. Every task must produce evidence that can be independently validated.
 
-## Evidence Structure (Parallel Workflow v2.1)
+## Evidence Structure (v3.9)
 
 ```
 .work/tasks/YYYYMMDD-HHMM-description/
-├── TASK.md                 # Master task definition
-├── streams/                # Parallel execution streams
-│   ├── implementation/
-│   │   ├── STREAM.md       # Implementation stream log
-│   │   └── evidence/       # Implementation artifacts
-│   │       ├── screenshots/
-│   │       ├── code-changes/
-│   │       └── unit-tests/
-│   ├── testing/
-│   │   ├── STREAM.md       # Testing stream log
-│   │   └── evidence/       # Testing artifacts
-│   │       ├── test-results/
-│   │       ├── coverage-reports/
-│   │       └── performance/
-│   ├── security/
-│   │   ├── STREAM.md       # Security stream log
-│   │   └── evidence/       # Security artifacts
-│   │       ├── scan-results/
-│   │       ├── audit-logs/
-│   │       └── compliance/
-│   └── manual/             # Manual testing stream (if applicable)
-│       ├── STREAM.md       
-│       └── evidence/
-│           ├── user-flows/
-│           └── edge-cases/
-├── CONVERGENCE.md          # Stream convergence report
-└── EVIDENCE.md             # Final consolidated evidence
+├── TASK.md           # Task definition from orchestrator
+├── INTERFACE.md      # Public APIs/contracts
+├── EVIDENCE.md       # Proof of completion
+└── artifacts/        # Supporting files
+    ├── screenshots/  # UI evidence with timestamps
+    ├── test-output/  # Test results and coverage
+    └── logs/         # Console output, performance data
 ```
 
-## EVIDENCE.md Template (Parallel Workflow v2.1)
+## EVIDENCE.md Template
 
 ```markdown
 # Task Evidence: [Task Name]
 
 **Task ID**: YYYYMMDD-HHMM-description
+**Assigned**: @[persona-name]
 **Start Time**: YYYY-MM-DD HH:MM:SS
-**Convergence Time**: YYYY-MM-DD HH:MM:SS
-**Total Duration**: XXm XXs
-**Execution Strategy**: Full Parallel | Progressive | Hybrid | Sequential
-**Validated By**: @validator (must be different from all stream personas)
+**Complete Time**: YYYY-MM-DD HH:MM:SS
+**Validated By**: @validator (must be different persona)
 
 ## Summary
-Brief description of what was accomplished across all streams and how it meets the task requirements.
+[One paragraph describing what was accomplished and how it meets requirements]
 
-## Stream Execution Report
+## Changes Made
+List each file changed with specific details:
+- `src/feature.js` (lines 12-45): Added validation logic
+- `src/feature.test.js` (new file): Complete test coverage
+- `src/api/routes.js` (lines 78-92): New endpoint added
 
-### Implementation Stream (@software-engineer)
-**Status**: ✅ Complete | ⚠️ Partial | ❌ Failed
-**Duration**: XXm XXs
-**Evidence Path**: `./streams/implementation/evidence/`
+## Test Evidence
 
-#### Code Changes
-- Files modified: X files
-- Lines added: +XXX
-- Lines removed: -XXX
-- Key components:
-  - `path/to/file1.js` - Description of changes
-  - `path/to/file2.js` - Description of changes
-
-#### Working Implementation
-**Screenshot**: [./streams/implementation/evidence/screenshots/feature-working.png]
-**Description**: Shows the feature functioning as specified
-
-#### Code Quality
-- Linting: ✅ No errors
-- Type checking: ✅ No errors
-- Unit tests: ✅ XX/XX passing
-
-### Testing Stream (@sdet)
-**Status**: ✅ Complete | ⚠️ Partial | ❌ Failed
-**Duration**: XXm XXs
-**Evidence Path**: `./streams/testing/evidence/`
-
-#### Test Coverage
-```
-File                | % Stmts | % Branch | % Funcs | % Lines |
---------------------|---------|----------|---------|---------|
-All files           |   87.3  |   84.2   |   91.5  |   87.3  |
- src/feature.js     |   92.1  |   88.9   |   100   |   92.1  |
- src/feature.test.js|   100   |   100    |   100   |   100   |
+### Command Run
+```bash
+npm test -- feature.test.js --coverage
 ```
 
-#### Test Results
+### Full Output
 ```
-Test Suites: X passed, X total
-Tests: XX passed, XX total
-Snapshots: X passed, X total
-Time: X.XXs
+ PASS  tests/feature.test.js
+  Feature Implementation
+    ✓ validates input correctly (45ms)
+    ✓ handles edge cases (23ms)
+    ✓ integrates with API (128ms)
+    ✓ maintains performance standards (89ms)
+
+----------|---------|----------|---------|---------|-------------------
+File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+----------|---------|----------|---------|---------|-------------------
+All files |   92.31 |    87.50 |  100.00 |   92.31 |
+ feature.js|   92.31 |    87.50 |  100.00 |   92.31 | 34,67
+----------|---------|----------|---------|---------|-------------------
+
+Test Suites: 1 passed, 1 total
+Tests:       4 passed, 4 total
+Time:        1.245s
 ```
 
-#### Test Artifacts
-- Full test report: [./streams/testing/evidence/test-results/test-report.xml]
-- Coverage report: [./streams/testing/evidence/coverage-reports/index.html]
-- Performance tests: [./streams/testing/evidence/performance/load-test.html]
+## Live Verification
 
-### Security Stream (@security-engineer)
-**Status**: ✅ Complete | ⚠️ Partial | ❌ Failed
-**Duration**: XXm XXs
-**Evidence Path**: `./streams/security/evidence/`
-
-#### Security Scan Results
-- Dependency audit: ✅ 0 vulnerabilities
-- SAST scan: ✅ No issues found
-- Security checklist: X/X items passed
-- Penetration test: ✅ No critical issues
-
-#### Security Artifacts
-- Scan report: [./streams/security/evidence/scan-results/security-report.html]
-- Audit log: [./streams/security/evidence/audit-logs/npm-audit.json]
-- Compliance report: [./streams/security/evidence/compliance/compliance-check.pdf]
-
-### Manual Testing Stream (@test-engineer) [If Applicable]
-**Status**: ✅ Complete | ⚠️ Partial | ❌ Failed
-**Duration**: XXm XXs
-**Evidence Path**: `./streams/manual/evidence/`
-
-#### User Experience Testing
-- User flows tested: X/X
-- Edge cases verified: X/X
-- Browser compatibility: X/X browsers
-- Accessibility: WCAG 2.1 AA compliant
-
-#### Manual Test Artifacts
-- User flow recordings: [./streams/manual/evidence/user-flows/]
-- Edge case documentation: [./streams/manual/evidence/edge-cases/]
-- Accessibility report: [./streams/manual/evidence/accessibility-audit.html]
-
-## Cross-Stream Validation
-
-### Implementation ↔ Testing
-- [ ] Code works with test suite
-- [ ] Tests cover all implemented features
-- [ ] Performance tests validate implementation
-- [ ] Integration tests pass
-
-### Implementation ↔ Security
-- [ ] Code follows security guidelines
-- [ ] No security vulnerabilities introduced
-- [ ] Input validation implemented
-- [ ] Authentication/authorization working
-
-### Testing ↔ Security
-- [ ] Security tests included in test suite
-- [ ] Test environment secure
-- [ ] No sensitive data in test fixtures
-- [ ] Tests cover security scenarios
-
-## Convergence Report
-See: [./CONVERGENCE.md] for detailed stream convergence analysis
-
-## CONVERGENCE.md Template
-
-```markdown
-# Stream Convergence Report
-
-**Task ID**: YYYYMMDD-HHMM-description
-**Convergence Date**: YYYY-MM-DD HH:MM:SS
-**Strategy Used**: Full Parallel | Progressive | Hybrid | Sequential
-
-## Stream Completion Status
-- [ ] Implementation Stream (@software-engineer): ✅ Complete
-- [ ] Testing Stream (@sdet): ✅ Complete  
-- [ ] Security Stream (@security-engineer): ✅ Complete
-- [ ] Manual Testing Stream (@test-engineer): ✅ Complete [if applicable]
-
-## Integration Verification
-- [ ] All streams produced required evidence
-- [ ] No blocking issues between streams
-- [ ] Cross-validation checks passed
-- [ ] All git commits successful
-
-## Quality Gates Passed
-- [ ] Code quality: No linting/type errors
-- [ ] Test coverage: >80% achieved
-- [ ] Security: No critical vulnerabilities
-- [ ] Performance: Within acceptable limits
-- [ ] Manual testing: All user flows work
-
-## Issues Resolved During Convergence
-| Issue | Stream | Resolution | Status |
-|-------|--------|------------|--------|
-| Example issue | Testing | Fixed in commit abc123 | ✅ Resolved |
-
-## Final Validation Readiness
-All streams have converged successfully. Task is ready for final validation by @validator.
+### Server Running
+```bash
+$ npm start
+Server running on http://localhost:3000
+Database connected
+All systems operational
 ```
+
+### API Test
+```bash
+# Test the new endpoint
+curl -X POST http://localhost:3000/api/feature \
+  -H "Content-Type: application/json" \
+  -d '{"data":"test"}'
+
+# Response:
+{"success":true,"id":"123","processed":"test"}
+```
+
+### UI Screenshot
+![Feature Working](./artifacts/screenshots/feature-working-20250702-143022.png)
+*Timestamp: 2025-07-02 14:30:22 PST*
+
+## Metrics Comparison
+
+### Baseline (Before)
+- Tests: 45/50 passing
+- Coverage: 78%
+- Build time: 32s
+- Bundle size: 1.2MB
+
+### Current (After)
+- Tests: 50/50 passing ✅
+- Coverage: 92% ✅
+- Build time: 28s ✅
+- Bundle size: 1.2MB ✅
+
+## Architecture Compliance
+- ✅ Follows established patterns
+- ✅ No new dependencies added
+- ✅ Security requirements met (see security checklist)
+- ✅ Performance within bounds
+
+## Security Checklist
+- ✅ Input validation implemented
+- ✅ No sensitive data in logs
+- ✅ Authentication required for endpoints
+- ✅ Rate limiting in place
+- ✅ OWASP Top 10 considered
 
 ## Reproduction Steps
+1. Clone repository: `git clone [repo]`
+2. Checkout branch: `git checkout feature-branch`
+3. Install deps: `npm install`
+4. Set environment: `cp .env.example .env`
+5. Run tests: `npm test`
+6. Start server: `npm start`
+7. Test endpoint: [curl command above]
+8. Verify UI: Navigate to http://localhost:3000/feature
 
-### Environment Setup
+## Git Commit
 ```bash
-git checkout [branch-name]
-npm install
-cp .env.example .env
-# Configure environment variables
+commit abc123def456
+Author: Claude <noreply@anthropic.com>
+Date:   Tue Jul 2 14:35:00 2025 -0700
+
+    feat: implement feature with full test coverage
+    
+    - Added input validation
+    - Created comprehensive tests
+    - Integrated with existing API
+    - Maintained performance standards
+    
+    Task: YYYYMMDD-HHMM-description
+    Evidence: .work/tasks/YYYYMMDD-HHMM-description/EVIDENCE.md
 ```
-
-### Running the Feature
-1. Start the application: `npm run dev`
-2. Navigate to: `http://localhost:3000/feature`
-3. Perform action: [specific steps]
-4. Verify result: [expected outcome]
-
-### Running Tests
-```bash
-# Unit tests
-npm test
-
-# Integration tests
-npm run test:integration
-
-# E2E tests
-npm run test:e2e
-```
-
-## Validation Checklist
-
-### Functional Requirements
-- [ ] Feature works as specified
-- [ ] All acceptance criteria met
-- [ ] Edge cases handled
-- [ ] Error scenarios managed
-
-### Non-Functional Requirements
-- [ ] Performance within limits
-- [ ] Security requirements met
-- [ ] Accessibility standards followed
-- [ ] Documentation complete
-
-### Code Quality
-- [ ] No linting errors
-- [ ] Tests comprehensive
-- [ ] Code reviewed
-- [ ] No TODOs or placeholders
 
 ## Known Issues
-List any known issues or limitations:
-- Issue 1: Description and impact
-- Issue 2: Description and impact
+None identified during implementation.
 
-## Follow-up Tasks
-Tasks identified during implementation:
-- [ ] Task 1: Description
-- [ ] Task 2: Description
+## Follow-up Recommendations
+- Consider adding integration tests with external service
+- Monitor performance under load
+- Add telemetry for usage tracking
+```
 
-## Sign-off
+## INTERFACE.md Template
 
-### Developer Confirmation
-I confirm this implementation:
-- Meets all requirements
-- Has been tested thoroughly
-- Contains no known security issues
-- Is ready for validation
+```markdown
+# Interface Definition
 
-**Signed**: @developer-name
-**Date**: YYYY-MM-DD HH:MM:SS
+## Public APIs
+Endpoints or functions this component exposes:
+- GET /api/resource → {data: [], total: number}
+- POST /api/resource → {id: string, created: date}
+- DELETE /api/resource/:id → {success: boolean}
 
-### Validator Confirmation
-I have independently verified:
-- All evidence is accurate
-- Implementation meets requirements
-- Tests are comprehensive
-- No critical issues found
+## Functions Exported
+- processData(input: InputType) → Promise<ResultType>
+- validateInput(data: unknown) → data is ValidType
+- transformOutput(raw: RawType) → OutputType
 
-**Signed**: @validator-name
-**Date**: YYYY-MM-DD HH:MM:SS
+## Dependencies Required
+External services or resources needed:
+- Database connection (PostgreSQL)
+- Redis cache for session storage
+- S3 bucket for file uploads
+
+## Environment Variables
+- PORT (default: 3000)
+- DATABASE_URL (required)
+- REDIS_URL (optional, defaults to localhost)
+- AWS_BUCKET (required for uploads)
+
+## Integration Points
+How this connects with other components:
+- Publishes events to: user.created, user.updated
+- Subscribes to: auth.logout, system.shutdown
+- Calls services: AuthService, EmailService
 ```
 
 ## Evidence Requirements by Type
 
-### Screenshots
-- Clear and focused on relevant area
-- Include browser dev tools if relevant
-- Show success and error states
-- Name descriptively: `feature-state-description.png`
+### Screenshots (UI Features)
+- **Filename format**: `feature-state-YYYYMMDD-HHMMSS.png`
+- **Must include**: Visible timestamp (system clock or overlay)
+- **Show both**: Success states AND error states
+- **Browser details**: Include dev tools if relevant
+- **Annotations**: Highlight key areas if complex
 
-### Logs
-- Include timestamps
-- Show full operation lifecycle
-- Capture both success and errors
-- Sanitize sensitive information
+### Test Output
+- **Complete output**: Never truncate or summarize
+- **Include coverage**: Show coverage metrics
+- **All test files**: Don't cherry-pick passing tests
+- **Performance data**: Include timing information
 
-### Test Results
-- Full test suite output
-- Coverage reports with details
-- Performance benchmarks
-- Failed test explanations
+### Console/Logs
+- **Full commands**: Show exact commands used
+- **Complete output**: Include all output, even verbose
+- **Error scenarios**: Demonstrate error handling
+- **Timestamps**: Ensure logs show when events occurred
 
-### Code Snippets
-```javascript
-// Always include context
-// Show before and after for changes
-// Highlight key logic
-// Include error handling
-```
+### Code Changes
+- **Specific lines**: Reference exact line numbers
+- **Context**: Explain why changes were made
+- **Diff-friendly**: Use git diff format when helpful
 
 ## Common Evidence Failures
 
-### ❌ Insufficient Evidence
-- "It works" without proof
-- Screenshots of wrong thing
-- Partial test results
-- Missing reproduction steps
-
-### ❌ Fake Evidence
-- Edited screenshots
-- Selective test results
-- Hidden failures
-- Manipulated metrics
-
-### ❌ Irreproducible Evidence
-- Works on my machine only
-- Required specific conditions
-- Timing-dependent results
-- Environment-specific
+### ❌ Vague Claims
+- "Tests are passing" → Show the actual test output
+- "Feature works" → Provide screenshot + reproduction steps
+- "No errors" → Show console output proving this
+- "Performance improved" → Show before/after metrics
 
 ### ❌ Incomplete Evidence
-- Happy path only
-- No error scenarios
-- Missing edge cases
-- No performance data
+- Partial test results → Include full test suite run
+- Happy path only → Show error handling too
+- Missing timestamps → All screenshots need timestamps
+- No reproduction steps → Others must be able to verify
 
-## Evidence Validation Process
+### ❌ Unverifiable Evidence
+- "Works on my machine" → Document exact environment
+- Local-only URLs → Use localhost with port numbers
+- Missing dependencies → List all requirements
+- Hardcoded paths → Use relative or configurable paths
 
-### Level 1: Completeness
-- All sections filled
-- All artifacts present
-- All links working
-- All requirements addressed
+## Validation Process
 
-### Level 2: Accuracy
-- Claims match evidence
-- Metrics are realistic
-- Tests actually pass
-- Screenshots current
+### By Validator Persona
+1. **Read EVIDENCE.md** - Understand claims
+2. **Check artifacts** - Verify screenshots/logs exist
+3. **Run reproduction steps** - Confirm it works
+4. **Compare metrics** - Ensure baselines maintained
+5. **Test edge cases** - Go beyond happy path
+6. **Document findings** - Record validation results
 
-### Level 3: Reproducibility
-- Steps clear and complete
-- Environment documented
-- Dependencies listed
-- Can be verified independently
-
-### Level 4: Quality
-- Comprehensive coverage
-- Professional presentation
-- Clear documentation
-- No ambiguity
+### Validation Checklist
+- [ ] All evidence files present
+- [ ] Screenshots have timestamps
+- [ ] Test output shows all tests
+- [ ] Coverage meets standards
+- [ ] Reproduction steps work
+- [ ] No degradation in metrics
+- [ ] Security requirements met
+- [ ] Code follows patterns
 
 ## Remember
-- Evidence is not optional
-- Quality over quantity
-- Reproducibility is key
-- Independence required
-- Truth over convenience
+- **Evidence over claims** - Show, don't tell
+- **Reproducibility is key** - Others must verify
+- **Quality over speed** - Better evidence takes time
+- **Independence required** - Can't validate own work
+- **Truth over convenience** - Don't hide failures
 
 ---
 *This template ensures consistent, verifiable evidence for every task.*

@@ -1,78 +1,60 @@
 # Task: Add User Authentication System
 
-## Task ID: SAMPLE-AUTH-2024
-**Estimated Duration**: 90 minutes (3 x 30min parallel streams)
-**Priority**: High
-**Dependencies**: None (initial feature)
+**ID**: 20250702-1430-user-auth
+**Scope**: Implement secure user authentication
+**Assigned**: @software-engineer
+**Dependencies**: None
 
-## Objective
-Implement a secure user authentication system with registration, login, logout, and session management.
+## Baseline Metrics
+- Tests: 45/50 passing
+- Coverage: 78%
+- Build: passing
+- Bundle size: 1.2MB
+- Response time: <300ms
 
-## Exit Criteria (Must ALL be met)
+## Success Criteria
 - [ ] User registration with email validation
-- [ ] Secure login with password hashing
-- [ ] Session management with JWT tokens
-- [ ] Password reset functionality
-- [ ] Rate limiting on auth endpoints
-- [ ] Comprehensive test coverage (>90%)
-- [ ] Security audit completed with no critical issues
-- [ ] All endpoints documented with examples
-- [ ] Evidence of working system with screenshots
-
-## Execution Strategy: PARALLEL
-**Streams run simultaneously with planned convergence**
-
-### Stream Dependencies
-```
-Prerequisites: None (initial implementation)
-Implementation → Testing (needs endpoints to test)
-Implementation → Security (needs code to audit)
-Testing ← Security (cross-validation required)
-```
+- [ ] Login with bcrypt password hashing  
+- [ ] JWT token generation and validation
+- [ ] Logout endpoint invalidates tokens
+- [ ] Password reset via email
+- [ ] Rate limiting (10 req/min per IP)
+- [ ] Tests maintain baseline (50/50 passing)
+- [ ] Coverage increases to >85%
+- [ ] Evidence documented with screenshots
+- [ ] Git commit created
+- [ ] Checkpoint validation PASS
 
 ## Technical Requirements
+- Use bcrypt (cost factor 12)
+- JWT expires in 1 hour
+- Refresh tokens valid 7 days
+- Email templates for reset flow
+- Redis for token blacklist
+- Proper error messages (no info leakage)
 
-### Implementation Stream
-- Framework: Express.js + TypeScript
-- Database: PostgreSQL with Prisma ORM
-- Password hashing: bcrypt
-- JWT tokens for sessions
-- Input validation: Zod
-- Email service: SendGrid or Nodemailer
+## Architecture Compliance
+- Follow existing auth patterns
+- Use established middleware
+- Integrate with current user model
+- Maintain RESTful conventions
+- Security-first approach
 
-### Testing Stream
-- Unit tests: Jest
-- Integration tests: Supertest
-- API testing: Postman/Newman
-- Load testing: Artillery
-- Coverage target: >90%
+## Evidence Requirements
+Create in .work/tasks/[this-task-id]/:
+- INTERFACE.md with all endpoints
+- EVIDENCE.md with test results
+- artifacts/screenshots/ with UI proof
+- artifacts/test-output/ with coverage
 
-### Security Stream
-- OWASP compliance check
-- SQL injection prevention
-- XSS protection
-- Rate limiting implementation
-- Secure header configuration
-- Vulnerability scanning
-
-## Validation Criteria
-Each stream must provide evidence:
-1. **Implementation**: Working endpoints + unit tests
-2. **Testing**: Test suite results + coverage report
-3. **Security**: Audit report + vulnerability scan
-4. **Integration**: E2E test results + performance metrics
-
-## Risk Assessment
-- **High**: Password security implementation
-- **Medium**: JWT token management
-- **Low**: Email validation flow
-
-## Success Metrics
-- All tests passing
-- Security scan clean
-- Performance: <200ms response time
-- Error rate: <0.1%
+## Validation Notes
+Different persona must verify:
+- All endpoints work as documented
+- Security requirements met
+- No sensitive data in logs
+- Rate limiting effective
+- Tests are comprehensive
 
 ---
-*Created by orchestrator persona*
-*Execution managed by parallel workflow*
+*Task created by @orchestrator*
+*To be validated by @validator or @test-engineer*

@@ -18,6 +18,7 @@ You orchestrate parallel execution. You NEVER write code, only delegate and trac
 2. Check `.work/PROJECT-STATE.md` if exists
 3. Initialize git repository
 4. Create feature branch
+5. Update PROJECT-STATE.md with session start and planned tasks
 
 ### Step 1: MANDATORY Foundation Phase
 🚨 **NEVER skip this phase. All implementation is blocked until complete.**
@@ -36,6 +37,7 @@ Task B: @ux-designer - Create user flows and experience design
 - Produces verifiable evidence
 - ONE persona per task (no combinations)
 - See TASK-EXECUTION-GUIDE.md for format
+- Update PROJECT-STATE.md with all created tasks and assignments
 
 ### Step 2: Parallel Delegation
 CRITICAL: For parallel execution, use multiple Task invocations in ONE message.
@@ -99,7 +101,8 @@ Example assignments:
 1. Review evidence for actual proof
 2. Check metrics vs baseline  
 3. Invoke @validator (DIFFERENT persona from implementer)
-4. Only proceed if PASS
+4. Update PROJECT-STATE.md with task completion status and validation result
+5. Only proceed if PASS
 
 Red flags requiring fix phase:
 - "Tests passing" without output
@@ -125,7 +128,8 @@ After ALL parallel tasks:
 1. Collect INTERFACE.md files from all streams
 2. Create integration validation task
 3. Assign to @integration-engineer
-4. MUST PASS before proceeding
+4. Update PROJECT-STATE.md with integration results
+5. MUST PASS before proceeding
 
 **🚨 OUTLIER DETECTION PROTOCOL**: 
 When reviewing all results, if ONE persona reports critical failure while others report success:
@@ -134,6 +138,7 @@ When reviewing all results, if ONE persona reports critical failure while others
 3. Have 1-2 other personas run those exact commands
 4. If commands work for others → Environmental issue (help persona fix setup)
 5. If commands fail for all → Real system issue (create fix phase)
+6. Update PROJECT-STATE.md with identified blockers or issues
 
 ### Step 5: Continue or Complete
 
@@ -154,6 +159,7 @@ When reviewing all results, if ONE persona reports critical failure while others
 ```
 If validation fails AND you can fix it:
 → Create Phase N+1 immediately
+→ Update PROJECT-STATE.md with new phase and fix tasks
 → Continue without asking permission
 ```
 
@@ -170,6 +176,29 @@ Complete: 5/8 tasks
 Integration: pending
 Target: 75% achieved
 ```
+
+## PROJECT-STATE.md Update Protocol
+
+**UPDATE PROJECT-STATE.md at these trigger points:**
+1. **Session start** - Current status, planned work
+2. **After task creation** - List all tasks with IDs and assignments
+3. **After each task completion** - Mark complete, note results
+4. **After validation** - Record PASS/FAIL, any issues found
+5. **After integration check** - Record compatibility results
+6. **When blockers discovered** - Document blockers clearly
+7. **When creating new phase** - Explain why, list new tasks
+8. **Session end** - Summarize progress, next steps
+
+**Format for updates:**
+```markdown
+## [Timestamp] - [Event Type]
+- Status: [brief status]
+- Details: [what happened]
+- Impact: [what this means]
+- Next: [immediate next action]
+```
+
+**Keep it concise** - Real-time visibility without verbosity
 
 ## Continuous Execution
 

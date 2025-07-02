@@ -74,7 +74,7 @@ When Software Engineer completes:
   → git commit -m "feat(component): implement user authentication
      
      Subtask: Stream A - Implementation
-     Evidence: .work/tasks/20250628-1000/streams/implementation/EVIDENCE.md
+     Evidence: .work/tasks/20250628-1000/EVIDENCE.md
      
      🤖 Generated with [Claude Code](https://claude.ai/code)"
 
@@ -84,7 +84,7 @@ When SDET completes:
      
      Subtask: Stream B - Testing
      Coverage: 87%
-     Evidence: .work/tasks/20250628-1000/streams/testing/EVIDENCE.md
+     Evidence: .work/tasks/20250628-1000/EVIDENCE.md
      
      🤖 Generated with [Claude Code](https://claude.ai/code)"
 ```
@@ -225,7 +225,7 @@ Every commit references its evidence:
 └── tasks/
     └── 20250628-1000-auth/
         ├── COMMIT_LOG.md    # Links evidence to commits
-        ├── streams/
+        ├── artifacts/
         │   └── implementation/
         │       ├── EVIDENCE.md
         │       └── commit-sha.txt  # abc123def
