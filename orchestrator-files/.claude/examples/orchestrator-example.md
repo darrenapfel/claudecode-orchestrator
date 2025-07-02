@@ -98,7 +98,7 @@ Task(
 Task(
     description="Validate: Next.js initialization",
     prompt="""
-    1. Load persona: .claude/personas/validator.md
+    1. Load persona: .claude/personas/test-engineer.md
     2. Read all evidence at: .work/tasks/20250628-1000-init/
     3. Attempt to break implementation:
        - Clone fresh and verify reproducibility
@@ -142,7 +142,7 @@ Task(
 - Define success criteria
 - Implement with software-engineer
 - Test with sdet
-- Validate with validator
+- Validate with test-engineer and product-manager
 - Commit on success
 
 ### Final PR Creation

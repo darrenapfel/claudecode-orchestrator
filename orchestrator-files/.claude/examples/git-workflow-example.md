@@ -126,7 +126,7 @@ git push
 
 ### 4. Convergence and Validation
 
-After all streams complete and validator approves:
+After all streams complete and product-manager approves:
 ```bash
 # Orchestrator executes convergence commit:
 git add .work/tasks/20250628-1000/CONVERGENCE.md

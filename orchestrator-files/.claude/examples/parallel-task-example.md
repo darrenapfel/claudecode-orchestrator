@@ -79,7 +79,7 @@ T+15    | Password reset       | E2E scenarios       | OWASP checklist
 T+20    | === CONVERGENCE POINT - All streams complete ===
 T+21    | Cross-validation begins
 T+25    | Final integration testing
-T+30    | Validator review
+T+30    | Product & Test validation
 ```
 
 ## Stream A: Implementation Evidence
@@ -274,7 +274,7 @@ Security Integration
     └── final-report.md
 ```
 
-## Validator's Independent Verification
+## Test Engineer's Independent Verification
 
 ```bash
 # Fresh clone and test

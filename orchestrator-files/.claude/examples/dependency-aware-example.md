@@ -115,7 +115,7 @@ Database Schema
 - Stream K: Checkout Flow (@software-engineer-2)
 - Stream L: Integration Testing (@sdet)
 - Stream M: End-to-End Testing (@test-engineer)
-- Stream N: Final Security Validation (@validator)
+- Stream N: Final Security Validation (@test-engineer)
 
 ```markdown
 ## Phase 3 Task Definition

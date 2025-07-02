@@ -7,13 +7,13 @@
 └─────────────────────────────────────────────────────────────────────────────┘
 
 PHASE 0: FOUNDATION (MANDATORY)
-┌──────────────────┐     ┌──────────────────┐
-│   @architect     │ ║   │  @ux-designer    │
-│ System Design    │ ║   │ User Flows & UX  │
-│ Data Architecture│ ║   │ Wireframes       │
-└──────────────────┘ ║   └──────────────────┘
-         │            ║            │
-         └─────── GATE 1 ──────────┘
+┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
+│   @architect     │ ║   │  @ux-designer    │ ║   │@product-manager  │
+│ System Design    │ ║   │ User Flows & UX  │ ║   │ User Stories     │
+│ Data Architecture│ ║   │ Wireframes       │ ║   │ Acceptance Crit. │
+└──────────────────┘ ║   └──────────────────┘ ║   └──────────────────┘
+         │            ║            │           ║            │
+         └──────────────── GATE 1 ─────────────────────────┘
                   ║
                  PASS
                   ║
@@ -32,9 +32,9 @@ PHASE 1: IMPLEMENTATION
                       ▼                                                 ║
 PHASE 2: VALIDATION & DOCUMENTATION                                      ║
 ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
-│ @test-engineer  │ │   @validator    │ │@performance-eng │ │@security-eng    │ │@documentation   │
-│ E2E Testing     │ │ Adversarial     │ │ Load Testing    │ │ Security Audit  │ │ API Docs        │
-│ Integration     │ │ Evidence Review │ │ Optimization    │ │ Penetration     │ │ User Guides     │
+│ @test-engineer  │ │@product-manager │ │@performance-eng │ │@security-eng    │ │@documentation   │
+│ E2E Testing     │ │ Golden Path     │ │ Load Testing    │ │ Security Audit  │ │ API Docs        │
+│ Integration     │ │ User Validation │ │ Optimization    │ │ Penetration     │ │ User Guides     │
 └─────────────────┘ └─────────────────┘ └─────────────────┘ └─────────────────┘ └─────────────────┘
          │                   │                   │                   │                   │
          └─────────────────── GATE 3 ───────────────────────────────────────────────────┘
@@ -64,17 +64,19 @@ This is the mandatory workflow pattern for ALL orchestration sessions. No except
 
 ## Phase 0: Foundation (MANDATORY - Never Skip)
 **Duration**: Must complete before ANY implementation
-**Goal**: Establish architecture and UX foundation
+**Goal**: Establish architecture, UX foundation, and user stories
 
 ```
 PARALLEL EXECUTION:
 ├── Task A: @architect
 │   └── Design system architecture, boundaries, data flow
-└── Task B: @ux-designer  
-    └── Create user flows, wireframes, experience design
+├── Task B: @ux-designer  
+│   └── Create user flows, wireframes, experience design
+└── Task C: @product-manager
+    └── Create user stories, acceptance criteria, golden paths
 ```
 
-**Gate Check**: Both tasks COMPLETE with evidence → Proceed to Phase 1
+**Gate Check**: All three tasks COMPLETE with evidence → Proceed to Phase 1
 
 ## Phase 1: Implementation (After Foundation Only)
 **Goal**: Build features in parallel with testing
@@ -105,8 +107,8 @@ PARALLEL EXECUTION (per feature):
 PARALLEL EXECUTION:
 ├── Task G: @test-engineer
 │   └── Run full test suite, E2E validation, integration testing
-├── Task H: @validator
-│   └── Adversarial review of ALL evidence from Phase 1
+├── Task H: @product-manager
+│   └── Golden path validation, user story verification
 ├── Task I: @performance-engineer
 │   └── Load testing, performance profiling, optimization analysis
 ├── Task J: @security-engineer
@@ -152,7 +154,8 @@ PARALLEL EXECUTION:
 
 **Before marking phase complete, orchestrator MUST verify:**
 - [ ] All evidence files present and verified
-- [ ] @validator provided adversarial review
+- [ ] @product-manager validated user experience
+- [ ] @test-engineer provided technical validation
 - [ ] @integration-engineer confirmed compatibility
 - [ ] No persona validated their own work
 
