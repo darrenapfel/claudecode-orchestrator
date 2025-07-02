@@ -101,6 +101,11 @@ PHASE 4: DEPLOYMENT PREPARATION
             PHASE 0
             (Next batch)
 
+CRITICAL: The cycle REPEATS for EVERY coding phase:
+- After Auth → Integrate → Validate → Fix if needed → PASS → Next features
+- After Core Features → Integrate → Validate → Fix if needed → PASS → Next
+- NEVER skip to next coding phase without full validation PASS
+
 Legend: ║ = Parallel Execution    │ = Sequential Flow    GATE = Mandatory Checkpoint
 ```
 
@@ -113,12 +118,46 @@ This workflow ensures integrated, working software by:
 5. Validating the working system
 6. Iterating for additional feature batches
 
-## Iterative Development
-The workflow is designed to handle multiple waves of features:
-- Each iteration goes through all phases (0-4)
-- Documentation and deployment configs update with each wave
-- Previous features remain stable while new ones are added
-- Integration engineer ensures new features work with existing ones
+## Iterative Development & The Mandatory Cycle
+
+### The Iron Rule: CODE → INTEGRATE → VALIDATE → PASS
+
+**EVERY coding phase MUST follow this cycle:**
+```
+1. CODE (Phase 2/2a/2b/etc)
+   ↓
+2. INTEGRATE (Phase 2.5)
+   - Run ALL tests
+   - Fix integration issues
+   ↓
+3. VALIDATE (Phase 3) - PARALLEL!
+   - Test Engineer
+   - Product Manager  
+   - Performance Engineer
+   - Security Engineer
+   ↓
+4. If ANY validator fails:
+   - FIX (create fix tasks)
+   - Re-INTEGRATE
+   - Re-VALIDATE
+   - REPEAT until ALL PASS
+   ↓
+5. ONLY THEN proceed to next coding phase
+```
+
+**Example Flow:**
+```
+Build Auth → Integrate Auth → Validate Auth → PASS → Build Features
+Build Features → Integrate All → Validate All → FAIL → Fix Issues
+Fix Issues → Re-integrate → Re-validate → PASS → Build Admin
+Build Admin → Integrate All → Validate All → PASS → Ship
+```
+
+**NEVER:**
+- Skip integration after coding
+- Use only one validator (must be all 4 in parallel)
+- Proceed to next features before validation PASSES
+- Call random phases like "deployment fix" - just FIX and re-validate
 
 ## Phase 0: Requirements Definition (PM First!)
 **Duration**: Complete before ANY design work
@@ -180,6 +219,37 @@ PARALLEL EXECUTION:
 
 ## Phase 2: Parallel Implementation (Full-Stack + SDET)
 **Goal**: Build complete features following architecture contracts
+
+### CRITICAL RULE: Blocking Dependencies Get Integration Check
+
+**Example from DEPENDENCIES.md:**
+```
+Phase 2a: Authentication (blocks everything)
+Phase 2b: Features requiring auth
+```
+
+**WORKFLOW:**
+```
+Phase 2a: Build Authentication
+├── @fullstack-engineer #1 - Implement auth
+├── @sdet #1 - Write auth tests
+└── Wait for completion
+
+⬇️ MANDATORY PHASE 2.5a - Integration Check for Auth
+└── @integration-engineer
+    ├── Run auth tests
+    ├── Verify auth ACTUALLY WORKS
+    └── Fix any failures
+
+⬇️ ONLY AFTER AUTH VERIFIED
+Phase 2b: Build Features Needing Auth
+├── @fullstack-engineer #2 - User profile (needs auth)
+├── @sdet #2 - Profile tests
+├── @fullstack-engineer #3 - Todo API (needs auth)
+└── @sdet #3 - Todo tests
+```
+
+### Standard Parallel Execution (Non-blocking Features)
 
 ```
 PARALLEL EXECUTION (per feature):
@@ -271,38 +341,48 @@ SOLO EXECUTION:
 ## Phase 3: Validation & Quality Assurance
 **Goal**: Validate the INTEGRATED, WORKING system
 
+**🚨 MUST BE PARALLEL - ALL 4 VALIDATORS IN ONE MESSAGE:**
 ```
-PARALLEL EXECUTION:
-├── Task G: @test-engineer
-│   ├── Design and run E2E test scenarios
-│   ├── Test complete user journeys (not unit tests)
-│   ├── Cross-browser testing
-│   ├── Regression testing
-│   ├── Accessibility validation
-│   └── Focus on system-level behavior
-├── Task H: @product-manager
-│   ├── Validate golden paths on WORKING system
-│   ├── Verify all user stories implemented
-│   ├── Test actual user workflows
-│   └── Formal sign-off in .work/validation/sign-offs/
-├── Task I: @performance-engineer
-│   ├── Load testing on integrated system
-│   ├── Performance profiling
-│   └── Optimization recommendations
-└── Task J: @security-engineer
-    ├── Security audit of complete system
-    ├── Penetration testing
-    └── Vulnerability assessment
+PARALLEL EXECUTION (NEVER SEQUENTIAL):
+├── Task: @test-engineer - E2E testing and user journeys
+├── Task: @product-manager - Golden path validation
+├── Task: @performance-engineer - Load testing and optimization
+└── Task: @security-engineer - Security audit and compliance
 ```
 
-**Note on Test Types**:
-- Unit/integration tests already run in Phase 2.5
-- Test engineer focuses on END-TO-END user scenarios
-- PM validates from business/user perspective
+**Details per validator:**
+```
+@test-engineer:
+├── Design and run E2E test scenarios
+├── Test complete user journeys (not unit tests)
+├── Cross-browser testing
+├── Regression testing
+├── Accessibility validation
+└── Focus on system-level behavior
+
+@product-manager:
+├── Validate golden paths on WORKING system
+├── Verify all user stories implemented
+├── Test actual user workflows
+└── Formal sign-off in .work/validation/sign-offs/
+
+@performance-engineer:
+├── Load testing on integrated system
+├── Performance profiling
+└── Optimization recommendations
+
+@security-engineer:
+├── Security audit of complete system
+├── Penetration testing
+└── Vulnerability assessment
+```
+
+**VALIDATION OUTCOMES:**
+- ✅ ALL PASS → Proceed to next coding phase or deployment
+- ❌ ANY FAIL → Create fix tasks → Re-integrate → Re-validate
+- 🔄 REPEAT until ALL validators PASS
 
 **Critical**: Everyone validates the INTEGRATED system, not isolated components
-
-**Gate Check**: ALL validations PASS → Proceed to Phase 4
 
 ## Phase 4: Deployment Preparation
 **Goal**: Prepare the validated system for production

@@ -81,7 +81,19 @@ Task: @software-engineer-3 - Implement Database Layer
 Task: @sdet-3 - Write Database tests
 ```
 
-Wait for Phase 2a to complete, then Phase 2b:
+**🚨 CRITICAL: If Auth blocks other features, you MUST:**
+```
+Wait for Phase 2a to complete
+↓
+Task: @integration-engineer - Verify auth works (Phase 2.5a)
+→ Run auth tests
+→ Fix any failures
+→ Confirm auth ACTUALLY FUNCTIONS
+↓
+ONLY THEN proceed to Phase 2b
+```
+
+Phase 2b (AFTER auth verified):
 ```
 Task: @software-engineer-4 - Implement User Profile (needs Auth)
 Task: @sdet-4 - Write Profile tests
@@ -90,6 +102,7 @@ Task: @sdet-5 - Write Feed tests
 ```
 
 **NEVER assign entire product to one engineer!**
+**NEVER skip integration check for blocking dependencies!**
 
 ### Phase 4: Phase 2.5 - Integration Check (MANDATORY)
 🚨 **NEW MANDATORY PHASE - Cannot skip**
@@ -104,13 +117,19 @@ Task: @integration-engineer - Run ALL tests and reconcile deviations
 **GATE**: Integration must PASS before validation
 
 ### Phase 5: Validation (After Integration)
-Execute final validation:
+**🚨 MUST BE PARALLEL - ALL 4 VALIDATORS:**
 ```
-Task: @product-manager - Validate all features work per spec
-→ Tests golden paths
-→ Creates sign-off report
-→ Documents any gaps
+# In ONE message (NEVER sequential):
+Task: @product-manager - Validate golden paths and user stories
+Task: @test-engineer - Run E2E tests and user journeys  
+Task: @performance-engineer - Load testing and optimization
+Task: @security-engineer - Security audit and compliance
 ```
+
+**After validation:**
+- ✅ ALL PASS → Continue to next coding phase
+- ❌ ANY FAIL → Create fix tasks → Re-integrate → Re-validate
+- 🔄 REPEAT this cycle until ALL validators PASS
 
 ## Execution Gates
 
@@ -143,6 +162,31 @@ Task: @product-manager - Validate all features work per spec
 - ✅ Screenshots for UI features
 - ✅ Test results with coverage
 - ❌ No vague success claims
+
+## The Mandatory Cycle
+
+**IRON RULE: After EVERY coding phase:**
+```
+CODE → INTEGRATE → VALIDATE (4 parallel) → PASS → Next
+```
+
+**WRONG:**
+```
+Build Auth → Build Features → Build Admin → Integrate → Validate
+```
+
+**RIGHT:**
+```
+Build Auth → Integrate → Validate → PASS
+Build Features → Integrate → Validate → PASS  
+Build Admin → Integrate → Validate → PASS
+```
+
+**CRITICAL**: No "deployment fix phase" or made-up phases. Just:
+- Fix tasks if validation fails
+- Re-integrate
+- Re-validate with ALL 4 validators
+- Repeat until PASS
 
 ## Iteration Management
 
