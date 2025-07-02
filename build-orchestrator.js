@@ -152,6 +152,10 @@ mkdir -p "$INSTALL_DIR"/{architecture-templates,state-management,utilities,patte
 # Only create .work directories for local installation
 if [ "$INSTALL_MODE" = "local" ]; then
     mkdir -p .work/{tasks,sessions,architecture,state-archive}
+    # Create foundation directories for architect, UX, and PM
+    mkdir -p .work/foundation/{architecture,ux,product}
+    # Create validation directories for PM
+    mkdir -p .work/validation/{golden-paths,sign-offs}
     # Create a sample task structure (simplified, no streams)
     mkdir -p .work/tasks/sample-task/artifacts
 fi
