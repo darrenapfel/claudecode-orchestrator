@@ -1,8 +1,8 @@
 # Claude Code Orchestrator 🎭
 
-**Transform Claude from a Single Coder into an Elite 13-Person Dev Team**
+**Transform Claude from a Single Coder into an Elite 12-Person Dev Team**
 
-[![Version](https://img.shields.io/badge/version-3.9.0-blue.svg)](https://github.com/darrenapfel/orchestration-test)
+[![Version](https://img.shields.io/badge/version-4.0.0-blue.svg)](https://github.com/darrenapfel/orchestration-test)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude-Code%20Ready-purple.svg)](https://claude.ai/code)
 
@@ -16,10 +16,10 @@
 - **No accountability** → Claims success without evidence
 
 ### With Orchestrator
-- **13 specialists work in parallel** → 3-8x faster delivery
+- **12 specialists work in parallel** → 3-8x faster delivery
+- **PM-first requirements** → Build what users actually need
+- **Integration reconciliation** → Components that actually work together
 - **"Show me" protocol** → Git diffs, test output, or it didn't happen
-- **Unlimited working sessions** → Never loses context
-- **100% mission completion** → Automatically continues through fixable issues
 - **Evidence-based development** → Every claim independently verified
 
 ## 🎯 Watch the Magic Happen
@@ -31,32 +31,43 @@
 
 ### Claude Becomes:
 ```
-Loading parallel orchestration workflow...
+Loading orchestration system v4.0...
 
-[PARALLEL EXECUTION - 8 Active Tasks]
-├── 🏗️ Architect: Defining API contracts (POST /auth/login)
-├── 💻 Engineer-1: Building inventory service
-├── 💻 Engineer-2: Building order service  
-├── 💻 Engineer-3: Creating product catalog
-├── 🎨 UX Designer: Crafting responsive UI
-├── 🧪 SDET: Writing integration tests
-├── 🔒 Security: Implementing OAuth2 + RBAC
-└── 🚀 DevOps: Containerizing with Docker
+[PHASE 0: REQUIREMENTS - Product Manager]
+📋 Analyzing user needs for e-commerce platform
+✓ User stories: 15 core features identified
+✓ Acceptance criteria: Checkout < 3 clicks
+✓ Golden paths: Browse → Cart → Purchase
 
-[INTEGRATION CHECKPOINT - 15 MINUTES]
-🔍 Data Flow Validator: Testing form→API flow
-✓ Auth uses POST (not GET)
-✓ Passwords hashed before storage
-✓ Frontend/backend contracts match
+[PHASE 1: ARCHITECTURE - Complete Interfaces]
+🏗️ Architect: Defining ALL contracts upfront
+├── Auth API: POST /auth/login (no TBDs!)
+├── Inventory: Real-time stock tracking
+├── Orders: State machine defined
+└── Dependency graph: Phase 2a→2b→2c
 
-[30 MINUTES LATER - CONVERGENCE]
-✓ All services integrated and verified
-✓ 97% test coverage with full output shown
-✓ Security audit: PASSED (with evidence)
-✓ Running at http://localhost:3000
-✓ API docs at /api/docs
+[PHASE 2: PARALLEL BUILD - Full-Stack Teams]
+├── 💻 Engineer-1: Auth system (complete stack)
+├── 🧪 SDET-1: Auth tests (based on spec)
+├── 💻 Engineer-2: Inventory (complete stack)
+├── 🧪 SDET-2: Inventory tests (based on spec)
+└── 🎨 UX Designer: Responsive components
 
-Code Reviewer verdict: All claims verified ✓
+[PHASE 2.5: INTEGRATION RECONCILIATION]
+🔧 Integration Engineer: Running ALL tests
+✓ SDET tests executed → 3 failures fixed
+✓ API contracts matched to implementation  
+✓ Cross-feature integration verified
+✓ Deviations documented and resolved
+
+[PHASE 3: VALIDATION - Working System]
+✓ E2E tests: Complete user journeys pass
+✓ PM golden path: User can purchase in 2 clicks
+✓ Security audit: OWASP Top 10 checked
+✓ Performance: 50ms API response times
+
+[ITERATION COMPLETE]
+Ready for next feature batch or ship to production
 ```
 
 ## 💥 The Game-Changing Difference
@@ -96,32 +107,29 @@ Code Reviewer verdict: All claims verified ✓
 
 **Independent verification:** Different persona validates each claim from scratch
 
-### 3. Relentless Automatic Continuation
+### 3. PM-First With Integration Reconciliation
 
-The orchestrator NEVER stops if it can fix what's broken:
+Requirements drive architecture, architecture drives implementation:
 
 ```
-Phase 1: Build payment system
-✗ Stripe API key missing
-→ WORKS WITH CONSTRAINTS: Needs API key configuration
-→ Auto-creating Phase 2 (fixable external dependency)
+ITERATION 1: Core Features
+├── PM defines: User auth + product catalog
+├── Architect creates: Complete API contracts
+├── Engineers build: Following exact specs
+├── SDETs write: Tests for the contracts
+└── Integration: Reconciles ALL deviations
 
-Phase 2: Configure Stripe  
-✓ Test keys configured
-✓ Webhook endpoints created
-✓ Payment flow verified
-→ CONTINUES ORIGINAL MISSION
+ITERATION 2: Enhanced Features  
+├── PM defines: Add cart + checkout
+├── Architect updates: Ensures compatibility
+├── Engineers build: Integrated with iteration 1
+├── Integration: Tests cross-iteration flow
+└── Ship: Fully working increment
 
-Phase 3: Complete integration
-✗ Auth system using GET (security violation)
-🛑 SECURITY ENGINEER VETO: Passwords in URL
-→ Auto-creating fix phase (critical security issue)
-
-Phase 4: Fix auth security
-✓ Changed to POST requests
-✓ Passwords in request body only
-✓ Data flow validator confirms fix
-→ MISSION ACCOMPLISHED
+[Smart Parallelism]
+- Auth + UI library (no dependencies) → parallel
+- Cart (needs auth) → after auth complete
+- No "big bang" integration surprises
 ```
 
 ### 4. Infinite Context Memory
@@ -153,21 +161,20 @@ Friday: Ship to production (no context lost)
 - Complete documentation
 - Deployed and monitored
 
-## 💪 Your 13-Person AI Team
+## 💪 Your 12-Person AI Team
 
-1. **🎯 Orchestrator** - Project manager with veto authority
-2. **🏗️ Architect** - System design & integration contracts
-3. **💻 Software Engineer** - Feature implementation & development
-4. **🎨 UX Designer** - Pixel-perfect responsive design
-5. **🧪 SDET** - Automated testing specialist
-6. **🔍 Test Engineer** - E2E & edge cases
-7. **🔒 Security Engineer** - Critical violation halt authority
-8. **⚡ Performance Engineer** - Load testing & optimization
-9. **🚀 DevOps Engineer** - CI/CD & infrastructure
-10. **📚 Documentation Writer** - API docs & guides
-11. **🔗 Integration Engineer** - Real data flow testing
-12. **📋 Code Reviewer** - Implementation verification
-13. **✅ Validator** - Independent evidence verification
+1. **🎯 Orchestrator** - Project manager ensuring PM-first workflow
+2. **📋 Product Manager** - User stories, acceptance criteria, validation
+3. **🏗️ Architect** - Complete interfaces & dependency graphs
+4. **💻 Software Engineer** - Full-stack feature implementation
+5. **🎨 UX Designer** - User flows & responsive design
+6. **🧪 SDET** - Test writing based on architecture (not implementation)
+7. **🔧 Integration Engineer** - Test execution & deviation reconciliation
+8. **🔍 Test Engineer** - E2E user journey validation
+9. **🔒 Security Engineer** - Security audit & compliance
+10. **⚡ Performance Engineer** - Load testing & optimization
+11. **🚀 DevOps Engineer** - Deployment & monitoring
+12. **📚 Documentation Writer** - User guides & API docs
 
 ## 📦 Install in 30 Seconds
 
@@ -216,18 +223,18 @@ Claude automatically detects and loads the orchestration system.
 
 ## 📊 The Numbers Don't Lie
 
-| Metric | Without Orchestrator | With Orchestrator v3.9 |
+| Metric | Without Orchestrator | With Orchestrator v4.0 |
 |--------|---------------------|------------------------|
 | Development Speed | 1x | 3-8x |
+| Requirements First | Sometimes | Always (PM phase 0) |
+| Integration Success | Hope & pray | Guaranteed (phase 2.5) |
 | Test Coverage | "Some tests" | 90%+ with proof |
-| Context Retention | 20 minutes | Unlimited |
-| Completion Rate | 75% | 100% (auto-continuation) |
 | Production Bugs | Many | Near zero |
-| Evidence Required | None | Git diff + output + screenshot |
-| False Success Claims | Common | Impossible (code review) |
-| Validation Frequency | End only | After every task |
-| Integration Testing | Final only | Every 2-3 tasks |
-| Security Violations | Deployed | Blocked instantly |
+| Evidence Required | None | Every claim verified |
+| Component Mismatch | Common | Caught & fixed early |
+| Feature Dependencies | Guesswork | Explicit graph |
+| Context Retention | Per session | Across iterations |
+| Delivery Model | Big bang | Incremental & working |
 
 ## 🏆 Why Developers Never Go Back
 
@@ -249,41 +256,41 @@ Claude automatically detects and loads the orchestration system.
 
 ## 🛡️ Built-In Quality Assurance
 
-### Anti-Fabrication System
-- **Code Reviewer** audits all implementation claims
-- **Mandatory git diffs** for every code change
-- **"Show me" protocol** replaces "trust me" culture
-- **Binary validation** only: WORKS (with proof) or DOESN'T WORK
+### Requirements-Driven Development
+- **PM defines user needs first** before any design or code
+- **Complete interfaces upfront** - no TBDs or guesswork
+- **Dependency graphs** show exactly what can be parallel
+- **Golden path validation** on working systems only
 
-### Automatic Security Enforcement
-- **Security engineer veto power** halts credential-in-URL violations
-- **Integration contracts** prevent auth system mismatches
-- **POST-only authentication** enforced by architecture requirements
-- **Critical violations** trigger immediate fix phases
+### Integration That Actually Works
+- **Phase 2.5 reconciliation** catches all mismatches
+- **SDET writes tests** based on architecture, not code
+- **Integration engineer runs tests** and fixes failures
+- **Deviations documented** and resolved before validation
 
-### Relentless Mission Completion
-- **Auto-continuation** when issues are fixable and path is clear
-- **"WORKS WITH CONSTRAINTS"** outcome for honest external dependency reporting
-- **Data flow validation** every 2-3 parallel tasks prevents integration failures
-- **Orchestrator authority** to demand architecture revisions when needed
+### Evidence-Based Everything
+- **Git diffs required** for all code changes
+- **Test output shown** not just "tests pass"
+- **Screenshots timestamped** for UI features
+- **Different personas validate** - no self-certification
 
 ## 🤝 The Choice Is Yours
 
 **Keep struggling with:**
-- Sequential Claude taking forever
+- Components that don't integrate
+- Requirements discovered during coding
 - "It should work" without proof
-- Losing context every session
-- Stopping at the hard parts
-- Auth systems that expose passwords in URLs
-- Phantom implementations with no actual code
+- Frontend/backend mismatches
+- Tests written after bugs found
+- Big bang integration nightmares
 
-**Or join thousands who ship:**
-- 3-8x faster with parallel execution
-- 100% working code with git diffs as proof
-- Unlimited context across sessions
-- Complete features every time with auto-continuation
-- Security violations blocked before deployment
-- Every claim independently verified by code reviewer
+**Or join developers who ship:**
+- PM-first clarity on what to build
+- Complete architecture before coding
+- Integration issues fixed early
+- Tests that match the spec
+- Incremental working features
+- Every claim backed by evidence
 
 ## 🚀 Your AI Dev Team Awaits
 
@@ -291,9 +298,13 @@ Claude automatically detects and loads the orchestration system.
 ./orchestrator.sh  # Transform Claude into a team
 ```
 
-In 30 seconds, you'll have access to the same parallel execution system that's helping developers ship real products to real customers at unprecedented speed.
+In 30 seconds, you'll have a development team that:
+- Starts with user requirements
+- Builds complete features in parallel
+- Actually integrates components
+- Ships working software every iteration
 
-**No more excuses. No more delays. Just pure execution.**
+**Real architecture. Real integration. Real results.**
 
 ---
 

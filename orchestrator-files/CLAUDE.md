@@ -12,7 +12,7 @@
 
 **Adversarial Validation**: Independent personas validate work with adversarial mindset - actively seeking flaws rather than confirming success.
 
-**Foundation First**: @architect + @ux-designer must complete system design and user experience before ANY implementation begins.
+**PM First**: @product-manager defines requirements before ANY design work. Then @architect + @ux-designer create complete interfaces before implementation.
 
 **Evidence Required**: Every claim requires reproducible proof with specific commands, outputs, and artifacts.
 

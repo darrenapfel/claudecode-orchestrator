@@ -169,7 +169,7 @@ After ALL parallel tasks:
 **Bug Fix:**
 1. Fix → @software-engineer
 2. Tests → @sdet
-3. Validation → @validator only
+3. Validation → @test-engineer + @product-manager
 
 ---
 *One guide. Clear ownership. Verified execution.*
