@@ -33,34 +33,34 @@
 ```
 Loading orchestration system v4.0...
 
-[PHASE 0: REQUIREMENTS - Product Manager]
+[REQUIREMENTS STEP - Product Manager]
 📋 Analyzing user needs for e-commerce platform
 ✓ User stories: 15 core features identified
 ✓ Acceptance criteria: Checkout < 3 clicks
 ✓ Golden paths: Browse → Cart → Purchase
 
-[PHASE 1: ARCHITECTURE - Complete Interfaces]
+[FOUNDATION DESIGN STEP - Complete Interfaces]
 🏗️ Architect: Defining ALL contracts upfront
 ├── Auth API: POST /auth/login (no TBDs!)
 ├── Inventory: Real-time stock tracking
 ├── Orders: State machine defined
-└── Dependency graph: Phase 2a→2b→2c
+└── Dependency graph: Batch 1→2→3
 
-[PHASE 2: PARALLEL BUILD - Full-Stack Teams]
+[IMPLEMENTATION STEP - Full-Stack Teams]
 ├── 💻 Engineer-1: Auth system (complete stack)
 ├── 🧪 SDET-1: Auth tests (based on spec)
 ├── 💻 Engineer-2: Inventory (complete stack)
 ├── 🧪 SDET-2: Inventory tests (based on spec)
 └── 🎨 UX Designer: Responsive components
 
-[PHASE 2.5: INTEGRATION RECONCILIATION]
+[INTEGRATION STEP - Reconciliation]
 🔧 Integration Engineer: Running ALL tests
 ✓ SDET tests executed → 3 failures fixed
 ✓ API contracts matched to implementation  
 ✓ Cross-feature integration verified
 ✓ Deviations documented and resolved
 
-[PHASE 3: VALIDATION - Working System]
+[VALIDATION & QA STEP - Working System]
 ✓ E2E tests: Complete user journeys pass
 ✓ PM golden path: User can purchase in 2 clicks
 ✓ Security audit: OWASP Top 10 checked
@@ -226,8 +226,8 @@ Claude automatically detects and loads the orchestration system.
 | Metric | Without Orchestrator | With Orchestrator v4.0 |
 |--------|---------------------|------------------------|
 | Development Speed | 1x | 3-8x |
-| Requirements First | Sometimes | Always (PM phase 0) |
-| Integration Success | Hope & pray | Guaranteed (phase 2.5) |
+| Requirements First | Sometimes | Always (PM first) |
+| Integration Success | Hope & pray | Guaranteed (Integration Step) |
 | Test Coverage | "Some tests" | 90%+ with proof |
 | Production Bugs | Many | Near zero |
 | Evidence Required | None | Every claim verified |
@@ -263,7 +263,7 @@ Claude automatically detects and loads the orchestration system.
 - **Golden path validation** on working systems only
 
 ### Integration That Actually Works
-- **Phase 2.5 reconciliation** catches all mismatches
+- **Integration Step reconciliation** catches all mismatches
 - **SDET writes tests** based on architecture, not code
 - **Integration engineer runs tests** and fixes failures
 - **Deviations documented** and resolved before validation

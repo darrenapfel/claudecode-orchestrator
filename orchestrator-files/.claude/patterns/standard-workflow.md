@@ -6,7 +6,7 @@
 │                         ORCHESTRATION WORKFLOW                              │
 └─────────────────────────────────────────────────────────────────────────────┘
 
-PHASE 0: REQUIREMENTS DEFINITION
+REQUIREMENTS STEP
 ┌──────────────────┐
 │ @product-manager │
 │ User Stories     │
@@ -17,7 +17,7 @@ PHASE 0: REQUIREMENTS DEFINITION
     GATE CHECK
          │
          ▼
-PHASE 1: FOUNDATION DESIGN
+FOUNDATION DESIGN STEP
 ┌──────────────────┐     ┌──────────────────┐
 │   @architect     │ ║   │  @ux-designer    │
 │ System Design    │ ║   │ User Flows & UX  │
@@ -32,7 +32,7 @@ PHASE 1: FOUNDATION DESIGN
                    ALL PASS
                       ║
                       ▼
-PHASE 2: PARALLEL IMPLEMENTATION
+IMPLEMENTATION STEP (Batch 1)
 ┌─────────────────────┐ ┌─────────────────────┐ ┌─────────────────────┐ ┌─────────────────────┐
 │ @fullstack-eng #1  │ │ @sdet #1            │ │ @fullstack-eng #2  │ │ @sdet #2            │
 │ Feature A Complete  │ │ Feature A Tests     │ │ Feature B Complete  │ │ Feature B Tests     │
@@ -50,7 +50,7 @@ PHASE 2: PARALLEL IMPLEMENTATION
                                   GATE CHECK
                                        ║
                                        ▼
-PHASE 2.5: INTEGRATION RECONCILIATION
+INTEGRATION STEP
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                         @integration-engineer                               │
 │ • Review all deviations from ARCHITECTURE.md                               │
@@ -64,7 +64,7 @@ PHASE 2.5: INTEGRATION RECONCILIATION
                                   GATE CHECK
                                        ║
                                        ▼
-PHASE 3: VALIDATION & QUALITY ASSURANCE
+VALIDATION & QA STEP
 ┌─────────────────────┐ ┌─────────────────────┐ ┌─────────────────────┐ ┌─────────────────────┐
 │ @test-engineer      │ │ @product-manager    │ │@performance-eng     │ │@security-eng        │
 │ E2E Testing         │ │ Golden Path Valid.  │ │ Load Testing        │ │ Security Audit      │
@@ -74,10 +74,18 @@ PHASE 3: VALIDATION & QUALITY ASSURANCE
          │                       │                       │                       │
          └───────────────────── GATE CHECK ─────────────────────────────────────┘
                                     ║
-                                 ALL PASS
-                                    ║
-                                    ▼
-PHASE 4: DEPLOYMENT PREPARATION
+                               ALL PASS?
+                           ╱              ╲
+                         NO                YES
+                         ║                  ║
+                    FIX ISSUES         Continue to:
+                         ║             - Next Implementation Batch
+                  (Return to            - OR Deployment Step
+                 Implementation)
+                         ↑
+                         └─────────────┘
+
+DEPLOYMENT STEP (When all features complete)
 ┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
 │@documentation    │ ║   │   @devops        │ ║   │@integration-eng  │
 │ User Guides      │ ║   │ CI/CD Pipeline   │ ║   │ Final Validation │
@@ -91,15 +99,15 @@ PHASE 4: DEPLOYMENT PREPARATION
                          ║
                          ▼
             ┌────────────────────────┐
-            │ More features needed?  │
+            │ More milestones?       │
             └────────────────────────┘
                     ║         ║
                    YES        NO
                     ║         ║
                     ▼         ▼
             Return to      ✅ READY TO SHIP
-            PHASE 0
-            (Next batch)
+            REQUIREMENTS
+            STEP
 
 CRITICAL: The cycle REPEATS for EVERY coding phase:
 - After Auth → Integrate → Validate → Fix if needed → PASS → Next features
@@ -120,46 +128,72 @@ This workflow ensures integrated, working software by:
 
 ## Iterative Development & The Mandatory Cycle
 
-### The Iron Rule: CODE → INTEGRATE → VALIDATE → PASS
+### The Iron Rule: IMPLEMENT → INTEGRATE → VALIDATE → PASS
 
-**EVERY coding phase MUST follow this cycle:**
+**EVERY implementation batch MUST follow this cycle:**
 ```
-1. CODE (Phase 2/2a/2b/etc)
+1. IMPLEMENT (any coding work)
    ↓
-2. INTEGRATE (Phase 2.5)
+2. INTEGRATE
    - Run ALL tests
    - Fix integration issues
    ↓
-3. VALIDATE (Phase 3) - PARALLEL!
+3. VALIDATE - PARALLEL!
    - Test Engineer
    - Product Manager  
    - Performance Engineer
    - Security Engineer
    ↓
 4. If ANY validator fails:
-   - FIX (create fix tasks)
+   - FIX (just another implementation)
    - Re-INTEGRATE
    - Re-VALIDATE
    - REPEAT until ALL PASS
    ↓
-5. ONLY THEN proceed to next coding phase
+5. ONLY THEN proceed to next implementation batch
 ```
 
 **Example Flow:**
 ```
-Build Auth → Integrate Auth → Validate Auth → PASS → Build Features
-Build Features → Integrate All → Validate All → FAIL → Fix Issues
-Fix Issues → Re-integrate → Re-validate → PASS → Build Admin
-Build Admin → Integrate All → Validate All → PASS → Ship
+Implement Auth → Integrate Auth → Validate Auth → PASS → Implement Features
+Implement Features → Integrate All → Validate All → FAIL → Fix Issues
+Fix Issues → Re-integrate → Re-validate → PASS → Implement Admin
+Implement Admin → Integrate All → Validate All → PASS → Deploy
 ```
 
 **NEVER:**
-- Skip integration after coding
+- Skip integration after implementation
 - Use only one validator (must be all 4 in parallel)
-- Proceed to next features before validation PASSES
-- Call random phases like "deployment fix" - just FIX and re-validate
+- Proceed to next implementation before validation PASSES
+- Create made-up steps - fixes are just more implementation
 
-## Phase 0: Requirements Definition (PM First!)
+### 🚨 What "PASS" Actually Means
+
+**PASS requires ALL of these:**
+- ✅ Every user story works end-to-end (not just "page loads")
+- ✅ User completes the actual task (not just "API returns 200")
+- ✅ Data persists correctly (not just "form submits")
+- ✅ All integration tests passing (with evidence)
+- ✅ Test coverage meets target (with numbers)
+
+**These are NOT passing:**
+- ❌ "92% of pages are accessible" → Features must WORK
+- ❌ "Needs configuration later" → Configure it NOW
+- ❌ "Works locally" → Must work in deployment
+- ❌ "UI looks good" → Must function correctly
+- ❌ "8/16 features working" → That's 50% FAIL
+
+**PM Validation Must Test:**
+```
+For each user story:
+1. Can user complete the task?
+2. Does data persist?
+3. Do errors recover gracefully?
+4. Is performance acceptable?
+If ANY answer is NO → FAIL → Fix required
+```
+
+## Requirements Step (PM First!)
 **Duration**: Complete before ANY design work
 **Goal**: Define what we're building and why
 
@@ -178,11 +212,11 @@ SOLO EXECUTION:
 - `.work/foundation/product/acceptance-criteria.md`
 - `.work/foundation/product/golden-paths.md`
 
-**Gate Check**: User stories COMPLETE with acceptance criteria → Proceed to Phase 1
+**Gate Check**: User stories COMPLETE with acceptance criteria → Proceed to Foundation Design
 
 **Why PM First**: User needs drive architecture, not the reverse.
 
-## Phase 1: Foundation Design (Architecture-First)
+## Foundation Design Step (Architecture-First)
 **Goal**: Design system with clear interfaces to prevent integration issues
 
 ```
@@ -215,34 +249,34 @@ PARALLEL EXECUTION:
 - `.work/foundation/architecture/DEPENDENCIES.md` - What can be built in parallel
 - **ALL INTERFACES MUST BE COMPLETE** - No "TBD" sections allowed
 
-**Gate Check**: Both complete with ALL interfaces fully defined → Proceed to Phase 2
+**Gate Check**: Both complete with ALL interfaces fully defined → Proceed to Implementation
 
-## Phase 2: Parallel Implementation (Full-Stack + SDET)
+## Implementation Step (Full-Stack + SDET)
 **Goal**: Build complete features following architecture contracts
 
 ### CRITICAL RULE: Blocking Dependencies Get Integration Check
 
 **Example from DEPENDENCIES.md:**
 ```
-Phase 2a: Authentication (blocks everything)
-Phase 2b: Features requiring auth
+Batch 1: Authentication (blocks everything)
+Batch 2: Features requiring auth
 ```
 
 **WORKFLOW:**
 ```
-Phase 2a: Build Authentication
+Implementation Batch 1: Build Authentication
 ├── @fullstack-engineer #1 - Implement auth
 ├── @sdet #1 - Write auth tests
 └── Wait for completion
 
-⬇️ MANDATORY PHASE 2.5a - Integration Check for Auth
+⬇️ MANDATORY INTEGRATION STEP for Auth
 └── @integration-engineer
     ├── Run auth tests
     ├── Verify auth ACTUALLY WORKS
     └── Fix any failures
 
 ⬇️ ONLY AFTER AUTH VERIFIED
-Phase 2b: Build Features Needing Auth
+Implementation Batch 2: Build Features Needing Auth
 ├── @fullstack-engineer #2 - User profile (needs auth)
 ├── @sdet #2 - Profile tests
 ├── @fullstack-engineer #3 - Todo API (needs auth)
@@ -285,18 +319,18 @@ PARALLEL EXECUTION (per feature):
 
 **Important Notes**:
 - Full-stack engineers and SDETs work in TRUE parallel
-- Neither runs the other's code during Phase 2
+- Neither runs the other's code during Implementation Step
 - SDETs write tests based on architecture, not implementation
-- Tests will be executed in Phase 2.5 by integration engineer
+- Tests will be executed in Integration Step by integration engineer
 
 **Deviation Protocol**:
 - If implementation requires changes to interfaces → DOCUMENT in EVIDENCE.md
 - Include: what changed, why it was necessary, impact on other features
-- Integration engineer will reconcile all deviations in next phase
+- Integration engineer will reconcile all deviations in next step
 
 **Gate Check**: ALL features complete + tests written → Proceed to Integration
 
-## Phase 2.5: Integration Reconciliation (NEW!)
+## Integration Step (NEW!)
 **Goal**: Reconcile all parallel work, run SDET tests, and fix issues
 
 ```
@@ -336,9 +370,9 @@ SOLO EXECUTION:
   - Compatibility with previous iterations verified
 - Working, tested, integrated system ready for validation
 
-**Gate Check**: All tests passing + system integrated → Proceed to Phase 3
+**Gate Check**: All tests passing + system integrated → Proceed to Validation Step
 
-## Phase 3: Validation & Quality Assurance
+## Validation & QA Step
 **Goal**: Validate the INTEGRATED, WORKING system
 
 **🚨 MUST BE PARALLEL - ALL 4 VALIDATORS IN ONE MESSAGE:**
@@ -384,7 +418,7 @@ PARALLEL EXECUTION (NEVER SEQUENTIAL):
 
 **Critical**: Everyone validates the INTEGRATED system, not isolated components
 
-## Phase 4: Deployment Preparation
+## Deployment Step
 **Goal**: Prepare the validated system for production
 
 ```
@@ -422,8 +456,8 @@ PARALLEL EXECUTION:
 - All deviations tracked in EVIDENCE.md
 - Integration engineer reconciles differences
 
-### 4. Dedicated Integration Phase
-- Phase 2.5 specifically for integration
+### 4. Dedicated Integration Step
+- Integration Step specifically for integration
 - One engineer reviews ALL parallel work
 - Fixes mismatches before validation
 
@@ -463,7 +497,7 @@ PARALLEL EXECUTION:
 **After implementation, orchestrator MUST:**
 - [ ] Collect all EVIDENCE.md files
 - [ ] Check for reported deviations
-- [ ] Assign integration engineer for Phase 2.5
+- [ ] Assign integration engineer for Integration Step
 - [ ] Ensure integration completes before validation
 
 **Before marking complete, orchestrator MUST verify:**
@@ -524,20 +558,20 @@ POST /api/todos
 
 ## Dependency Graph (CRITICAL!)
 ### Iteration 1
-Phase 2a (can be parallel):
+Implementation Batch 1 (can be parallel):
 - Feature A: Authentication (no dependencies)
 - Component Library (no dependencies)
 
-Phase 2b (depends on 2a):
-- Feature B: Todos (requires Auth from 2a)
+Implementation Batch 2 (depends on Batch 1):
+- Feature B: Todos (requires Auth from Batch 1)
 - User Dashboard (requires Component Library)
 
 ### Iteration 2 (example)
-Phase 2a (can be parallel):
+Implementation Batch 1 (can be parallel):
 - Feature C: Notifications (requires Auth from Iteration 1)
 - Feature D: Search (no dependencies)
 
-Phase 2b (depends on 2a):
+Implementation Batch 2 (depends on Batch 1):
 - Feature E: Admin Panel (requires Auth + Notifications)
 
 [Continue pattern for additional iterations]

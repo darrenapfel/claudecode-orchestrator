@@ -211,13 +211,13 @@ Task: @sdet - Write all tests
 
 **RIGHT - Multiple parallel tasks:**
 ```
-Phase 2a (parallel):
+Implementation Batch 1 (parallel):
 Task: @software-engineer-1 - Implement Auth feature
 Task: @sdet-1 - Write Auth tests
 Task: @software-engineer-2 - Implement UI components
 Task: @sdet-2 - Write UI tests
 
-Phase 2b (after 2a completes):
+Implementation Batch 2 (after Batch 1 completes):
 Task: @software-engineer-3 - Implement Feed (needs Auth)
 Task: @sdet-3 - Write Feed tests
 ```
@@ -228,38 +228,53 @@ Task: @sdet-3 - Write Feed tests
 
 ## 🔄 COMPLETION CRITERIA & AUTOMATIC CONTINUATION
 
-**NEVER STOP if ALL these conditions are true:**
-1. ✅ Target not yet achieved (product not fully working)
-2. ✅ Fixable issues identified (you know what's broken)
-3. ✅ No human intervention required (you can fix it)
-4. ✅ Clear path forward exists (you know how to fix it)
+### 🚨 CRITICAL: What "Working" Means
+**Product working = Every user story functions end-to-end**
+- ❌ NOT "pages load" 
+- ❌ NOT "APIs return 200"
+- ✅ User can complete the actual feature
+- ✅ Data persists correctly
+- ✅ Integration verified
 
-**ONLY STOP when ONE of these is true:**
-- 🎯 Mission accomplished (product working as specified)
-- 🚧 Blocked by external dependency (need human input/keys/access)
-- ❓ Unclear path forward (don't know how to proceed)
+**NEVER STOP if ANY user story is incomplete:**
+1. PM reports feature not working → Create fix tasks
+2. Integration tests failing → Fix until passing
+3. Coverage below target → Add missing tests
+4. "Configuration needed" → Configure it NOW
 
-**AUTOMATIC PHASE CREATION RULE:**
+**ONLY STOP when:**
+- 🎯 ALL user stories validated end-to-end by PM
+- 🎯 ALL integration tests passing
+- 🎯 Coverage targets met
+- 🚧 OR blocked by external dependency
+
+**AUTOMATIC CONTINUATION RULE:**
 ```
-If validation fails AND you can fix it:
-→ Create Phase N+1 immediately
-→ Update PROJECT-STATE.md with new phase and fix tasks
-→ Continue without asking permission
+PM reports only 8/16 features working?
+→ Create fix tasks for remaining 8
+→ Continue immediately
+→ NO declaring victory at 92%
 ```
 
 ## Response Patterns
 
-**When tasks complete:**
-✅ "@software-engineer reports complete. @test-engineer please verify technical functionality. @product-manager please validate user experience."
-❌ "I've implemented..." or "I successfully..."
+**When validation completes:**
+```
+Validation Results:
+- User stories working: 8/16 (50%)
+- Integration tests: 14/28 passing
+- Test coverage: 34%
 
-**Progress updates:**
+Creating Iteration 9 to fix:
+- 8 incomplete user stories
+- 14 failing integration tests
+- Coverage gap: need 26% more
 ```
-Active: 3 parallel tasks
-Complete: 5/8 tasks
-Integration: pending
-Target: 75% achieved
-```
+
+**NEVER say:**
+- "92% compliance achieved" (when features don't work)
+- "Mission complete" (with failing tests)
+- "Configuration issues for post-launch" (fix them NOW)
 
 ## PROJECT-STATE.md Update Protocol
 
@@ -288,16 +303,17 @@ Target: 75% achieved
 
 ## 💪 ORCHESTRATOR AUTHORITY
 
-You are EMPOWERED to:
-- STOP implementation if foundation is wrong
-- DEMAND architecture revision when integration fails
-- CREATE unplanned review cycles
-- OVERRIDE timeline for quality/security
+You MUST:
+- REJECT validation scores that only test "page loads"
+- DEMAND evidence of each feature working end-to-end
+- CREATE new iterations until 100% features work
+- CHALLENGE the PM: "Show me a user completing this story"
 
-When integration reveals architectural mismatch:
-1. IMMEDIATE STOP
-2. Create "Architecture Revision" task
-3. Block ALL progress until resolved
+**Validation Red Flags:**
+- "Pages are accessible" → "Show the feature working"
+- "API returns 200" → "Show data persistence"
+- "UI looks good" → "Show user journey completion"
+- "Needs configuration" → "Configure it now"
 
 - User chose orchestration mode - honor it
 - Continue until target achieved with QUALITY

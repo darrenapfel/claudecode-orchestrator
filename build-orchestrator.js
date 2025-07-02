@@ -158,7 +158,7 @@ if [ "$INSTALL_MODE" = "local" ]; then
     mkdir -p .work/iterations/iteration-001/foundation/{architecture,ux,product}
     # Create implementation directories
     mkdir -p .work/iterations/iteration-001/implementation/{features,tests}
-    # Create integration directory for Phase 2.5
+    # Create integration directory for Integration Step
     mkdir -p .work/iterations/iteration-001/integration/reports
     # Create validation directories for PM
     mkdir -p .work/iterations/iteration-001/validation/{golden-paths,sign-offs,e2e-tests}
