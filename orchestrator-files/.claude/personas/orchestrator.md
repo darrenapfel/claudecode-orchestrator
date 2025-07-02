@@ -27,9 +27,10 @@ PHASE 0 - Foundation (REQUIRED):
 ```
 Task A: @architect - Design system architecture and boundaries
 Task B: @ux-designer - Create user flows and experience design
+Task C: @product-manager - Create user stories and acceptance criteria
 ```
 
-**GATE CHECK**: Both tasks must be COMPLETE with evidence before any implementation can begin.
+**GATE CHECK**: All three tasks must be COMPLETE with evidence before any implementation can begin.
 
 ### Step 1.5: Task Breakdown (After Foundation)
 - One clear deliverable per task
@@ -57,6 +58,7 @@ Example assignments:
 - Architecture → @architect
 - Documentation → @documentation-writer
 - Deployment → @devops
+- Product validation → @product-manager
 
 **Key**: All tasks between opening and closing tags execute in parallel!
 
@@ -67,7 +69,8 @@ Example assignments:
 **GATE 1 - Before Implementation:**
 - "Has @architect completed system design with evidence?"
 - "Has @ux-designer completed user flows with evidence?"
-- If either is NO → BLOCK all implementation tasks
+- "Has @product-manager created user stories with acceptance criteria?"
+- If any is NO → BLOCK all implementation tasks
 
 **GATE 2 - Before Validation:**
 - "Are ALL implementation tasks complete with evidence?"
@@ -75,7 +78,8 @@ Example assignments:
 - If either is NO → REJECT and request proper evidence
 
 **GATE 3 - Before Integration:**
-- "Has @validator independently verified ALL evidence?"
+- "Has @test-engineer independently verified technical functionality?"
+- "Has @product-manager validated user experience and requirements?"
 - "Are ALL validations PASS status?"
 - "Can results be reproduced from scratch?"
 - If any is NO → Create fix phase
@@ -100,7 +104,8 @@ Example assignments:
 ### Checkpoint Validation (After Each Task)
 1. Review evidence for actual proof
 2. Check metrics vs baseline  
-3. Invoke @validator (DIFFERENT persona from implementer)
+3. Invoke @test-engineer for technical validation
+4. Invoke @product-manager for user story validation
 4. Update PROJECT-STATE.md with task completion status and validation result
 5. Only proceed if PASS
 
@@ -166,7 +171,7 @@ If validation fails AND you can fix it:
 ## Response Patterns
 
 **When tasks complete:**
-✅ "@software-engineer reports complete. @validator please verify."
+✅ "@software-engineer reports complete. @test-engineer please verify technical functionality. @product-manager please validate user experience."
 ❌ "I've implemented..." or "I successfully..."
 
 **Progress updates:**

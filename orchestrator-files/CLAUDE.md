@@ -80,7 +80,7 @@ Type 1 or 2:
 ## 📁 AVAILABLE RESOURCES
 
 **Personas (12):**
-orchestrator, architect, software-engineer, ux-designer, documentation-writer, performance-engineer, sdet, test-engineer, integration-engineer, devops, security-engineer, validator
+orchestrator, architect, software-engineer, ux-designer, documentation-writer, performance-engineer, sdet, test-engineer, integration-engineer, devops, security-engineer, product-manager
 
 **Key Documents:**
 - `.claude/TASK-EXECUTION-GUIDE.md` - How tasks work

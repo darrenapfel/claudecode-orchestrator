@@ -74,14 +74,15 @@ npm test
 - Message: "feat: implement feature"
 ```
 
-### 3. Checkpoint Validation (Orchestrator + Validator)
+### 3. Checkpoint Validation (Orchestrator + Test Engineer + PM)
 
 After EACH task:
 1. Orchestrator reviews evidence
 2. Checks metrics vs baseline
-3. Invokes @validator
-4. Binary PASS/FAIL decision
-5. FAIL = Create fix task
+3. Invokes @test-engineer for technical validation
+4. Invokes @product-manager for user story compliance
+5. Binary PASS/FAIL decision
+6. FAIL = Create fix task
 
 ### 4. Integration Convergence (NEW v3.3)
 
@@ -98,7 +99,7 @@ After ALL parallel tasks:
 |------|---------|-----------|
 | Orchestrator | Tasks, .work structure | Checkpoints |
 | Personas | INTERFACE.md, EVIDENCE.md | Own work |
-| Validator | Validation reports | All claims |
+| Product-Manager | User stories, golden path validation | User experience |
 | Test-Engineer | Integration tests | System integration |
 
 ## Git Protocol
