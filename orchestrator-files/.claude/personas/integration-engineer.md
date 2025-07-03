@@ -103,7 +103,7 @@ Every integration test MUST show:
    - Implementation used: SQLite
    - Resolution: Documented as acceptable for dev
 
-## Cross-Iteration Compatibility
+## Cross-Sprint Compatibility
 - ✅ All features from previous sprints still work
 - ✅ No breaking changes introduced
 

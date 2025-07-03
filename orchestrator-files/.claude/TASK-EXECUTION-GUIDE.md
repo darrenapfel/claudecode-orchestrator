@@ -3,6 +3,18 @@
 ## Overview
 Single source of truth for task execution in orchestrator mode. Consolidates all execution protocols.
 
+## Session Initialization
+
+### Discovery Step (Optional, ONE-TIME)
+When user requests are vague ("build me a...", "create an app that..."), execute Discovery Step ONCE at session start:
+
+1. **Parallel Question Generation**: 6 personas ask 0-3 clarifying questions each
+2. **Consolidation**: Orchestrator merges and presents max 15-18 questions
+3. **Storage**: Save responses in `.work/discovery/` for ALL sprints to reference
+4. **Never Repeat**: Discovery runs ONCE per session, applies to all milestones
+
+See `.claude/patterns/discovery-process.md` for detailed execution.
+
 ## Task Lifecycle
 
 ### 1. Task Creation (Orchestrator)

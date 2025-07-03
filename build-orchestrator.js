@@ -152,21 +152,20 @@ mkdir -p "$INSTALL_DIR"/{architecture-templates,state-management,utilities,patte
 # Only create .work directories for local installation
 if [ "$INSTALL_MODE" = "local" ]; then
     mkdir -p .work/{tasks,sessions,architecture,state-archive}
-    # Create iteration structure
-    mkdir -p .work/iterations/iteration-001/{foundation,implementation,integration,validation,deployment}
+    # Create sprint structure
+    mkdir -p .work/sprints/sprint-001/{foundation,implementation,integration,validation,deployment}
     # Create foundation directories for architect, UX, and PM
-    mkdir -p .work/iterations/iteration-001/foundation/{architecture,ux,product}
+    mkdir -p .work/sprints/sprint-001/foundation/{architecture,ux,product}
     # Create implementation directories
-    mkdir -p .work/iterations/iteration-001/implementation/{features,tests}
+    mkdir -p .work/sprints/sprint-001/implementation/{features,tests}
     # Create integration directory for Integration Step
-    mkdir -p .work/iterations/iteration-001/integration/reports
+    mkdir -p .work/sprints/sprint-001/integration/reports
     # Create validation directories for PM
-    mkdir -p .work/iterations/iteration-001/validation/{golden-paths,sign-offs,e2e-tests}
+    mkdir -p .work/sprints/sprint-001/validation/{golden-paths,sign-offs,e2e-tests}
     # Create deployment directories
-    mkdir -p .work/iterations/iteration-001/deployment/{docs,configs}
-    # Keep legacy structure for backward compatibility
-    mkdir -p .work/foundation/{architecture,ux,product}
-    mkdir -p .work/validation/{golden-paths,sign-offs}
+    mkdir -p .work/sprints/sprint-001/deployment/{docs,configs}
+    # Create sessions directory
+    mkdir -p .work/sessions
     # Create a sample task structure
     mkdir -p .work/tasks/sample-task/artifacts
 fi
