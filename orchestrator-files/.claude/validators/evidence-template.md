@@ -3,13 +3,13 @@
 ## Overview
 This template ensures all evidence follows a consistent, verifiable format. Every task must produce evidence that can be independently validated.
 
-## Evidence Structure (v3.9)
+## Evidence Structure
 
 ```
-.work/tasks/YYYYMMDD-HHMM-description/
+.work/sprints/sprint-XXX/implementation/[task-name]/
 ├── TASK.md           # Task definition from orchestrator
-├── INTERFACE.md      # Public APIs/contracts
-├── EVIDENCE.md       # Proof of completion
+├── INTERFACE.md      # Public APIs/contracts (if applicable)
+├── EVIDENCE.md       # Proof of completion (REQUIRED)
 └── artifacts/        # Supporting files
     ├── screenshots/  # UI evidence with timestamps
     ├── test-output/  # Test results and coverage
@@ -21,11 +21,13 @@ This template ensures all evidence follows a consistent, verifiable format. Ever
 ```markdown
 # Task Evidence: [Task Name]
 
-**Task ID**: YYYYMMDD-HHMM-description
+**Sprint**: Sprint-XXX
+**Task ID**: [TASK-XXX or descriptive-name]
 **Assigned**: @[persona-name]
 **Start Time**: YYYY-MM-DD HH:MM:SS
 **Complete Time**: YYYY-MM-DD HH:MM:SS
-**Validated By**: @validator (must be different persona)
+**Duration**: [Must be <30 minutes]
+**Validation**: Pending (awaiting 4-validator parallel check)
 
 ## Summary
 [One paragraph describing what was accomplished and how it meets requirements]
@@ -139,8 +141,8 @@ Date:   Tue Jul 2 14:35:00 2025 -0700
     - Integrated with existing API
     - Maintained performance standards
     
-    Task: YYYYMMDD-HHMM-description
-    Evidence: .work/tasks/YYYYMMDD-HHMM-description/EVIDENCE.md
+    Task: TASK-XXX
+    Evidence: .work/sprints/sprint-XXX/implementation/[task]/EVIDENCE.md
 ```
 
 ## Known Issues
@@ -235,13 +237,19 @@ How this connects with other components:
 
 ## Validation Process
 
-### By Validator Persona
-1. **Read EVIDENCE.md** - Understand claims
-2. **Check artifacts** - Verify screenshots/logs exist
-3. **Run reproduction steps** - Confirm it works
-4. **Compare metrics** - Ensure baselines maintained
-5. **Test edge cases** - Go beyond happy path
-6. **Document findings** - Record validation results
+### Parallel Validation Process
+Validation happens with 4 validators working simultaneously:
+- **@product-manager**: Validates user stories work end-to-end
+- **@test-engineer**: Runs comprehensive E2E tests
+- **@performance-engineer**: Tests load and performance
+- **@security-engineer**: Audits security compliance
+
+Each validator:
+1. **Reads EVIDENCE.md** - Understands claims
+2. **Checks artifacts** - Verifies screenshots/logs exist
+3. **Runs reproduction steps** - Confirms it works
+4. **Tests their domain** - PM tests UX, Security tests vulnerabilities, etc.
+5. **Documents findings** - Creates validation evidence
 
 ### Validation Checklist
 - [ ] All evidence files present
@@ -258,6 +266,8 @@ How this connects with other components:
 - **Reproducibility is key** - Others must verify
 - **Quality over speed** - Better evidence takes time
 - **Independence required** - Can't validate own work
+- **Parallel validation** - 4 validators work simultaneously
+- **Sprint context** - Evidence organized by sprint
 - **Truth over convenience** - Don't hide failures
 
 ---

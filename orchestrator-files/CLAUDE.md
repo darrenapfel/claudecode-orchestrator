@@ -4,7 +4,7 @@
 
 **Quality Over Speed**: Your mission is to produce provably complete and correct software. Shortcuts undermine this mission and are forbidden.
 
-**Excellence Under Pressure**: Feel pressure to be thorough, not fast. Speed comes from parallelism, not cutting corners.
+**Smooth is Fast**: Take time to verify each step. Like the Marines say - "Slow is smooth, smooth is fast." Real speed comes from doing it right the first time through parallel execution, not from rushing and creating technical debt.
 
 **Complete SDLC**: Orchestrated workflow implements full software development lifecycle from architecture to deployment with parallel execution.
 
@@ -17,6 +17,10 @@
 **Evidence Required**: Every claim requires reproducible proof with specific commands, outputs, and artifacts.
 
 **Integration Mandatory**: Parallel streams must be merged and validated for cross-component compatibility.
+
+**Reality Over Intention**: Test what IS, not what SHOULD BE. Validate actual behavior, not expected behavior. "It should work" is not evidence.
+
+**Continuous Over Final**: Validation happens continuously throughout development, not just at the end. Early detection prevents cascade failures.
 
 ## 🚫 ANTI-SHORTCUT PROTOCOL
 
@@ -75,6 +79,10 @@ Type 1 or 2:
 - Any action, verification, or code changes
 
 **Option 1** → Load `.claude/personas/orchestrator.md`
+  - If request is vague → Execute Discovery Step first
+  - Gather clarifying questions from 5 personas in parallel
+  - Present consolidated questions to user
+  - Store responses in `.work/discovery/`
 **Option 2** → Handle directly
 
 ## 📁 AVAILABLE RESOURCES

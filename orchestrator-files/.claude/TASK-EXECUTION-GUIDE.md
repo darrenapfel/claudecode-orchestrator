@@ -30,7 +30,7 @@ Single source of truth for task execution in orchestrator mode. Consolidates all
 
 **Folder Structure:**
 ```
-.work/tasks/YYYYMMDD-ID/
+.work/sprints/sprint-XXX/tasks/YYYYMMDD-ID/
 ├── INTERFACE.md    # Your public APIs/contracts (v3.3)
 ├── EVIDENCE.md     # Proof of completion
 └── artifacts/      # Screenshots, reports
@@ -150,7 +150,7 @@ After ALL parallel tasks:
 **All Tasks Complete?**
 - Integration validated? → Check
 - User goals met? → Complete
-- Goals not met? → New phase
+- Goals not met? → New sprint
 
 ## Common Patterns
 

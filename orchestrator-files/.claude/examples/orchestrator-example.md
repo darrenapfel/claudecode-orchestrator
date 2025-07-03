@@ -1,199 +1,120 @@
 # Orchestrator Example: Building a Tide Tracking App
 
 ## Initial Request
-"build a web app that shows me the local tides based on zip code"
+"Build a web app that shows me the local tides based on zip code"
 
 ## Orchestrator Response
 
-```
-Entering autonomous orchestration mode...
-
-[Creates git init subtask]
-[Waits for completion]
-[Creates session structure subtask]
-[Waits for completion]
-
-Breaking down into deliverables:
-
-DEL-001: Project initialization (Next.js, TypeScript, Tailwind)
-DEL-002: Tide data service (NOAA API integration)
-DEL-003: Zip to location service (geocoding)
-DEL-004: Tide chart component (24-hour graph)
-DEL-005: Tide table component (11-day forecast)
-DEL-006: Main UI with zip code input
-DEL-007: Full test coverage
-DEL-008: Deployment configuration
-```
-
-## Deliverable Execution Flow
-
-### DEL-001: Project Initialization
-
-**Step 1: Define Task**
 ```markdown
-## Deliverable: Project Initialization
-**ID**: DEL-001
-**Max Duration**: 30 minutes
+Loading parallel orchestration workflow...
+Creating Sprint 1 structure: .work/sprints/sprint-001/
 
-### Success Criteria
-1. Next.js 14+ with App Router initialized
-2. TypeScript configured with strict mode
-3. Tailwind CSS working with custom config
-4. Development server runs on port 3000
-5. Basic layout component created
-
-### Required Evidence
-- [ ] Screenshot of running dev server
-- [ ] Directory tree showing structure
-- [ ] Sample page with Tailwind styles
-- [ ] Package.json with all dependencies
-- [ ] TypeScript config verification
+Breaking down into implementation tasks:
+- Testing infrastructure setup (MANDATORY FIRST)
+- NOAA API integration for tide data
+- Zip code to coordinates service
+- Tide visualization components
+- Main UI with user input
 ```
 
-**Step 2: Create Implementation Subtask**
-```python
-Task(
-    description="Build: Next.js project initialization",
-    prompt="""
-    1. Load persona: .claude/personas/software-engineer.md
-    2. Read task definition: .work/tasks/20250628-1000-init/TASK.md
-    3. Execute:
-       - Run: pnpm create next-app@latest tide-tracker --typescript --tailwind --app
-       - Configure TypeScript strict mode
-       - Create basic layout structure
-       - Verify dev server runs
-    4. Write evidence: .work/tasks/20250628-1000-init/EVIDENCE.md
-    5. Return: {"status": "complete", "evidence_path": "[path]", "files_created": [...]}
-    
-    DO NOT interact with user. Work autonomously.
-    """
-)
+## Sprint 1: Foundation & Core Features
+
+### Requirements Step
+```markdown
+Task: @product-manager - Define user stories and acceptance criteria
 ```
 
-**Step 3: Evaluate Evidence**
-[Orchestrator waits for subtask completion]
-[Reads returned evidence]
-[Verifies all criteria met]
+**PM Output:**
+- User can enter zip code and see today's tides
+- Shows high/low times with heights
+- Visual chart for 24-hour period
+- Mobile responsive design
 
-**Step 4: Create Test Subtask**
-```python
-Task(
-    description="Test: Next.js initialization",
-    prompt="""
-    1. Load persona: .claude/personas/sdet.md
-    2. Read implementation evidence: .work/tasks/20250628-1000-init/EVIDENCE.md
-    3. Create and run tests:
-       - Verify build process
-       - Test TypeScript compilation
-       - Validate Tailwind configuration
-       - Check accessibility setup
-    4. Write test results: .work/tasks/20250628-1000-init/TESTS.md
-    5. Return: {"status": "complete", "coverage": 95, "tests_passed": 12}
-    """
-)
+### Foundation Design Step (Parallel)
+```markdown
+Task: @architect - Design system architecture
+Task: @ux-designer - Create UI mockups and user flow
 ```
 
-**Step 5: Create Validation Subtask**
-```python
-Task(
-    description="Validate: Next.js initialization",
-    prompt="""
-    1. Load persona: .claude/personas/test-engineer.md
-    2. Read all evidence at: .work/tasks/20250628-1000-init/
-    3. Attempt to break implementation:
-       - Clone fresh and verify reproducibility
-       - Test with different Node versions
-       - Verify no console errors
-       - Check for security issues
-    4. Write validation: .work/tasks/20250628-1000-init/VALIDATION.md
-    5. Return: {"status": "PASS", "issues_found": 0}
-    """
-)
+### Implementation Step
+
+#### Batch 1: Testing & Foundation
+```markdown
+Task: @software-engineer-1 - Set up testing infrastructure
+→ Install Playwright, Vitest
+→ Configure test scripts
+→ Write first E2E test
+→ EVIDENCE: Show npm run test:e2e working
 ```
 
-**Step 6: Commit Deliverable**
-```python
-Task(
-    description="Commit: Project initialization",
-    prompt="""
-    1. Stage all changes
-    2. Commit with message:
-       feat(init): initialize Next.js project with TypeScript and Tailwind
-       
-       - Next.js 14.2.5 with App Router
-       - TypeScript 5.5.3 in strict mode
-       - Tailwind CSS 3.4.1 configured
-       - Tests: 12/12 passing
-       - Coverage: 95%
-       
-       Deliverable: DEL-001
-       Evidence: .work/tasks/20250628-1000-init/EVIDENCE.md
-       
-       🤖 Generated with [Claude Code](https://claude.ai/code)
-       Co-authored-by: Claude <noreply@anthropic.com>
-    3. Return: {"commit_sha": "a1b2c3d"}
-    """
-)
+**GATE: No feature work until testing complete!**
+
+#### Batch 2: Core Services (Parallel)
+```markdown
+Task: @software-engineer-2 - NOAA tide API service
+Task: @sdet-1 - Tide service tests
+Task: @software-engineer-3 - Zip geocoding service  
+Task: @sdet-2 - Geocoding tests
 ```
 
-### DEL-002: Tide Data Service
-
-[Similar flow repeated for NOAA API integration]
-- Define success criteria
-- Implement with software-engineer
-- Test with sdet
-- Validate with test-engineer and product-manager
-- Commit on success
-
-### Final PR Creation
-
-After all deliverables complete:
-
-```python
-Task(
-    description="Create pull request",
-    prompt="""
-    1. Generate summary from .work/sessions/20250628-tide-app/
-    2. Create PR with:
-       
-       ## Tide Tracking Web App
-       
-       ### Completed Deliverables
-       ✅ DEL-001: Project initialization
-       ✅ DEL-002: NOAA tide data integration  
-       ✅ DEL-003: Zip code geocoding service
-       ✅ DEL-004: 24-hour tide chart component
-       ✅ DEL-005: 11-day tide table
-       ✅ DEL-006: Main UI with zip input
-       ✅ DEL-007: 94% test coverage
-       ✅ DEL-008: Vercel deployment ready
-       
-       ### Evidence
-       All implementation evidence available in `.work/tasks/`
-       
-       ### Demo
-       - Dev server: http://localhost:3000
-       - Vercel preview: [link]
-       
-    3. Return: {"pr_url": "github.com/user/tide-tracker/pull/1"}
-    """
-)
+#### Batch 3: UI Components (After Services)
+```markdown
+Task: @software-engineer-4 - Tide chart component
+Task: @software-engineer-5 - Tide table component
+Task: @sdet-3 - Component tests
 ```
 
-## Key Differences from V1
+### Integration Step
+```markdown
+Task: @integration-engineer - Reconcile all components
+→ Run all SDET tests
+→ Fix integration issues
+→ Verify services work together
+→ Create INTEGRATION-REPORT.md
+```
 
-1. **Every action is a Task tool invocation** - No direct implementation
-2. **Structured returns** - JSON responses for decision making
-3. **Autonomous subtasks** - Each loads its own persona and works independently
-4. **Evidence chain** - Build → Test → Validate → Commit
-5. **Retry on failure** - Automatic fix subtasks with failure context
-6. **Git automation** - Repo creation, branching, commits, PR - all automated
+### Validation Step (Parallel - All 4)
+```markdown
+Task: @product-manager - Test golden paths
+Task: @test-engineer - Run E2E tests
+Task: @performance-engineer - Check API response times
+Task: @security-engineer - Audit API key handling
+```
+
+**Result**: ✅ All validators pass
+
+## Git Workflow Throughout Sprint
+
+**After each implementation batch:**
+```bash
+git add .
+git commit -m "feat: [description]
+
+Task: TASK-XXX
+Evidence: .work/sprints/sprint-001/implementation/[task]/EVIDENCE.md"
+```
+
+**Sprint complete:**
+```bash
+gh pr create --title "feat: tide tracking app MVP"
+```
+
+## Key Orchestration Principles
+
+1. **Never writes code** - Only delegates via Task tool
+2. **Parallel where possible** - Multiple engineers work simultaneously  
+3. **Evidence required** - Every task produces EVIDENCE.md
+4. **Integration mandatory** - Catch issues before validation
+5. **Binary validation** - PASS or create fix tasks
 
 ## Result
 
-A fully functional tide tracking app with:
-- Complete implementation
-- Comprehensive tests
-- Validated functionality
-- Git history showing incremental progress
-- PR ready for review
+Complete tide tracking app with:
+- ✅ All user stories implemented
+- ✅ 90%+ test coverage
+- ✅ Integration verified
+- ✅ All validators passed
+- ✅ Ready for deployment
+
+---
+*Orchestration enables fast, parallel delivery with quality gates at every step.*

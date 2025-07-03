@@ -78,12 +78,24 @@ VALIDATION & QA STEP
                            ╱              ╲
                          NO                YES
                          ║                  ║
-                    FIX ISSUES         Continue to:
-                         ║             - Next Implementation Batch
-                  (Return to            - OR Deployment Step
-                 Implementation)
-                         ↑
-                         └─────────────┘
+                         ▼             Continue to:
+    ┌─────────────────────────┐        - Next Implementation Batch
+    │ FIX → INTEGRATE → VALIDATE │     - OR Deployment Step
+    │        CYCLE              │      - OR Next Sprint
+    │ REPEAT UNTIL ALL PASS    │
+    └─────────────────────────┘
+              ║
+              ▼
+         Fix Tasks
+              ║
+              ▼
+      Integration Step
+              ║
+              ▼
+     Validation & QA Step
+              ║
+         (Return to
+         ALL PASS?)
 
 DEPLOYMENT STEP (When all features complete)
 ┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
@@ -99,20 +111,23 @@ DEPLOYMENT STEP (When all features complete)
                          ║
                          ▼
             ┌────────────────────────┐
-            │ More milestones?       │
+            │ Milestone Complete?     │
+            │ More features needed?   │
             └────────────────────────┘
                     ║         ║
                    YES        NO
                     ║         ║
                     ▼         ▼
-            Return to      ✅ READY TO SHIP
-            REQUIREMENTS
-            STEP
+            Start Next     ✅ ALL MILESTONES COMPLETE
+            Sprint (→ Requirements     Autonomous session done!
+            or Implementation)
+            
+🔄 SPRINTS CONTINUE UNTIL ALL USER GOALS ACHIEVED
 
-CRITICAL: The cycle REPEATS for EVERY coding phase:
-- After Auth → Integrate → Validate → Fix if needed → PASS → Next features
-- After Core Features → Integrate → Validate → Fix if needed → PASS → Next
-- NEVER skip to next coding phase without full validation PASS
+CRITICAL: The cycle REPEATS for EVERY implementation batch:
+- After Auth → Integrate → Validate → Fix if needed → PASS → Next batch
+- After Core Features → Integrate → Validate → Fix if needed → PASS → Next batch
+- NEVER skip to next implementation batch without full validation PASS
 
 Legend: ║ = Parallel Execution    │ = Sequential Flow    GATE = Mandatory Checkpoint
 ```
@@ -126,7 +141,28 @@ This workflow ensures integrated, working software by:
 5. Validating the working system
 6. Iterating for additional feature batches
 
-## Iterative Development & The Mandatory Cycle
+## Key Terminology
+
+**Sprint**: A complete cycle through the workflow steps. Some sprints include all steps (Requirements → Deployment), others just Implementation → Validation. Not every sprint includes all steps - sometimes you just need Implementation→Integration→Validation.
+
+**Implementation Batch**: Parallel work groups within Implementation Step, organized by dependencies (Implementation Batch 1 = independent work, Implementation Batch 2 = depends on Batch 1).
+
+**Milestone**: Product-specific goals that may require multiple sprints to achieve (e.g., "Core functionality complete", "Email system working"). These represent major user value deliveries, not process stages. For example:
+- Milestone 1: Core News Collection (might take 2 sprints)
+- Milestone 2: Email Delivery System (might take 1 sprint)
+- Milestone 3: Advanced Analytics (might take 3 sprints)
+
+**Fix Tasks**: Remediation work created when validation fails. Always followed by mandatory Integration → Validation cycle that repeats until all validators pass.
+
+**Steps**: The 6 workflow stages that may be included in a sprint:
+1. Requirements Step
+2. Foundation Design Step
+3. Implementation Step
+4. Integration Step
+5. Validation & QA Step
+6. Deployment Step
+
+## Sprint-Based Development & The Mandatory Cycle
 
 ### The Iron Rule: IMPLEMENT → INTEGRATE → VALIDATE → PASS
 
@@ -145,20 +181,32 @@ This workflow ensures integrated, working software by:
    - Security Engineer
    ↓
 4. If ANY validator fails:
-   - FIX (just another implementation)
-   - Re-INTEGRATE
-   - Re-VALIDATE
-   - REPEAT until ALL PASS
+   ┌─────────────────────────────────┐
+   │ MANDATORY FIX CYCLE:            │
+   │ • Create Fix Tasks              │
+   │ • Re-run Integration Step       │
+   │ • Re-run Validation Step        │
+   │ • REPEAT until ALL PASS         │
+   └─────────────────────────────────┘
    ↓
-5. ONLY THEN proceed to next implementation batch
+5. ONLY THEN proceed to:
+   - Next Implementation Batch
+   - OR Deployment Step
+   - OR Next Sprint
 ```
 
-**Example Flow:**
+**Example Sprint Flow:**
 ```
-Implement Auth → Integrate Auth → Validate Auth → PASS → Implement Features
-Implement Features → Integrate All → Validate All → FAIL → Fix Issues
-Fix Issues → Re-integrate → Re-validate → PASS → Implement Admin
-Implement Admin → Integrate All → Validate All → PASS → Deploy
+Sprint 1:
+  Requirements → Foundation Design → Implement Auth → Integrate → Validate → PASS
+  
+Sprint 2:
+  Implement Features → Integrate → Validate → FAIL
+  └── Fix Cycle: Fix bugs → Re-integrate → Re-validate → FAIL
+  └── Fix Cycle: Fix more → Re-integrate → Re-validate → PASS
+  
+Sprint 3:
+  Implement Admin → Integrate → Validate → PASS → Deploy
 ```
 
 **NEVER:**
@@ -183,15 +231,74 @@ Implement Admin → Integrate All → Validate All → PASS → Deploy
 - ❌ "UI looks good" → Must function correctly
 - ❌ "8/16 features working" → That's 50% FAIL
 
-**PM Validation Must Test:**
+### 🔄 The Mandatory Fix Cycle
+
+When validation fails, you MUST enter this cycle:
+```
+REPEAT UNTIL ALL VALIDATORS PASS:
+1. Create Fix Tasks for each failure
+2. Implement fixes (parallel where possible)
+3. Re-run Integration Step
+4. Re-run Validation Step (all 4 validators)
+5. Check results:
+   - All pass? → Continue to next batch/sprint
+   - Any fail? → Return to step 1
+```
+
+**Example Fix Cycle (from news aggregator project):**
+```
+Validation Failure: PM reports topic selection doesn't persist
+→ Fix Task: Correct topic persistence bug
+→ Integration: Run tests, fix test failures
+→ Validation: PM ✅, Security ❌ (auth tokens exposed in logs)
+→ Fix Task: Remove token logging
+→ Integration: Update tests for security
+→ Validation: ALL ✅ → Continue
+```
+
+**PM Validation Must Test (Specific Questions):**
 ```
 For each user story:
-1. Can user complete the task?
-2. Does data persist?
-3. Do errors recover gracefully?
-4. Is performance acceptable?
+1. Can user complete the task? (not just "page loads")
+2. Does data persist correctly? (not just "form submits")
+3. Do errors recover gracefully? (test actual error cases)
+4. Is performance acceptable? (measure actual response times)
+5. Does the feature work end-to-end? (complete user journey)
+
 If ANY answer is NO → FAIL → Fix required
 ```
+
+## Discovery Step (When Requirements are Vague)
+**Duration**: 30-45 minutes for question gathering and user response
+**Goal**: Transform vague requests into actionable context
+**When to use**: "Build me a...", "I want something like...", "Create an app that..."
+
+```
+PARALLEL EXECUTION:
+├── Task: @product-manager - Generate business clarification questions
+├── Task: @architect - Generate technical clarification questions
+├── Task: @ux-designer - Generate design clarification questions
+├── Task: @devops - Generate deployment clarification questions
+└── Task: @security-engineer - Generate security clarification questions
+```
+
+**Orchestrator then:**
+1. Consolidates questions (remove duplicates, limit to 15-20)
+2. Presents organized questions to user
+3. Stores responses in `.work/discovery/`
+4. Documents assumptions for unanswered questions
+5. Creates discovery summary for all personas to reference
+
+**Deliverables**:
+- `.work/discovery/questions/` - All questions from personas
+- `.work/discovery/responses/user-responses.md` - User's answers
+- `.work/discovery/responses/discovery-summary.md` - Key decisions & assumptions
+
+**Gate Check**: Discovery complete with responses documented → Proceed to Requirements
+
+**Why Discovery First**: Prevents costly assumptions and rework by clarifying intent upfront.
+
+See `.claude/patterns/discovery-process.md` for detailed execution guide.
 
 ## Requirements Step (PM First!)
 **Duration**: Complete before ANY design work
@@ -254,12 +361,26 @@ PARALLEL EXECUTION:
 ## Implementation Step (Full-Stack + SDET)
 **Goal**: Build complete features following architecture contracts
 
+### 🚨 MANDATORY FIRST: Testing Infrastructure Setup
+
+**BEFORE ANY FEATURE WORK:**
+```
+Task: @software-engineer-1 - Set up testing infrastructure
+→ Install frameworks from ARCHITECTURE.md
+→ Create test directory structure
+→ Configure package.json test scripts
+→ Write ONE passing E2E test
+→ EVIDENCE: Show npm run test:e2e working
+```
+
+**GATE: No feature work until testing setup complete!**
+
 ### CRITICAL RULE: Blocking Dependencies Get Integration Check
 
 **Example from DEPENDENCIES.md:**
 ```
-Batch 1: Authentication (blocks everything)
-Batch 2: Features requiring auth
+Implementation Batch 1: Authentication (blocks everything)
+Implementation Batch 2: Features requiring auth
 ```
 
 **WORKFLOW:**
@@ -355,6 +476,7 @@ SOLO EXECUTION:
     │   ├── Update code to match contracts OR
     │   └── Update contracts if changes are justified
     ├── Verify all features work together
+    ├── Ensure compatibility with previous sprints
     └── Create INTEGRATION-REPORT.md
 ```
 
@@ -367,7 +489,7 @@ SOLO EXECUTION:
   - Deviations found and how resolved
   - Contract updates made
   - Integration verified working
-  - Compatibility with previous iterations verified
+  - Compatibility with previous sprints verified
 - Working, tested, integrated system ready for validation
 
 **Gate Check**: All tests passing + system integrated → Proceed to Validation Step
@@ -412,13 +534,13 @@ PARALLEL EXECUTION (NEVER SEQUENTIAL):
 ```
 
 **VALIDATION OUTCOMES:**
-- ✅ ALL PASS → Proceed to next coding phase or deployment
+- ✅ ALL PASS → Proceed to next implementation batch or deployment
 - ❌ ANY FAIL → Create fix tasks → Re-integrate → Re-validate
 - 🔄 REPEAT until ALL validators PASS
 
 **Critical**: Everyone validates the INTEGRATED system, not isolated components
 
-## Deployment Step
+## Deployment Step (When all features complete)
 **Goal**: Prepare the validated system for production
 
 ```
@@ -466,7 +588,7 @@ PARALLEL EXECUTION:
 - Dependencies respected in task assignment
 - Parallel where safe, sequential where needed
 
-## Red Flags (Create Fix Phase)
+## Red Flags (Create Fix Tasks)
 - Engineers not reading ARCHITECTURE.md
 - Deviating from defined contracts
 - Building outside feature boundaries
@@ -556,7 +678,9 @@ POST /api/todos
 - Redis cache for sessions
 - Error handling middleware
 
-## Testing Infrastructure (MANDATORY)
+## Testing Infrastructure (MANDATORY FIRST TASK)
+**CRITICAL: This MUST be the first implementation task in Sprint 1**
+
 ### Frameworks
 - E2E Testing: Playwright
 - Unit Testing: Vitest + React Testing Library  
@@ -577,16 +701,22 @@ tests/
 - Critical paths: 100%
 - New code: 90%
 
-### First Implementation Task
+### First Implementation Task (Sprint 1, Before ANY Features)
 Testing setup MUST be completed before any feature work:
 - Install all test frameworks
 - Configure test scripts
 - Write one passing E2E test
 - Verify CI/CD integration
+- EVIDENCE: Show test:e2e script working
 
 ## Dependency Graph (CRITICAL!)
-### Iteration 1
-Implementation Batch 1 (can be parallel):
+### Sprint 1
+Testing Infrastructure Setup (MANDATORY FIRST):
+- Set up test frameworks from ARCHITECTURE.md
+- Configure test scripts
+- Write ONE passing E2E test
+
+Implementation Batch 1 (after testing setup):
 - Feature A: Authentication (no dependencies)
 - Component Library (no dependencies)
 
@@ -594,16 +724,52 @@ Implementation Batch 2 (depends on Batch 1):
 - Feature B: Todos (requires Auth from Batch 1)
 - User Dashboard (requires Component Library)
 
-### Iteration 2 (example)
+### Sprint 2 (example)
 Implementation Batch 1 (can be parallel):
-- Feature C: Notifications (requires Auth from Iteration 1)
+- Feature C: Notifications (requires Auth from Sprint 1)
 - Feature D: Search (no dependencies)
 
 Implementation Batch 2 (depends on Batch 1):
 - Feature E: Admin Panel (requires Auth + Notifications)
 
-[Continue pattern for additional iterations]
+[Continue pattern for additional sprints]
 ```
+
+## Work Directory Structure
+
+Sprints are organized in the `.work` directory:
+
+```
+.work/
+├── sprints/
+│   ├── sprint-001/              # First sprint
+│   │   ├── foundation/          # Requirements & Design outputs
+│   │   │   ├── architecture/    # ARCHITECTURE.md, DEPENDENCIES.md
+│   │   │   ├── ux/             # Wireframes, design system
+│   │   │   └── product/        # User stories, acceptance criteria
+│   │   ├── implementation/      # Code and tests
+│   │   │   ├── features/       # Feature implementations
+│   │   │   └── tests/          # SDET test suites
+│   │   ├── integration/        # Integration reports
+│   │   └── validation/         # Validation results
+│   │
+│   └── sprint-002/             # Next sprint (same structure)
+│
+├── PROJECT-STATE.md            # Current status
+├── tasks/                      # Individual task tracking
+└── sessions/                   # Work session logs
+```
+
+### Sprint Naming
+- Format: `sprint-XXX` (e.g., sprint-001, sprint-002)
+- Each sprint is self-contained
+- Later sprints can reference earlier ones
+
+### Cross-Sprint Dependencies
+When features in sprint-002 depend on sprint-001:
+- Architect documents in DEPENDENCIES.md
+- Integration engineer ensures compatibility
+- Tests verify cross-sprint integration
 
 ---
 *User stories first. Complete architecture upfront. Smart parallelism. Integration reconciliation. Validate working systems.*

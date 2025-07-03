@@ -23,7 +23,7 @@
 **Example**: @software-engineer verifies API endpoints return 200 status
 
 ### Level 2: Peer Validation (Code Quality)
-**Who**: @sdet during implementation phase
+**Who**: @sdet during implementation sprint
 **Scope**: Code quality, test coverage, basic functionality
 **Example**: @sdet reviews code structure, writes comprehensive tests
 
@@ -68,7 +68,7 @@
 - Console errors present
 - Cannot reproduce on fresh environment
 
-### Automatic FIX PHASE Creation:
+### Automatic FIX SPRINT Creation:
 - Any validation fails at any level
 - Evidence integrity compromised
 - Integration compatibility issues
@@ -128,7 +128,7 @@ npm run test:load
 2. Ensure: "Validation is by a DIFFERENT persona"
 3. Verify: "Validation level is appropriate"
 
-### Red Flags (Must Create Fix Phase):
+### Red Flags (Must Create Fix Sprint):
 - @software-engineer validating own API
 - @sdet validating own tests
 - @ux-designer validating own designs
@@ -137,11 +137,11 @@ npm run test:load
 
 ### Good Validation Assignment Pattern:
 ```
-Phase 1: @software-engineer implements API
-Phase 2: @sdet writes tests (Level 2 validation)
-Phase 3: @test-engineer runs full suite (Level 3 validation)  
-Phase 4: @product-manager validates user experience (Level 4 validation)
-Phase 5: @integration-engineer tests compatibility (Level 5 validation)
+Sprint 1: @software-engineer implements API
+Sprint 2: @sdet writes tests (Level 2 validation)
+Sprint 3: @test-engineer runs full suite (Level 3 validation)  
+Sprint 4: @product-manager validates user experience (Level 4 validation)
+Sprint 5: @integration-engineer tests compatibility (Level 5 validation)
 ```
 
 ### Bad Validation Assignment Pattern:
