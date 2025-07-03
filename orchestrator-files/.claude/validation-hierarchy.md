@@ -10,7 +10,7 @@
 | @software-engineer | Implementation | Nothing | Own code |
 | @sdet | Testing during implementation | Code quality, test coverage | Final system validation |
 | @test-engineer | Independent system testing | Full system functionality | Individual unit tests |
-| @validator | Adversarial evidence review | All evidence integrity | Nothing (validates everything) |
+| @product-manager | User experience validation | Product requirements, user stories | Technical implementation details |
 | @integration-engineer | Stream convergence | Cross-component compatibility | Individual streams |
 | @architect | System design | Architecture decisions | Implementation details |
 | @ux-designer | User experience | Design compliance | Technical implementation |
@@ -23,7 +23,7 @@
 **Example**: @software-engineer verifies API endpoints return 200 status
 
 ### Level 2: Peer Validation (Code Quality)
-**Who**: @sdet during implementation phase
+**Who**: @sdet during implementation sprint
 **Scope**: Code quality, test coverage, basic functionality
 **Example**: @sdet reviews code structure, writes comprehensive tests
 
@@ -32,10 +32,10 @@
 **Scope**: Full system testing, performance, E2E scenarios
 **Example**: @test-engineer runs Playwright tests, load testing, integration tests
 
-### Level 4: Adversarial Evidence Validation
-**Who**: @validator (different from all above)
-**Scope**: Evidence integrity, trying to break claims, finding gaps
-**Example**: @validator attempts to reproduce all claims, looks for edge cases
+### Level 4: Product Validation
+**Who**: @product-manager (different from all above)
+**Scope**: User experience, requirements fulfillment, golden path validation
+**Example**: @product-manager walks through user journeys, validates against user stories
 
 ### Level 5: Integration Validation
 **Who**: @integration-engineer
@@ -44,7 +44,7 @@
 
 ## Adversarial Mindset Examples
 
-### Good Adversarial Questions (@validator should ask):
+### Good Adversarial Questions (@test-engineer should ask):
 - "The tests show 95% passing - what about the 5% that failed?"
 - "Screenshot shows login working - what happens with invalid credentials?"
 - "API responds correctly - what about rate limiting and error cases?"
@@ -68,7 +68,7 @@
 - Console errors present
 - Cannot reproduce on fresh environment
 
-### Automatic FIX PHASE Creation:
+### Automatic FIX SPRINT Creation:
 - Any validation fails at any level
 - Evidence integrity compromised
 - Integration compatibility issues
@@ -101,13 +101,16 @@ npm run test:load
 # 1000 concurrent users: avg 200ms response
 ```
 
-### Level 4 (Adversarial): Evidence Integrity
-```bash
-# Reproducing claims on fresh clone
-git clone repo && npm install && npm test
-# Verifying edge cases
-curl -X POST localhost:3000/api/todos -d "invalid_json"
-# Testing failure scenarios
+### Level 4 (Product): User Experience Validation
+```markdown
+# Golden Path Validation
+1. New user registration → [Screenshot]
+2. Complete first task → [Screenshot]
+3. Error recovery → [Screenshot]
+# User story verification
+- STORY-001: ✅ User can register
+- STORY-002: ✅ User can login
+# Time to value: 2 minutes
 ```
 
 ### Level 5 (Integration): Cross-Component
@@ -122,10 +125,10 @@ curl -X POST localhost:3000/api/todos -d "invalid_json"
 
 ### Before Assigning Validation Tasks:
 1. Check: "Who implemented this feature?"
-2. Ensure: "Validator is a DIFFERENT persona"
+2. Ensure: "Validation is by a DIFFERENT persona"
 3. Verify: "Validation level is appropriate"
 
-### Red Flags (Must Create Fix Phase):
+### Red Flags (Must Create Fix Sprint):
 - @software-engineer validating own API
 - @sdet validating own tests
 - @ux-designer validating own designs
@@ -134,18 +137,18 @@ curl -X POST localhost:3000/api/todos -d "invalid_json"
 
 ### Good Validation Assignment Pattern:
 ```
-Phase 1: @software-engineer implements API
-Phase 2: @sdet writes tests (Level 2 validation)
-Phase 3: @test-engineer runs full suite (Level 3 validation)  
-Phase 4: @validator reviews evidence (Level 4 validation)
-Phase 5: @integration-engineer tests compatibility (Level 5 validation)
+Sprint 1: @software-engineer implements API
+Sprint 2: @sdet writes tests (Level 2 validation)
+Sprint 3: @test-engineer runs full suite (Level 3 validation)  
+Sprint 4: @product-manager validates user experience (Level 4 validation)
+Sprint 5: @integration-engineer tests compatibility (Level 5 validation)
 ```
 
 ### Bad Validation Assignment Pattern:
 ```
 ❌ @software-engineer implements AND validates API
 ❌ @sdet writes tests AND validates entire system
-❌ Combined: "@engineer and @validator working together"
+❌ Combined: "@engineer and @product-manager working together"
 ```
 
 ## Quality Gates

@@ -84,8 +84,8 @@
 ### @software-engineer
 "I write code that I'd be proud to debug in production"
 
-### @validator  
-"My job is to find flaws. Approving bad work undermines the mission"
+### @product-manager
+"The user's experience is the ultimate quality metric"
 
 ### @test-engineer
 "Every bug I miss could affect real users"

@@ -4,7 +4,7 @@
 
 This workflow enables indie developers to easily test and deploy their applications without deep DevOps knowledge. It provides three environments: local (development), preview (for human validation), and production.
 
-## Initial Environment Setup (First Session Only)
+## Initial Environment Setup (First Sprint Only)
 
 ### 1. Environment Definition
 
@@ -75,17 +75,17 @@ Based on the choice, orchestrator creates:
 
 ## Human Validation Process
 
-### 1. After Each Orchestrator Session
+### 1. After Each Orchestrator Sprint
 
 When orchestrator completes tasks:
 
 ```
-"✅ Session Complete\! All tasks finished successfully.
+"✅ Sprint Complete\! All tasks finished successfully.
 
 ## Ready for Human Validation
 
 I've deployed a preview of your changes:
-🔗 Preview URL: https://session-20240129-user-auth-myapp.vercel.app
+🔗 Preview URL: https://sprint-20240129-user-auth-myapp.vercel.app
 
 To test the new features:
 1. Click the preview link above
@@ -164,7 +164,7 @@ Add deployment capabilities:
 - Set up CI/CD pipelines
 
 ### 2. Preview Deployments
-After each session:
+After each sprint:
 - Deploy to preview environment
 - Generate shareable URLs
 - Provide testing instructions
@@ -193,7 +193,7 @@ graph LR
     D --> E[Ready to Deploy]
 ```
 
-### 2. Per-Session Flow
+### 2. Per-Sprint Flow
 ```mermaid
 graph LR
     A[Orchestrator Completes] --> B[Deploy Preview]
@@ -287,7 +287,7 @@ Instructions provided:
 Update orchestrator's completion message:
 
 ```markdown
-## Session Complete ✅
+## Sprint Complete ✅
 
 All tasks finished successfully:
 - ✨ Feature: User authentication
@@ -298,7 +298,7 @@ All tasks finished successfully:
 ## 🚀 Preview Deployment
 
 Your changes are live at:
-https://session-auth-myapp.vercel.app
+https://sprint-auth-myapp.vercel.app
 
 **Test Checklist:**
 - [ ] Register new user

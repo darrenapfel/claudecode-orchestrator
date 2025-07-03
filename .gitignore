@@ -38,5 +38,4 @@ Thumbs.db
 .ignore-working-docs/
 
 # Working directories
-.work/
 .backup-orchestrator-full/

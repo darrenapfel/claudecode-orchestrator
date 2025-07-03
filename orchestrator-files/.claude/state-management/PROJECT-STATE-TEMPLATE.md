@@ -4,6 +4,8 @@
 
 ## 🎯 Quick Context
 **Project**: [PROJECT-NAME]
+**Current Sprint**: Sprint [XXX] - [SPRINT-GOAL]
+**Current Milestone**: Milestone [X] - [MILESTONE-NAME]
 **Stage**: [Planning | Development | Testing | Staging | Production]
 **Last Session**: [DATE] - [BRIEF-ACCOMPLISHMENT]
 **Next Priority**: [IMMEDIATE-NEXT-TASK]
@@ -13,7 +15,7 @@
 **Components**: [COMPONENT-LIST]
 **Key Patterns**: [PATTERN-LIST]
 **Core Stack**: [TECH-LIST]
-> Full details: `.work/architecture/SYSTEM-MAP.md`
+> Full details: `.work/sprints/sprint-XXX/foundation/architecture/`
 
 ## ✅ Recent Accomplishments
 <!-- Last 3 sessions max -->
@@ -50,7 +52,7 @@
 <!-- Recent architectural/technical decisions -->
 - **[DATE]**: [DECISION] - [RATIONALE]
 - **[DATE]**: [DECISION] - [RATIONALE]
-> All decisions: `.work/architecture/DECISIONS/`
+> All decisions: `.work/sprints/*/foundation/architecture/DECISIONS/`
 
 ## ⚠️ Known Issues
 <!-- Active problems and workarounds -->
@@ -67,7 +69,9 @@
 - Test coverage: [PERCENT]%
 
 ### Notes for Next Session
-[SPECIFIC-CONTEXT-NEEDED]
+- Sprint status: [X/Y tasks complete]
+- Milestone progress: [X%]
+- [SPECIFIC-CONTEXT-NEEDED]
 
 ## 🚀 Quick Start Commands
 ```bash
@@ -75,7 +79,10 @@
 git checkout [BRANCH]
 git pull origin [BRANCH]
 
-# Check status
+# Check sprint status
+ls .work/sprints/sprint-XXX/
+
+# Run tests
 npm test
 npm run lint
 

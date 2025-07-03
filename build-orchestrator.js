@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Configuration
-const SCRIPT_VERSION = '3.9.0';
+const SCRIPT_VERSION = '4.5.0';
 const OUTPUT_FILE = 'orchestrator.sh';
 const SOURCE_DIR = './orchestrator-files';
 const EXCLUDE_DIRS = ['.git', 'node_modules'];
@@ -147,12 +147,27 @@ fi
 # Create directory structure
 echo -e "\${GREEN}📁 Creating directory structure...\${NC}"
 mkdir -p "$INSTALL_DIR"/{personas,validators,examples,preferences/tech-stacks,deployment,hooks}
-mkdir -p "$INSTALL_DIR"/{architecture-templates,state-management,utilities,patterns}
+mkdir -p "$INSTALL_DIR"/{architecture-templates,state-management,utilities,patterns,discovery}
 
 # Only create .work directories for local installation
 if [ "$INSTALL_MODE" = "local" ]; then
     mkdir -p .work/{tasks,sessions,architecture,state-archive}
-    # Create a sample task structure (simplified, no streams)
+    # Create iteration structure
+    mkdir -p .work/iterations/iteration-001/{foundation,implementation,integration,validation,deployment}
+    # Create foundation directories for architect, UX, and PM
+    mkdir -p .work/iterations/iteration-001/foundation/{architecture,ux,product}
+    # Create implementation directories
+    mkdir -p .work/iterations/iteration-001/implementation/{features,tests}
+    # Create integration directory for Integration Step
+    mkdir -p .work/iterations/iteration-001/integration/reports
+    # Create validation directories for PM
+    mkdir -p .work/iterations/iteration-001/validation/{golden-paths,sign-offs,e2e-tests}
+    # Create deployment directories
+    mkdir -p .work/iterations/iteration-001/deployment/{docs,configs}
+    # Keep legacy structure for backward compatibility
+    mkdir -p .work/foundation/{architecture,ux,product}
+    mkdir -p .work/validation/{golden-paths,sign-offs}
+    # Create a sample task structure
     mkdir -p .work/tasks/sample-task/artifacts
 fi
 `;
@@ -251,12 +266,12 @@ if [ "$INSTALL_MODE" = "local" ]; then
 fi
 
 echo -e "\\n🆕 \${CYAN}Features in v${SCRIPT_VERSION}:\${NC}"
-echo -e "   🚀 Ask-first protocol - no more trigger confusion"
-echo -e "   🔗 Integration validation catches parallel conflicts"
-echo -e "   📝 76% documentation reduction, better clarity"
-echo -e "   📸 Mandatory screenshot evidence for UI"
-echo -e "   📋 INTERFACE.md tracks stream contracts"
-echo -e "   🧩 12 streamlined personas (avg 90% smaller)"
+echo -e "   🔍 Discovery Step asks clarifying questions upfront"
+echo -e "   🚀 Autonomous multi-milestone delivery"  
+echo -e "   📝 40% leaner orchestrator with workflow reference"
+echo -e "   🔗 4 parallel validators enforce quality"
+echo -e "   📋 One-time context applies to all sprints"
+echo -e "   🧩 Never asks 'what would you like me to do?'"
 
 echo -e "\\n🚀 \${YELLOW}Next Steps:\${NC}"
 if [ "$INSTALL_MODE" = "global" ]; then
@@ -347,6 +362,7 @@ function buildScript() {
   const categories = [
     { dir: '.claude', title: 'CORE FILES' },
     { dir: '.claude/personas', title: 'PERSONAS' },
+    { dir: '.claude/discovery', title: 'DISCOVERY QUESTIONS' },
     { dir: '.claude/architecture-templates', title: 'ARCHITECTURE TEMPLATES' },
     { dir: '.claude/state-management', title: 'STATE MANAGEMENT' },
     { dir: '.claude/utilities', title: 'UTILITIES' },

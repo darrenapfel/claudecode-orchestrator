@@ -20,7 +20,7 @@
 [Any specific technical requirements]
 
 ## Validation Instructions
-Your implementation will be validated by an independent Validator who will:
+Your implementation will be validated by independent personas who will:
 1. Try to break your implementation
 2. Verify all exit criteria
 3. Check for security issues

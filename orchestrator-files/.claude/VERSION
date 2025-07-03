@@ -1,27 +1,32 @@
-Claude Orchestrator v3.0 - Slim Edition
-Type: Streamlined Installation (79% smaller)
-Installed: $(date -u +%Y-%m-%dT%H:%M:%SZ)
+Claude Orchestrator v4.5.0
+Type: Discovery-Enhanced Orchestration System
+Updated: $(date -u +%Y-%m-%dT%H:%M:%SZ)
 
-Features:
-- Autonomous continuous execution (never stops at partial success)
-- Multi-step completion without user interaction
-- Mission target tracking separate from task completion
-- Intelligent parallel execution with dependency analysis
+Major Features in v4.5:
+- ONE-TIME Discovery Step for clarifying requirements (0-3 questions per persona)
+- Streamlined orchestrator focusing on workflow reference
+- Continuous sprint execution until ALL milestones complete
+- Enhanced parallel validation with 4 concurrent validators
+- Improved dependency management and blocking feature handling
+
+Key Improvements:
+- Discovery Step prevents costly assumptions with focused Q&A
+- Orchestrator.md reduced by 40% while maintaining clarity
+- Clear separation between workflow (standard-workflow.md) and execution (orchestrator.md)
+- Explicit one-time-only rules prevent redundant discovery phases
+- Sprint terminology consistency throughout all documentation
+
+Core Components:
+- 12 Personas (including orchestrator with discovery questions)
+- 7-step workflow (Discovery + 6 standard steps)
+- 4 Parallel validators enforcing quality
 - Evidence-based validation system
 - Git-first workflow with mandatory commits
-- 11 Personas available (all core functionality preserved)
+- Continuous execution until 100% user goals achieved
 
-Key Improvements in v3.0:
-- 79% reduction in configuration size (2,300 → 489 lines)
-- Removed non-functional ASCII art and pseudo-code
-- Eliminated "What would you like to do?" prompts
-- Fixed 75% → 100% completion issue
-- Clear orchestrator-files/ structure for development
-
-Components:
-- 11 Personas (streamlined, no bloat)
-- 4 Validators  
-- 2 Hooks
-- 6 Examples
-- 6 Preferences
-- Focused documentation
+Discovery Innovation:
+- 6 personas ask 0-3 questions each in parallel
+- Maximum 15-18 total questions presented to user
+- Responses stored once, referenced throughout all sprints
+- Prevents "build the wrong thing" syndrome
+- Enables truly autonomous multi-milestone delivery

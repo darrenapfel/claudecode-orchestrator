@@ -1,6 +1,6 @@
 # Deployment Setup Guide for Orchestrator
 
-## First Session Setup Script
+## First Sprint Setup Script
 
 When starting a new project, orchestrator should:
 
@@ -157,17 +157,17 @@ I've created:
 Next: Let's implement your first feature\!"
 ```
 
-### 2. After Each Session
+### 2. After Each Sprint
 
 ```markdown
-"Session complete\! Deploying preview...
+"Sprint complete\! Deploying preview...
 
 ⏳ Building application...
 ✅ Build successful (45s)
 ⏳ Deploying to Vercel...
 ✅ Deployed\!
 
-🔗 **Preview URL**: https://session-auth-myapp-7xn2.vercel.app
+🔗 **Preview URL**: https://sprint-auth-myapp-7xn2.vercel.app
 
 **What's New:**
 - User registration form
