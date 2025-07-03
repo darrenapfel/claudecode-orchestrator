@@ -5,7 +5,7 @@
 
 ## Orchestrator Git Responsibilities
 
-### 1. Session Initialization (MANDATORY)
+### 1. Sprint Initialization (MANDATORY)
 
 ```
 User Request Received
@@ -55,10 +55,10 @@ except MCPError:
 
 ### 2. Branch Creation (MANDATORY)
 
-Every session MUST create a feature branch:
+Every sprint MUST create a feature branch:
 ```bash
-# Format: session/YYYYMMDD-description
-git checkout -b session/20250628-tide-app
+# Format: sprint/YYYYMMDD-description
+git checkout -b sprint/20250628-tide-app
 git push -u origin HEAD
 ```
 
@@ -74,7 +74,7 @@ When Software Engineer completes:
   → git commit -m "feat(component): implement user authentication
      
      Subtask: Stream A - Implementation
-     Evidence: .work/tasks/20250628-1000/EVIDENCE.md
+     Evidence: .work/sprints/sprint-001/tasks/20250628-1000/EVIDENCE.md
      
      🤖 Generated with [Claude Code](https://claude.ai/code)"
 
@@ -84,7 +84,7 @@ When SDET completes:
      
      Subtask: Stream B - Testing
      Coverage: 87%
-     Evidence: .work/tasks/20250628-1000/EVIDENCE.md
+     Evidence: .work/sprints/sprint-001/tasks/20250628-1000/EVIDENCE.md
      
      🤖 Generated with [Claude Code](https://claude.ai/code)"
 ```
@@ -107,7 +107,7 @@ Types: feat, fix, test, docs, refactor, perf, security
 Scope: Component or feature area
 Subject: What was accomplished
 
-### 5. Pull Request Creation (END OF SESSION)
+### 5. Pull Request Creation (END OF SPRINT)
 
 ```python
 # Priority 1: GitHub MCP
@@ -115,8 +115,8 @@ try:
     mcp__github__create_pull_request(
         owner: owner,
         repo: repo,
-        title: "Session: Tide App - 9 tasks completed",
-        head: "session/20250628-tide-app",
+        title: "Sprint: Tide App - 9 tasks completed",
+        head: "sprint/20250628-tide-app",
         base: "main",
         body: session_summary_with_evidence
     )
@@ -189,10 +189,10 @@ Each persona's task MUST include git operations:
 The orchestrator maintains a git status board:
 
 ```markdown
-## Session Git Status
+## Sprint Git Status
 
-Branch: session/20250628-tide-app
-Remote: origin/session/20250628-tide-app (up to date)
+Branch: sprint/20250628-tide-app
+Remote: origin/sprint/20250628-tide-app (up to date)
 
 Commits by Stream:
 - Implementation: 4 commits
@@ -222,14 +222,16 @@ Status: All changes committed and pushed
 Every commit references its evidence:
 ```
 .work/
-└── tasks/
-    └── 20250628-1000-auth/
-        ├── COMMIT_LOG.md    # Links evidence to commits
-        ├── artifacts/
-        │   └── implementation/
-        │       ├── EVIDENCE.md
-        │       └── commit-sha.txt  # abc123def
-        └── CONVERGENCE.md
+└── sprints/
+    └── sprint-001/
+        └── tasks/
+            └── 20250628-1000-auth/
+                ├── COMMIT_LOG.md    # Links evidence to commits
+                ├── artifacts/
+                │   └── implementation/
+                │       ├── EVIDENCE.md
+                │       └── commit-sha.txt  # abc123def
+                └── CONVERGENCE.md
 ```
 
 ## Benefits
@@ -247,7 +249,7 @@ Every commit references its evidence:
 2. **No Commit = Not Complete**: Subtasks aren't done until committed
 3. **Evidence in Commits**: Every commit message references evidence
 4. **Push Frequently**: Don't wait until end to push
-5. **PR Always**: Session ends with PR, no exceptions
+5. **PR Always**: Sprint ends with PR, no exceptions
 
 ---
 *Git is not optional. Every task, every commit, every time.*

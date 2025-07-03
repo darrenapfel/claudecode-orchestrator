@@ -1,9 +1,9 @@
 # Git Workflow
 
-## Session Start (FIRST PRIORITY)
+## Sprint Start (FIRST PRIORITY)
 ```bash
 git pull origin main
-git checkout -b session/$(date +%Y%m%d)-topic
+git checkout -b sprint/$(date +%Y%m%d)-topic
 git push -u origin HEAD
 ```
 
@@ -18,24 +18,24 @@ git commit -m "feat(scope): what was done
 - Performance: Xms response time
 
 Task: TASK-XXX
-Evidence: .work/tasks/YYYYMMDD-HHMM/EVIDENCE.md
+Evidence: .work/sprints/sprint-XXX/tasks/YYYYMMDD-HHMM/EVIDENCE.md
 
 🤖 Generated with [Claude Code](https://claude.ai/code)
 Co-authored-by: Claude <noreply@anthropic.com>"
 ```
 
-## End of Session
+## End of Sprint
 ```bash
-# Update session log
-echo "Session complete: X tasks done" >> .work/sessions/*/session-log.md
+# Update sprint log
+echo "Sprint complete: X tasks done" >> .work/sprints/sprint-*/sprint-log.md
 
 # Create PR
 gh pr create \
-  --title "Session: [Topic] - X tasks completed" \
-  --body "See .work/sessions/YYYYMMDD-topic/ for details"
+  --title "Sprint: [Topic] - X tasks completed" \
+  --body "See .work/sprints/sprint-XXX/ for details"
 ```
 
 ## Branch Naming
-- `session/YYYYMMDD-topic` - Work sessions
+- `sprint/YYYYMMDD-topic` - Work sprints
 - `fix/issue-number` - Bug fixes
 - `feat/feature-name` - Features
