@@ -755,13 +755,18 @@ Development Environment Setup (MANDATORY FIRST):
 - Configure all tooling and scripts
 - Write ONE passing E2E test
 
-Implementation Batch 1 (after testing setup):
-- Feature A: Authentication (no dependencies)
-- Component Library (no dependencies)
+Implementation Batch 1 (after environment setup):
+- ALL mocked external services (see .claude/patterns/mocked-services-first.md)
+- Component Library (no external dependencies)
+- Core data models (no external dependencies)
 
 Implementation Batch 2 (depends on Batch 1):
-- Feature B: Todos (requires Auth from Batch 1)
-- User Dashboard (requires Component Library)
+- Feature A: Authentication (requires mocked email service from Batch 1)
+- Feature B: User Profile (requires models from Batch 1)
+
+Implementation Batch 3 (depends on Batch 2):
+- Feature C: Dashboard (requires Auth from Batch 2)
+- Feature D: Notifications (requires Auth + mocked email)
 
 ### Sprint 2 (example)
 Implementation Batch 1 (can be parallel):

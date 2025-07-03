@@ -151,16 +151,30 @@ service: user-service
 ```markdown
 ## Sprint XXX Dependency Graph
 
-### Step 2a (can be parallel)
-- Feature A: Authentication (no dependencies)
-- Feature D: Component Library (no dependencies)
+### Step 1: Infrastructure & Mocked Services (ALWAYS FIRST!)
+- Development Environment Setup (.gitignore, packages, testing)
+- Mocked External Services:
+  - Mock Payment API (if features use payments)
+  - Mock Email Service (if features send emails)  
+  - Mock AI/LLM APIs (if features use AI)
+  - Mock File Storage (if features upload files)
 
-### Step 2b (depends on 2a)
+### Step 2a: Independent Features (can be parallel after Step 1)
+- Feature A: Authentication (needs mocked email for verification)
+- Feature D: Component Library (no external dependencies)
+
+### Step 2b: Features depending on 2a
 - Feature B: Todos (requires Auth from 2a)
-- Feature C: User Dashboard (requires Components)
+- Feature C: User Dashboard (requires Components from 2a)
 
-### Step 2c (depends on 2a+2b)
+### Step 2c: Features depending on multiple sources
 - Feature E: Admin Panel (requires Auth + Todos)
+
+## Why Mocked Services Come First
+Features cannot be built without their dependencies:
+- Auth needs email service (even if mocked) to send verification
+- Payment features need payment API (even if mocked) to process
+- Without mocks, engineers have nothing to code against
 
 ## Cross-Sprint Dependencies
 - None for sprint-001

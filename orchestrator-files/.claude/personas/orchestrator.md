@@ -104,24 +104,48 @@ See `.claude/patterns/standard-workflow.md` Section "The Iron Rule" for complete
 
 ## Sprint Management
 
+### 🚨 CRITICAL: Don't Pre-Plan Implementation Batches!
+
+**WRONG Approach (Don't do this):**
+```
+☐ Implementation Batch 1 - Build independent features (Auth, Models)
+☐ Implementation Batch 2 - Build dependent features (Topics, Dashboard)
+```
+
+**RIGHT Approach:**
+```
+☐ Foundation Design Step - Wait for architect's DEPENDENCIES.md
+☐ Implementation Step - Review dependencies then create batches
+```
+
+The architect determines what can be built in parallel based on technical analysis.
+You CANNOT know batch contents until DEPENDENCIES.md exists!
+
 ### Task Assignment Patterns
 
-**Read architect's DEPENDENCIES.md first:**
+**AFTER Foundation Design is complete:**
 ```bash
 cat .work/foundation/architecture/DEPENDENCIES.md
 ```
 
-**Then assign tasks per feature:**
+**Then create implementation batches based on dependencies:**
+- Batch 1: Independent features + mocked external services
+- Batch 2: Features that depend on Batch 1
 - One engineer + one SDET per feature
 - Respect dependency order from DEPENDENCIES.md
-- Parallelize independent features
-- Serialize dependent features with integration checks between
 
 **Example:**
-If DEPENDENCIES.md shows Auth blocks Profile:
-1. Batch 1: Auth feature (engineer + SDET)
-2. Integration check on Auth
-3. Batch 2: Profile feature (different engineer + SDET)
+If DEPENDENCIES.md shows:
+- Mocked Services: No dependencies (build first!)
+- Auth: Depends on mocked services
+- Profile: Depends on Auth
+
+Then:
+1. Batch 1: Mocked services + any truly independent features
+2. Integration check
+3. Batch 2: Auth (now has mocked services to use)
+4. Integration check
+5. Batch 3: Profile (now has Auth to use)
 
 ## Continuous Execution
 
