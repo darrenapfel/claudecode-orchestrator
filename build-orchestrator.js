@@ -152,16 +152,18 @@ mkdir -p "$INSTALL_DIR"/{architecture-templates,state-management,utilities,patte
 # Only create .work directories for local installation
 if [ "$INSTALL_MODE" = "local" ]; then
     mkdir -p .work/{tasks,sessions,architecture,state-archive}
-    # Create sprint structure
-    mkdir -p .work/sprints/sprint-001/{foundation,implementation,integration,validation,deployment}
-    # Create foundation directories for architect, UX, and PM
-    mkdir -p .work/sprints/sprint-001/foundation/{architecture,ux,product}
+    # Create project-wide foundation (used by all sprints)
+    mkdir -p .work/foundation/{architecture,ux,product}
+    # Create project-wide validation templates
+    mkdir -p .work/validation/{golden-paths,sign-offs}
+    # Create sprint structure for implementation-focused work
+    mkdir -p .work/sprints/sprint-001/{implementation,integration,validation,deployment}
     # Create implementation directories
     mkdir -p .work/sprints/sprint-001/implementation/{features,tests}
     # Create integration directory for Integration Step
     mkdir -p .work/sprints/sprint-001/integration/reports
-    # Create validation directories for PM
-    mkdir -p .work/sprints/sprint-001/validation/{golden-paths,sign-offs,e2e-tests}
+    # Create sprint-specific validation directory
+    mkdir -p .work/sprints/sprint-001/validation/results
     # Create deployment directories
     mkdir -p .work/sprints/sprint-001/deployment/{docs,configs}
     # Create sessions directory

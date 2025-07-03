@@ -125,13 +125,14 @@ Return questions in this format:
 ```
 
 ### For Orchestrator (Consolidation)
-After receiving all questions:
+**EFFICIENT PROCESS**: Get questions directly from task results (no file I/O):
 
-1. **Deduplicate**: Merge similar questions
-2. **Prioritize**: Mark 10-12 as "critical" (must answer)
-3. **Organize**: Group by theme (Product, Technical, Design, Operations, Security)
-4. **Format**: Create clear, concise presentation
-5. **Store**: Save all questions to `.work/discovery/questions/`
+1. **Receive**: Get questions directly from each Task result
+2. **Deduplicate**: Merge similar questions from all personas
+3. **Prioritize**: Mark 10-12 as "critical" (must answer)
+4. **Organize**: Group by theme (Product, Technical, Design, Operations, Security)
+5. **Format**: Create clear, concise presentation for user
+6. **Store Once**: Save only final consolidated questions to `.work/discovery/`
 
 ## Discovery Response Handling
 

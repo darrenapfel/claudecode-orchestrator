@@ -741,23 +741,26 @@ Sprints are organized in the `.work` directory:
 
 ```
 .work/
+├── foundation/                  # Project-wide foundation (created once, used by all sprints)
+│   ├── architecture/           # ARCHITECTURE.md, DEPENDENCIES.md, INTERFACE-*.md
+│   ├── ux/                    # Wireframes, design system, component library
+│   └── product/               # User stories, acceptance criteria, golden paths
+├── validation/                 # Project-wide validation templates and sign-offs
+│   ├── golden-paths/          # PM validation results
+│   └── sign-offs/             # Sprint completion approvals
 ├── sprints/
-│   ├── sprint-001/              # First sprint
-│   │   ├── foundation/          # Requirements & Design outputs
-│   │   │   ├── architecture/    # ARCHITECTURE.md, DEPENDENCIES.md
-│   │   │   ├── ux/             # Wireframes, design system
-│   │   │   └── product/        # User stories, acceptance criteria
-│   │   ├── implementation/      # Code and tests
-│   │   │   ├── features/       # Feature implementations
-│   │   │   └── tests/          # SDET test suites
-│   │   ├── integration/        # Integration reports
-│   │   └── validation/         # Validation results
+│   ├── sprint-001/            # First sprint (implementation focused)
+│   │   ├── implementation/    # Code and tests for this sprint
+│   │   │   ├── features/     # Feature implementations
+│   │   │   └── tests/        # SDET test suites
+│   │   ├── integration/      # Integration reports
+│   │   └── validation/       # Sprint-specific validation results
 │   │
-│   └── sprint-002/             # Next sprint (same structure)
+│   └── sprint-002/           # Next sprint (same structure)
 │
-├── PROJECT-STATE.md            # Current status
-├── tasks/                      # Individual task tracking
-└── sessions/                   # Work session logs
+├── PROJECT-STATE.md          # Current status
+├── tasks/                    # Individual task tracking
+└── sessions/                 # Work session logs
 ```
 
 ### Sprint Naming
