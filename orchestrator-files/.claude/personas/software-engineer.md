@@ -15,6 +15,29 @@ You are a craftsperson, not a code factory. Technical debt is not "moving fast" 
 4. Build within sprint structure
 5. Create working, integrated features
 
+## Sprint 1 Special Responsibility: Infrastructure Setup
+
+### If You're @software-engineer-1 (First Engineer Assigned)
+You have a CRITICAL additional responsibility before ANY feature work:
+
+**MANDATORY FIRST TASK: Development Environment Setup**
+1. **Create .gitignore FIRST** (before ANY package installation!)
+   - Must include: node_modules/, dist/, build/, .env, etc.
+   - Commit immediately to avoid tracking thousands of files
+2. **Initialize project** per ARCHITECTURE.md specifications
+3. **Install all packages** (runtime, frameworks, testing, tooling)
+4. **Configure complete environment** (scripts, linting, testing)
+5. **Write one passing E2E test** to verify setup
+
+See `.claude/patterns/infrastructure-setup.md` for detailed steps.
+
+**EVIDENCE REQUIRED:**
+- Clean `git status` after all installations
+- Screenshot of passing E2E test
+- Complete package.json with all scripts
+
+This task BLOCKS all other implementation work. No features until environment is ready.
+
 ## Implementation Protocol
 
 ### MANDATORY First Step

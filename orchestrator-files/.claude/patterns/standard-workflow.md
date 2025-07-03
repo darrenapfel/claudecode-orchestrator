@@ -361,19 +361,31 @@ PARALLEL EXECUTION:
 ## Implementation Step (Full-Stack + SDET)
 **Goal**: Build complete features following architecture contracts
 
-### 🚨 MANDATORY FIRST: Testing Infrastructure Setup
+### 🚨 MANDATORY FIRST: Development Environment & Infrastructure Setup
 
-**BEFORE ANY FEATURE WORK:**
+**BEFORE ANY FEATURE WORK OR PACKAGE INSTALLATION:**
 ```
-Task: @software-engineer-1 - Set up testing infrastructure
+Task: @software-engineer-1 - Set up complete development environment
+Step 1: Create .gitignore (MUST BE FIRST!)
+→ Add node_modules/, dist/, build/, .env, .DS_Store
+→ Add any framework-specific ignores (e.g., .next/, .nuxt/)
+→ Add IDE folders (.vscode/, .idea/)
+→ COMMIT .gitignore before proceeding
+
+Step 2: Initialize project and install core packages
+→ Initialize package manager (npm init, yarn init, etc.)
+→ Install core runtime (Node.js packages, Python venv, etc.)
 → Install frameworks from ARCHITECTURE.md
-→ Create test directory structure
-→ Configure package.json test scripts
+→ Create directory structure (src/, tests/, etc.)
+
+Step 3: Set up testing infrastructure
+→ Install test frameworks specified in ARCHITECTURE.md
+→ Configure test scripts in package.json
 → Write ONE passing E2E test
 → EVIDENCE: Show npm run test:e2e working
 ```
 
-**GATE: No feature work until testing setup complete!**
+**GATE: No feature work until environment setup complete!**
 
 ### CRITICAL RULE: Blocking Dependencies Get Integration Check
 
@@ -678,17 +690,41 @@ POST /api/todos
 - Redis cache for sessions
 - Error handling middleware
 
-## Testing Infrastructure (MANDATORY FIRST TASK)
+## Development Environment & Infrastructure (MANDATORY FIRST TASK)
 **CRITICAL: This MUST be the first implementation task in Sprint 1**
 
-### Frameworks
+### Step 1: Version Control Setup (BEFORE ANY PACKAGES!)
+```
+.gitignore MUST include:
+- node_modules/
+- dist/
+- build/
+- .env
+- .env.local
+- .DS_Store
+- *.log
+- .vscode/
+- .idea/
+- coverage/
+- .next/
+- .nuxt/
+```
+
+### Step 2: Core Development Stack
+- Runtime: Node.js 18+ (or as specified)
+- Package Manager: npm/yarn/pnpm
+- Build Tools: As specified for framework
+- Linting: ESLint + Prettier
+
+### Step 3: Testing Infrastructure
 - E2E Testing: Playwright
 - Unit Testing: Vitest + React Testing Library  
 - API Testing: MSW for mocking
 - Load Testing: Artillery
 
-### Test Structure
+### Project Structure
 ```
+src/               # Source code
 tests/
 ├── e2e/          # User journey tests (Playwright)
 ├── integration/  # API integration tests
@@ -702,18 +738,21 @@ tests/
 - New code: 90%
 
 ### First Implementation Task (Sprint 1, Before ANY Features)
-Testing setup MUST be completed before any feature work:
-- Install all test frameworks
-- Configure test scripts
+Development environment setup MUST be completed before any feature work:
+- Create and commit .gitignore FIRST
+- Initialize project and package manager
+- Install core runtime and packages
+- Set up test frameworks
+- Configure all scripts (dev, test, build)
 - Write one passing E2E test
-- Verify CI/CD integration
-- EVIDENCE: Show test:e2e script working
+- EVIDENCE: Show git status clean + test:e2e working
 
 ## Dependency Graph (CRITICAL!)
 ### Sprint 1
-Testing Infrastructure Setup (MANDATORY FIRST):
-- Set up test frameworks from ARCHITECTURE.md
-- Configure test scripts
+Development Environment Setup (MANDATORY FIRST):
+- Create .gitignore and commit
+- Set up complete dev environment from ARCHITECTURE.md
+- Configure all tooling and scripts
 - Write ONE passing E2E test
 
 Implementation Batch 1 (after testing setup):
