@@ -533,7 +533,7 @@ SOLO EXECUTION:
 **Integration Engineer Deliverables**:
 - All SDET tests passing for all features
 - All features properly integrated
-- `.work/integration/INTEGRATION-REPORT.md` documenting:
+- `.work/sprints/sprint-XXX/integration/INTEGRATION-REPORT.md` documenting:
   - Test results from each SDET suite
   - Test failures found and fixed
   - Deviations found and how resolved
@@ -571,7 +571,7 @@ PARALLEL EXECUTION (NEVER SEQUENTIAL):
 ├── Validate golden paths on WORKING system
 ├── Verify all user stories implemented
 ├── Test actual user workflows
-└── Formal sign-off in .work/validation/sign-offs/
+└── Create validation report in sprint's validation directory
 
 @performance-engineer:
 ├── Load testing on integrated system
@@ -852,22 +852,34 @@ Sprints are organized in the `.work` directory:
 │   ├── architecture/           # ARCHITECTURE.md, DEPENDENCIES.md, INTERFACE-*.md
 │   ├── ux/                    # Wireframes, design system, component library
 │   └── product/               # User stories, acceptance criteria, golden paths
-├── validation/                 # Project-wide validation templates and sign-offs
-│   ├── golden-paths/          # PM validation results
-│   └── sign-offs/             # Sprint completion approvals
+├── sessions/                   # Session management
+│   └── YYYYMMDD-{topic}/      # Session-specific directories
+│       ├── session-transcript.md
+│       └── session-completion-summary.md
 ├── sprints/
-│   ├── sprint-001/            # First sprint (implementation focused)
-│   │   ├── implementation/    # Code and tests for this sprint
-│   │   │   ├── features/     # Feature implementations
-│   │   │   └── tests/        # SDET test suites
-│   │   ├── integration/      # Integration reports
-│   │   └── validation/       # Sprint-specific validation results
-│   │
+│   ├── sprint-001/            # First sprint
+│   │   ├── tasks/             # Sprint-specific tasks
+│   │   │   └── YYYYMMDD-HHMM-{desc}/
+│   │   │       ├── TASK.md
+│   │   │       ├── INTERFACE.md
+│   │   │       └── EVIDENCE.md
+│   │   ├── implementation/    # Sprint implementation work
+│   │   │   ├── batch-1/
+│   │   │   └── batch-2/
+│   │   ├── integration/       # Sprint integration reports
+│   │   │   └── INTEGRATION-REPORT.md
+│   │   ├── validation/        # Sprint validation results
+│   │   │   ├── golden-paths/  # PM validation reports
+│   │   │   ├── test-engineer-report.md
+│   │   │   ├── pm-report.md
+│   │   │   ├── performance-report.md
+│   │   │   └── security-report.md
+│   │   └── fixes/             # Sprint fix cycles
+│   │       └── cycle-1/
+│   │           ├── tasks.md
+│   │           └── evidence/
 │   └── sprint-002/           # Next sprint (same structure)
-│
-├── PROJECT-STATE.md          # Current status
-├── tasks/                    # Individual task tracking
-└── sessions/                 # Work session logs
+└── PROJECT-STATE.md          # Current project status
 ```
 
 ### Sprint Naming

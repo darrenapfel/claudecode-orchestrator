@@ -106,7 +106,7 @@ When architect's DEPENDENCIES.md shows blocking dependencies:
 Example: If Feature X blocks Y,Z → Complete X → Integrate X → Then parallelize Y,Z
 
 **Implementation Batch Management:**
-1. Create batch directory: `.work/implementation/batch-X/`
+1. Create batch directory: `.work/sprints/sprint-XXX/implementation/batch-X/`
 2. Create `summary.md` BEFORE delegating tasks with:
    - Batch objectives
    - All planned tasks

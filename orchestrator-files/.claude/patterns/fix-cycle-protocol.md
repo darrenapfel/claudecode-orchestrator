@@ -15,7 +15,7 @@ Fix cycles are MANDATORY when:
 ## Fix Cycle Structure
 
 ```
-.work/fixes/cycle-{number}/
+.work/sprints/sprint-XXX/fixes/cycle-{number}/
 ├── tasks.md                    # List of all fix tasks
 ├── assignments.md              # Task-to-persona mapping
 ├── evidence/
@@ -50,7 +50,7 @@ Fix cycles are MANDATORY when:
 
 ### 2. Fix Task Creation (Orchestrator)
 
-Create `.work/fixes/cycle-1/tasks.md`:
+Create `.work/sprints/sprint-XXX/fixes/cycle-1/tasks.md`:
 ```markdown
 # Fix Cycle 1 Tasks
 

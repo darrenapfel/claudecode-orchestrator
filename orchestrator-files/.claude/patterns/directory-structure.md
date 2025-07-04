@@ -13,7 +13,7 @@ This document defines the canonical directory structure for orchestrator session
 │   ├── responses/
 │   │   └── user-responses.md          # User's answers
 │   └── assumptions.md                 # Documented assumptions
-├── foundation/                         # Sprint 001 artifacts
+├── foundation/                         # Project-wide foundation (created once)
 │   ├── architecture/
 │   │   ├── ARCHITECTURE.md            # System design and patterns
 │   │   ├── TECH-STACK.md             # Technology choices (MANDATORY SEPARATE FILE)
@@ -22,39 +22,41 @@ This document defines the canonical directory structure for orchestrator session
 │   │   ├── WIREFRAMES.md             # ASCII wireframes
 │   │   ├── DESIGN-SYSTEM.md          # Colors, typography, components
 │   │   └── USER-FLOWS.md             # User journey diagrams
-│   └── requirements/
+│   └── product/                       # Product requirements
 │       ├── USER-STORIES.md           # All user stories
-│       └── ACCEPTANCE-CRITERIA.md    # Consolidated criteria (optional)
+│       ├── ACCEPTANCE-CRITERIA.md    # Consolidated criteria
+│       └── golden-paths.md           # Golden path definitions
 ├── sessions/YYYYMMDD-{topic}/         # Session management (MANDATORY)
 │   ├── session-transcript.md          # Workflow progression log
-│   ├── session-completion-summary.md  # Final session summary (at end)
-│   ├── sprint-001/
-│   │   └── README.md                 # Sprint summary
-│   └── sprint-002/
-│       └── README.md
-├── tasks/YYYYMMDD-HHMM-{descriptor}/ # Individual task evidence
-│   ├── TASK.md                       # Task definition
-│   ├── INTERFACE.md                  # Public contracts (MANDATORY)
-│   ├── EVIDENCE.md                   # Proof of completion
-│   └── artifacts/                    # Screenshots, logs
-├── implementation/                    # Implementation tracking
-│   ├── batch-1/
-│   │   └── summary.md               # Batch plan and results
-│   └── batch-2/
-│       └── summary.md
-├── integration/                      # Integration reports
-│   └── sprint-XXX/
-│       └── integration-report.md
-├── validation/                       # Validation reports
-│   └── sprint-XXX/
-│       ├── test-engineer-report.md
-│       ├── pm-report.md
-│       ├── performance-report.md
-│       └── security-report.md
-└── fixes/                           # Fix cycles (if needed)
-    └── cycle-X/
-        ├── tasks.md                 # List of fix tasks
-        └── evidence/                # Fix completion proof
+│   └── session-completion-summary.md  # Final session summary (at end)
+└── sprints/
+    ├── sprint-001/                    # First sprint directory
+    │   ├── README.md                 # Sprint summary
+    │   ├── tasks/                    # Sprint-specific tasks
+    │   │   └── YYYYMMDD-HHMM-{desc}/
+    │   │       ├── TASK.md          # Task definition
+    │   │       ├── INTERFACE.md     # Public contracts (MANDATORY)
+    │   │       ├── EVIDENCE.md      # Proof of completion
+    │   │       └── artifacts/       # Screenshots, logs
+    │   ├── implementation/           # Sprint implementation work
+    │   │   ├── batch-1/
+    │   │   │   └── summary.md      # Batch plan and results
+    │   │   └── batch-2/
+    │   │       └── summary.md
+    │   ├── integration/             # Sprint integration work
+    │   │   └── INTEGRATION-REPORT.md
+    │   ├── validation/              # Sprint validation reports
+    │   │   ├── golden-paths/        # PM validation results
+    │   │   ├── test-engineer-report.md
+    │   │   ├── pm-report.md
+    │   │   ├── performance-report.md
+    │   │   └── security-report.md
+    │   └── fixes/                   # Sprint fix cycles
+    │       └── cycle-1/
+    │           ├── tasks.md         # List of fix tasks
+    │           └── evidence/        # Fix completion proof
+    └── sprint-002/
+        └── [same structure as sprint-001]
 ```
 
 ## Directory Creation Rules
@@ -69,26 +71,37 @@ This document defines the canonical directory structure for orchestrator session
    - `.work/discovery/`
    - All subdirectories as content is generated
 
-3. **At Sprint Start (Orchestrator)**:
-   - `.work/sessions/YYYYMMDD-{topic}/sprint-XXX/`
-   - `.work/foundation/` (Sprint 001 only)
-   - `.work/implementation/` (Sprint 002+)
+3. **At Project Start (Orchestrator - ONCE ONLY)**:
+   - `.work/foundation/` (created once for the entire project)
+   - `.work/foundation/architecture/`
+   - `.work/foundation/product/`
+   - `.work/foundation/ux/`
 
-4. **Before Task Delegation (Orchestrator)**:
-   - `.work/tasks/YYYYMMDD-HHMM-{descriptor}/`
+4. **At Sprint Start (Orchestrator)**:
+   - `.work/sprints/sprint-XXX/`
+   - `.work/sprints/sprint-XXX/tasks/`
+   - `.work/sprints/sprint-XXX/implementation/`
+   - `.work/sprints/sprint-XXX/integration/`
+   - `.work/sprints/sprint-XXX/validation/`
+
+5. **Before Task Delegation (Orchestrator)**:
+   - `.work/sprints/sprint-XXX/tasks/YYYYMMDD-HHMM-{descriptor}/`
    - Create `TASK.md` in directory
 
-5. **During Validation Phase**:
-   - `.work/validation/sprint-XXX/`
+6. **During Implementation Phase**:
+   - `.work/sprints/sprint-XXX/implementation/batch-Y/`
 
-6. **If Validation Fails**:
-   - `.work/fixes/cycle-X/`
+7. **During Validation Phase**:
+   - `.work/sprints/sprint-XXX/validation/golden-paths/`
+
+8. **If Validation Fails**:
+   - `.work/sprints/sprint-XXX/fixes/cycle-Y/`
 
 ### File Placement Rules
 
 1. **NEVER place files in wrong directories**:
    - Tech stack goes in `TECH-STACK.md`, not embedded in ARCHITECTURE.md
-   - User stories go in `requirements/`, not `product/`
+   - User stories go in `product/`, not `requirements/`
    - Interfaces go in task directories, not `architecture/`
 
 2. **Session transcripts are MANDATORY**:
@@ -106,19 +119,22 @@ This document defines the canonical directory structure for orchestrator session
 Before proceeding to next phase, verify:
 
 - [ ] Session directory exists with transcript
-- [ ] Current sprint directory created
+- [ ] Current sprint directory created under `.work/sprints/`
 - [ ] All mandatory files in correct locations
 - [ ] No files in unexpected directories
-- [ ] Task directories follow naming convention
+- [ ] Task directories follow naming convention and are under current sprint
 - [ ] Every task has INTERFACE.md
+- [ ] Foundation directories exist (architecture, product, ux)
 
 ## Common Mistakes to Avoid
 
-1. **DON'T** create `product/` directory - use `requirements/`
-2. **DON'T** embed tech stack in architecture - create separate file
-3. **DON'T** skip session directories - they're mandatory
-4. **DON'T** place interfaces outside task directories
-5. **DON'T** use different directory names than specified
+1. **DON'T** create `requirements/` directory - use `product/`
+2. **DON'T** create directories at root of `.work/` - use sprint subdirectories
+3. **DON'T** embed tech stack in architecture - create separate file
+4. **DON'T** skip session directories - they're mandatory
+5. **DON'T** place interfaces outside task directories
+6. **DON'T** use different directory names than specified
+7. **DON'T** create duplicate `architecture/` at root level
 
 ---
 *Consistency in structure enables automation and tracking.*

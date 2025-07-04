@@ -151,25 +151,18 @@ mkdir -p "$INSTALL_DIR"/{architecture-templates,state-management,utilities,patte
 
 # Only create .work directories for local installation
 if [ "$INSTALL_MODE" = "local" ]; then
-    mkdir -p .work/{tasks,sessions,architecture,state-archive}
-    # Create project-wide foundation (used by all sprints)
+    # Create project-wide directories
+    mkdir -p .work/{sessions,discovery}
+    # Create project-wide foundation (created once for entire project)
     mkdir -p .work/foundation/{architecture,ux,product}
-    # Create project-wide validation templates
-    mkdir -p .work/validation/{golden-paths,sign-offs}
-    # Create sprint structure for implementation-focused work
-    mkdir -p .work/sprints/sprint-001/{implementation,integration,validation,deployment}
-    # Create implementation directories
-    mkdir -p .work/sprints/sprint-001/implementation/{features,tests}
-    # Create integration directory for Integration Step
-    mkdir -p .work/sprints/sprint-001/integration/reports
-    # Create sprint-specific validation directory
-    mkdir -p .work/sprints/sprint-001/validation/results
-    # Create deployment directories
-    mkdir -p .work/sprints/sprint-001/deployment/{docs,configs}
-    # Create sessions directory
-    mkdir -p .work/sessions
-    # Create a sample task structure
-    mkdir -p .work/tasks/sample-task/artifacts
+    # Create sprint structure
+    mkdir -p .work/sprints/sprint-001/{tasks,implementation,integration,validation,fixes}
+    # Create sprint subdirectories
+    mkdir -p .work/sprints/sprint-001/implementation/{batch-1,batch-2}
+    mkdir -p .work/sprints/sprint-001/validation/golden-paths
+    mkdir -p .work/sprints/sprint-001/fixes/cycle-1
+    # Create a sample task structure in the sprint
+    mkdir -p .work/sprints/sprint-001/tasks/sample-task/artifacts
 fi
 `;
 }

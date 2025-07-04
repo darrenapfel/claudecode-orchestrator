@@ -58,7 +58,7 @@ See `.claude/patterns/discovery-process.md` for detailed execution.
 
 **Folder Structure:**
 ```
-.work/tasks/YYYYMMDD-HHMM-{descriptor}/
+.work/sprints/sprint-XXX/tasks/YYYYMMDD-HHMM-{descriptor}/
 ├── TASK.md         # Task definition (created by orchestrator)
 ├── INTERFACE.md    # Your public APIs/contracts (MANDATORY for every task)
 ├── EVIDENCE.md     # Proof of completion

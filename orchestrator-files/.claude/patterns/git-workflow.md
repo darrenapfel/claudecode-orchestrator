@@ -57,7 +57,7 @@ Implements: Email-based authentication with JWT tokens
 fix: resolve validation error in topic creation
 
 Task: 20250703-1630-fix-topic-validation
-Evidence: .work/tasks/20250703-1630-fix-topic-validation/EVIDENCE.md
+Evidence: .work/sprints/sprint-XXX/tasks/20250703-1630-fix-topic-validation/EVIDENCE.md
 Fixes: Required fields not being validated correctly
 ```
 
@@ -77,7 +77,7 @@ Fixes: Required fields not being validated correctly
    git commit -m "feat: implement topics CRUD operations
    
    Task: 20250703-1500-topics-crud
-   Evidence: .work/tasks/20250703-1500-topics-crud/EVIDENCE.md
+   Evidence: .work/sprints/sprint-XXX/tasks/20250703-1500-topics-crud/EVIDENCE.md
    Implements: Create, read, update, delete operations for topics"
    ```
 
@@ -92,7 +92,7 @@ After integration validation:
 git commit -m "chore: integrate sprint-002 services
 
 Integration: Batch 1 services verified
-Evidence: .work/integration/sprint-002/integration-report.md
+Evidence: .work/sprints/sprint-002/integration/integration-report.md
 Components: auth, topics, reports services"
 ```
 
@@ -103,7 +103,7 @@ When fixing validation failures:
 git commit -m "fix: address security validation failures
 
 Fix-Cycle: 1
-Evidence: .work/fixes/cycle-1/evidence/
+Evidence: .work/sprints/sprint-XXX/fixes/cycle-1/evidence/
 Addresses: Authentication edge cases from security report"
 ```
 

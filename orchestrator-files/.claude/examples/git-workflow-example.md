@@ -68,7 +68,7 @@ git commit -m "feat(auth): implement user model and authentication service
 - Add unit tests with 87% coverage
 
 Subtask: Implementation Stream A
-Evidence: .work/tasks/20250628-1000/streams/implementation/EVIDENCE.md
+Evidence: .work/sprints/sprint-XXX/tasks/20250628-1000/streams/implementation/EVIDENCE.md
 
 🤖 Generated with [Claude Code](https://claude.ai/code)
 Co-authored-by: Software Engineer <noreply@anthropic.com>"
@@ -92,7 +92,7 @@ git commit -m "test(auth): add comprehensive authentication test suite
 
 Subtask: Testing Stream B
 Coverage: 92%
-Evidence: .work/tasks/20250628-1000/streams/testing/EVIDENCE.md
+Evidence: .work/sprints/sprint-XXX/tasks/20250628-1000/streams/testing/EVIDENCE.md
 
 🤖 Generated with [Claude Code](https://claude.ai/code)
 Co-authored-by: SDET <noreply@anthropic.com>"
@@ -115,7 +115,7 @@ git commit -m "security(auth): add security configurations and audit
 - No critical vulnerabilities found
 
 Subtask: Security Stream C  
-Evidence: .work/tasks/20250628-1000/streams/security/EVIDENCE.md
+Evidence: .work/sprints/sprint-XXX/tasks/20250628-1000/streams/security/EVIDENCE.md
 
 🤖 Generated with [Claude Code](https://claude.ai/code)
 Co-authored-by: Security Engineer <noreply@anthropic.com>"
@@ -129,7 +129,7 @@ git push
 After all streams complete and product-manager approves:
 ```bash
 # Orchestrator executes convergence commit:
-git add .work/tasks/20250628-1000/CONVERGENCE.md
+git add .work/sprints/sprint-XXX/tasks/20250628-1000/CONVERGENCE.md
 git commit -m "merge: converge authentication implementation streams
 
 All parallel streams completed successfully:
@@ -138,7 +138,7 @@ All parallel streams completed successfully:
 - Security: ✓ (commit: c3d4e5f)
 
 Validation: PASSED
-Evidence: .work/tasks/20250628-1000/CONVERGENCE.md
+Evidence: .work/sprints/sprint-XXX/tasks/20250628-1000/CONVERGENCE.md
 
 🤖 Generated with [Claude Code](https://claude.ai/code)"
 
@@ -164,7 +164,7 @@ pr_response = mcp__github__create_pull_request(
 ✅ Security audit and configuration (OWASP compliant)
 
 ### Evidence
-All implementation evidence available in `.work/tasks/`
+All implementation evidence available in `.work/sprints/sprint-XXX/tasks/`
 
 ### Commits
 - a1b2c3d: feat(auth): implement user model and authentication service
