@@ -1,5 +1,15 @@
 # Standard Orchestration Workflow Pattern
 
+## ⚠️ CRITICAL: Building on Broken Code = Project Deletion
+
+**THE CARDINAL SIN**: Proceeding past failures multiplies token costs exponentially:
+- 1 ignored test failure = 10x tokens to fix later
+- Building on failed integration = 100x tokens  
+- Continuing past validation failures = 1000x tokens
+- Result: User deletes project = ALL tokens wasted
+
+**Your mission**: Collect all results, fix all issues, validate perfection, then proceed.
+
 ## Workflow Diagram
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -57,6 +67,7 @@ INTEGRATION STEP
 │ • Run SDET #1's tests on Feature A → Fix failures                         │
 │ • Run SDET #2's tests on Feature B → Fix failures                         │
 │ • Resolve integration mismatches between features                          │
+│ • Fix all blocking bugs.                                                   │
 │ • Ensure all features work together                                        │
 │ • Create INTEGRATION-REPORT.md                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
@@ -164,7 +175,9 @@ This workflow ensures integrated, working software by:
 
 ## Sprint-Based Development & The Mandatory Cycle
 
-### The Iron Rule: IMPLEMENT → INTEGRATE → VALIDATE → PASS
+### The Iron Rule: IMPLEMENT → INTEGRATE → VALIDATE → 100% PASS OR FIX CYCLE
+
+**Building on broken code is like building on quicksand - everything collapses.**
 
 **EVERY implementation batch MUST follow this cycle:**
 ```
@@ -180,16 +193,23 @@ This workflow ensures integrated, working software by:
    - Performance Engineer
    - Security Engineer
    ↓
-4. If ANY validator fails:
+4. COLLECT ALL RESULTS from parallel validators
+   ↓
+5. If ANY validator fails:
    ┌─────────────────────────────────┐
    │ MANDATORY FIX CYCLE:            │
-   │ • Create Fix Tasks              │
+   │ • Gather ALL reported issues    │
+   │ • Create Fix Tasks for each     │
+   │ • Implement ALL fixes           │
    │ • Re-run Integration Step       │
-   │ • Re-run Validation Step        │
-   │ • REPEAT until ALL PASS         │
+   │ • Re-run ALL Validation Steps   │
+   │ • REPEAT until 100% PASS        │
+   │                                 │
+   │ NEVER SKIP THIS CYCLE!          │
+   │ NEVER PROCEED WITH FAILURES!    │
    └─────────────────────────────────┘
    ↓
-5. ONLY THEN proceed to:
+6. ONLY AFTER 100% VALIDATION proceed to:
    - Next Implementation Batch
    - OR Deployment Step
    - OR Next Sprint
@@ -217,6 +237,13 @@ Sprint 3:
 
 ### 🚨 What "PASS" Actually Means
 
+**PASS = 100% SUCCESS, NO EXCEPTIONS**
+
+**LYING ABOUT PASS = PROJECT DEATH**
+- Claiming "pass" with failures = You're lying to yourself
+- Hiding failures to progress = You're sabotaging the project  
+- Building on lies = You're guaranteeing project deletion
+
 **PASS requires ALL of these:**
 - ✅ Every user story works end-to-end (not just "page loads")
 - ✅ User completes the actual task (not just "API returns 200")
@@ -232,6 +259,8 @@ Sprint 3:
 - ❌ "8/16 features working" → That's 50% FAIL
 
 ### 🔄 The Mandatory Fix Cycle
+
+**CRITICAL**: Let ALL parallel work complete first! Collect ALL issues, then fix everything.
 
 When validation fails, you MUST enter this cycle:
 ```
@@ -303,6 +332,7 @@ See `.claude/patterns/discovery-process.md` for detailed execution guide.
 ## Requirements Step (PM First!)
 **Duration**: Complete before ANY design work
 **Goal**: Define what we're building and why
+**TOKEN COST OF SKIPPING: 100x** - Wrong requirements = complete rebuild
 
 ```
 SOLO EXECUTION:
@@ -325,6 +355,7 @@ SOLO EXECUTION:
 
 ## Foundation Design Step (Architecture-First)
 **Goal**: Design system with clear interfaces to prevent integration issues
+**TOKEN COST OF INCOMPLETE INTERFACES: 1000x** - Integration nightmares multiply exponentially
 
 ```
 PARALLEL EXECUTION:
@@ -360,6 +391,7 @@ PARALLEL EXECUTION:
 
 ## Implementation Step (Full-Stack + SDET)
 **Goal**: Build complete features following architecture contracts
+**TOKEN COST OF SKIPPING TESTS: 10,000x** - Untested code = unusable project
 
 ### 🚨 MANDATORY FIRST: Development Environment & Infrastructure Setup
 
@@ -464,7 +496,13 @@ PARALLEL EXECUTION (per feature):
 **Gate Check**: ALL features complete + tests written → Proceed to Integration
 
 ## Integration Step (NEW!)
-**Goal**: Reconcile all parallel work, run SDET tests, and fix issues
+**Goal**: Reconcile all parallel work, run SDET tests, and fix ALL issues
+**YOUR MISSION**: You are the last line of defense against cascading failures
+
+**TOKEN REALITY CHECK**:
+- Every bug you miss = 10x harder to fix later
+- Every integration issue ignored = feature becomes unusable
+- Your honesty here saves the entire project from deletion
 
 ```
 SOLO EXECUTION:
@@ -510,6 +548,7 @@ SOLO EXECUTION:
 **Goal**: Validate the INTEGRATED, WORKING system
 
 **🚨 MUST BE PARALLEL - ALL 4 VALIDATORS IN ONE MESSAGE:**
+**Let them ALL complete, then address ALL issues together**
 ```
 PARALLEL EXECUTION (NEVER SEQUENTIAL):
 ├── Task: @test-engineer - E2E testing and user journeys
@@ -547,10 +586,11 @@ PARALLEL EXECUTION (NEVER SEQUENTIAL):
 
 **VALIDATION OUTCOMES:**
 - ✅ ALL PASS → Proceed to next implementation batch or deployment
-- ❌ ANY FAIL → Create fix tasks → Re-integrate → Re-validate
-- 🔄 REPEAT until ALL validators PASS
+- ❌ ANY FAIL → Collect ALL failures → Fix ALL issues → Re-integrate → Re-validate
+- 🔄 REPEAT the cycle until 100% of validators PASS with evidence
 
 **Critical**: Everyone validates the INTEGRATED system, not isolated components
+**Remember**: Proceeding with ANY validation failure guarantees project failure
 
 ## Deployment Step (When all features complete)
 **Goal**: Prepare the validated system for production
@@ -607,6 +647,29 @@ PARALLEL EXECUTION:
 - Validation before integration
 - Missing SDET coverage
 - PM validating mockups instead of working system
+
+## 🚫 Orchestrator Accountability & Continuous Execution
+
+**The orchestrator is PERSONALLY RESPONSIBLE for:**
+- Collecting ALL results from parallel execution
+- Ensuring NO progression past failures
+- Driving the fix cycle to 100% completion
+- Never falsifying metrics or hiding failures
+
+**CONTINUOUS EXECUTION PROTOCOL:**
+1. Let parallel tasks complete and collect all results
+2. If ANY failures found, enter fix cycle immediately
+3. Continue looping fix → integrate → validate until perfection
+4. Only then proceed to next implementation batch
+
+**FORBIDDEN ORCHESTRATOR BEHAVIORS:**
+- ❌ Overriding validator failures
+- ❌ Proceeding without 100% pass
+- ❌ Claiming success without evidence
+- ❌ "Saving tokens" by skipping validation
+- ❌ Deferring fixes to "later sprints"
+
+**Remember**: Every layer built on failures multiplies the problem exponentially
 
 ## Enforcement Checklist
 
@@ -818,5 +881,15 @@ When features in sprint-002 depend on sprint-001:
 - Integration engineer ensures compatibility
 - Tests verify cross-sprint integration
 
+## ⚠️ FINAL WARNING: The Truth About Token Costs
+
+**Remember**: The user hired you to build WORKING software, not to create the illusion of progress. 
+
+**Your choice is simple:**
+- Collect all issues, fix completely, validate perfection = Project succeeds, tokens saved
+- Hide failures, skip validation, build on broken code = Project deleted, ALL tokens wasted
+
+**There is no middle ground. Every shortcut leads to project deletion.**
+
 ---
-*User stories first. Complete architecture upfront. Smart parallelism. Integration reconciliation. Validate working systems.*
+*User stories first. Complete architecture upfront. Smart parallelism. Integration reconciliation. Validate working systems. Never proceed with failures.*

@@ -202,14 +202,32 @@ function generateFileSection(file, isSpecialFile = false) {
   let section = `\n# ${file.relativePath}\n`;
   
   if (isSpecialFile) {
-    section += `if [ "$INSTALL_MODE" != "global" ]; then\n`;
-    if (shouldPreserve) {
-      section += `    if [ ! -f "${file.name}" ]; then\n`;
-      section += `        echo -e "\${GREEN}📄 Creating ${file.name}...\${NC}"\n`;
-      section += `        cat > "${file.name}" << '${eofMarker}'\n`;
+    // Handle special files differently for global vs local installation
+    if (file.name === 'CLAUDE.md') {
+      // CLAUDE.md has special handling for both global and local
+      section += `if [ "$INSTALL_MODE" = "global" ]; then\n`;
+      section += `    echo -e "\${GREEN}📄 Creating claude.md in ~/.claude/...\${NC}"\n`;
+      section += `    cat > "$INSTALL_DIR/claude.md" << '${eofMarker}'\n`;
+      section += escapeContent(content);
+      section += `\n${eofMarker}\n`;
+      section += `else\n`;
+      section += `    echo -e "\${GREEN}📄 Creating CLAUDE.md...\${NC}"\n`;
+      section += `    cat > "CLAUDE.md" << '${eofMarker}'\n`;
+      section += escapeContent(content);
+      section += `\n${eofMarker}\n`;
+      section += `fi\n`;
+      return section;
     } else {
-      section += `    echo -e "\${GREEN}📄 Creating ${file.name}...\${NC}"\n`;
-      section += `    cat > "${file.name}" << '${eofMarker}'\n`;
+      // Other special files (.gitignore, CHANGELOG.md, readme.md) only for local
+      section += `if [ "$INSTALL_MODE" != "global" ]; then\n`;
+      if (shouldPreserve) {
+        section += `    if [ ! -f "${file.name}" ]; then\n`;
+        section += `        echo -e "\${GREEN}📄 Creating ${file.name}...\${NC}"\n`;
+        section += `        cat > "${file.name}" << '${eofMarker}'\n`;
+      } else {
+        section += `    echo -e "\${GREEN}📄 Creating ${file.name}...\${NC}"\n`;
+        section += `    cat > "${file.name}" << '${eofMarker}'\n`;
+      }
     }
   } else {
     if (shouldPreserve) {
