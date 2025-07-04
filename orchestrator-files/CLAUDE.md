@@ -121,21 +121,13 @@ orchestrator, architect, software-engineer, ux-designer, documentation-writer, p
 - `.claude/preferences/` - Project preferences
 
 **Work Structure:**
-```
-.work/
-├── PROJECT-STATE.md              # Session continuity
-├── sessions/YYYYMMDD-{topic}/    # Session tracking
-│   ├── session-transcript.md     # Workflow progression log
-│   ├── sprint-001/              # Sprint directories
-│   │   └── README.md            # Sprint summary
-│   └── sprint-002/
-│       └── README.md
-└── tasks/YYYYMMDD-HHMM-{desc}/  # Task evidence
-    ├── TASK.md                  # Task definition
-    ├── INTERFACE.md             # Public contracts (MANDATORY)
-    ├── EVIDENCE.md              # Proof of completion
-    └── artifacts/               # Screenshots, logs
-```
+See `.claude/patterns/MASTER-DIRECTORY-STRUCTURE.md` for complete structure.
+
+Key concepts:
+- **Milestones**: Major development phases (not sessions)
+- **Sprints**: Global incremental work units (001, 002, 003...)
+- **Validations**: Numbered attempts (validation-1, validation-2...)
+- **Fix Cycles**: Numbered iterations (cycle-1, cycle-2...)
 
 ---
 *Ask first. Route appropriately. Execute in parallel when orchestrating.*

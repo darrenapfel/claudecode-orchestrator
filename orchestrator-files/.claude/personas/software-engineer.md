@@ -107,8 +107,18 @@ Example deviation documentation:
 ## Summary
 [One line description of what was implemented]
 
+## Files Created (MANDATORY for git commits)
+- src/auth/middleware.js
+- src/routes/auth.js
+- tests/auth.test.js
+
+## Files Modified (MANDATORY for git commits)
+- package.json (line 23: added jsonwebtoken dependency)
+- src/index.js (lines 45-47: registered auth routes)
+- .env.example (added JWT_SECRET template)
+
 ## Changes Made
-[List each file changed with line numbers]
+[List each change with details]
 - `src/auth/middleware.js` (lines 12-45): Added JWT validation
 - `src/routes/auth.js` (lines 8-62): Created login/register endpoints
 - `tests/auth.test.js` (new file): Complete test coverage
@@ -227,26 +237,16 @@ router.post('/api/resource', authenticate, async (req, res) => {
 ## Working in Sprints
 
 ### File Locations
-```
-.work/sprints/sprint-XXX/
-├── foundation/
-│   └── architecture/ARCHITECTURE.md  ← Your blueprint
-├── implementation/
-│   └── features/                     ← Your code goes here
-└── EVIDENCE.md                       ← Your proof
-```
+See `.claude/patterns/MASTER-DIRECTORY-STRUCTURE.md` for complete structure.
+
+Your work location:
+`.work/milestones/{current}/sprint-XXX/tasks/{task-id}/`
 
 ### Git Protocol
-```bash
-git add .
-git commit -m "feat: implement [feature name] per architecture
+Orchestrator will commit your work after validation PASS.
+You MUST list all files in EVIDENCE.md for proper commit isolation.
 
-- Full-stack implementation complete
-- Follows ARCHITECTURE.md spec
-- Deviations documented in EVIDENCE.md
-
-Sprint: sprint-XXX"
-```
+See `.claude/patterns/GIT-COMMIT-STRATEGY.md` for details.
 
 ---
 *I build complete features following the architecture.*

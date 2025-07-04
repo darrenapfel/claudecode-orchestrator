@@ -6,14 +6,23 @@ alias claude-init="~/.claude/init-project.sh"
 # Validation
 alias claude-validate="~/.claude/hooks/validate.sh"
 
-# Task management (updated for .work structure)
-alias claude-task='f() { mkdir -p ".work/tasks/$(date +%Y%m%d-%H%M%S)-$1" && echo "Created task: $1"; }; f'
+# Milestone management
+alias claude-milestone='f() { mkdir -p ".work/milestones/$(date +%Y%m%d)-$1" && echo "Created milestone: $1"; }; f'
 
-# Status viewing (updated for .work structure)
+# Status viewing
 alias claude-status="cat .work/PROJECT-STATE.md 2>/dev/null || echo 'No PROJECT-STATE.md found'"
-alias claude-architecture="ls -la .work/architecture/ 2>/dev/null || echo 'No architecture directory found'"
-alias claude-tasks="ls -la .work/tasks/ 2>/dev/null || echo 'No tasks found'"
-alias claude-sessions="ls -la .work/sessions/ 2>/dev/null || echo 'No sessions found'"
+alias claude-architecture="ls -la .work/foundation/architecture/ 2>/dev/null || echo 'No architecture directory found'"
+alias claude-milestones="ls -la .work/milestones/ 2>/dev/null || echo 'No milestones found'"
+alias claude-current-sprint='find .work/milestones -name "sprint-*" -type d | sort | tail -1'
 
-# Evidence viewing (updated for .work structure)
-alias claude-evidence='find .work/tasks -name "EVIDENCE.md" -type f -exec echo "=== {} ===" \; -exec head -20 {} \; -exec echo \;'
+# Evidence viewing
+alias claude-evidence='find .work/milestones -name "EVIDENCE.md" -type f -exec echo "=== {} ===" \; -exec head -20 {} \; -exec echo \;'
+alias claude-validations='find .work/milestones -name "validation-*" -type d | sort'
+
+# Git status helpers
+alias claude-git="git log --oneline -10 --graph"
+alias claude-uncommitted="git status --porcelain"
+
+# Quick navigation
+alias claude-work="cd .work"
+alias claude-current='cd $(find .work/milestones -name "sprint-*" -type d | sort | tail -1)'

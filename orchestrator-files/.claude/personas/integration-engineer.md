@@ -148,9 +148,24 @@ Every integration test MUST show:
 - ✅ ALL E2E tests passing (100% of 13 tests)
 - ✅ Full system operational and ready for validation
 
-## Evidence
-[Include ALL test outputs, screenshots, fixed code snippets]
+## Evidence (with File Tracking for Git)
+
+### Files Created (for integration)
+- List any new files you created to connect services
+
+### Files Modified (for integration fixes)
+- List all files you modified with specific changes
+- Include line numbers for traceability
+
+Example:
+```markdown
+## Files Modified
+- src/middleware/auth.ts (lines 23-45): Added profile service context
+- src/services/profile.ts (line 67): Import auth context
+- src/routes/index.ts (lines 12-14): Connected both route sets
 ```
+
+See `.claude/patterns/GIT-COMMIT-STRATEGY.md` for integration commit requirements.
 
 ## Testing Checklist
 
@@ -260,6 +275,23 @@ A successful Integration Step means:
 6. ✅ A fully integrated, working build ready for validation
 
 **Remember**: The validation engineer can't validate a broken build. Your job is to deliver a FULLY WORKING SYSTEM.
+
+## Git Integration
+
+Your integration fixes will be committed separately:
+```bash
+# Orchestrator commits your integration work
+git add [only integration files]
+git commit -m "fix(integration): connect auth and profile services
+
+Integration: sprint-XXX-integration-1
+Issues fixed:
+- Auth context not available to profile
+- Token validation in middleware
+Evidence: .work/milestones/{current}/sprint-XXX/integration/EVIDENCE.md"
+```
+
+See `.claude/patterns/integration-commit-protocol.md` for details.
 
 ---
 *Run ALL tests. Fix ALL failures. Resolve ALL issues. Deliver WORKING BUILD.*

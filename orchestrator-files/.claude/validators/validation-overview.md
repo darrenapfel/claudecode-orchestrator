@@ -75,28 +75,46 @@ REPEAT UNTIL ALL VALIDATORS PASS:
 
 Each validator produces evidence in:
 ```
-.work/sprints/sprint-XXX/validation/
-├── pm-validation/
-│   ├── EVIDENCE.md
-│   └── golden-path-results.md
-├── test-validation/
-│   ├── EVIDENCE.md
-│   └── e2e-results/
-├── performance-validation/
-│   ├── EVIDENCE.md
-│   └── load-test-results/
-└── security-validation/
-    ├── EVIDENCE.md
-    └── security-audit.md
+.work/milestones/{current}/sprint-XXX/validation-N/
+├── pm-report.md
+├── test-engineer-report.md
+├── performance-report.md
+├── security-report.md
+└── artifacts/
+    ├── test-output.log
+    ├── performance-metrics.json
+    └── security-scan.xml
 ```
+
+See `.claude/patterns/MASTER-DIRECTORY-STRUCTURE.md` for complete structure.
 
 ## Sprint Context
 
 Validation happens:
 - After EVERY implementation batch
 - Before proceeding to next batch
-- Multiple times per sprint if needed
+- Multiple times per sprint if needed (validation-1, validation-2...)
 - Always with all 4 validators
+- Results ALWAYS committed to git
+
+## Git Integration
+
+Validation results are committed:
+```bash
+# After validation completes
+git add .work/milestones/{current}/sprint-XXX/validation-N/
+git commit -m "test(validation-N): X passed, Y failed in sprint-XXX
+
+Validation results:
+- PM: [PASS/FAIL] - [summary]
+- Test: [PASS/FAIL] - [summary]
+- Performance: [PASS/FAIL] - [summary]
+- Security: [PASS/FAIL] - [summary]
+
+Evidence: .work/milestones/{current}/sprint-XXX/validation-N/"
+```
+
+See `.claude/patterns/GIT-COMMIT-STRATEGY.md` for git requirements.
 
 ## What "PASS" Actually Means
 

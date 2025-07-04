@@ -68,7 +68,8 @@ git commit -m "feat(auth): implement user model and authentication service
 - Add unit tests with 87% coverage
 
 Subtask: Implementation Stream A
-Evidence: .work/sprints/sprint-XXX/tasks/20250628-1000/streams/implementation/EVIDENCE.md
+Evidence: .work/sprints/sprint-001/tasks/20250628-1000-auth-implementation/EVIDENCE.md
+Validation: All 15 tests passing (see artifacts/test-output.txt)
 
 🤖 Generated with [Claude Code](https://claude.ai/code)
 Co-authored-by: Software Engineer <noreply@anthropic.com>"
@@ -92,7 +93,8 @@ git commit -m "test(auth): add comprehensive authentication test suite
 
 Subtask: Testing Stream B
 Coverage: 92%
-Evidence: .work/sprints/sprint-XXX/tasks/20250628-1000/streams/testing/EVIDENCE.md
+Evidence: .work/sprints/sprint-001/tasks/20250628-1000-auth-testing/EVIDENCE.md
+Proof: npm test output in artifacts/test-results.json
 
 🤖 Generated with [Claude Code](https://claude.ai/code)
 Co-authored-by: SDET <noreply@anthropic.com>"
@@ -115,7 +117,8 @@ git commit -m "security(auth): add security configurations and audit
 - No critical vulnerabilities found
 
 Subtask: Security Stream C  
-Evidence: .work/sprints/sprint-XXX/tasks/20250628-1000/streams/security/EVIDENCE.md
+Evidence: .work/sprints/sprint-001/tasks/20250628-1000-auth-security/EVIDENCE.md
+Scan Results: artifacts/security-scan-output.log
 
 🤖 Generated with [Claude Code](https://claude.ai/code)
 Co-authored-by: Security Engineer <noreply@anthropic.com>"
@@ -126,19 +129,24 @@ git push
 
 ### 4. Convergence and Validation
 
-After all streams complete and product-manager approves:
+After all streams complete and product-manager validates:
 ```bash
-# Orchestrator executes convergence commit:
-git add .work/sprints/sprint-XXX/tasks/20250628-1000/CONVERGENCE.md
+# Integration Engineer runs full validation suite FIRST
+npm run test:integration
+# Output: 73/73 passing
+
+# Only after ALL tests pass, orchestrator commits:
+git add .work/sprints/sprint-001/validation/integration-report.md
+git add .work/sprints/sprint-001/tasks/*/EVIDENCE.md
 git commit -m "merge: converge authentication implementation streams
 
 All parallel streams completed successfully:
-- Implementation: ✓ (commit: a1b2c3d)
-- Testing: ✓ (commit: b2c3d4e) 
-- Security: ✓ (commit: c3d4e5f)
+- Implementation: ✓ (commit: a1b2c3d) - 15/15 tests
+- Testing: ✓ (commit: b2c3d4e) - 47/47 tests
+- Security: ✓ (commit: c3d4e5f) - 0 vulnerabilities
 
-Validation: PASSED
-Evidence: .work/sprints/sprint-XXX/tasks/20250628-1000/CONVERGENCE.md
+Integration Validation: PASSED (73/73 tests)
+Evidence: .work/sprints/sprint-001/validation/integration-report.md
 
 🤖 Generated with [Claude Code](https://claude.ai/code)"
 
@@ -164,7 +172,7 @@ pr_response = mcp__github__create_pull_request(
 ✅ Security audit and configuration (OWASP compliant)
 
 ### Evidence
-All implementation evidence available in `.work/sprints/sprint-XXX/tasks/`
+All implementation evidence available in `.work/sprints/sprint-001/tasks/`
 
 ### Commits
 - a1b2c3d: feat(auth): implement user model and authentication service
@@ -236,6 +244,30 @@ d4e5f6g merge: converge authentication implementation streams
 4. **Safe Rollback**: Can revert specific streams if needed
 5. **PR Review**: All work aggregated for final review before merge
 6. **Automation**: GitHub MCP handles repository operations seamlessly
+7. **Honest Validation**: Fix cycles are normal and tracked, not hidden
+8. **Sprint Organization**: All work organized under sprint directories
+
+## Validation-First Fix Cycles
+
+When validation fails (as expected in honest development):
+
+```bash
+# Fix Cycle 1 - Integration Engineer finds 3 failures
+git add .work/sprints/sprint-001/fixes/cycle-1/auth-integration-fixes.md
+git commit -m "fix: resolve authentication integration issues
+
+- Fixed JWT token validation in middleware
+- Corrected async race condition in login flow  
+- Updated test mocks to match actual API
+
+Fix Cycle: 1
+Failures Fixed: 3/3
+Evidence: .work/sprints/sprint-001/fixes/cycle-1/EVIDENCE.md"
+
+# After fixes, re-run validation
+npm run test:integration
+# Output: 73/73 passing ✓
+```
 
 ## Fallback Handling
 

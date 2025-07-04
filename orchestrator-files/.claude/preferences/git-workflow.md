@@ -1,41 +1,56 @@
-# Git Workflow
+# Git Workflow Preferences
 
-## Sprint Start (FIRST PRIORITY)
+## Master Reference
+For complete git strategy, see: **`.claude/patterns/GIT-COMMIT-STRATEGY.md`**
+
+This file contains quick preferences and shortcuts.
+
+## Milestone Start
 ```bash
 git pull origin main
-git checkout -b sprint/$(date +%Y%m%d)-topic
+git checkout -b milestone/$(date +%Y%m%d)-{milestone-name}
 git push -u origin HEAD
 ```
 
-## Commit Protocol
-After EVERY atomic task (30min max):
+## Task Commit Protocol
+After EACH task validation PASS:
 ```bash
-git add .
-git commit -m "feat(scope): what was done
+# Only add files from this specific task
+git add [files from EVIDENCE.md]
+git commit -m "feat(task-YYYYMMDD-HHMM): what was done
 
-- Specific change with evidence
-- Test results: X tests passing
-- Performance: Xms response time
-
-Task: TASK-XXX
-Evidence: .work/sprints/sprint-XXX/tasks/YYYYMMDD-HHMM/EVIDENCE.md
+Task: YYYYMMDD-HHMM-description
+Evidence: .work/milestones/{current}/sprint-XXX/tasks/YYYYMMDD-HHMM/EVIDENCE.md
+Tests: X/Y passing
+Coverage: XX%
 
 🤖 Generated with [Claude Code](https://claude.ai/code)
-Co-authored-by: Claude <noreply@anthropic.com>"
+Co-authored-by: {Persona} <noreply@anthropic.com>"
 ```
 
-## End of Sprint
+## Integration Commits
 ```bash
-# Update sprint log
-echo "Sprint complete: X tasks done" >> .work/sprints/sprint-*/sprint-log.md
+git add [integration files only]
+git commit -m "fix(integration): what was connected
 
-# Create PR
-gh pr create \
-  --title "Sprint: [Topic] - X tasks completed" \
-  --body "See .work/sprints/sprint-XXX/ for details"
+Integration: sprint-XXX-integration-N
+Evidence: .work/milestones/{current}/sprint-XXX/integration/EVIDENCE.md"
 ```
 
 ## Branch Naming
-- `sprint/YYYYMMDD-topic` - Work sprints
-- `fix/issue-number` - Bug fixes
-- `feat/feature-name` - Features
+- `milestone/YYYYMMDD-name` - Major development phases
+- `fix/issue-number` - Hotfixes
+- `feature/name` - Individual features (outside orchestration)
+
+## Quick Commands
+```bash
+# Check what will be committed
+git status
+git diff --staged
+
+# Amend last commit (if needed)
+git commit --amend
+
+# Interactive rebase (careful!)
+git rebase -i HEAD~5
+```

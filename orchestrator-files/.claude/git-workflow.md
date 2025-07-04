@@ -1,11 +1,22 @@
 # Git Workflow Protocol - Mandatory for All Orchestrated Tasks
 
+## Master Reference
+
+This document provides workflow integration. For the complete git strategy including:
+- Task-level commit isolation
+- File tracking requirements
+- Integration commit protocols
+- Detailed commit formats
+- Git gate checks
+
+See: **`.claude/patterns/GIT-COMMIT-STRATEGY.md`**
+
 ## Core Principle
-**Every orchestrated session MUST use git. Every completed subtask MUST be committed.**
+**Every orchestrated milestone MUST use git. Every validated task MUST be committed independently.**
 
 ## Orchestrator Git Responsibilities
 
-### 1. Sprint Initialization (MANDATORY)
+### 1. Milestone Initialization (MANDATORY)
 
 ```
 User Request Received
@@ -55,16 +66,16 @@ except MCPError:
 
 ### 2. Branch Creation (MANDATORY)
 
-Every sprint MUST create a feature branch:
+Every milestone MUST create a feature branch:
 ```bash
-# Format: sprint/YYYYMMDD-description
-git checkout -b sprint/20250628-tide-app
+# Format: milestone/YYYYMMDD-description
+git checkout -b milestone/20250628-local-development
 git push -u origin HEAD
 ```
 
-### 3. Subtask Commit Protocol
+### 3. Task Commit Protocol
 
-**EVERY completed subtask MUST commit its work:**
+**EVERY validated task MUST be committed independently with ONLY its files:**
 
 ```markdown
 ## Subtask Completion → Automatic Commit
@@ -74,7 +85,7 @@ When Software Engineer completes:
   → git commit -m "feat(component): implement user authentication
      
      Subtask: Stream A - Implementation
-     Evidence: .work/sprints/sprint-001/tasks/20250628-1000/EVIDENCE.md
+     Evidence: .work/milestones/{milestone}/sprint-001/tasks/20250628-1000/EVIDENCE.md
      
      🤖 Generated with [Claude Code](https://claude.ai/code)"
 
@@ -84,7 +95,7 @@ When SDET completes:
      
      Subtask: Stream B - Testing
      Coverage: 87%
-     Evidence: .work/sprints/sprint-001/tasks/20250628-1000/EVIDENCE.md
+     Evidence: .work/milestones/{milestone}/sprint-001/tasks/20250628-1000/EVIDENCE.md
      
      🤖 Generated with [Claude Code](https://claude.ai/code)"
 ```
@@ -107,7 +118,7 @@ Types: feat, fix, test, docs, refactor, perf, security
 Scope: Component or feature area
 Subject: What was accomplished
 
-### 5. Pull Request Creation (END OF SPRINT)
+### 5. Pull Request Creation (END OF MILESTONE)
 
 ```python
 # Priority 1: GitHub MCP
@@ -115,8 +126,8 @@ try:
     mcp__github__create_pull_request(
         owner: owner,
         repo: repo,
-        title: "Sprint: Tide App - 9 tasks completed",
-        head: "sprint/20250628-tide-app",
+        title: "Milestone: Local Development - 3 sprints completed",
+        head: "milestone/20250628-local-development",
         base: "main",
         body: session_summary_with_evidence
     )
@@ -189,10 +200,10 @@ Each persona's task MUST include git operations:
 The orchestrator maintains a git status board:
 
 ```markdown
-## Sprint Git Status
+## Milestone Git Status
 
-Branch: sprint/20250628-tide-app
-Remote: origin/sprint/20250628-tide-app (up to date)
+Branch: milestone/20250628-local-development  
+Remote: origin/milestone/20250628-local-development (up to date)
 
 Commits by Stream:
 - Implementation: 4 commits
@@ -249,7 +260,9 @@ Every commit references its evidence:
 2. **No Commit = Not Complete**: Subtasks aren't done until committed
 3. **Evidence in Commits**: Every commit message references evidence
 4. **Push Frequently**: Don't wait until end to push
-5. **PR Always**: Sprint ends with PR, no exceptions
+5. **PR Always**: Milestone ends with PR, no exceptions
+6. **Announce Actions**: All git operations announced in chat
+7. **File Isolation**: Each commit contains ONLY task-specific files
 
 ---
 *Git is not optional. Every task, every commit, every time.*

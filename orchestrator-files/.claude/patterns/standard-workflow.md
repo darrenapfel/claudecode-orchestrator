@@ -16,6 +16,18 @@
 │                         ORCHESTRATION WORKFLOW                              │
 └─────────────────────────────────────────────────────────────────────────────┘
 
+GIT INITIALIZATION GATE (MANDATORY FIRST)
+┌──────────────────┐
+│  Git Repository  │
+│ ✓ git init       │
+│ ✓ .gitignore     │
+│ ✓ First commit   │
+│ ✓ Milestone branch│
+└──────────────────┘
+         │
+    GATE CHECK
+         │
+         ▼
 REQUIREMENTS STEP
 ┌──────────────────┐
 │ @product-manager │
@@ -56,6 +68,9 @@ IMPLEMENTATION STEP (Batch 1)
          ║              [Additional features...]       ║                      ║
          ║                                            ║                      ║
          └─────────────────────── ALL COMPLETE ──────────────────────────────┘
+                                       ║
+                               COMMIT EACH TASK
+                          (After validation PASS)
                                        ║
                                   GATE CHECK
                                        ║

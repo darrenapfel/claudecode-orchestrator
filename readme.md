@@ -1,306 +1,290 @@
-# Claude Code Orchestrator 🎭
+# Claude Code Orchestration System
 
-**Transform Claude from a Single Coder into an Elite 12-Person Dev Team**
+A comprehensive orchestration framework that enables Claude Code to operate as a full software development team through parallel execution, structured workflows, and evidence-based validation.
 
-[![Version](https://img.shields.io/badge/version-4.5.0-blue.svg)](https://github.com/darrenapfel/orchestration-test)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Claude Code](https://img.shields.io/badge/Claude-Code%20Ready-purple.svg)](https://claude.ai/code)
+## 🎯 Core Philosophy
 
-## 🚨 The Brutal Truth About AI Coding
+**Quality Through Truth**: The system enforces honest development practices where every claim requires evidence, every test result must be shown, and validation failures are documented and fixed rather than hidden. This approach paradoxically saves tokens by catching issues early rather than building on broken foundations.
 
-### Without Orchestrator
-- **Claude writes code sequentially** → 6 hours for what could take 1 hour
-- **"I think it works"** → Fabricated results, broken deployments
-- **Forgets context after 20 minutes** → Rebuilds the same thing 3 times
-- **Stops at 75% complete** → You finish the tedious integration work
-- **No accountability** → Claims success without evidence
+## 🚀 Quick Start
 
-### With Orchestrator
-- **12 specialists work in parallel** → 3-8x faster delivery
-- **"Show me" protocol** → Git diffs, test output, or it didn't happen
-- **Discovery-driven development** → Clarifies requirements before coding
-- **100% mission completion** → Automatically continues until all goals achieved
-- **Evidence-based development** → Every claim independently verified
-
-## 🎯 Watch the Magic Happen
-
-### You Say:
-```
-"Build a complete e-commerce platform with inventory management"
-```
-
-### Claude Becomes:
-```
-Loading parallel orchestration workflow...
-
-[DISCOVERY STEP - Gathering Requirements]
-📋 Quick clarifying questions from specialized personas
-→ Target scale? Payment providers? Mobile support?
-→ Your answers guide the entire project
-
-[REQUIREMENTS STEP - Product Manager]
-📋 Analyzing e-commerce platform needs
-✓ User stories: 15 core features identified
-✓ Acceptance criteria: Checkout < 3 clicks
-✓ Golden paths: Browse → Cart → Purchase
-
-[FOUNDATION DESIGN - 2 Parallel Tasks]
-├── 🏗️ Architect: Complete API contracts, no TBDs
-└── 🎨 UX Designer: User flows and wireframes
-
-[IMPLEMENTATION BATCH 1 - 4 Parallel Tasks]
-├── 💻 Engineer-1: Authentication system (full-stack)
-├── 🧪 SDET-1: Auth tests (based on contracts)
-├── 💻 Engineer-2: Product catalog (full-stack)
-└── 🧪 SDET-2: Catalog tests (based on contracts)
-
-[INTEGRATION STEP - Reconciliation]
-🔧 Integration Engineer: Running all tests, fixing mismatches
-
-[VALIDATION & QA - 4 Parallel Validators]
-├── 📋 PM: Golden paths working end-to-end
-├── 🔍 Test Engineer: All user journeys pass
-├── 🔒 Security: OWASP Top 10 checked
-└── ⚡ Performance: 50ms response times
-
-[CONTINUOUS EXECUTION]
-→ Sprint 1: Authentication (COMPLETE)
-→ Sprint 2: Product Catalog (COMPLETE)
-→ Sprint 3: Shopping Cart (IN PROGRESS)
-... continues until 100% done
-```
-
-## 💥 The Game-Changing Difference
-
-### 1. True Parallel Execution (Not Sequential)
-
-**Traditional Claude:**
-```
-10:00 - Start API
-10:30 - Finish API, start frontend
-11:00 - Finish frontend, start tests
-11:30 - Finish tests, start deployment
-12:00 - Done (maybe)
-```
-
-**Orchestrated Claude:**
-```
-10:00 - Discovery questions (if needed)
-10:05 - PM defines requirements
-10:10 - Architect + UX design in parallel
-10:20 - 4 engineers + SDETs build features in parallel
-10:35 - Integration engineer reconciles everything
-10:40 - 4 validators check in parallel
-10:45 - Running in production
-```
-
-### 2. Anti-Fabrication Evidence Protocol
-
-**Verification Theater (BLOCKED):** "I've implemented user authentication with proper security"
-
-**"Show Me" Protocol (REQUIRED):** 
+### Global Installation (Recommended)
 ```bash
-✓ Git diff: 347 lines changed across 23 files
-✓ Command: npm test -- auth.test.js --coverage
-✓ Output: ✓ 34/34 passing | 96.3% coverage | 0 failing
-✓ Security: POST requests only, bcrypt hashing verified
-✓ Screenshot: login-flow-working.png (timestamped)
-✓ Live test: curl -X POST localhost:3000/api/auth/login → 200 OK
-✓ Code review: All claims verified against actual code
+# Install globally for use across all projects
+./orchestrator.sh global
+
+# Then in any project:
+./orchestrator.sh local
 ```
 
-**Independent verification:** Different persona validates each claim from scratch
-
-### 3. Relentless Automatic Continuation
-
-**Traditional Claude:** Stops when it encounters complexity
-```
-"I've set up the basic structure. What would you like me to do next?"
-```
-
-**Orchestrated Claude:** Powers through until complete
-```
-Sprint 1: ✓ Auth system complete
-Sprint 2: ✓ Product catalog complete  
-Sprint 3: ⚠️ Cart validation failed
-         → Creating fix tasks...
-         → Re-integrating...
-         → Re-validating...
-         ✓ Cart system complete
-Sprint 4: Starting checkout flow...
-[Continues until 100% feature complete]
-```
-
-### 4. PM-First Development with Full Integration
-
-**Requirements drive everything:**
-- Product Manager defines user stories FIRST
-- Architect creates complete interfaces (no TBDs)
-- Engineers build to exact specifications
-- Integration Engineer reconciles all deviations
-- 4 validators verify the working system in parallel
-
-## 🚀 Real Developer Results
-
-**"I replaced my entire dev team with orchestrated Claude"**
-- Built complete SaaS in 3 days (vs 3 months estimate)
-- Discovery prevented major architectural mistakes
-- 94% test coverage with evidence
-- 0 production bugs in first month
-
-**"From idea to paying customers in 48 hours"**
-- Full-stack marketplace app
-- Stripe integration working
-- 50ms response times
-- Actually deployed and monitored
-
-**"Claude built our MVP better than our senior engineers"**
-- Clean architecture with clear boundaries
-- Comprehensive test suite
-- Complete documentation
-- Production-ready from day one
-
-## 💪 Your 12-Person AI Team
-
-1. **🎯 Orchestrator** - Parallel task management & coordination
-2. **📋 Product Manager** - Requirements, user stories, validation
-3. **🏗️ Architect** - System design, interfaces, dependency graphs
-4. **💻 Software Engineer** - Full-stack feature implementation
-5. **🎨 UX Designer** - User flows, wireframes, responsive design
-6. **🧪 SDET** - Test automation based on contracts
-7. **🔧 Integration Engineer** - Component reconciliation & testing
-8. **🔍 Test Engineer** - E2E validation & user journeys
-9. **🔒 Security Engineer** - Security audit & compliance
-10. **⚡ Performance Engineer** - Load testing & optimization
-11. **🚀 DevOps Engineer** - CI/CD, deployment, monitoring
-12. **📚 Documentation Writer** - User guides & API docs
-
-## 📦 Install in 30 Seconds
-
+### Local Installation Only
 ```bash
-# Download and run
-curl -O https://raw.githubusercontent.com/darrenapfel/orchestration-test/main/orchestrator.sh
-chmod +x orchestrator.sh
-./orchestrator.sh
-
-# Choose:
-# 1) Global (~/.claude) - For all projects
-# 2) Local (./.claude) - Current project only
+# Install directly in current project
+./orchestrator.sh local
 ```
 
-**Safe Updates:** Your existing PROJECT-STATE.md and work history are preserved!
+## 🏗️ System Architecture
 
-## 🎮 Trigger Words That Activate Orchestration
+### Parallel Execution Model
+The orchestrator manages multiple specialized personas working simultaneously on different aspects of your project:
 
-Just use natural language:
-- "Build a..." / "Create a..." / "Implement..."
-- "Add feature..." / "Develop..." / "Make..."
-- "Fix..." / "Refactor..." / "Set up..."
+- **Requirements & Design**: Product Manager and Architect work in parallel to define scope
+- **Implementation**: Multiple Software Engineers tackle independent features concurrently  
+- **Testing**: SDETs write tests while implementation occurs
+- **Validation**: Four validators (PM, Test, Performance, Security) verify in parallel
 
-Claude automatically detects and loads the orchestration system.
+### Milestone-Based Development
+Work is organized into major development phases (milestones) containing multiple sprints:
 
-## 🔥 What You Can Build (With Proof)
-
-### Full-Stack Web Apps
-- **E-commerce platforms** - Inventory, payments, shipping
-- **SaaS applications** - Multi-tenant, billing, analytics  
-- **Social platforms** - Real-time chat, feeds, notifications
-- **Marketplaces** - Two-sided, escrow, reviews
-
-### Complex Integrations
-- **Payment systems** - Stripe, PayPal, crypto
-- **API aggregators** - Combine multiple services
-- **Workflow automation** - Zapier-like tools
-- **Data pipelines** - ETL with monitoring
-
-### Everything Else
-- **Mobile apps** - React Native, Flutter
-- **Chrome extensions** - Full MV3 compliance
-- **CLI tools** - With proper packaging
-- **Discord bots** - With slash commands
-- **Blockchain apps** - Smart contracts included
-
-## 📊 The Numbers Don't Lie
-
-| Metric | Without Orchestrator | With Orchestrator |
-|--------|---------------------|-------------------|
-| Development Speed | 1x | 3-8x |
-| Parallel Tasks | 1 | 8-12 simultaneously |
-| Test Coverage | "Some tests" | 90%+ with proof |
-| Production Bugs | Many | Near zero |
-| Evidence Required | None | Every claim verified |
-| Context Retention | Per session | Entire project lifecycle |
-| Completion Rate | ~75% | 100% |
-| Integration Success | Hope & pray | Guaranteed reconciliation |
-
-## 🏆 Why Developers Never Go Back
-
-**"It's like having a senior team that never sleeps"**
-- Works through problems autonomously
-- Delivers production-ready code
-- Actually finishes the job
-
-**"Claude went from toy to tool"**
-- No more hand-holding
-- No more "let me try again"
-- Just results with evidence
-
-**"I shipped more in a week than last quarter"**
-- Parallel execution is a superpower
-- Evidence prevents wasted time
-- Automatic continuation pushes through everything
-
-## 🛡️ Built-In Security & Quality
-
-### Anti-Shortcut Protocol
-- **Cannot claim completion without evidence** (enforced by code reviewer)
-- **No placeholder content** (Lorem ipsum auto-fails review)
-- **Must show actual output** (screenshots, git diffs, test results)
-- **Security vulnerabilities blocked** (no hardcoded secrets, SQL injection, etc)
-
-### PM-First Quality Gates
-- Requirements defined before any code
-- Architecture complete before implementation
-- Integration verified before validation
-- 4 parallel validators before completion
-
-## 🤝 The Choice Is Yours
-
-**Keep struggling with:**
-- Sequential coding taking forever
-- "It should work" without proof
-- Stopping at 75% complete
-- No idea if components integrate
-- Making the same mistakes repeatedly
-
-**Or join developers who ship:**
-- Parallel development at light speed
-- Evidence for every single change
-- 100% feature completion
-- Guaranteed integration
-- Learning from every project
-
-## 🚀 Your AI Dev Team Awaits
-
-```bash
-./orchestrator.sh  # Transform Claude into a team
+```
+.work/
+├── milestones/
+│   └── 20250704-local-development/
+│       ├── sprint-001/
+│       ├── sprint-002/
+│       └── sprint-003/
+└── foundation/
+    ├── architecture/
+    ├── product/
+    └── ux/
 ```
 
-In 30 seconds, you'll have a development force that never gets tired, never forgets context, and never ships broken code.
+### Git Integration
+Every validated task is automatically committed with file isolation:
 
-**Evidence required. Excuses rejected. Results delivered.**
+- Each task commits only its specific files
+- Validation results are committed (pass or fail)
+- Fix cycles get separate commits
+- Integration fixes are isolated from features
+- All git actions are announced in chat for visibility
+
+## 📋 Key Features
+
+### Task-Level Commit Isolation
+- Every task tracks which files it creates/modifies
+- Commits include only task-specific files
+- Prevents cross-contamination between parallel work
+- Integration commits connect separate features
+
+### Numbered Validation Cycles
+- `validation-1/` - Initial validation attempt
+- `validation-2/` - After first fix cycle
+- `validation-N/` - Continue until 100% pass
+- No predetermined "final" validation
+
+### Evidence-Based Development
+- Every task produces EVIDENCE.md with reproducible proof
+- Test outputs must be complete, not summarized
+- Screenshots require timestamps
+- Commands must show actual execution
+
+### Fix Cycle Protocol
+- Validation failures trigger fix cycles (normal and expected)
+- Each fix cycle is documented and committed
+- Multiple cycles show honest development progress
+- Success is achieving 100% pass, not avoiding failures
+
+### Master Reference Documents
+- `MASTER-DIRECTORY-STRUCTURE.md` - Single source of truth for organization
+- `GIT-COMMIT-STRATEGY.md` - Authoritative git workflow
+- All other documents reference these masters
+
+## 👥 Available Personas
+
+### Core Team
+- **Orchestrator** - Manages parallel execution and git operations
+- **Product Manager** - Defines requirements and validates user value
+- **Architect** - Designs system structure and technical approach
+- **Software Engineer** - Implements features following architecture
+- **UX Designer** - Creates user experiences and interfaces
+
+### Quality Assurance
+- **SDET** - Writes comprehensive test suites
+- **Test Engineer** - Validates end-to-end functionality
+- **Integration Engineer** - Ensures components work together
+- **Performance Engineer** - Optimizes speed and scalability
+- **Security Engineer** - Validates security and compliance
+
+### Support Roles
+- **DevOps** - Handles deployment and infrastructure
+- **Documentation Writer** - Creates user and technical docs
+
+## 🔄 Workflow Overview
+
+1. **Discovery** (if needed) - Gather clarifying questions
+2. **Requirements** - PM defines scope and acceptance criteria
+3. **Foundation Design** - Architect and UX Designer create blueprint
+4. **Implementation** - Engineers build in parallel batches
+5. **Integration** - Connect all components and fix issues
+6. **Validation** - Four validators verify quality
+7. **Fix Cycles** - Address any validation failures
+8. **Deployment** - When all validations pass
+
+## 📁 Project Structure
+
+```
+your-project/
+├── .claude/                 # Orchestration configuration
+│   ├── personas/           # AI role definitions
+│   ├── patterns/           # Workflow patterns
+│   ├── validators/         # Validation protocols
+│   └── preferences/        # Project settings
+├── .work/                  # Orchestration workspace
+│   ├── foundation/         # Core architecture/design
+│   ├── milestones/         # Development phases
+│   └── discovery/          # Project understanding
+├── CLAUDE.md               # Project-specific instructions
+└── src/                    # Your actual code
+```
+
+## 🛠️ Configuration
+
+### Project Instructions (CLAUDE.md)
+Add project-specific guidelines that work alongside the orchestration system:
+
+```markdown
+# Project-Specific Instructions
+
+## Tech Stack
+- Frontend: React + TypeScript
+- Backend: Node.js + Express
+- Database: PostgreSQL
+
+## Conventions
+- Use functional components
+- Follow REST API standards
+- Write tests for all endpoints
+```
+
+### Tech Stack Templates
+Pre-configured templates available in `.claude/preferences/tech-stacks/`:
+- `web-saas.md` - Full-stack web application
+- `template.md` - Create your own
+
+## 📊 Session Management
+
+The system maintains complete session history and can resume interrupted work:
+
+- `PROJECT-STATE.md` - Current status and progress
+- Session transcripts track all decisions
+- Git commits preserve code history
+- Evidence provides audit trail
+
+## 🔍 Validation Process
+
+Four validators work in parallel to ensure quality:
+
+1. **Product Manager** - Validates user stories work end-to-end
+2. **Test Engineer** - Runs comprehensive test suites
+3. **Performance Engineer** - Checks speed and scalability
+4. **Security Engineer** - Validates security compliance
+
+Any validation failure triggers fix cycles until all pass.
+
+## 💡 Best Practices
+
+### For Maximum Effectiveness
+
+1. **Let Discovery Run** - For new projects, let the orchestrator gather requirements
+2. **Trust the Process** - Multiple fix cycles are normal, not failures
+3. **Provide Context** - Share existing code, requirements, constraints
+4. **Review Evidence** - Check the `.work/` directory to see actual outputs
+5. **Use Checkpoints** - Commit to git regularly for easy rollback
+
+### Common Patterns
+
+- **New Project**: Run discovery → Full implementation
+- **Add Feature**: Skip discovery → Start at requirements
+- **Fix Bugs**: Create fix tasks → Validate thoroughly
+- **Refactoring**: Architecture first → Systematic updates
+
+## 🐛 Troubleshooting
+
+### Orchestrator Not Starting
+- Ensure you ran `./orchestrator.sh local` in your project
+- Check that CLAUDE.md exists (created by installer)
+- Verify `.claude/` directory has all personas
+
+### Git Issues
+- Orchestrator will ask to create repository if none exists
+- All git operations are shown in chat
+- Check branch name matches milestone
+
+### Validation Failures
+- This is normal! Fix cycles are expected
+- Review validation reports in `.work/milestones/`
+- Each validator provides specific feedback
+
+## 📚 Documentation
+
+Detailed documentation available in `.claude/`:
+
+- `TASK-EXECUTION-GUIDE.md` - How tasks are executed
+- `patterns/standard-workflow.md` - Complete workflow details  
+- `patterns/GIT-COMMIT-STRATEGY.md` - Git integration guide
+- `examples/` - Implementation examples
+- `validators/` - Validation protocols
+
+## 🔧 Advanced Usage
+
+### Custom Personas
+Create new personas in `.claude/personas/` following the template.
+
+### Workflow Modifications  
+Adjust patterns in `.claude/patterns/` to match your process.
+
+### Hook Scripts
+Add automation in `.claude/hooks/` for custom workflows.
+
+## 🤝 Contributing
+
+The orchestration system is built from the `orchestrator-files/` directory:
+
+1. Modify files in `orchestrator-files/`
+2. Run `node build-orchestrator.js` to rebuild
+3. Test with `./orchestrator.sh local`
+4. Submit improvements via pull request
+
+## 📈 Version History
+
+### v5.0.0 (Current)
+- Task-level git commits with file isolation
+- Orchestrator announces all git actions in chat
+- Enhanced file tracking for commit isolation
+- Integration commits separate from feature commits
+- Master reference documents for consistency
+
+### v4.x
+- Milestone-based development structure
+- Numbered validation cycles
+- Sprint organization improvements
+- Enhanced evidence requirements
+
+### v3.x
+- Parallel execution model
+- Evidence-based validation
+- Session management
+
+### Earlier
+- Initial orchestration concepts
+- Basic persona definitions
+
+## 🎯 Why It Works
+
+The orchestration system succeeds by:
+
+1. **Enforcing Honesty** - Can't claim success without proof
+2. **Working in Parallel** - Multiple tasks progress simultaneously
+3. **Validating Continuously** - Catch issues early, fix immediately
+4. **Tracking Everything** - Complete audit trail of all work
+5. **Iterating to Success** - Fix cycles are normal, not failures
+
+## 📞 Support
+
+- **Issues**: [GitHub Issues](https://github.com/darrenapfel/orchestration-test/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/darrenapfel/orchestration-test/discussions)
+- **Wiki**: [Documentation Wiki](https://github.com/darrenapfel/orchestration-test/wiki)
 
 ---
 
-### Key Features
-- **Discovery Step** - Clarifies requirements upfront with focused questions
-- **PM-First Development** - User needs drive architecture and implementation
-- **Parallel Execution** - Multiple specialists work simultaneously
-- **Integration Reconciliation** - Components guaranteed to work together
-- **Continuous Delivery** - Automatically continues through all milestones
-- **Evidence Protocol** - Every claim must be proven with output
-
-### Quick Links
-**[⬇️ Download](https://github.com/darrenapfel/orchestration-test)** | **[📖 Documentation](https://github.com/darrenapfel/orchestration-test/wiki)** | **[🐛 Report Issues](https://github.com/darrenapfel/orchestration-test/issues)** | **[💬 Discussions](https://github.com/darrenapfel/orchestration-test/discussions)**
-
-*The orchestrator is open source and constantly improved by developers who refuse to accept mediocre AI assistance.*
+Built with the principle that honest development with visible evidence produces better software faster than hiding failures and building on broken foundations.

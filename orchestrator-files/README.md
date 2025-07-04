@@ -12,10 +12,10 @@ This directory contains all files that will be installed by the `orchestrator.sh
   - etc.
 
 - **`.work/`** - Template working directory structure
-  - tasks/sample-task/ - Example task structure
-  - Status/ - Status tracking templates
-  - reports/ - Report output directory
-  - sessions/ - Session management directory
+  - foundation/ - Project-wide architecture, product, UX
+  - milestones/ - Major development phases
+  - sprints/ - Global sprint tracking
+  - discovery/ - One-time discovery questions
 
 - **`CLAUDE.md`** - Root instructions for Claude Code
 

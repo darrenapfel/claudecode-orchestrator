@@ -1,21 +1,15 @@
 # Project State
 
-## Current Session
-- Branch: session/YYYYMMDD-topic
-- Start Time: YYYY-MM-DD HH:MM
-- Status: Active
+## Current Status
+- **Active Milestone**: None
+- **Current Sprint**: None
+- **Last Updated**: [Timestamp]
 
-## Mission
-[Mission description from user]
+## Milestones
+<!-- Updated by orchestrator as milestones are created -->
 
-## Completed Phases
-<!-- Automatically populated -->
+## Sprint History
+<!-- Global sprint tracking across all milestones -->
 
-## Active Phase
-<!-- Current phase details -->
-
-## Blockers
-<!-- Any blocking issues -->
-
-## Metrics
-<!-- Success metrics tracking -->
+## Session Continuity
+<!-- Information for resuming interrupted sessions -->

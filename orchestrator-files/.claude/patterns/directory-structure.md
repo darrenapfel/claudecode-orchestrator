@@ -1,101 +1,27 @@
 # Directory Structure Pattern
 
 ## Overview
-This document defines the canonical directory structure for orchestrator sessions. All personas must follow this structure exactly.
+This document references the master directory structure. All personas must follow the structure defined in the master document.
 
-## Complete Directory Structure
+## Master Structure Reference
 
-```
-.work/
-├── PROJECT-STATE.md                    # Session continuity and status
-├── discovery/                          # One-time discovery phase (if applicable)
-│   ├── consolidated-questions.md       # Merged questions from all personas
-│   ├── responses/
-│   │   └── user-responses.md          # User's answers
-│   └── assumptions.md                 # Documented assumptions
-├── foundation/                         # Project-wide foundation (created once)
-│   ├── architecture/
-│   │   ├── ARCHITECTURE.md            # System design and patterns
-│   │   ├── TECH-STACK.md             # Technology choices (MANDATORY SEPARATE FILE)
-│   │   └── DEPENDENCIES.md            # Service dependency graph
-│   ├── ux/
-│   │   ├── WIREFRAMES.md             # ASCII wireframes
-│   │   ├── DESIGN-SYSTEM.md          # Colors, typography, components
-│   │   └── USER-FLOWS.md             # User journey diagrams
-│   └── product/                       # Product requirements
-│       ├── USER-STORIES.md           # All user stories
-│       ├── ACCEPTANCE-CRITERIA.md    # Consolidated criteria
-│       └── golden-paths.md           # Golden path definitions
-├── sessions/YYYYMMDD-{topic}/         # Session management (MANDATORY)
-│   ├── session-transcript.md          # Workflow progression log
-│   └── session-completion-summary.md  # Final session summary (at end)
-└── sprints/
-    ├── sprint-001/                    # First sprint directory
-    │   ├── README.md                 # Sprint summary
-    │   ├── tasks/                    # Sprint-specific tasks
-    │   │   └── YYYYMMDD-HHMM-{desc}/
-    │   │       ├── TASK.md          # Task definition
-    │   │       ├── INTERFACE.md     # Public contracts (MANDATORY)
-    │   │       ├── EVIDENCE.md      # Proof of completion
-    │   │       └── artifacts/       # Screenshots, logs
-    │   ├── implementation/           # Sprint implementation work
-    │   │   ├── batch-1/
-    │   │   │   └── summary.md      # Batch plan and results
-    │   │   └── batch-2/
-    │   │       └── summary.md
-    │   ├── integration/             # Sprint integration work
-    │   │   └── INTEGRATION-REPORT.md
-    │   ├── validation/              # Sprint validation reports
-    │   │   ├── golden-paths/        # PM validation results
-    │   │   ├── test-engineer-report.md
-    │   │   ├── pm-report.md
-    │   │   ├── performance-report.md
-    │   │   └── security-report.md
-    │   └── fixes/                   # Sprint fix cycles
-    │       └── cycle-1/
-    │           ├── tasks.md         # List of fix tasks
-    │           └── evidence/        # Fix completion proof
-    └── sprint-002/
-        └── [same structure as sprint-001]
-```
+For the complete, canonical directory structure, see:
+**`.claude/patterns/MASTER-DIRECTORY-STRUCTURE.md`**
 
-## Directory Creation Rules
+All directory creation, file placement, and structural decisions must follow the master structure.
 
-### When to Create Each Directory
+## Key Changes from Previous Structure
 
-1. **At Session Start (Orchestrator)**:
-   - `.work/sessions/YYYYMMDD-{topic}/`
-   - `.work/sessions/YYYYMMDD-{topic}/session-transcript.md`
+### Terminology Updates
+- **sessions/** → **milestones/** (major development phases)
+- **validation/** → **validation-N/** (numbered validation attempts)
+- **revalidation/** → **validation-N/** (no more "re-" prefixes)
 
-2. **During Discovery (If Triggered)**:
-   - `.work/discovery/`
-   - All subdirectories as content is generated
-
-3. **At Project Start (Orchestrator - ONCE ONLY)**:
-   - `.work/foundation/` (created once for the entire project)
-   - `.work/foundation/architecture/`
-   - `.work/foundation/product/`
-   - `.work/foundation/ux/`
-
-4. **At Sprint Start (Orchestrator)**:
-   - `.work/sprints/sprint-XXX/`
-   - `.work/sprints/sprint-XXX/tasks/`
-   - `.work/sprints/sprint-XXX/implementation/`
-   - `.work/sprints/sprint-XXX/integration/`
-   - `.work/sprints/sprint-XXX/validation/`
-
-5. **Before Task Delegation (Orchestrator)**:
-   - `.work/sprints/sprint-XXX/tasks/YYYYMMDD-HHMM-{descriptor}/`
-   - Create `TASK.md` in directory
-
-6. **During Implementation Phase**:
-   - `.work/sprints/sprint-XXX/implementation/batch-Y/`
-
-7. **During Validation Phase**:
-   - `.work/sprints/sprint-XXX/validation/golden-paths/`
-
-8. **If Validation Fails**:
-   - `.work/sprints/sprint-XXX/fixes/cycle-Y/`
+### Structural Changes
+- Sprints now live under milestones, not at root level
+- Validations are numbered (validation-1, validation-2, etc.)
+- Fix cycles remain numbered (cycle-1, cycle-2, etc.)
+- Sprint numbers are global and never reset
 
 ### File Placement Rules
 
@@ -104,37 +30,36 @@ This document defines the canonical directory structure for orchestrator session
    - User stories go in `product/`, not `requirements/`
    - Interfaces go in task directories, not `architecture/`
 
-2. **Session transcripts are MANDATORY**:
-   - Update after every phase transition
-   - Record all major decisions
-   - Track sprint progressions
+2. **Milestone tracking is MANDATORY**:
+   - Create milestone-plan.md at start
+   - Track all sprints within milestone
+   - Create milestone-summary.md at completion
 
-3. **Sprint directories track progress**:
-   - Create at sprint start, not end
-   - Add README.md when sprint completes
-   - Link to all sprint artifacts
+## Quick Validation Checklist
 
-## Validation Checklist
+Before proceeding, verify against MASTER-DIRECTORY-STRUCTURE.md:
 
-Before proceeding to next phase, verify:
-
-- [ ] Session directory exists with transcript
-- [ ] Current sprint directory created under `.work/sprints/`
+- [ ] Milestone directory exists with milestone-plan.md
+- [ ] Current sprint directory created under milestone
 - [ ] All mandatory files in correct locations
-- [ ] No files in unexpected directories
-- [ ] Task directories follow naming convention and are under current sprint
+- [ ] Validations are numbered (not named "final" or "revalidation")
+- [ ] Fix cycles are numbered
 - [ ] Every task has INTERFACE.md
-- [ ] Foundation directories exist (architecture, product, ux)
 
 ## Common Mistakes to Avoid
 
 1. **DON'T** create `requirements/` directory - use `product/`
-2. **DON'T** create directories at root of `.work/` - use sprint subdirectories
-3. **DON'T** embed tech stack in architecture - create separate file
-4. **DON'T** skip session directories - they're mandatory
+2. **DON'T** create `sessions/` directory - use `milestones/`
+3. **DON'T** create `revalidation/` - use `validation-N/`
+4. **DON'T** embed tech stack in architecture - create separate file
 5. **DON'T** place interfaces outside task directories
-6. **DON'T** use different directory names than specified
-7. **DON'T** create duplicate `architecture/` at root level
+6. **DON'T** restart sprint numbering - keep global sequence
+
+## References
+
+- Master Structure: `.claude/patterns/MASTER-DIRECTORY-STRUCTURE.md`
+- Fix Cycles: `.claude/patterns/fix-cycle-structure.md`
+- Task Execution: `.claude/TASK-EXECUTION-GUIDE.md`
 
 ---
-*Consistency in structure enables automation and tracking.*
+*Always refer to MASTER-DIRECTORY-STRUCTURE.md for authoritative structure.*

@@ -67,15 +67,17 @@ Follow the 7-step workflow defined in `.claude/patterns/standard-workflow.md`:
 
 ### Key Orchestration Rules
 
-**Initialize Session & Sprint:**
+**Initialize Milestone & Sprint:**
 1. Say: "Loading parallel orchestration workflow..."
-2. Create session directory: `.work/sessions/YYYYMMDD-{topic}/`
-3. Initialize `session-transcript.md` with start time and mission
+2. Create milestone directory: `.work/milestones/YYYYMMDD-{milestone-name}/`
+3. Initialize `milestone-plan.md` with goals and success criteria
 4. Check `.work/PROJECT-STATE.md` if exists
 5. If new project with vague requirements → Execute Discovery Step
-6. Initialize git repository and feature branch: `git checkout -b session/YYYYMMDD-{topic}`
-7. Create sprint directory: `.work/sessions/YYYYMMDD-{topic}/sprint-001/`
-8. Update PROJECT-STATE.md with session ID
+6. Initialize git repository and feature branch: `git checkout -b milestone/YYYYMMDD-{name}`
+7. Create sprint directory: `.work/milestones/YYYYMMDD-{name}/sprint-XXX/`
+8. Update PROJECT-STATE.md with milestone ID and current sprint
+
+**IMPORTANT**: See `.claude/patterns/MASTER-DIRECTORY-STRUCTURE.md` for complete structure
 
 **Discovery Step Pattern (ONE-TIME ONLY at Session Start):**
 ```
@@ -89,7 +91,7 @@ Task: @orchestrator - Generate 0-3 project coordination questions
 ```
 Then consolidate (max 15-18 total), present to user ONCE, and store responses in `.work/discovery/` for ALL sprints to reference.
 
-**🚨 NEVER repeat Discovery for Sprint 2, 3, etc. - it's session-start ONLY**
+**🚨 NEVER repeat Discovery for Sprint 2, 3, etc. - it's milestone-start ONLY**
 
 **Parallel Execution Patterns:**
 - Discovery: 5 personas gathering questions in ONE message
@@ -281,5 +283,49 @@ Never stop at partial completion. Continue until ALL use stories work end-to-end
 5. **Evidence required** - Commands, output, screenshots
 6. **Sprints** - Workflow steps with gates
 
+## Git Management Responsibilities
+
+### Initialization (CRITICAL - ANNOUNCE IN CHAT)
+```
+🔧 INITIALIZING GIT REPOSITORY...
+
+Checking git status...
+[If no .git found]
+> git init
+> Creating .gitignore file FIRST
+> git add .gitignore && git commit -m "chore: initialize repository with .gitignore"
+> git checkout -b milestone/20250104-{name}
+✓ Git repository ready on branch milestone/...
+```
+
+### After Each Task Validation PASS
+```
+📦 COMMITTING TASK RESULTS...
+
+Task: {task-id}
+Files: [from EVIDENCE.md]
+> git add [specific files]
+> git commit -m "feat(task-{id}): {description}..."
+✓ Task committed (SHA: xxx)
+```
+
+### Track File Ownership
+Maintain mapping of which files belong to which task:
+```javascript
+const taskFiles = {
+  'task-001': ['src/auth.ts', 'tests/auth.test.ts'],
+  'task-002': ['src/profile.ts', 'tests/profile.test.ts']
+};
+```
+
+### Git Gate Checks
+Before proceeding:
+- [ ] Git initialized with .gitignore committed first
+- [ ] On milestone branch (not main)
+- [ ] Previous tasks properly committed
+- [ ] No uncommitted changes
+
+**See**: `.claude/patterns/GIT-COMMIT-STRATEGY.md` for complete protocol
+
 ---
-*Orchestrate sprints. Enforce steps. Demand evidence.*
+*Orchestrate sprints. Enforce steps. Demand evidence. Commit everything.*

@@ -5,21 +5,12 @@ Single source of truth for task execution in orchestrator mode. Consolidates all
 
 ## Session Initialization
 
-### Mandatory Session Setup
-1. **Create Session Directory**: `.work/sessions/YYYYMMDD-{topic}/`
-2. **Initialize Session Transcript**: Create `session-transcript.md` with:
-   ```markdown
-   # Session Transcript: YYYYMMDD-{topic}
-   
-   ## Session Start
-   - Time: HH:MM
-   - Mission: [User's request]
-   - Initial State: [Current project state]
-   
-   ## Phase Transitions
-   [Will be updated as session progresses]
-   ```
-3. **Update PROJECT-STATE.md**: Add session ID and status
+### Mandatory Milestone Setup
+1. **Create Milestone Directory**: `.work/milestones/YYYYMMDD-{milestone-name}/`
+2. **Initialize Milestone Plan**: Create `milestone-plan.md` with goals and success criteria
+3. **Update PROJECT-STATE.md**: Add milestone ID and status
+
+For complete directory structure, see: `.claude/patterns/MASTER-DIRECTORY-STRUCTURE.md`
 
 ### Discovery Step (Optional, ONE-TIME)
 When user requests are vague ("build me a...", "create an app that..."), execute Discovery Step ONCE at session start:
@@ -37,33 +28,31 @@ See `.claude/patterns/discovery-process.md` for detailed execution.
 ```markdown
 ## Task: [Clear Title]
 **ID**: YYYYMMDD-HHMM-[descriptor]
+**Sprint**: sprint-XXX
 **Scope**: Single testable deliverable
 **Assigned**: @[persona]
 **Dependencies**: [none | task IDs]
 
-### Baseline Metrics
-- Tests: X passing of Y total
-- Build: [passing/failing]
+### Baseline Metrics (MANDATORY)
+- Tests: X passing of Y total (must show actual output)
+- Build: [passing/failing] (with timestamp)
+- Coverage: XX% (if applicable)
 - [Other metrics as relevant]
 
 ### Success Criteria
 - [ ] Feature implemented/fixed
-- [ ] Tests pass (maintain baseline)
-- [ ] Evidence documented
-- [ ] Git commit created
-- [ ] Checkpoint validation PASS
+- [ ] Tests pass (maintain or improve baseline)
+- [ ] Evidence documented with reproducible commands
+- [ ] Git commit created with evidence reference
+- [ ] Checkpoint validation PASS (no falsification)
 ```
 
 ### 2. Task Execution (Assigned Persona)
 
 **Folder Structure:**
-```
-.work/sprints/sprint-XXX/tasks/YYYYMMDD-HHMM-{descriptor}/
-├── TASK.md         # Task definition (created by orchestrator)
-├── INTERFACE.md    # Your public APIs/contracts (MANDATORY for every task)
-├── EVIDENCE.md     # Proof of completion
-└── artifacts/      # Screenshots, reports
-```
+See `.claude/patterns/MASTER-DIRECTORY-STRUCTURE.md` for authoritative structure.
+
+Task location: `.work/milestones/{current}/sprint-XXX/tasks/YYYYMMDD-HHMM-{descriptor}/`
 
 **INTERFACE.md Requirements:**
 - MUST be created for EVERY task
@@ -92,32 +81,64 @@ See `.claude/patterns/discovery-process.md` for detailed execution.
 
 ## Metrics
 - Baseline: X tests passing
-- Current: Y tests passing
+- Current: Y tests passing  
 - Delta: +Z tests
 
-## Proof
+## Files Created (MANDATORY for git commits)
+- src/services/auth.ts
+- src/services/auth.test.ts
+- docs/api/auth-endpoints.md
+
+## Files Modified (MANDATORY for git commits)
+- package.json (added bcrypt, jsonwebtoken dependencies)
+- src/index.ts (registered auth routes)
+- README.md (added auth setup instructions)
+
+## Potential Conflicts
+- None identified / List any files that other tasks might also modify
+
+## Proof (MANDATORY - Full Output Required)
 \```bash
-npm test
-# 45/45 passing
+$ npm test
+
+> project@1.0.0 test
+> jest --coverage
+
+ PASS  src/auth.test.ts
+  Auth Service
+    ✓ should hash passwords (23 ms)
+    ✓ should validate login (15 ms)
+    ✓ should reject invalid credentials (8 ms)
+
+Test Suites: 15 passed, 15 total
+Tests:       45 passed, 45 total
+Snapshots:   0 total
+Time:        3.241 s
+Coverage: 87% statements
 \```
 
 ## Artifacts
-- Screenshot: ./artifacts/feature.png
+- Test output: ./artifacts/test-output-YYYYMMDD-HHMM.txt
+- Screenshot: ./artifacts/feature-YYYYMMDD-HHMM.png
+- Coverage report: ./artifacts/coverage/index.html
 
-## Commit
-- SHA: abc123
-- Message: "feat: implement feature"
+## Git Commit Info
+- Will be committed by orchestrator after validation PASS
+- Commit will include ONLY files listed above
+- Reference: `.claude/patterns/GIT-COMMIT-STRATEGY.md`
 ```
 
 ### 3. Checkpoint Validation (Orchestrator + Test Engineer + PM)
 
 After EACH task:
-1. Orchestrator reviews evidence
-2. Checks metrics vs baseline
+1. Orchestrator reviews evidence (MUST include full command output)
+2. Checks metrics vs baseline (regression = automatic FAIL)
 3. Invokes @test-engineer for technical validation
+   - Test engineer MUST re-run tests independently
+   - Compare output character-by-character
 4. Invokes @product-manager for user story compliance
-5. Binary PASS/FAIL decision
-6. FAIL = Create fix task
+5. Binary PASS/FAIL decision (no "partial" success)
+6. FAIL = Create fix task immediately in `.work/sprints/sprint-XXX/fixes/cycle-N/`
 
 ### 4. Integration Convergence (NEW v3.3)
 
@@ -139,10 +160,15 @@ After ALL parallel tasks:
 
 ## Git Protocol
 
-1. **Orchestrator**: Create branch at start
-2. **Each Persona**: Commit with evidence reference
-3. **Format**: `feat: description\n\nTask: ID\nEvidence: path`
-4. **End**: Orchestrator creates PR
+1. **Orchestrator**: Initialize repo and create milestone branch
+2. **Orchestrator**: Announce ALL git actions in chat
+3. **Each Task**: Commit immediately after validation PASS
+4. **File Isolation**: Only commit files listed in EVIDENCE.md
+5. **Validation Failures**: Commit validation reports
+6. **Fix Cycles**: Separate commits for each fix cycle
+7. **End of Milestone**: Create PR for review
+
+**See**: `.claude/patterns/GIT-COMMIT-STRATEGY.md` for detailed protocol
 
 ## Evidence Standards
 
@@ -152,11 +178,15 @@ After ALL parallel tasks:
 - Git commit SHA
 - Validation confirmation
 
-**Red Flags (require re-validation):**
-- "Tests passing" without output
-- Changed test counts
-- Missing command results
-- Vague success claims
+**Red Flags (AUTOMATIC REJECTION):**
+- "Tests passing" without showing full output
+- Test count changes without explanation
+- Missing command results or truncated output
+- Vague success claims ("works as expected")
+- Screenshots without timestamps
+- Coverage drops without justification
+- "No errors" without console output
+- Skipped validation steps to "save time"
 
 ## Integration Requirements (v3.3)
 
@@ -183,9 +213,17 @@ After ALL parallel tasks:
 - Any FAIL? → Create fix task
 
 **All Tasks Complete?**
-- Integration validated? → Check
+- Integration validated? → Check (with full test output)
+- Fix cycles completed? → Check (normal and expected)
 - User goals met? → Complete
 - Goals not met? → New sprint
+
+**Fix Cycle Protocol:**
+```
+Fix Cycle 1: 8 failures → Fix → 3 failures
+Fix Cycle 2: 3 failures → Fix → 0 failures ✓
+DOCUMENT BOTH CYCLES - This is honest development
+```
 
 ## Common Patterns
 
@@ -193,18 +231,42 @@ After ALL parallel tasks:
 1. Frontend → @software-engineer + @ux-designer
 2. API → @software-engineer + @sdet
 3. E2E Tests → @test-engineer
-4. Always validate visually
+4. Integration → @integration-engineer (expects failures)
+5. Fix cycles → @software-engineer (1-3 cycles normal)
+6. Final validation → @test-engineer (must show passing)
 
 **API Service:**
 1. Implementation → @software-engineer
-2. Tests → @sdet
+2. Tests → @sdet (with coverage report)
 3. Docs → @documentation-writer
-4. Security → @security-engineer
+4. Security → @security-engineer (with scan output)
+5. Integration → @integration-engineer
 
 **Bug Fix:**
-1. Fix → @software-engineer
-2. Tests → @sdet
-3. Validation → @test-engineer + @product-manager
+1. Reproduce → @sdet (show failing test)
+2. Fix → @software-engineer
+3. Verify → @sdet (show passing test)
+4. Validation → @test-engineer + @product-manager
+
+## Sprint-Based Evidence Tracking
+
+**Sprint Structure:**
+See `.claude/patterns/MASTER-DIRECTORY-STRUCTURE.md` for complete structure.
+
+Key points:
+- Sprints live under milestones
+- Validations are numbered (validation-1, validation-2...)
+- Fix cycles between validations (cycle-1, cycle-2...)
+
+**Honest Metrics Example:**
+```
+Sprint 001 Summary:
+- Tasks: 12 completed
+- Initial failures: 23
+- Fix cycles: 2
+- Final state: All tests passing
+- Token cost: SAVED by fixing early
+```
 
 ---
-*One guide. Clear ownership. Verified execution.*
+*Honesty in validation. Evidence in execution. Quality through truth.*
