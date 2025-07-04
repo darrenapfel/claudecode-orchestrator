@@ -27,6 +27,7 @@ This document defines the canonical directory structure for orchestrator session
 │       └── ACCEPTANCE-CRITERIA.md    # Consolidated criteria (optional)
 ├── sessions/YYYYMMDD-{topic}/         # Session management (MANDATORY)
 │   ├── session-transcript.md          # Workflow progression log
+│   ├── session-completion-summary.md  # Final session summary (at end)
 │   ├── sprint-001/
 │   │   └── README.md                 # Sprint summary
 │   └── sprint-002/

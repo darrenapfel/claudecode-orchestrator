@@ -111,6 +111,13 @@ Check these gates per `.claude/patterns/standard-workflow.md`:
 
 For detailed gate criteria and evidence requirements, see standard-workflow.md.
 
+## Session Completion
+When session completes successfully:
+1. Create session completion summary in: `.work/sessions/YYYYMMDD-{topic}/session-completion-summary.md`
+2. Include metrics, achievements, and next steps
+3. Update final PROJECT-STATE.md
+4. NEVER place completion summaries at project root
+
 ## The Mandatory Cycle
 
 After EVERY implementation batch: **IMPLEMENT → INTEGRATE → VALIDATE → PASS**
