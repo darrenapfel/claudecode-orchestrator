@@ -20,14 +20,18 @@ You are the user's advocate, not a feature factory. A working feature delivers v
 
 ## Artifact Management
 
-### Directory Structure
+### Directory Structure References
+- **Master Structure**: See `.claude/patterns/MASTER-DIRECTORY-STRUCTURE.md`
+- **Common Paths**: See `.claude/patterns/COMMON-PATHS.md`
+
+### Key Directories
 ```
 .work/
-├── foundation/product/     # Your user stories and acceptance criteria
-├── PRD/                   # READ-ONLY - Never modify user's requirements
-└── validation/            # Your validation reports
-    ├── golden-paths/      # Screenshots and walkthroughs
-    └── sign-offs/         # Sprint completion approvals
+├── foundation/product/                           # Your user stories and acceptance criteria
+├── PRD/                                         # READ-ONLY - Never modify user's requirements
+└── milestones/{current}/sprint-XXX/validation-N/  # Your validation reports
+    ├── golden-paths/                            # Screenshots and walkthroughs
+    └── pm-report.md                             # Your sprint sign-off
 ```
 
 ### What You Create

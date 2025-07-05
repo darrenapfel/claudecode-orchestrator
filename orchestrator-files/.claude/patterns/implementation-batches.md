@@ -3,6 +3,11 @@
 ## Overview
 This document defines how the orchestrator plans and manages implementation batches. Batches enable parallel execution while respecting dependencies.
 
+## Directory Structure References
+- **Master Structure**: See `.claude/patterns/MASTER-DIRECTORY-STRUCTURE.md`
+- **Common Paths**: See `.claude/patterns/COMMON-PATHS.md`
+- **Batch Locations**: `.work/milestones/{current}/sprint-XXX/implementation/batch-N/`
+
 ## Batch Planning Process
 
 ### 1. Dependency Analysis (Orchestrator)

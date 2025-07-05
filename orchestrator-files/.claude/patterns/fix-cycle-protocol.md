@@ -3,6 +3,11 @@
 ## Overview
 This document defines how to handle validation failures through structured fix cycles. Fix cycles ensure all issues are addressed systematically before progression.
 
+## Directory Structure References
+- **Master Structure**: See `.claude/patterns/MASTER-DIRECTORY-STRUCTURE.md`
+- **Common Paths**: See `.claude/patterns/COMMON-PATHS.md`
+- **Quick Reference**: See `.claude/patterns/DIRECTORY-QUICK-REFERENCE.md`
+
 ## When Fix Cycles Trigger
 
 Fix cycles are MANDATORY when:
