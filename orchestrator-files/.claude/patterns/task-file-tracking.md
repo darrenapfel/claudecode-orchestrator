@@ -3,6 +3,11 @@
 ## Overview
 Ensures proper file isolation for task-level git commits. Each task must track its files to prevent cross-contamination in commits.
 
+## Document Relationships
+- **This document**: Specialized pattern for git commit isolation and file tracking
+- **For task contracts**: See `.claude/patterns/task-execution-protocol.md` (the "what")
+- **For comprehensive guide**: See `.claude/guides/TASK-EXECUTION-GUIDE.md` (the "how")
+
 ## File Tracking Requirements
 
 ### 1. Persona Responsibilities

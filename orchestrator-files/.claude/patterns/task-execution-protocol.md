@@ -3,7 +3,12 @@
 ## Core Contract
 Every task is a 30-minute contract with measurable outcomes.
 
-See **TASK-EXECUTION-GUIDE.md** for complete execution details.
+See **`.claude/guides/TASK-EXECUTION-GUIDE.md`** for complete execution details.
+
+## Document Relationships
+- **This document**: Defines the task contract and requirements (the "what")
+- **For comprehensive guide**: See `.claude/guides/TASK-EXECUTION-GUIDE.md` (the "how")
+- **For file tracking**: See `.claude/patterns/task-file-tracking.md` (git isolation)
 
 ## System Requirements
 

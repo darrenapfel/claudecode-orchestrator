@@ -115,8 +115,8 @@ Type 1 or 2:
 orchestrator, architect, software-engineer, ux-designer, documentation-writer, performance-engineer, sdet, test-engineer, integration-engineer, devops, security-engineer, product-manager
 
 **Key Documents:**
-- `.claude/TASK-EXECUTION-GUIDE.md` - How tasks work
-- `.claude/task-execution-protocol.md` - Task contracts
+- `.claude/guides/TASK-EXECUTION-GUIDE.md` - How tasks work
+- `.claude/patterns/task-execution-protocol.md` - Task contracts
 - `.claude/patterns/` - Common patterns
 - `.claude/preferences/` - Project preferences
 

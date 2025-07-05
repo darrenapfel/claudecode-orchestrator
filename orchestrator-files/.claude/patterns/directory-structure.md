@@ -64,7 +64,7 @@ Before proceeding, verify against MASTER-DIRECTORY-STRUCTURE.md:
 - Common Paths: `.claude/patterns/COMMON-PATHS.md`
 - Fix Cycles: `.claude/patterns/fix-cycle-protocol.md`
 - Git Strategy: `.claude/patterns/GIT-COMMIT-STRATEGY.md`
-- Task Execution: `.claude/TASK-EXECUTION-GUIDE.md`
+- Task Execution: `.claude/guides/TASK-EXECUTION-GUIDE.md`
 
 ---
 *Always refer to MASTER-DIRECTORY-STRUCTURE.md for authoritative structure.*

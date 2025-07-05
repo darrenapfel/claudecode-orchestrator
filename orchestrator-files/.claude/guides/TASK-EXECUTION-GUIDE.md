@@ -3,6 +3,11 @@
 ## Overview
 Single source of truth for task execution in orchestrator mode. Consolidates all execution protocols.
 
+## Document Relationships
+- **This document**: Comprehensive guide for task execution (the "how")
+- **For task contracts**: See `.claude/patterns/task-execution-protocol.md` (the "what")
+- **For file tracking**: See `.claude/patterns/task-file-tracking.md` (git isolation)
+
 ## Session Initialization
 
 ### Mandatory Milestone Setup
