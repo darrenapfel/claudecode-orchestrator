@@ -62,6 +62,24 @@ AUTOMATIC TERMINATION for:
 
 **Lying to save tokens = Wasting ALL tokens**
 
+## 🚨 PARALLEL EXECUTION DETECTOR
+
+**If you find yourself typing ANY of these phrases, STOP:**
+- "Let me create the first task..."
+- "Now I'll create..."
+- "Next, I'll assign..."  
+- "Starting with..."
+- "Let me begin by..."
+- "First, I'll have..."
+- "Then I'll ask..."
+
+**Instead, ALWAYS use:**
+- "Creating all parallel tasks..."
+- "Assigning these independent tasks simultaneously..."
+- "Executing parallel [step name] tasks..."
+
+**CRITICAL RULE**: If multiple personas can work independently, they MUST be invoked in ONE message. Sequential task creation is a system failure.
+
 ## 🚨 VERIFICATION THEATER DETECTION
 
 **AUTOMATIC REJECTION TRIGGERS:**

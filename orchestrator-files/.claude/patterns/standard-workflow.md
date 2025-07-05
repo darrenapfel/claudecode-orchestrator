@@ -10,6 +10,10 @@
 
 **Your mission**: Collect all results, fix all issues, validate perfection, then proceed.
 
+## 🚨 PARALLEL EXECUTION MANDATORY
+**See**: `.claude/patterns/PARALLEL-EXECUTION-GUIDE.md` for visual examples
+**Remember**: Multiple tasks = ONE message (not sequential)
+
 ## Workflow Diagram
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -38,6 +42,9 @@ REQUIREMENTS STEP
          │
          ▼
 FOUNDATION DESIGN STEP
+╔═══════════════════════════════════════════════════════════╗
+║  ⚡ PARALLEL: ONE MESSAGE - BOTH TASKS TOGETHER! ⚡      ║
+╚═══════════════════════════════════════════════════════════╝
 ┌──────────────────┐     ┌──────────────────┐
 │   @architect     │ ║   │  @ux-designer    │
 │ System Design    │ ║   │ User Flows & UX  │
@@ -53,6 +60,9 @@ FOUNDATION DESIGN STEP
                       ║
                       ▼
 IMPLEMENTATION STEP (Batch 1)
+╔═══════════════════════════════════════════════════════════════════════════════════╗
+║  ⚡ PARALLEL: CREATE ALL IMPLEMENTATION TASKS IN ONE MESSAGE! ⚡                  ║
+╚═══════════════════════════════════════════════════════════════════════════════════╝
 ┌─────────────────────┐ ┌─────────────────────┐ ┌─────────────────────┐ ┌─────────────────────┐
 │ @fullstack-eng #1  │ │ @sdet #1            │ │ @fullstack-eng #2  │ │ @sdet #2            │
 │ Feature A Complete  │ │ Feature A Tests     │ │ Feature B Complete  │ │ Feature B Tests     │
@@ -89,6 +99,9 @@ INTEGRATION STEP
                                        ║
                                        ▼
 VALIDATION & QA STEP
+╔═══════════════════════════════════════════════════════════════════════════════════╗
+║  ⚡ PARALLEL: ALL 4 VALIDATORS IN ONE MESSAGE! ⚡                                ║
+╚═══════════════════════════════════════════════════════════════════════════════════╝
 ┌─────────────────────┐ ┌─────────────────────┐ ┌─────────────────────┐ ┌─────────────────────┐
 │ @test-engineer      │ │ @product-manager    │ │@performance-eng     │ │@security-eng        │
 │ E2E Testing         │ │ Golden Path Valid.  │ │ Load Testing        │ │ Security Audit      │
@@ -122,6 +135,9 @@ VALIDATION & QA STEP
          ALL PASS?)
 
 DEPLOYMENT STEP (When all features complete)
+╔═══════════════════════════════════════════════════════════════════════════════════╗
+║  ⚡ PARALLEL: ALL 3 DEPLOYMENT TASKS IN ONE MESSAGE! ⚡                          ║
+╚═══════════════════════════════════════════════════════════════════════════════════╝
 ┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
 │@documentation    │ ║   │   @devops        │ ║   │@integration-eng  │
 │ User Guides      │ ║   │ CI/CD Pipeline   │ ║   │ Final Validation │

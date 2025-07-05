@@ -102,8 +102,19 @@ CYAN='\\033[0;36m'
 PURPLE='\\033[0;35m'
 NC='\\033[0m' # No Color
 
-# Interactive installation prompt
-if [ "$1" = "global" ] || [ "$1" = "local" ]; then
+# Check for command line arguments
+if [ "$1" = "global" ]; then
+    INSTALL_MODE="global"
+    echo -e "\${YELLOW}⚠️  WARNING: Global installation will replace ~/.claude/claude.md!\${NC}"
+    echo -e "\${YELLOW}   Any existing claude.md configuration will be overwritten.\${NC}"
+    echo ""
+    echo -n "Are you sure you want to continue? [y/N]: "
+    read -r confirm
+    if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+        echo -e "\${RED}❌ Installation cancelled.\${NC}"
+        exit 0
+    fi
+elif [ "$1" = "local" ]; then
     INSTALL_MODE="$1"
 else
     echo -e "\${BLUE}┌─────────────────────────────────────────────────────┐\${NC}"
@@ -129,7 +140,18 @@ else
     read -r choice
     
     case $choice in
-        1) INSTALL_MODE="global" ;;
+        1) 
+            INSTALL_MODE="global"
+            echo -e "\\n\${YELLOW}⚠️  WARNING: This will replace your global ~/.claude/claude.md file!\${NC}"
+            echo -e "\${YELLOW}   Any existing claude.md configuration will be overwritten.\${NC}"
+            echo ""
+            echo -n "Are you sure you want to continue? [y/N]: "
+            read -r confirm
+            if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+                echo -e "\${RED}❌ Installation cancelled.\${NC}"
+                exit 0
+            fi
+            ;;
         2) INSTALL_MODE="local" ;;
         *) echo -e "\${RED}Invalid choice. Exiting.\${NC}"; exit 1 ;;
     esac
@@ -147,7 +169,7 @@ fi
 # Create directory structure
 echo -e "\${GREEN}📁 Creating directory structure...\${NC}"
 mkdir -p "$INSTALL_DIR"/{personas,validators,examples,preferences/tech-stacks,deployment,hooks}
-mkdir -p "$INSTALL_DIR"/{architecture-templates,state-management,patterns,discovery}
+mkdir -p "$INSTALL_DIR"/{architecture-templates,state-management,patterns,discovery,guides}
 
 # Only create .work directories for local installation
 if [ "$INSTALL_MODE" = "local" ]; then
@@ -306,7 +328,7 @@ echo -e "   \${CYAN}\\"Implement real-time notifications\\"\${NC}"
 echo -e "   \${CYAN}\\"Add comprehensive testing to my API\\"\${NC}"
 
 echo -e "\\n📖 \${YELLOW}Documentation:\${NC}"
-echo -e "   • Task Execution: \${CYAN}$INSTALL_DIR/TASK-EXECUTION-GUIDE.md\${NC}"
+echo -e "   • Task Execution: \${CYAN}$INSTALL_DIR/guides/TASK-EXECUTION-GUIDE.md\${NC}"
 echo -e "   • Git Strategy: \${CYAN}$INSTALL_DIR/patterns/GIT-COMMIT-STRATEGY.md\${NC}"
 echo -e "   • Examples: \${CYAN}$INSTALL_DIR/examples/\${NC}"
 
@@ -384,6 +406,7 @@ function buildScript() {
     { dir: '.claude/patterns', title: 'PATTERNS' },
     { dir: '.claude/preferences', title: 'PREFERENCES' },
     { dir: '.claude/preferences/tech-stacks', title: 'TECH STACKS' },
+    { dir: '.claude/guides', title: 'GUIDES' },
     { dir: '.claude/hooks', title: 'HOOKS' },
     { dir: '.claude/deployment', title: 'DEPLOYMENT' }
   ];

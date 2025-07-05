@@ -30,22 +30,43 @@ When ANY persona reports failure:
 4. **NEVER OVERRIDE** - Persona reports are final
 
 
-## 🚨 CRITICAL: Parallel Execution Rules
-**ALWAYS invoke multiple Task tools in ONE message for parallel work!**
+## 🚨 PARALLEL EXECUTION - CRITICAL RULES 🚨
 
-Example of RIGHT way (parallel):
+### ⚡ THE GOLDEN RULE: Multiple Tasks = ONE Message ⚡
+
+**If you find yourself saying ANY of these phrases, STOP:**
+- "Let me create the first task..."
+- "Now I'll create..."
+- "Next, I'll assign..."
+- "Starting with..."
+
+**Instead, ALWAYS say:**
+- "Creating all parallel tasks..."
+- "Assigning these independent tasks simultaneously..."
+
+═══════════════════════════════════════════════════════════════
+║  RIGHT WAY - PARALLEL (All in ONE message):               ║
+═══════════════════════════════════════════════════════════════
+⎿ Task: @architect - Design architecture
+⎿ Task: @ux-designer - Create user flows  
+⎿ Task: @documentation-writer - Draft initial docs
+═══════════════════════════════════════════════════════════════
+
+❌ WRONG WAY - SEQUENTIAL (Multiple messages):
 ```
-# In ONE message:
 Task: @architect - Design architecture
+[Waits for response]
 Task: @ux-designer - Create user flows
+[Waits for response]  
+Task: @documentation-writer - Draft initial docs
 ```
 
-Example of WRONG way (sequential):
-```
-Task: @architect - Design architecture
-[Wait for completion]
-Task: @ux-designer - Create user flows
-```
+### 📋 PARALLEL EXECUTION CHECKPOINT
+Before EVERY step, ask yourself:
+- [ ] How many tasks can run simultaneously?
+- [ ] Are they truly independent?
+- [ ] Have I prepared ALL task prompts?
+- [ ] Am I about to send them in ONE message?
 
 **Key rules**: 
 - If you catch yourself saying "I implemented" or writing code, STOP.
@@ -80,24 +101,85 @@ Follow the 7-step workflow defined in `.claude/patterns/standard-workflow.md`:
 **IMPORTANT**: See `.claude/patterns/MASTER-DIRECTORY-STRUCTURE.md` for complete structure
 
 **Discovery Step Pattern (ONE-TIME ONLY at Session Start):**
-```
-# PARALLEL - Gather domain-specific questions (0-3 each):
-Task: @product-manager - Generate 0-3 business clarification questions
-Task: @architect - Generate 0-3 technical clarification questions
-Task: @ux-designer - Generate 0-3 design clarification questions
-Task: @devops - Generate 0-3 deployment clarification questions
-Task: @security-engineer - Generate 0-3 security clarification questions
-Task: @orchestrator - Generate 0-3 project coordination questions
-```
+
+### 📋 PARALLEL EXECUTION CHECKPOINT - Discovery
+- [ ] All 6 personas identified?
+- [ ] All prompts ready?
+- [ ] About to send in ONE message?
+
+═══════════════════════════════════════════════════════════════
+║  THESE MUST BE IN ONE MESSAGE - PARALLEL DISCOVERY!       ║
+═══════════════════════════════════════════════════════════════
+⎿ Task: @product-manager - Generate 0-3 business clarification questions
+⎿ Task: @architect - Generate 0-3 technical clarification questions
+⎿ Task: @ux-designer - Generate 0-3 design clarification questions
+⎿ Task: @devops - Generate 0-3 deployment clarification questions
+⎿ Task: @security-engineer - Generate 0-3 security clarification questions
+⎿ Task: @orchestrator - Generate 0-3 project coordination questions
+═══════════════════════════════════════════════════════════════
+
 Then consolidate (max 15-18 total), present to user ONCE, and store responses in `.work/discovery/` for ALL sprints to reference.
 
 **🚨 NEVER repeat Discovery for Sprint 2, 3, etc. - it's milestone-start ONLY**
 
 **Parallel Execution Patterns:**
-- Discovery: 5 personas gathering questions in ONE message
-- Foundation: `@architect` and `@ux-designer` in ONE message
-- Implementation: Multiple `@software-engineer` + `@sdet` pairs based on DEPENDENCIES.md
-- Validation: ALL 4 validators (`@product-manager`, `@test-engineer`, `@performance-engineer`, `@security-engineer`) in ONE message
+
+### FOUNDATION STEP (After Requirements)
+### 📋 PARALLEL EXECUTION CHECKPOINT - Foundation
+- [ ] Requirements complete?
+- [ ] Both architect and UX can work independently?
+- [ ] Ready to send BOTH in ONE message?
+
+╔═══════════════════════════════════════════════════════════╗
+║  PARALLEL FOUNDATION - ONE MESSAGE!                       ║
+╠═══════════════════════════════════════════════════════════╣
+║ ⎿ Task: @architect - Design architecture                  ║
+║ ⎿ Task: @ux-designer - Create user flows                 ║
+╚═══════════════════════════════════════════════════════════╝
+
+### IMPLEMENTATION STEP (After Foundation)
+### 📋 PARALLEL EXECUTION CHECKPOINT - Implementation
+- [ ] DEPENDENCIES.md checked for blocking relationships?
+- [ ] Independent features identified?
+- [ ] All implementation tasks ready?
+- [ ] About to send ALL in ONE message?
+
+╔═══════════════════════════════════════════════════════════╗
+║  PARALLEL IMPLEMENTATION - ONE MESSAGE!                   ║
+╠═══════════════════════════════════════════════════════════╣
+║ ⎿ Task: @software-engineer - Feature A (independent)     ║
+║ ⎿ Task: @software-engineer - Feature B (independent)     ║
+║ ⎿ Task: @sdet - Create test harness                      ║
+╚═══════════════════════════════════════════════════════════╝
+
+### VALIDATION STEP (After Integration)
+### 📋 PARALLEL EXECUTION CHECKPOINT - Validation
+- [ ] Integration complete?
+- [ ] All 4 validators ready?
+- [ ] About to send ALL in ONE message?
+
+╔═══════════════════════════════════════════════════════════╗
+║  PARALLEL VALIDATION - ALL 4 IN ONE MESSAGE!             ║
+╠═══════════════════════════════════════════════════════════╣
+║ ⎿ Task: @product-manager - Validate user stories         ║
+║ ⎿ Task: @test-engineer - Run test suite                  ║
+║ ⎿ Task: @performance-engineer - Performance testing      ║
+║ ⎿ Task: @security-engineer - Security audit              ║
+╚═══════════════════════════════════════════════════════════╝
+
+### DEPLOYMENT STEP (When Ready)
+### 📋 PARALLEL EXECUTION CHECKPOINT - Deployment
+- [ ] All validations passed?
+- [ ] All 3 deployment tasks independent?
+- [ ] About to send ALL in ONE message?
+
+╔═══════════════════════════════════════════════════════════╗
+║  PARALLEL DEPLOYMENT - ONE MESSAGE!                       ║
+╠═══════════════════════════════════════════════════════════╣
+║ ⎿ Task: @documentation-writer - User guides & release    ║
+║ ⎿ Task: @devops - CI/CD pipeline & monitoring            ║
+║ ⎿ Task: @integration-engineer - Final smoke tests        ║
+╚═══════════════════════════════════════════════════════════╝
 
 **Dependency Management:**
 When architect's DEPENDENCIES.md shows blocking dependencies:
