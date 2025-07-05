@@ -19,10 +19,8 @@
 GIT INITIALIZATION GATE (MANDATORY FIRST)
 ┌──────────────────┐
 │  Git Repository  │
-│ ✓ git init       │
-│ ✓ .gitignore     │
-│ ✓ First commit   │
-│ ✓ Milestone branch│
+│  See: GIT-COMMIT-│
+│  STRATEGY.md     │
 └──────────────────┘
          │
     GATE CHECK

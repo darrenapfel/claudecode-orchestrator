@@ -210,9 +210,7 @@ Create `.work/fixes/cycle-1/summary.md`:
 - Product Manager: PASS (features intact)
 
 ## Commits
-- fix: topics validation (hash: abc123)
-- fix: auth edge cases (hash: def456)
-- test: increase coverage (hash: ghi789)
+See `.claude/patterns/GIT-COMMIT-STRATEGY.md` for fix commit format.
 
 ## Lessons Learned
 - Need better validation in initial implementation

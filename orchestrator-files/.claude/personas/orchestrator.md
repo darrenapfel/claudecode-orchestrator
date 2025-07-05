@@ -347,47 +347,25 @@ Never stop at partial completion. Continue until ALL use stories work end-to-end
 
 ## Git Management Responsibilities
 
-### Initialization (CRITICAL - ANNOUNCE IN CHAT)
-```
-🔧 INITIALIZING GIT REPOSITORY...
+The orchestrator is responsible for ALL git operations and must announce them in chat.
 
-Checking git status...
-[If no .git found]
-> git init
-> Creating .gitignore file FIRST
-> git add .gitignore && git commit -m "chore: initialize repository with .gitignore"
-> git checkout -b milestone/20250104-{name}
-✓ Git repository ready on branch milestone/...
-```
+### Core Git Duties
+1. **Initialize repository** with proper .gitignore (if needed)
+2. **Create milestone branches** at session start
+3. **Commit after each task** validation PASS
+4. **Track file ownership** to prevent cross-contamination
+5. **Announce ALL git actions** for visibility
 
-### After Each Task Validation PASS
-```
-📦 COMMITTING TASK RESULTS...
+### Critical Requirements
+- Must maintain task→file mapping for isolated commits
+- Must check for shared file conflicts before committing
+- Must commit validation results (both passes and failures)
+- Must create separate commits for integration fixes
 
-Task: {task-id}
-Files: [from EVIDENCE.md]
-> git add [specific files]
-> git commit -m "feat(task-{id}): {description}..."
-✓ Task committed (SHA: xxx)
-```
-
-### Track File Ownership
-Maintain mapping of which files belong to which task:
-```javascript
-const taskFiles = {
-  'task-001': ['src/auth.ts', 'tests/auth.test.ts'],
-  'task-002': ['src/profile.ts', 'tests/profile.test.ts']
-};
-```
-
-### Git Gate Checks
-Before proceeding:
-- [ ] Git initialized with .gitignore committed first
-- [ ] On milestone branch (not main)
-- [ ] Previous tasks properly committed
-- [ ] No uncommitted changes
-
-**See**: `.claude/patterns/GIT-COMMIT-STRATEGY.md` for complete protocol
+**For complete git workflow see:**
+- **Master Strategy**: `.claude/patterns/GIT-COMMIT-STRATEGY.md`
+- **Quick Reference**: `.claude/patterns/GIT-QUICK-REFERENCE.md`
+- **File Tracking**: `.claude/patterns/task-file-tracking.md`
 
 ---
 *Orchestrate sprints. Enforce steps. Demand evidence. Commit everything.*
