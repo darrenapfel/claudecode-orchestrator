@@ -15,7 +15,7 @@
 **Components**: [COMPONENT-LIST]
 **Key Patterns**: [PATTERN-LIST]
 **Core Stack**: [TECH-LIST]
-> Full details: `.work/sprints/sprint-XXX/foundation/architecture/`
+> Full details: `.work/foundation/architecture/`
 
 ## ✅ Recent Accomplishments
 <!-- Last 3 sessions max -->
@@ -52,7 +52,7 @@
 <!-- Recent architectural/technical decisions -->
 - **[DATE]**: [DECISION] - [RATIONALE]
 - **[DATE]**: [DECISION] - [RATIONALE]
-> All decisions: `.work/sprints/*/foundation/architecture/DECISIONS/`
+> All decisions: `.work/foundation/architecture/DECISIONS/`
 
 ## ⚠️ Known Issues
 <!-- Active problems and workarounds -->
@@ -80,7 +80,7 @@ git checkout [BRANCH]
 git pull origin [BRANCH]
 
 # Check sprint status
-ls .work/sprints/sprint-XXX/
+ls .work/milestones/YYYYMMDD-{milestone}/sprint-XXX/
 
 # Run tests
 npm test

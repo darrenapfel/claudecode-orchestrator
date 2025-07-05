@@ -68,7 +68,7 @@ git commit -m "feat(auth): implement user model and authentication service
 - Add unit tests with 87% coverage
 
 Subtask: Implementation Stream A
-Evidence: .work/sprints/sprint-001/tasks/20250628-1000-auth-implementation/EVIDENCE.md
+Evidence: .work/milestones/20250628-auth-milestone/sprint-001/tasks/20250628-1000-auth-implementation/EVIDENCE.md
 Validation: All 15 tests passing (see artifacts/test-output.txt)
 
 🤖 Generated with [Claude Code](https://claude.ai/code)
@@ -93,7 +93,7 @@ git commit -m "test(auth): add comprehensive authentication test suite
 
 Subtask: Testing Stream B
 Coverage: 92%
-Evidence: .work/sprints/sprint-001/tasks/20250628-1000-auth-testing/EVIDENCE.md
+Evidence: .work/milestones/20250628-auth-milestone/sprint-001/tasks/20250628-1000-auth-testing/EVIDENCE.md
 Proof: npm test output in artifacts/test-results.json
 
 🤖 Generated with [Claude Code](https://claude.ai/code)
@@ -117,7 +117,7 @@ git commit -m "security(auth): add security configurations and audit
 - No critical vulnerabilities found
 
 Subtask: Security Stream C  
-Evidence: .work/sprints/sprint-001/tasks/20250628-1000-auth-security/EVIDENCE.md
+Evidence: .work/milestones/20250628-auth-milestone/sprint-001/tasks/20250628-1000-auth-security/EVIDENCE.md
 Scan Results: artifacts/security-scan-output.log
 
 🤖 Generated with [Claude Code](https://claude.ai/code)
@@ -136,8 +136,8 @@ npm run test:integration
 # Output: 73/73 passing
 
 # Only after ALL tests pass, orchestrator commits:
-git add .work/sprints/sprint-001/validation/integration-report.md
-git add .work/sprints/sprint-001/tasks/*/EVIDENCE.md
+git add .work/milestones/20250628-auth-milestone/sprint-001/validation-1/integration-report.md
+git add .work/milestones/20250628-auth-milestone/sprint-001/tasks/*/EVIDENCE.md
 git commit -m "merge: converge authentication implementation streams
 
 All parallel streams completed successfully:
@@ -146,7 +146,7 @@ All parallel streams completed successfully:
 - Security: ✓ (commit: c3d4e5f) - 0 vulnerabilities
 
 Integration Validation: PASSED (73/73 tests)
-Evidence: .work/sprints/sprint-001/validation/integration-report.md
+Evidence: .work/milestones/20250628-auth-milestone/sprint-001/validation-1/integration-report.md
 
 🤖 Generated with [Claude Code](https://claude.ai/code)"
 
@@ -172,7 +172,7 @@ pr_response = mcp__github__create_pull_request(
 ✅ Security audit and configuration (OWASP compliant)
 
 ### Evidence
-All implementation evidence available in `.work/sprints/sprint-001/tasks/`
+All implementation evidence available in `.work/milestones/20250628-auth-milestone/sprint-001/tasks/`
 
 ### Commits
 - a1b2c3d: feat(auth): implement user model and authentication service
@@ -253,7 +253,7 @@ When validation fails (as expected in honest development):
 
 ```bash
 # Fix Cycle 1 - Integration Engineer finds 3 failures
-git add .work/sprints/sprint-001/fixes/cycle-1/auth-integration-fixes.md
+git add .work/milestones/20250628-auth-milestone/sprint-001/fixes/cycle-1/auth-integration-fixes.md
 git commit -m "fix: resolve authentication integration issues
 
 - Fixed JWT token validation in middleware
@@ -262,7 +262,7 @@ git commit -m "fix: resolve authentication integration issues
 
 Fix Cycle: 1
 Failures Fixed: 3/3
-Evidence: .work/sprints/sprint-001/fixes/cycle-1/EVIDENCE.md"
+Evidence: .work/milestones/20250628-auth-milestone/sprint-001/fixes/cycle-1/EVIDENCE.md"
 
 # After fixes, re-run validation
 npm run test:integration

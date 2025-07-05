@@ -8,6 +8,9 @@ This document references the master directory structure. All personas must follo
 For the complete, canonical directory structure, see:
 **`.claude/patterns/MASTER-DIRECTORY-STRUCTURE.md`**
 
+For common path patterns and examples, see:
+**`.claude/patterns/COMMON-PATHS.md`**
+
 All directory creation, file placement, and structural decisions must follow the master structure.
 
 ## Key Changes from Previous Structure
@@ -58,7 +61,9 @@ Before proceeding, verify against MASTER-DIRECTORY-STRUCTURE.md:
 ## References
 
 - Master Structure: `.claude/patterns/MASTER-DIRECTORY-STRUCTURE.md`
-- Fix Cycles: `.claude/patterns/fix-cycle-structure.md`
+- Common Paths: `.claude/patterns/COMMON-PATHS.md`
+- Fix Cycles: `.claude/patterns/fix-cycle-protocol.md`
+- Git Strategy: `.claude/patterns/GIT-COMMIT-STRATEGY.md`
 - Task Execution: `.claude/TASK-EXECUTION-GUIDE.md`
 
 ---

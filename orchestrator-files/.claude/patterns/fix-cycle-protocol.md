@@ -12,10 +12,53 @@ Fix cycles are MANDATORY when:
 - Performance metrics fall below thresholds
 - Security vulnerabilities discovered
 
-## Fix Cycle Structure
+## Fix Cycle Directory Structure
+
+When validation failures occur (which is normal and expected), organize fixes using numbered cycles:
 
 ```
-.work/sprints/sprint-XXX/fixes/cycle-{number}/
+.work/milestones/YYYYMMDD-{milestone}/sprint-XXX/
+├── implementation/      # Original implementation
+├── validation-1/       # First validation attempt
+├── fixes/
+│   ├── cycle-1/       # First fix cycle
+│   ├── cycle-2/       # Second fix cycle (if needed)
+│   ├── cycle-3/       # Third fix cycle (if needed)
+│   └── cycle-N/       # Continue as needed
+├── validation-2/       # Validation after cycle-1 fixes
+├── validation-3/       # Validation after cycle-2 fixes
+└── validation-N/       # Final validation (when all pass)
+```
+
+### Fix Cycle Naming Convention
+
+**DO NOT USE:**
+- revalidation/
+- re-revalidation/
+- re-re-revalidation/
+
+**ALWAYS USE:**
+- fixes/cycle-1/
+- fixes/cycle-2/
+- fixes/cycle-3/
+
+### Example Fix Cycle Flow
+
+```
+Initial validation: 12 failures
+→ fixes/cycle-1/: Fixed 8 issues
+→ Validation: 4 failures remain
+→ fixes/cycle-2/: Fixed 3 issues  
+→ Validation: 1 failure remains
+→ fixes/cycle-3/: Fixed final issue
+→ validation-final/: All tests passing ✓
+```
+
+### Fix Cycle Contents
+
+Each fix cycle should contain:
+```
+fixes/cycle-N/
 ├── tasks.md                    # List of all fix tasks
 ├── assignments.md              # Task-to-persona mapping
 ├── evidence/
@@ -50,7 +93,7 @@ Fix cycles are MANDATORY when:
 
 ### 2. Fix Task Creation (Orchestrator)
 
-Create `.work/sprints/sprint-XXX/fixes/cycle-1/tasks.md`:
+Create `.work/milestones/YYYYMMDD-{milestone}/sprint-XXX/fixes/cycle-1/tasks.md`:
 ```markdown
 # Fix Cycle 1 Tasks
 
@@ -105,6 +148,20 @@ Examples:
 - TASK-FIX-001-001-topics-validation
 - TASK-FIX-001-002-auth-edge-cases
 - TASK-FIX-002-001-performance-regression
+```
+
+## Commit Message Format
+
+```bash
+git commit -m "fix(cycle-N): resolve {description}
+
+Issues fixed:
+- {specific issue 1}
+- {specific issue 2}
+
+Fix cycle: N
+Remaining issues: X
+Evidence: .work/milestones/YYYYMMDD-{milestone}/sprint-XXX/fixes/cycle-N/EVIDENCE.md"
 ```
 
 ## Evidence Requirements

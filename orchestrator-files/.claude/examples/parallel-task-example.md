@@ -48,7 +48,7 @@ T+21    | ← Integration Engineer reconciles all work →
 ## Evidence Structure
 
 ```
-.work/sprints/sprint-001/implementation/
+.work/milestones/20250628-parallel-example/sprint-001/implementation/
 ├── auth-implementation/
 │   ├── EVIDENCE.md      # What was built
 │   ├── src/             # Actual code

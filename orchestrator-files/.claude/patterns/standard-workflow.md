@@ -140,13 +140,16 @@ DEPLOYMENT STEP (When all features complete)
             │ Milestone Complete?     │
             │ More features needed?   │
             └────────────────────────┘
-                    ║         ║
-                   YES        NO
-                    ║         ║
-                    ▼         ▼
-            Start Next     ✅ ALL MILESTONES COMPLETE
-            Sprint (→ Requirements     Autonomous session done!
-            or Implementation)
+                    ║                   ║
+         Features Needed          Milestone Complete  
+                    ║                   ║
+                    ▼                    ▼
+            Start Next                 MILESTONE COMPLETION PROTOCOL
+            Sprint (→ Requirements     (See details below)
+            or Implementation)         ║
+                                       ▼
+                                  ✅ ALL MILESTONES COMPLETE
+                                     Autonomous session done!
             
 🔄 SPRINTS CONTINUE UNTIL ALL USER GOALS ACHIEVED
 
@@ -548,7 +551,7 @@ SOLO EXECUTION:
 **Integration Engineer Deliverables**:
 - All SDET tests passing for all features
 - All features properly integrated
-- `.work/sprints/sprint-XXX/integration/INTEGRATION-REPORT.md` documenting:
+- `.work/milestones/YYYYMMDD-{milestone}/sprint-XXX/integration/INTEGRATION-REPORT.md` documenting:
   - Test results from each SDET suite
   - Test failures found and fixed
   - Deviations found and how resolved
@@ -907,6 +910,63 @@ When features in sprint-002 depend on sprint-001:
 - Architect documents in DEPENDENCIES.md
 - Integration engineer ensures compatibility
 - Tests verify cross-sprint integration
+
+## 🎯 MILESTONE COMPLETION PROTOCOL
+
+**CRITICAL**: Never claim milestone completion until service is running and user-ready!
+
+### Mandatory Completion Steps
+
+#### 1. Service Startup & Validation
+**@test-engineer executes**:
+```bash
+# Start service with logging
+npm run dev > service.log 2>&1 &
+SERVICE_PID=$!
+echo $SERVICE_PID > .service_pid
+sleep 15
+
+# Validate service responds
+curl -f http://localhost:3000 > /dev/null 2>&1 || exit 1
+curl -f http://localhost:3000/api/health > /dev/null 2>&1 || exit 1
+curl -s http://localhost:3000 | grep -q "<!DOCTYPE html" || exit 1
+
+echo "✅ SERVICE VALIDATED at http://localhost:3000"
+```
+
+**If service startup fails**: Create fix cycle immediately, do NOT proceed.
+
+#### 2. User Testing Materials Generation
+**Orchestrator creates in current sprint/completion/**:
+- **MILESTONE-COMPLETION.md**: Testing instructions with service URL
+- **USER-STORIES-TESTING-GUIDE.md**: Test scenarios from foundation/product/
+- **USER-FEEDBACK-FORM.md**: Pre-filled feedback collection form
+
+#### 3. Completion Announcement
+```
+🎉 MILESTONE [NAME] COMPLETE - Service Running & Ready for Testing
+
+✅ VALIDATION: All validators passed
+✅ SERVICE: Running and validated at http://localhost:3000
+✅ DOCUMENTATION: All testing materials prepared
+
+🎯 USER TESTING - READY NOW:
+   ✅ Service URL: http://localhost:3000 (already running)
+   📖 Test scenarios: See USER-STORIES-TESTING-GUIDE.md
+   📝 Report issues: Fill out USER-FEEDBACK-FORM.md
+   🔄 Submit feedback: "Please process the user feedback file"
+
+Just open http://localhost:3000 and start testing!
+```
+
+### User Feedback Processing
+When user submits USER-FEEDBACK-FORM.md:
+1. **Parse feedback**: Convert natural language to structured test cases
+2. **Create feedback sprint**: Process issues through normal workflow
+3. **Fix cycle**: Resolve all reported issues
+4. **Re-validation**: Ensure fixes don't break existing functionality
+
+**Reference**: See `.claude/patterns/milestone-completion-protocol.md` for complete details.
 
 ## ⚠️ FINAL WARNING: The Truth About Token Costs
 

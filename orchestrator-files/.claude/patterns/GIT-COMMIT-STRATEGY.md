@@ -10,6 +10,30 @@ This is the authoritative git strategy for the orchestration system. All other g
 4. **Visible Actions**: Orchestrator announces ALL git actions in chat
 5. **Honest History**: Commit validation failures and fix cycles
 
+## Task Completion Protocol
+
+1. **Before Committing**:
+   - Verify all task files created (TASK.md, INTERFACE.md, EVIDENCE.md)
+   - Run tests to ensure nothing broken
+   - Check that evidence is complete
+
+2. **Commit Command**:
+   ```bash
+   # Stage all changes
+   git add .
+   
+   # Commit with proper message
+   git commit -m "feat: implement topics CRUD operations
+   
+   Task: 20250703-1500-topics-crud
+   Evidence: .work/milestones/YYYYMMDD-{milestone}/sprint-XXX/tasks/20250703-1500-topics-crud/EVIDENCE.md
+   Implements: Create, read, update, delete operations for topics"
+   ```
+
+3. **After Committing**:
+   - Update task status in PROJECT-STATE.md
+   - Note commit hash in session transcript
+
 ## Orchestrator Git Responsibilities
 
 ### 1. Milestone Initialization (CRITICAL)
@@ -271,6 +295,18 @@ git commit -m "feat(task-001): auth done, profile WIP"
 # Performing commits without announcing
 ```
 
+## Verification Commands
+
+Check commit history:
+```bash
+git log --oneline --grep="Task:"
+```
+
+Verify evidence links:
+```bash
+git log --grep="Evidence:" --pretty=format:"%h %s" | head -20
+```
+
 ## Quick Reference Commands
 
 ```bash
@@ -292,6 +328,38 @@ git tag sprint-XXX-complete
 
 # Create PR (end of milestone)
 gh pr create --title "Milestone: ..." --body "..."
+```
+
+## Pull Request Creation
+
+At session end (if requested):
+```bash
+# Create PR with comprehensive description
+gh pr create --title "feat: {session topic}" --body "$(cat <<'EOF'
+## Summary
+{Brief description of what was accomplished}
+
+## Session Details
+- Milestone: YYYYMMDD-{milestone-name}
+- Branch: milestone/YYYYMMDD-{milestone-name}
+- Summary: .work/milestones/YYYYMMDD-{milestone}/milestone-completion-summary.md
+
+## Completed Sprints
+- Sprint 001: Foundation ✅
+- Sprint 002: Core Services ✅
+
+## Evidence
+All task evidence available in `.work/milestones/YYYYMMDD-{milestone}/sprint-XXX/tasks/`
+
+## Validation Results
+- Test Engineer: PASS
+- Product Manager: PASS
+- Performance Engineer: PASS
+- Security Engineer: PASS
+
+Generated with Claude Code Orchestrator
+EOF
+)"
 ```
 
 ---

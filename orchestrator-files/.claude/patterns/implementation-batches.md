@@ -30,7 +30,7 @@ After receiving DEPENDENCIES.md from architect:
 
 ### 2. Batch Creation (Orchestrator)
 
-Create `.work/sprints/sprint-XXX/implementation/batch-1/summary.md` BEFORE delegation:
+Create `.work/milestones/YYYYMMDD-{milestone}/sprint-XXX/implementation/batch-1/summary.md` BEFORE delegation:
 
 ```markdown
 # Implementation Batch 1 Summary

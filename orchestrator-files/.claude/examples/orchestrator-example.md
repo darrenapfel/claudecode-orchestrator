@@ -7,7 +7,7 @@
 
 ```markdown
 Loading parallel orchestration workflow...
-Creating Sprint 1 structure: .work/sprints/sprint-001/
+Creating Sprint 1 structure: .work/milestones/20250628-example-milestone/sprint-001/
 
 Breaking down into implementation tasks:
 - Testing infrastructure setup (MANDATORY FIRST)
@@ -91,7 +91,7 @@ git add .
 git commit -m "feat: [description]
 
 Task: TASK-XXX
-Evidence: .work/sprints/sprint-001/implementation/[task]/EVIDENCE.md"
+Evidence: .work/milestones/20250628-example-milestone/sprint-001/implementation/[task]/EVIDENCE.md"
 ```
 
 **Sprint complete:**

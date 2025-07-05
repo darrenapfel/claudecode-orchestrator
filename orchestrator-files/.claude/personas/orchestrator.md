@@ -108,7 +108,7 @@ When architect's DEPENDENCIES.md shows blocking dependencies:
 Example: If Feature X blocks Y,Z → Complete X → Integrate X → Then parallelize Y,Z
 
 **Implementation Batch Management:**
-1. Create batch directory: `.work/sprints/sprint-XXX/implementation/batch-X/`
+1. Create batch directory: `.work/milestones/YYYYMMDD-{milestone}/sprint-XXX/implementation/batch-X/`
 2. Create `summary.md` BEFORE delegating tasks with:
    - Batch objectives
    - All planned tasks
@@ -144,9 +144,71 @@ Check these gates per `.claude/patterns/standard-workflow.md`:
 
 For detailed gate criteria and evidence requirements, see standard-workflow.md.
 
-## Session Completion
-When session completes successfully:
-1. Create session completion summary in: `.work/sessions/YYYYMMDD-{topic}/session-completion-summary.md`
+## Milestone Completion Protocol
+**CRITICAL**: Never claim completion until service is actually running!
+
+### Mandatory Completion Steps:
+
+1. **SERVICE STARTUP & VALIDATION**
+   **Orchestrator responsibilities**:
+   - Delegate service startup to @test-engineer
+   - Monitor service startup process
+   - Validate service responds at expected URL
+   - Document working service URL for user
+   - **If service fails to start → Create fix cycle, do NOT claim completion**
+
+   **@test-engineer executes**:
+   ```bash
+   # Start service in background
+   npm run dev > service.log 2>&1 &
+   SERVICE_PID=$!
+   echo $SERVICE_PID > .service_pid
+   sleep 15
+   
+   # Validate service responds
+   curl -f http://localhost:3000 > /dev/null 2>&1 || exit 1
+   curl -f http://localhost:3000/api/health > /dev/null 2>&1 || exit 1
+   
+   # Test basic functionality
+   curl -s http://localhost:3000 | grep -q "<!DOCTYPE html" || exit 1
+   ```
+
+2. **USER TESTING MATERIALS GENERATION**
+   Create in current sprint/completion/ directory:
+   - **MILESTONE-COMPLETION.md**: Testing instructions and service URL
+   - **USER-STORIES-TESTING-GUIDE.md**: Pre-populated with user stories from foundation/product/
+   - **USER-FEEDBACK-FORM.md**: Pre-filled with milestone name and date
+
+3. **COMPLETION ANNOUNCEMENT**
+   ```
+   🎉 MILESTONE [NAME] COMPLETE - Service Running & Ready for Testing
+   
+   ✅ VALIDATION: All validators passed
+   ✅ SERVICE: Running and validated at http://localhost:3000
+   ✅ DOCUMENTATION: All testing materials prepared
+   
+   📋 TESTING MATERIALS CREATED:
+      - MILESTONE-COMPLETION.md (overview and instructions)
+      - USER-STORIES-TESTING-GUIDE.md (what to test)
+      - USER-FEEDBACK-FORM.md (pre-filled feedback form)
+   
+   🚀 USER TESTING - READY NOW:
+      ✅ Service URL: http://localhost:3000 (already running)
+      📖 Test scenarios: See USER-STORIES-TESTING-GUIDE.md
+      📝 Report issues: Fill out USER-FEEDBACK-FORM.md
+      🔄 Submit feedback: "Please process the user feedback file"
+   
+   📊 MILESTONE METRICS:
+      - User Stories: [X]/[Y] implemented (100%)
+      - Test Coverage: [%] (target: >80%)
+      - Performance: [metrics vs targets]
+      - Service Status: ✅ Running and validated
+   
+   🎯 Just open http://localhost:3000 and start testing!
+   ```
+
+4. **COMPLETION SUMMARY**
+   Create milestone completion summary in: `.work/milestones/YYYYMMDD-{milestone}/milestone-completion-summary.md`
 2. Include metrics, achievements, and next steps
 3. Update final PROJECT-STATE.md
 4. NEVER place completion summaries at project root

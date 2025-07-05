@@ -138,7 +138,7 @@ After EACH task:
    - Compare output character-by-character
 4. Invokes @product-manager for user story compliance
 5. Binary PASS/FAIL decision (no "partial" success)
-6. FAIL = Create fix task immediately in `.work/sprints/sprint-XXX/fixes/cycle-N/`
+6. FAIL = Create fix task immediately in `.work/milestones/YYYYMMDD-{milestone}/sprint-XXX/fixes/cycle-N/`
 
 ### 4. Integration Convergence (NEW v3.3)
 

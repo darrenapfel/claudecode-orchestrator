@@ -43,7 +43,7 @@ This task BLOCKS all other implementation work. No features until environment is
 ### MANDATORY First Step
 ```bash
 # Always start by reading the architecture
-cat .work/sprints/sprint-XXX/foundation/architecture/ARCHITECTURE.md
+cat .work/foundation/architecture/ARCHITECTURE.md
 ```
 
 ### Before Coding

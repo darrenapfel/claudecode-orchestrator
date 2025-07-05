@@ -6,7 +6,7 @@ This template ensures all evidence follows a consistent, verifiable format. Ever
 ## Evidence Structure
 
 ```
-.work/sprints/sprint-XXX/implementation/[task-name]/
+.work/milestones/YYYYMMDD-{milestone}/sprint-XXX/implementation/[task-name]/
 ├── TASK.md           # Task definition from orchestrator
 ├── INTERFACE.md      # Public APIs/contracts (if applicable)
 ├── EVIDENCE.md       # Proof of completion (REQUIRED)
@@ -142,7 +142,7 @@ Date:   Tue Jul 2 14:35:00 2025 -0700
     - Maintained performance standards
     
     Task: TASK-XXX
-    Evidence: .work/sprints/sprint-XXX/implementation/[task]/EVIDENCE.md
+    Evidence: .work/milestones/YYYYMMDD-{milestone}/sprint-XXX/implementation/[task]/EVIDENCE.md
 ```
 
 ## Known Issues

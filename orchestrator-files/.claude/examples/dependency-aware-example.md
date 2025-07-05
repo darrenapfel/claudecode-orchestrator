@@ -88,7 +88,7 @@ Task: @sdet-5 - Checkout tests
 
 ## Evidence Structure
 ```
-.work/sprints/sprint-001/
+.work/milestones/20250628-auth-system/sprint-001/
 ├── implementation/
 │   ├── testing-setup/EVIDENCE.md
 │   ├── database-schema/EVIDENCE.md

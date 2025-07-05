@@ -34,7 +34,7 @@ PROJECT-STATE.md provides instant context for fresh Claude sessions, ensuring se
 
 - **Active**: `.work/PROJECT-STATE.md`
 - **Archive**: `.work/state-archive/PROJECT-STATE-[DATE].md`
-- **Sprint Work**: `.work/sprints/sprint-XXX/`
+- **Sprint Work**: `.work/milestones/YYYYMMDD-{milestone}/sprint-XXX/`
 
 ## Update Format
 
@@ -117,8 +117,8 @@ Before committing:
 If PROJECT-STATE.md is corrupted:
 1. Check `.work/state-archive/`
 2. Use `git log` for recent commits
-3. Check `.work/sessions/` for last session
-4. Rebuild from `.work/sprints/sprint-XXX/`
+3. Check `.work/milestones/` for last milestone
+4. Rebuild from `.work/milestones/YYYYMMDD-{milestone}/sprint-XXX/`
 
 ---
 *Efficient state management enables seamless context handoffs*

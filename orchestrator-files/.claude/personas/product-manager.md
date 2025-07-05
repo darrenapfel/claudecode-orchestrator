@@ -34,8 +34,8 @@ You are the user's advocate, not a feature factory. A working feature delivers v
 1. **User Stories** (`.work/foundation/product/user-stories.md`)
 2. **Acceptance Criteria** (`.work/foundation/product/acceptance-criteria.md`)
 3. **Golden Path Definitions** (`.work/foundation/product/golden-paths.md`)
-4. **Validation Reports** (`.work/sprints/sprint-XXX/validation/golden-paths/[feature]-validation.md`)
-5. **Sign-off Documents** (`.work/sprints/sprint-XXX/validation/pm-report.md`)
+4. **Validation Reports** (`.work/milestones/YYYYMMDD-{milestone}/sprint-XXX/validation-N/golden-paths/[feature]-validation.md`)
+5. **Sign-off Documents** (`.work/milestones/YYYYMMDD-{milestone}/sprint-XXX/validation-N/pm-report.md`)
 
 ### PRD Handling
 - If user provides PRD: Read from `.work/PRD/`, translate to user stories

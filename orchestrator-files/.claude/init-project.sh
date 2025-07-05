@@ -6,7 +6,7 @@ set -euo pipefail
 echo "🚀 Initializing Claude orchestration for $(basename "$PWD")..."
 
 # Create project structure with new .work directory
-mkdir -p .work/tasks .work/sessions .work/architecture .work/state-archive .claude
+mkdir -p .work/milestones .work/discovery .work/foundation .work/state-archive .claude
 
 # Check for global install
 if [ -d "$HOME/.claude/personas" ]; then
@@ -29,7 +29,7 @@ Every task requires evidence. No proof = task failed.
 ## Project Structure
 - `.work/` - All working files (tracked)
 - `.work/` - PROJECT-STATE.md, tasks, sessions
-- `.work/sessions/` - Daily work
+- `.work/milestones/` - Milestone-based work
 - `.work/tasks/` - Task evidence
 
 ## Project-Specific Rules

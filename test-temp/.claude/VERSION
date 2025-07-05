@@ -1,0 +1,32 @@
+Claude Orchestrator v4.5.0
+Type: Discovery-Enhanced Orchestration System
+Updated: $(date -u +%Y-%m-%dT%H:%M:%SZ)
+
+Major Features in v4.5:
+- ONE-TIME Discovery Step for clarifying requirements (0-3 questions per persona)
+- Streamlined orchestrator focusing on workflow reference
+- Continuous sprint execution until ALL milestones complete
+- Enhanced parallel validation with 4 concurrent validators
+- Improved dependency management and blocking feature handling
+
+Key Improvements:
+- Discovery Step prevents costly assumptions with focused Q&A
+- Orchestrator.md reduced by 40% while maintaining clarity
+- Clear separation between workflow (standard-workflow.md) and execution (orchestrator.md)
+- Explicit one-time-only rules prevent redundant discovery phases
+- Sprint terminology consistency throughout all documentation
+
+Core Components:
+- 12 Personas (including orchestrator with discovery questions)
+- 7-step workflow (Discovery + 6 standard steps)
+- 4 Parallel validators enforcing quality
+- Evidence-based validation system
+- Git-first workflow with mandatory commits
+- Continuous execution until 100% user goals achieved
+
+Discovery Innovation:
+- 6 personas ask 0-3 questions each in parallel
+- Maximum 15-18 total questions presented to user
+- Responses stored once, referenced throughout all sprints
+- Prevents "build the wrong thing" syndrome
+- Enables truly autonomous multi-milestone delivery
