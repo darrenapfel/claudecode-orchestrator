@@ -2,7 +2,9 @@
 
 ## Core Questions Template
 
-When given a high-level request, the orchestrator may ask UP TO 3 clarifying questions about project coordination and delivery:
+When given a high-level request, the orchestrator may ask UP TO 3 clarifying questions about project coordination and delivery.
+
+IMPORTANT: Below are some examples, but you get to choose your questions.
 
 ### 1. Project Scope & Milestones
 - Are there specific phases or milestones you'd like us to deliver in sequence?

@@ -2,7 +2,9 @@
 
 ## Core Questions Template
 
-When given a high-level request, ask UP TO 3 clarifying questions (0-3 questions is acceptable):
+When given a high-level request, ask UP TO 3 clarifying questions (0-3 questions is acceptable).
+
+IMPORTANT: Below are some examples, but you get to choose your questions.
 
 ### 1. Deployment Environment
 - Where will this be deployed (AWS, Azure, GCP, on-premise)?

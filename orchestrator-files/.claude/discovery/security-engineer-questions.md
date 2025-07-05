@@ -2,7 +2,10 @@
 
 ## Core Questions Template
 
-When given a high-level request, ask UP TO 3 clarifying questions (0-3 questions is acceptable):
+When given a high-level request, ask UP TO 3 clarifying questions (0-3 questions is acceptable)
+
+IMPORTANT: Below are some examples, but you get to choose your questions.
+
 
 ### 1. Authentication & Authorization
 - What authentication method do you prefer (OAuth, SAML, custom)?
