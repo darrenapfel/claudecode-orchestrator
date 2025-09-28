@@ -1,3 +1,5 @@
+NOTE: THIS PROJECT IS DEPRECATED. NEW PROJECT, "limerIQ" a true workflow engine coming very, very soon...
+
 # Claude Code Orchestration System v5.0.0
 
 A comprehensive orchestration framework that enables Claude Code to operate as a full software development team through parallel execution, structured workflows, and evidence-based validation.
