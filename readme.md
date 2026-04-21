@@ -1,4 +1,4 @@
-NOTE: THIS PROJECT IS DEPRECATED. NEW PROJECT, "limerIQ" a true workflow engine coming very, very soon...
+NOTE: THIS PROJECT IS DEPRECATED. NEW PROJECT, www.limeriq.ai
 
 # Claude Code Orchestration System v5.0.0
 
